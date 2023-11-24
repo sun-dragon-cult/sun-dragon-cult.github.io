@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksun_dragon_cult=self.webpackChunksun_dragon_cult||[]).push([[9006],{4289:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/rqg/page/2","page":2,"postsPerPage":10,"totalPages":2,"totalCount":12,"previousPage":"/blog/tags/rqg","blogDescription":"Blog","blogTitle":"Blog"}')}}]);
