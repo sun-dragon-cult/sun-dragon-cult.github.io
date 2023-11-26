@@ -64,19 +64,13 @@ const config: Config = {
       items: [
         {
           type: "docSidebar",
-          sidebarId: "quickStartSidebar",
-          position: "left",
-          label: "Quick Start",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "quickStartSidebar",
+          sidebarId: "rqgSidebar",
           position: "left",
           label: "RQG System",
         },
         {
           type: "docSidebar",
-          sidebarId: "quickStartSidebar",
+          sidebarId: "wikiSidebar",
           position: "left",
           label: "Wiki Module",
         },

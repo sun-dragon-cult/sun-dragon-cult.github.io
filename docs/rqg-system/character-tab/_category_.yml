@@ -1,4 +1,0 @@
-position: 30 # float position is supported
-label: Character Sheet Tab Overview
-collapsible: true # make the category collapsible
-collapsed: true
