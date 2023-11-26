@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-slug: addons/3rd-party-modules
+slug: ./
 title: 3rd party modules
 tags: [module]
 ---
