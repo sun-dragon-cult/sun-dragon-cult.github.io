@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksun_dragon_cult=self.webpackChunksun_dragon_cult||[]).push([[8676],{33:s=>{s.exports=JSON.parse('{"label":"rqg","permalink":"/sun-dragon-cult/release-notes/tags/rqg","allTagsPath":"/sun-dragon-cult/release-notes/tags","count":12,"unlisted":false}')}}]);

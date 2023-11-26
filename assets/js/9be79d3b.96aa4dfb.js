@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksun_dragon_cult=self.webpackChunksun_dragon_cult||[]).push([[8957],{9306:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/changelog","page":1,"postsPerPage":10,"totalPages":2,"totalCount":12,"nextPage":"/blog/tags/changelog/page/2","blogDescription":"Blog","blogTitle":"Blog"}')}}]);
