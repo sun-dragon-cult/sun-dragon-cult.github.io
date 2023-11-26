@@ -4,6 +4,5 @@ slug: actor-sheet
 title: Character Sheet Overview
 tags: [rqg]
 ---
-:::info
-TODO – Not yet written
-:::
+
+:::info TODO – Not yet written :::
