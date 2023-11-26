@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksun_dragon_cult=self.webpackChunksun_dragon_cult||[]).push([[4121],{8070:u=>{u.exports=JSON.parse('[{"label":"rqg","permalink":"/sun-dragon-cult/docs/tags/rqg","count":26},{"label":"module","permalink":"/sun-dragon-cult/docs/tags/module","count":2}]')}}]);
