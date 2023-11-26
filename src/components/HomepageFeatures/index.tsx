@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import Link from "@docusaurus/Link";
 
 type FeatureItem = {
   title: string;
@@ -14,7 +15,9 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/fire_sky.svg').default,
     description: (
       <>
-        A system for [Foundry VTT](https://foundryvtt.com/) that helps playing Chaosiums [RuneQuest RPG](https://www.chaosium.com/runequest-rpg/).
+        A beta version of a system for <Link to="https://foundryvtt.com/">Foundry VTT</Link> that supports
+        Chaosiums <Link to="https://www.chaosium.com/runequest-rpg/">RuneQuest RPG</Link>. Is now/soon released
+        on Foundrys servers.
       </>
     ),
   },
@@ -23,18 +26,8 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/beast.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
-  },
-  {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/movement_change.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Most content from <Link to="https://rqwiki.chaosium.com/">Chaosium's RQG wiki</Link> is included in a <Link>Foundry module</Link>.
+        To begin with only an English language version is provided but hopefully more languages will follow.
       </>
     ),
   },
@@ -58,7 +51,7 @@ export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
+        <div className={styles.centeredRow}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}

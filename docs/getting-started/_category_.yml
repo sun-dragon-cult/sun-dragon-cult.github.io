@@ -1,0 +1,5 @@
+position: 12.5 # float position is supported
+label: Getting Started
+collapsible: true
+collapsed: false
+

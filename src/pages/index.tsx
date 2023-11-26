@@ -19,8 +19,8 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
-            RuneQuest Foundry System Tutorial - 5min ⏱️
+            to="docs">
+            Quick Start guide
           </Link>
         </div>
       </div>
@@ -32,8 +32,8 @@ export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={``}
+      description="Sun Dragon Cult is a place for RuneQuest Glorantha things related to Foundry VTT.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

@@ -3,15 +3,15 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Sun Dragon Cult',
-  tagline: 'RuneQuest Glorantha for Foundry VTT',
-  favicon: 'img/favicon.ico',
+  title: 'RuneQuest Glorantha for Foundry VTT',
+  tagline: 'by Sun Dragon Cult',
+  favicon: 'img/favicon.svg',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://sun-dragon-cult.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/sun-dragon-cult/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -37,17 +37,13 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/sun-dragon-cult/sun-dragon-cult-io/tree/main/packages/create-docusaurus/templates/shared/',
+          path: 'releaseNotes',
+          routeBasePath: 'release-notes',
+          blogSidebarTitle: 'Release Notes',
+          blogSidebarCount: 'ALL'
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -58,7 +54,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/sdc.jpg',
     navbar: {
       title: 'Sun Dragon Cult',
       logo: {
@@ -68,11 +64,23 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'quickStartSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Quick Start',
         },
-        {to: '/blog', label: 'Changelog', position: 'left'},
+        {
+          type: 'docSidebar',
+          sidebarId: 'quickStartSidebar',
+          position: 'left',
+          label: 'RQG System',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'quickStartSidebar',
+          position: 'left',
+          label: 'Wiki Module',
+        },
+        {to: '/release-notes', label: 'Release Notes', position: 'left'},
         {
           href: 'https://github.com/sun-dragon-cult/fvtt-system-rqg',
           label: 'GitHub',
@@ -88,7 +96,7 @@ const config: Config = {
           items: [
             {
               label: 'Tutorial',
-              to: '/docs/intro',
+              to: '/docs',
             },
           ],
         },
@@ -105,8 +113,8 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Changelog',
-              to: '/blog',
+              label: 'Release Notes',
+              to: '/release-notes',
             },
             {
               label: 'GitHub',

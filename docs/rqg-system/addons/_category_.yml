@@ -1,0 +1,5 @@
+position: 12.5 # float position is supported
+label: Addons
+collapsible: true # make the category collapsible
+collapsed: true
+

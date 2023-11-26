@@ -1,0 +1,5 @@
+position: 30 # float position is supported
+label: RQG System
+collapsible: true # make the category collapsible
+collapsed: true
+
