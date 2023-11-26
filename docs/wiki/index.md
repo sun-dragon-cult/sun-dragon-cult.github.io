@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-slug: ./
+slug: /
 title: Wiki Module
 tags: [rqg]
 ---
