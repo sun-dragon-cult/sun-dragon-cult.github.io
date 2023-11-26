@@ -1,4 +1,5 @@
 ---
+sidebar_position: 10
 slug: installing
 title: Installing RQG System
 tags: [rqg]
