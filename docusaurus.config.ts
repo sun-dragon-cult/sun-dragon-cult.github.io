@@ -1,52 +1,52 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+import { themes as prismThemes } from "prism-react-renderer";
+import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: 'RuneQuest Glorantha for Foundry VTT',
-  tagline: 'by Sun Dragon Cult',
-  favicon: 'img/favicon.svg',
+  title: "RuneQuest Glorantha for Foundry VTT",
+  tagline: "by Sun Dragon Cult",
+  favicon: "img/favicon.svg",
 
   // Set the production url of your site here
-  url: 'https://sun-dragon-cult.github.io/',
+  url: "https://sun-dragon-cult.github.io/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'sun-dragon-cult', // Usually your GitHub org/user name.
-  projectName: 'sun-dragon-cult.github.io', // Usually your repo name.
-  deploymentBranch: 'gh-pages',
+  organizationName: "sun-dragon-cult", // Usually your GitHub org/user name.
+  projectName: "sun-dragon-cult.github.io", // Usually your repo name.
+  deploymentBranch: "gh-pages",
   trailingSlash: false,
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
-          sidebarPath: './sidebars.ts',
+          sidebarPath: "./sidebars.ts",
         },
         blog: {
           showReadingTime: true,
-          path: 'releaseNotes',
-          routeBasePath: 'release-notes',
-          blogSidebarTitle: 'Release Notes',
-          blogSidebarCount: 'ALL'
+          path: "releaseNotes",
+          routeBasePath: "release-notes",
+          blogSidebarTitle: "Release Notes",
+          blogSidebarCount: "ALL",
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
@@ -54,71 +54,71 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/sdc.jpg',
+    image: "img/sdc.jpg",
     navbar: {
-      title: 'Sun Dragon Cult',
+      title: "Sun Dragon Cult",
       logo: {
-        alt: 'Sun Dragon Cult Logo',
-        src: 'img/sdc.svg',
+        alt: "Sun Dragon Cult Logo",
+        src: "img/sdc.svg",
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'quickStartSidebar',
-          position: 'left',
-          label: 'Quick Start',
+          type: "docSidebar",
+          sidebarId: "quickStartSidebar",
+          position: "left",
+          label: "Quick Start",
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'quickStartSidebar',
-          position: 'left',
-          label: 'RQG System',
+          type: "docSidebar",
+          sidebarId: "quickStartSidebar",
+          position: "left",
+          label: "RQG System",
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'quickStartSidebar',
-          position: 'left',
-          label: 'Wiki Module',
+          type: "docSidebar",
+          sidebarId: "quickStartSidebar",
+          position: "left",
+          label: "Wiki Module",
         },
-        {to: '/release-notes', label: 'Release Notes', position: 'left'},
+        { to: "/release-notes", label: "Release Notes", position: "left" },
         {
-          href: 'https://github.com/sun-dragon-cult/fvtt-system-rqg',
-          label: 'GitHub',
-          position: 'right',
+          href: "https://github.com/sun-dragon-cult/fvtt-system-rqg",
+          label: "GitHub",
+          position: "right",
         },
       ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Docs',
+          title: "Docs",
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs',
+              label: "Tutorial",
+              to: "/docs",
             },
           ],
         },
         {
-          title: 'Community',
+          title: "Community",
           items: [
             {
-              label: 'Discord',
-              href: 'https://discord.gg/foundryvtt',
+              label: "Discord",
+              href: "https://discord.gg/foundryvtt",
             },
           ],
         },
         {
-          title: 'More',
+          title: "More",
           items: [
             {
-              label: 'Release Notes',
-              to: '/release-notes',
+              label: "Release Notes",
+              to: "/release-notes",
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/sun-dragon-cult/fvtt-system-rqg',
+              label: "GitHub",
+              href: "https://github.com/sun-dragon-cult/fvtt-system-rqg",
             },
           ],
         },

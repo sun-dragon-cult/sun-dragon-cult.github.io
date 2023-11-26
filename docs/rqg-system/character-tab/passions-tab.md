@@ -4,6 +4,5 @@ slug: passions
 title: Passions Tab
 tags: [rqg]
 ---
-:::info
-TODO – Not yet written
-:::
+
+:::info TODO – Not yet written :::

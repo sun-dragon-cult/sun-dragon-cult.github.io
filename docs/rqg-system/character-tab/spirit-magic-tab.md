@@ -4,6 +4,5 @@ slug: spirit-magic
 title: Spirit Magic Tab
 tags: [rqg]
 ---
-:::info
-TODO – Not yet written
-:::
+
+:::info TODO – Not yet written :::

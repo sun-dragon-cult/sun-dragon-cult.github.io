@@ -4,6 +4,4 @@ title: Gear
 tags: [rqg]
 ---
 
-:::info
-TODO – Not yet written
-:::
+:::info TODO – Not yet written :::

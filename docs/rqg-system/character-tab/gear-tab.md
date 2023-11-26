@@ -4,6 +4,5 @@ slug: gear
 title: Gear Tab
 tags: [rqg]
 ---
-:::info
-TODO – Not yet written
-:::
+
+:::info TODO – Not yet written :::
