@@ -21,6 +21,9 @@ The module compendiums are organised into folders:
 - Hit Locations
 - Macros & Rolltables
 
+In the Bestiary/Adventurers compendium is a "Human (Base)" actor that can be used to build a PC (or
+NPC). Vasana from the wiki is also in that folder as an example of a more developed character.
+
 :::danger
 
 You will need to have this module active in your world to make the RQG system work since it contains

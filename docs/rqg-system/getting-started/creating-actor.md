@@ -4,3 +4,94 @@ slug: creating-actor
 title: Creating an Adventurer
 tags: []
 ---
+
+_or NPC, Monster or Ghost, etc_
+
+A newly created Foundry actor contains very little, and tabs that have no corresponding items are
+not shown on the character sheet (making it look very empty). To see examples of how finished actors
+can look like you can have a peek in the [Wiki](/wiki) Bestiary folder.
+
+:::tip
+
+The easiest way to create a new character is to duplicate the "Bestiary/Adventurers/Human (Base)"
+actor.
+
+:::
+
+If you want to start from a freshly created actor to be able to miximise the customisation, these
+are the steps.
+
+## 1) Add Hitlocations
+
+The compendium "Hit Locations/Humanoids" contain the normal humanoid hitlocations. Drag these to the
+actor. A tip here is to import the compendium to the world since you then can drag the entire folder
+to the actor at once instead of dragging each individual hitlocation from the compendium by it's
+own. There are also other compendiums with hitlocations for other body types. See
+[Hit Location](/rqg-system/items/hit-location) for details about this item type.
+
+## 2) Add Runes
+
+The compendium "Runes/Runes(Player Character)" contains all the runes from the RQG character sheet.
+Drag them to the actor in the same way as the hitlocations. If you want to choose from the full set
+of runes present in the Chaosium Wiki then have a look in the "Runes/Runes (All)" compendium. More
+info about this item type can be found here [Rune item](/rqg-system/items/rune).
+
+## 3) Learn Skills
+
+The compendium "Skills & Passions/Skills" contain skills. Drag all (or a subset) of those skills to
+the character. (see the tip above about importing the compendium to the world to be able to drag an
+entire folder of skills to the actor at once). [Skill item](/rqg-system/items/skill) contains more
+info bout this item type
+
+## 4) Join a Cult
+
+There is a set of cults predifined - look in the compendium "Cults & Magic/Cults" and drag the cult
+of your choice to let the adventurer join a cult. See [Cult Item](/rqg-system/items/cult) for
+detailed info about these items.
+
+## 5) Learn a Rune Magic Spell
+
+Again there is a compendium with Rune Magic spells that can be found at "Cults & Magic/Rune Magic
+Spells" that you can drag to the actor. More detailed info about this kind of items can be found at
+[Rune Magic Spell Item](/rqg-system/items/rune-magic)
+
+## 6) Learn a Spirit Magic Spell
+
+You might already guess how to do this... Look for the "Cults & Magic/Rune Magic Spells" compendium
+and drag the ones you want to the actor. More info about this item type can be found at
+[Spirit Magic Spell Item](/rqg-system/items/spirit-magic)
+
+## 7) Gain a Passion
+
+Create a Passion item - or use one of the provided Passions in the "Skills & Passions/Passions"
+compendium and drag it to the character sheet. [Passion Item](/rqg-system/items/passion) contains
+more detailed info.
+
+## 8) Wear Armor
+
+Armor is it's own item type and you can find ready made armor items at "Equipment/Armor". To
+actually be protected you need to equip the armor on the
+[Gear Tab](/rqg-system/character-sheet/gear). The equipped icon looks like this
+<LightInvertSvg src="/img/equipped.svg" width="18" /> and more detailed info about this item type
+can be found at [Armor Item](/rqg-system/items/armor). If you are creating a creature that has
+natural armor you should look at [Hit Location Item](/rqg-system/items/hit-location) where that can
+be specified.
+
+## 9) Get a Weapon
+
+Weapons are the most complex item type, but you can find most weapons you need in the
+"Equipment/Weapons" compendium. More details about this item type can be found in
+[Weapon Item](/rqg-system/items/weapon). To be able to use the weapon you've dragged to your actor
+you need to equip it <LightInvertSvg src="/img/equipped.svg" width="18" />.
+
+Arrows and other ammunition is also weapon items.
+
+## 10) Get wealthy
+
+There are three types of [Gear Items](/rqg-system/items/gear) in the "Equipment/Gear" compendium,
+currency gear like Lunar and Wheels, that will show up in the currency table on the
+[Gear Tab](/rqg-system/character-sheet/gear), consumable gear with quantity that will show up in the
+consumable table, and unique gear that will show up in the gear table.
+
+Some gear items can also contain other items. That is handled with the
+[Location](/rqg-system/character-sheet/gear) system.
