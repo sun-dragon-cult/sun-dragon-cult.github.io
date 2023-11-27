@@ -1,7 +1,7 @@
 ---
 slug: rqid
 title: RQG System ID (rqid)
-tags: [rqg]
+tags: []
 ---
 
 The RQG System manages content in different languages using the RQG System ID or "rqid". Currently

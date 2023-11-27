@@ -1,7 +1,7 @@
 ---
 slug: armor
 title: Armor
-tags: [rqg]
+tags: []
 ---
 
 :::info TODO – Not yet written :::

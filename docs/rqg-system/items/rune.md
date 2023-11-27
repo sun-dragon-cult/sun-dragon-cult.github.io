@@ -1,7 +1,7 @@
 ---
 slug: rune
 title: Rune
-tags: [rqg]
+tags: []
 ---
 
 The base system comes with the Runes that are presented on the character sheet (see compendium

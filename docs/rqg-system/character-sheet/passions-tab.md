@@ -2,7 +2,7 @@
 sidebar_position: 80
 slug: passions
 title: Passions Tab
-tags: [rqg]
+tags: []
 ---
 
 :::info TODO – Not yet written :::

@@ -1,7 +1,7 @@
 ---
 slug: spirit-magic
 title: Spirit Magic Spell
-tags: [rqg]
+tags: []
 ---
 
 :::info TODO – Not yet written :::

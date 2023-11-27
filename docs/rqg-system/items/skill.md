@@ -1,7 +1,7 @@
 ---
 slug: skill
 title: Skill
-tags: [rqg]
+tags: []
 ---
 
 :::info TODO – Not yet written :::

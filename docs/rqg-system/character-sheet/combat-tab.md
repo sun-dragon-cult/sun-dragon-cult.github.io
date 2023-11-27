@@ -2,7 +2,7 @@
 sidebar_position: 10
 slug: combat
 title: Combat Tab
-tags: [rqg]
+tags: []
 ---
 
 :::info TODO – Not yet written :::
