@@ -1,7 +1,7 @@
 ---
 slug: name-generator
 title: Name Generator
-tags: [rqg]
+tags: []
 ---
 
 :::info TODO – Not yet written :::

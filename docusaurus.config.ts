@@ -57,7 +57,7 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/sdc.jpg",
     navbar: {
-      title: "RQG Foundry System",
+      title: "RQG Foundry VTT System",
       logo: {
         alt: "Sun Dragon Cult Logo",
         src: "img/sdc.svg",

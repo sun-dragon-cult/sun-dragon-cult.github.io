@@ -1,7 +1,7 @@
 ---
 slug: hit-location
 title: Hit Location
-tags: [rqg]
+tags: []
 ---
 
 The wiki module contains compendiums with hit locations for most body types including humanoids (see

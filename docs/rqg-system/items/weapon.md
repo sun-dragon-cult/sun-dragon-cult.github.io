@@ -1,7 +1,7 @@
 ---
 slug: weapon
 title: Weapon
-tags: [rqg]
+tags: []
 ---
 
 :::info TODO – Not yet written :::

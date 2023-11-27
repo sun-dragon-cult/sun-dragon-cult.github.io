@@ -1,7 +1,7 @@
 ---
 slug: passion
 title: Passion
-tags: [rqg]
+tags: []
 ---
 
 :::info TODO – Not yet written :::

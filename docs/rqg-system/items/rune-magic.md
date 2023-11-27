@@ -1,7 +1,7 @@
 ---
 slug: rune-magic
 title: Rune Magic Spell
-tags: [rqg]
+tags: []
 ---
 
 :::info TODO – Not yet written :::

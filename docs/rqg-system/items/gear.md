@@ -1,7 +1,7 @@
 ---
 slug: gear
 title: Gear
-tags: [rqg]
+tags: []
 ---
 
 :::info TODO – Not yet written :::

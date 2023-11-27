@@ -1,7 +1,7 @@
 ---
 slug: cult
 title: Cult
-tags: [rqg]
+tags: []
 ---
 
 To create a Cult, just create a cult item and give it a name and tagline. The cult should also have

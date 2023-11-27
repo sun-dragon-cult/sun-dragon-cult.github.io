@@ -2,7 +2,7 @@
 sidebar_position: 1
 slug: ./
 title: Installing the RQG System
-tags: [rqg]
+tags: []
 ---
 
 Paste this into Foundry VTT Install System -> Manifest URL
