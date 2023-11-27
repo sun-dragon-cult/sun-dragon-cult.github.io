@@ -5,9 +5,9 @@ title: Wiki Module
 tags: []
 ---
 
-## RuneQuest Wiki Foundry module
+## RuneQuest Wiki Foundry VTT module
 
-Most content from [Chaosium's RQG wiki](https://rqwiki.chaosium.com/) is included in a Foundry
+Most content from [Chaosium's RQG wiki](https://rqwiki.chaosium.com/) is included in a Foundry VTT
 module that is a required companion to the main [RQG System](/).
 
 The module compendiums are organised into folders:
