@@ -6,10 +6,10 @@ tags: []
 ---
 
 Paste this into Foundry VTT Install System -> Manifest URL
-https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/latest/download/system.json
+`https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/latest/download/system.json`
 
 You will also need the wiki content module that can be installed with
-https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/latest/download/en-module.json
+`https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/latest/download/en-module.json`
 
 In addition there are some recommended modules that are not necessary, but adds functionality if
 they are installed:
