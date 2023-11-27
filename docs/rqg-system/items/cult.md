@@ -10,4 +10,4 @@ runes. To add another rune just keep selecting runes in the empty dropdown. To r
 the text in the input field.
 
 If you drag the cult item to an actor, it will end up under the
-[Rune Magic Tab](/docs/rqg-system/character-sheet/rune-magic)
+[Rune Magic Tab](/rqg-system/character-sheet/rune-magic)

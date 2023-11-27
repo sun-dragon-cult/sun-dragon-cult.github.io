@@ -1,7 +1,7 @@
 ---
-sidebar_position: 10
-slug: installing
-title: Installing RQG System
+sidebar_position: 1
+slug: ./
+title: Installing the RQG System
 tags: [rqg]
 ---
 

@@ -36,6 +36,7 @@ const config: Config = {
       "classic",
       {
         docs: {
+          routeBasePath: "/",
           sidebarPath: "./sidebars.ts",
         },
         blog: {
@@ -56,18 +57,18 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/sdc.jpg",
     navbar: {
-      title: "Sun Dragon Cult",
+      title: "RQG Foundry System",
       logo: {
         alt: "Sun Dragon Cult Logo",
         src: "img/sdc.svg",
       },
       items: [
-        {
-          type: "docSidebar",
-          sidebarId: "rqgSidebar",
-          position: "left",
-          label: "RQG System",
-        },
+        // {
+        //   type: "docSidebar",
+        //   sidebarId: "rqgSidebar",
+        //   position: "left",
+        //   label: "RQG System",
+        // },
         {
           type: "docSidebar",
           sidebarId: "wikiSidebar",
@@ -84,40 +85,34 @@ const config: Config = {
     },
     footer: {
       style: "dark",
+      logo: {
+        src: "img/sdc.svg",
+        width: 100,
+      },
       links: [
         {
-          title: "Docs",
-          items: [
-            {
-              label: "Tutorial",
-              to: "/docs",
-            },
-          ],
+          label: "Overview",
+          to: "/",
         },
         {
-          title: "Community",
-          items: [
-            {
-              label: "Discord",
-              href: "https://discord.gg/foundryvtt",
-            },
-          ],
+          label: "About Sun Dragon Cult",
+          to: "/about",
+        },
+
+        {
+          label: "Release Notes",
+          to: "/release-notes",
         },
         {
-          title: "More",
-          items: [
-            {
-              label: "Release Notes",
-              to: "/release-notes",
-            },
-            {
-              label: "GitHub",
-              href: "https://github.com/sun-dragon-cult/fvtt-system-rqg",
-            },
-          ],
+          label: "Discord",
+          href: "https://discord.gg/foundryvtt",
+        },
+        {
+          label: "GitHub",
+          href: "https://github.com/sun-dragon-cult/fvtt-system-rqg",
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Sun Dragon Cult — RuneQuest Glorantha for Foundry VTT`,
+      copyright: `Sun Dragon Cult — RuneQuest Glorantha for Foundry VTT`,
     },
     prism: {
       theme: prismThemes.github,
