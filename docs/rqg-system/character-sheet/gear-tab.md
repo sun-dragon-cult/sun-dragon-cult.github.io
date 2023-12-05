@@ -5,4 +5,12 @@ title: Gear Tab
 tags: []
 ---
 
-:::info TODO – Not yet written :::
+:::info
+
+TODO – Not yet written
+
+:::
+
+## Locations
+
+TODO

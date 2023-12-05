@@ -94,4 +94,4 @@ currency gear like Lunar and Wheels, that will show up in the currency table on 
 consumable table, and unique gear that will show up in the gear table.
 
 Some gear items can also contain other items. That is handled with the
-[Location](/rqg-system/character-sheet/gear) system.
+[Location](/rqg-system/character-sheet/gear#Locations) system.
