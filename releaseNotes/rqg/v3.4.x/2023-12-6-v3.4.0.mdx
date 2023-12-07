@@ -1,0 +1,104 @@
+---
+slug: rqg-v3.4.0
+title: Release Notes RQG 3.4.0
+tags:
+  - rqg
+  - release
+  - changelog
+---
+
+import EditModeSvg from "./edit-mode.svg";
+import PlayModeSvg from "./play-mode.svg";
+import { ThemeInvert } from "../../../src/components/MdxHelpers";
+
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.0/system.json)
+![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.0/rqg.zip)
+
+This released focuses on making the editability for players.
+
+## Edit mode on actor sheets – [Issue #639](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/639) & [#663](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/663) & [#667](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/667)
+
+There are now two modes on the actor sheet, <ThemeInvert><EditModeSvg /></ThemeInvert> **Edit Mode**
+and <ThemeInvert><PlayModeSvg /></ThemeInvert> **Play Mode**. You can switch between the modes by
+clicking on those icons in the actor sheet title bar.
+
+:::note
+
+To be able to switch between the edit & play mode you need to be a trusted player or higher. Even
+normal players can edit their values if their GM switches the mode for them, but they can not change
+mode themselves.
+
+:::
+
+In edit mode it is possible to edit characteristics, rune, skill & passion values. The screenshot of
+the skills tab, shows the gained chance input field. The percent chance shown to the right is the
+"normal" chance that includes both base chance and skill category bonus, as well as the gained
+chance.
+
+![](edit-mode-skills.png)
+
+To make it easy to see what mode the actor is in, a lot of accent colors are changed to green when
+it is in edit mode.
+
+A new actor starts in edit mode, this means that after this upgrade all actors will be in edit mode.
+You can easily fix that by clicking on the edit mode toggle, or you can run a script that will be
+supplied separately.
+
+## Add gear items directly from actorSheet – [Issue #671](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/671)
+
+It is now possible for players (and GMs) to add new gear (gear, currency & consumables) themselves
+by clicking on a + icon.
+
+![](add-gear.png)
+
+## Loosen duplicate embedded item name check – [Issue #672](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/672)
+
+As a followup to being able to create new gear, it is now also possible to have duplicates.
+Previously you could only have one gear, armor or weapon named the same, but now you can have as
+many as you like.
+
+## Drag a weapon to a pack animal without adding the weapon skills – [Issue #450](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/450)
+
+If you drag a weapon to an actor the skills linked to that weapon will also be added so that the
+actor can use the weapon. This is good in most cases, but if you drag a spear to a horse it doesn't
+make sense that the horse gets the skill to fight with that spear. This issue is solved by checking
+if the actor you drag the weapon to has arms (specifically a hitlocation with the rqid
+`i.hit-location.right-arm`) and if it doesn't it won't add the skills.
+
+## Background tab biography field should be player editable – [Issue #670](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/670)
+
+Only the GM could edit the biography text field on the background tab of the actor sheet. Now
+players can do that too.
+
+![](biography-player-editable.png)
+
+## Add hit location and rune dropdowns into RqidLink areas – [Issue #656](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/656)
+
+In all places where you can set a link to a rune or hit-location there now is a dropdown that will
+add a link. You can still drag-n-drop to the area but it is hopefully an easier way to adding these.
+
+The lists are populated by looking in compendiums for rqids of rune and hit locations, so if you
+would like to add more runes / hit locations, you would need to create a compendium and assign a new
+rqid to them.
+
+![](rune-hit-location-links.png)
+
+## Make Hero Points an opt-in setting – [Issue #661](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/661)
+
+Hero points are not part of the standard rules but was still shown on the character sheet. You can
+now decide if you want them or not with a setting.
+
+:::warning
+
+If you use the hero points you need to enable them in the settings after upgrading to this release.
+
+:::
+
+## Other Bug Fixes & Improvements
+
+- Rqid editor "Get Document Like This" is not filled in properly –
+  [Issue #665](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/665)
+- Priests don't get the 20% bonus to their POW gain roll –
+  [Issue #649](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/649)
+- Show an explanation in the Rune Magic tab why nothing is shown as lay member –
+  [Issue #668](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/668)
