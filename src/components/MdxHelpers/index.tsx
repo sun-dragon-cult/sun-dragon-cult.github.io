@@ -6,3 +6,5 @@ export const LightInvertSvg = ({ src, width }): JSX.Element => (
 );
 
 export const CenterIt = ({ children }) => <span className={styles.centerIt}>{children}</span>;
+
+export const ThemeInvert = ({ children }) => <span className={styles.lightInvert}>{children}</span>;
