@@ -4,10 +4,78 @@
         <title>RuneQuest Glorantha for Foundry VTT Blog</title>
         <link>https://sun-dragon-cult.github.io/release-notes</link>
         <description>RuneQuest Glorantha for Foundry VTT Blog</description>
-        <lastBuildDate>Fri, 17 Nov 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 06 Dec 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Release Notes RQG 3.4.0]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0</guid>
+            <pubDate>Wed, 06 Dec 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supported Foundry Versions]]></description>
+            <content:encoded><![CDATA[<p><img loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.0/system.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.0/rqg.zip" alt="Download Count" class="img_ev3q"></p>
+<p>This released focuses on making the editability for players.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="edit-mode-on-actor-sheets--issue-639--663--667">Edit mode on actor sheets – <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/639" target="_blank" rel="noopener noreferrer">Issue #639</a> &amp; <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/663" target="_blank" rel="noopener noreferrer">#663</a> &amp; <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/667" target="_blank" rel="noopener noreferrer">#667</a><a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#edit-mode-on-actor-sheets--issue-639--663--667" class="hash-link" aria-label="Direct link to edit-mode-on-actor-sheets--issue-639--663--667" title="Direct link to edit-mode-on-actor-sheets--issue-639--663--667">​</a></h2>
+<p>There are now two modes on the actor sheet, <span class="lightInvert_V1ax"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512" fill="#FFF"><path d="M224 256a128 128 0 1 0 0-256 128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3 0 498.7 13.3 512 29.7 512h293.1c-3.1-8.8-3.7-18.4-1.4-27.8l15-60.1c2.8-11.3 8.6-21.5 16.8-29.7l40.3-40.3c-32.1-31-75.7-50.1-123.9-50.1h-91.3zm435.5-68.3c-15.6-15.6-40.9-15.6-56.6 0l-29.4 29.4 71 71 29.4-29.4c15.6-15.6 15.6-40.9 0-56.6l-14.4-14.4zM375.9 417c-4.1 4.1-7 9.2-8.4 14.9l-15 60.1c-1.4 5.5.2 11.2 4.2 15.2s9.7 5.6 15.2 4.2l60.1-15c5.6-1.4 10.8-4.3 14.9-8.4l129.2-129.3-71-71L375.9 417z"></path></svg></span> <strong>Edit Mode</strong>
+and <span class="lightInvert_V1ax"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512" fill="#FFF"><path d="M74.6 373.2c41.7 36.1 108 82.5 166.1 73.7 6.1-.9 12.1-2.5 18-4.5-9.2-12.3-17.3-24.4-24.2-35.4-21.9-35-28.8-75.2-25.9-113.6-20.6 4.1-39.2 13-54.7 25.4-6.5 5.2-16.3 1.3-14.8-7 6.4-33.5 33-60.9 68.2-66.3 2.6-.4 5.3-.7 7.9-.8l19.4-131.3c2-13.8 8-32.7 25-45.9 18.6-14.3 50.9-30.5 103.6-35.3l-2.4-2.1c-20.2-15.6-72.4-41.6-185.1-24.5S20.5 63 5.7 83.9C0 91.9-.8 102 .6 111.8l24.2 164.3c5.5 37.3 21.5 72.6 49.8 97.2zm87.7-219.6c4.4-3.1 10.8-2 11.8 3.3.1.5.2 1.1.3 1.6 3.2 21.8-11.6 42-33.1 45.3S99.8 192 96.6 170.3c-.1-.5-.1-1.1-.2-1.6-.6-5.4 5.2-8.4 10.3-6.7 9 3 18.8 3.9 28.7 2.4s19.1-5.3 26.8-10.8zM261.6 390c29.4 46.9 79.5 110.9 137.6 119.7s124.5-37.5 166.1-73.7c28.3-24.5 44.3-59.8 49.8-97.2l24.2-164.3c1.4-9.8.6-19.9-5.1-27.9-14.8-20.9-57.3-61.2-170-78.3s-164.8 8.9-185 24.5c-7.8 6-11.5 15.4-12.9 25.2l-24.2 164.3c-5.5 37.3-.4 75.8 19.6 107.7zm142.9-154.7c-7.7-5.5-16.8-9.3-26.8-10.8s-19.8-.6-28.7 2.4c-5.1 1.7-10.9-1.3-10.3-6.7.1-.5.1-1.1.2-1.6 3.2-21.8 23.2-36.8 44.7-33.5s36.3 23.5 33.1 45.3c-.1.5-.2 1.1-.3 1.6-1 5.3-7.4 6.4-11.8 3.3zm136.2 15.5c-1 5.3-7.4 6.4-11.8 3.3-7.7-5.5-16.8-9.3-26.8-10.8s-19.8-.6-28.7 2.4c-5.1 1.7-10.9-1.3-10.3-6.7.1-.5.1-1.1.2-1.6 3.2-21.8 23.2-36.8 44.7-33.5s36.3 23.5 33.1 45.3c-.1.5-.2 1.1-.3 1.6zM530 350.2c-19.6 44.7-66.8 72.5-116.8 64.9s-87.1-48.2-93-96.7c-1-8.3 8.9-12.1 15.2-6.7 23.9 20.8 53.6 35.3 87 40.3s66.1.1 94.9-12.8c7.6-3.4 16 3.2 12.6 10.9z"></path></svg></span> <strong>Play Mode</strong>. You can switch between the modes by
+clicking on those icons in the actor sheet title bar.</p>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>To be able to switch between the edit &amp; play mode you need to be a trusted player or higher. Even
+normal players can edit their values if their GM switches the mode for them, but they can not change
+mode themselves.</p></div></div>
+<p>In edit mode it is possible to edit characteristics, rune, skill &amp; passion values. The screenshot of
+the skills tab, shows the gained chance input field. The percent chance shown to the right is the
+"normal" chance that includes both base chance and skill category bonus, as well as the gained
+chance.</p>
+<p><img loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/edit-mode-skills-d77e8e51f046c9fd4006c2386d12757a.png" width="1980" height="802" class="img_ev3q"></p>
+<p>To make it easy to see what mode the actor is in, a lot of accent colors are changed to green when
+it is in edit mode.</p>
+<p>A new actor starts in edit mode, this means that after this upgrade all actors will be in edit mode.
+You can easily fix that by clicking on the edit mode toggle, or you can run a script that will be
+supplied separately.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="add-gear-items-directly-from-actorsheet--issue-671">Add gear items directly from actorSheet – <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/671" target="_blank" rel="noopener noreferrer">Issue #671</a><a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#add-gear-items-directly-from-actorsheet--issue-671" class="hash-link" aria-label="Direct link to add-gear-items-directly-from-actorsheet--issue-671" title="Direct link to add-gear-items-directly-from-actorsheet--issue-671">​</a></h2>
+<p>It is now possible for players (and GMs) to add new gear (gear, currency &amp; consumables) themselves
+by clicking on a + icon.</p>
+<p><img loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/add-gear-a6424ec92d0e75c1702ec3ea0223ae85.png" width="863" height="277" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="loosen-duplicate-embedded-item-name-check--issue-672">Loosen duplicate embedded item name check – <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/672" target="_blank" rel="noopener noreferrer">Issue #672</a><a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#loosen-duplicate-embedded-item-name-check--issue-672" class="hash-link" aria-label="Direct link to loosen-duplicate-embedded-item-name-check--issue-672" title="Direct link to loosen-duplicate-embedded-item-name-check--issue-672">​</a></h2>
+<p>As a followup to being able to create new gear, it is now also possible to have duplicates.
+Previously you could only have one gear, armor or weapon named the same, but now you can have as
+many as you like.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="drag-a-weapon-to-a-pack-animal-without-adding-the-weapon-skills--issue-450">Drag a weapon to a pack animal without adding the weapon skills – <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/450" target="_blank" rel="noopener noreferrer">Issue #450</a><a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#drag-a-weapon-to-a-pack-animal-without-adding-the-weapon-skills--issue-450" class="hash-link" aria-label="Direct link to drag-a-weapon-to-a-pack-animal-without-adding-the-weapon-skills--issue-450" title="Direct link to drag-a-weapon-to-a-pack-animal-without-adding-the-weapon-skills--issue-450">​</a></h2>
+<p>If you drag a weapon to an actor the skills linked to that weapon will also be added so that the
+actor can use the weapon. This is good in most cases, but if you drag a spear to a horse it doesn't
+make sense that the horse gets the skill to fight with that spear. This issue is solved by checking
+if the actor you drag the weapon to has arms (specifically a hitlocation with the rqid
+<code>i.hit-location.right-arm</code>) and if it doesn't it won't add the skills.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="background-tab-biography-field-should-be-player-editable--issue-670">Background tab biography field should be player editable – <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/670" target="_blank" rel="noopener noreferrer">Issue #670</a><a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#background-tab-biography-field-should-be-player-editable--issue-670" class="hash-link" aria-label="Direct link to background-tab-biography-field-should-be-player-editable--issue-670" title="Direct link to background-tab-biography-field-should-be-player-editable--issue-670">​</a></h2>
+<p>Only the GM could edit the biography text field on the background tab of the actor sheet. Now
+players can do that too.</p>
+<p><img loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/biography-player-editable-0be6a38e77e871e4d7d34f89acdd0717.png" width="904" height="300" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="add-hit-location-and-rune-dropdowns-into-rqidlink-areas--issue-656">Add hit location and rune dropdowns into RqidLink areas – <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/656" target="_blank" rel="noopener noreferrer">Issue #656</a><a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#add-hit-location-and-rune-dropdowns-into-rqidlink-areas--issue-656" class="hash-link" aria-label="Direct link to add-hit-location-and-rune-dropdowns-into-rqidlink-areas--issue-656" title="Direct link to add-hit-location-and-rune-dropdowns-into-rqidlink-areas--issue-656">​</a></h2>
+<p>In all places where you can set a link to a rune or hit-location there now is a dropdown that will
+add a link. You can still drag-n-drop to the area but it is hopefully an easier way to adding these.</p>
+<p>The lists are populated by looking in compendiums for rqids of rune and hit locations, so if you
+would like to add more runes / hit locations, you would need to create a compendium and assign a new
+rqid to them.</p>
+<p><img loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/rune-hit-location-links-2f76e18fc93aad11afd9939fe7c22fee.png" width="470" height="115" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="make-hero-points-an-opt-in-setting--issue-661">Make Hero Points an opt-in setting – <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/661" target="_blank" rel="noopener noreferrer">Issue #661</a><a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#make-hero-points-an-opt-in-setting--issue-661" class="hash-link" aria-label="Direct link to make-hero-points-an-opt-in-setting--issue-661" title="Direct link to make-hero-points-an-opt-in-setting--issue-661">​</a></h2>
+<p>Hero points are not part of the standard rules but was still shown on the character sheet. You can
+now decide if you want them or not with a setting.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>If you use the hero points you need to enable them in the settings after upgrading to this release.</p></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
+<ul>
+<li>Rqid editor "Get Document Like This" is not filled in properly –
+<a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/665" target="_blank" rel="noopener noreferrer">Issue #665</a></li>
+<li>Priests don't get the 20% bonus to their POW gain roll –
+<a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/649" target="_blank" rel="noopener noreferrer">Issue #649</a></li>
+<li>Show an explanation in the Rune Magic tab why nothing is shown as lay member –
+<a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/668" target="_blank" rel="noopener noreferrer">Issue #668</a></li>
+</ul>]]></content:encoded>
+            <category>rqg</category>
+            <category>release</category>
+            <category>changelog</category>
+        </item>
         <item>
             <title><![CDATA[Release Notes RQG 3.3.0]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.3.0</link>
