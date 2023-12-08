@@ -30,6 +30,8 @@ chance.</p>
 <p><img loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/edit-mode-skills-d77e8e51f046c9fd4006c2386d12757a.png" width="1980" height="802" class="img_ev3q"></p>
 <p>To make it easy to see what mode the actor is in, a lot of accent colors are changed to green when
 it is in edit mode.</p>
+<p>Play mode hides some things for the GM to make the actor sheet less cluttered. An example of this is
+the <code>Creature?</code> toggle that only is available in edit mode.</p>
 <p>A new actor starts in edit mode, this means that after this upgrade all actors will be in edit mode.
 You can easily fix that by clicking on the edit mode toggle, or you can run a script that will be
 supplied separately.</p>
