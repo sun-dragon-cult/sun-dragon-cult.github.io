@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sun-dragon-cult.github.io/release-notes</id>
     <title>RuneQuest Glorantha for Foundry VTT Blog</title>
-    <updated>2023-12-06T00:00:00.000Z</updated>
+    <updated>2023-12-07T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sun-dragon-cult.github.io/release-notes"/>
     <subtitle>RuneQuest Glorantha for Foundry VTT Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[Release Notes RQG 3.4.0]]></title>
         <id>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0</id>
         <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0"/>
-        <updated>2023-12-06T00:00:00.000Z</updated>
+        <updated>2023-12-07T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
         <content type="html"><![CDATA[<p><img loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.0/system.json" alt="Supported Foundry Versions" class="img_ev3q">
 <img loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.0/rqg.zip" alt="Download Count" class="img_ev3q"></p>
@@ -62,6 +62,11 @@ rqid to them.</p>
 <p>Hero points are not part of the standard rules but was still shown on the character sheet. You can
 now decide if you want them or not with a setting.</p>
 <div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>If you use the hero points you need to enable them in the settings after upgrading to this release.</p></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="make-the-characteristics-ratings-an-opt-out-setting">Make the characteristics ratings an opt-out setting<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#make-the-characteristics-ratings-an-opt-out-setting" class="hash-link" aria-label="Direct link to Make the characteristics ratings an opt-out setting" title="Direct link to Make the characteristics ratings an opt-out setting">​</a></h2>
+<p>Each user (GM or player) can now decide if they want to see the rating of the characteristics value
+as a red / green bar under the value. The setting is per user, but realistically it's mostly for GMs
+to get a quick evaluation of NPCs.</p>
+<p><img loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/characteristic-rating-ba53455308019dfeb40e5948fb737d48.png" width="837" height="193" class="img_ev3q"></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
 <ul>
 <li>Rqid editor "Get Document Like This" is not filled in properly –
