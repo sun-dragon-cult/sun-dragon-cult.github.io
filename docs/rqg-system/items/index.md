@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
 slug: ./
-title: Character Sheet Overview
+title: Foundry Items Overview
 tags: []
 ---
 
