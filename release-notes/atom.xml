@@ -538,4 +538,139 @@ forward (assuming you have the module "Times up").</p>
         <category label="release" term="release"/>
         <category label="changelog" term="changelog"/>
     </entry>
+    <entry>
+        <title type="html"><![CDATA[Release Notes RQG 2.2.0]]></title>
+        <id>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0</id>
+        <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0"/>
+        <updated>2023-06-14T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
+        <content type="html"><![CDATA[<p><img loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v2.2.0/system.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v2.2.0/rqg.zip" alt="Download Count" class="img_ev3q"></p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>Please note that if you have items / actors in compendiums, the migration won't work for them. That
+will be fixed in <a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.1">version 2.2.1</a></p></div></div>
+<p>This release might be a bit disruptive to already existing worlds since it changes the model of how
+things are stored. Sorry for this wall of text but please read it before upgrading. And as always -
+really do take a backup before you start! The full changelog can be found here
+<a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">CHANGELOG.md</a></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="weapons-skills-link-breaking-issue-290">Weapon's skills link <em>[Breaking!]</em> <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/290" target="_blank" rel="noopener noreferrer">Issue #290</a><a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0#weapons-skills-link-breaking-issue-290" class="hash-link" aria-label="Direct link to weapons-skills-link-breaking-issue-290" title="Direct link to weapons-skills-link-breaking-issue-290">​</a></h2>
+<p>Previously the link from weapon items to the skills that's needed to use them used a Foundry uuid to
+point to a skill when the weapon item was not embedded and a item id to point to the skill item on
+the same actor when then weapon item was embedded on an actor. This meant that if the weapon skill
+in your world was deleted, then all weapon pointing to that skill would be broken. Now the skill
+item is referenced with a rqid instead, which means that as long as you have at least one skill item
+in your world or compendium with the correct rqid, the weapon item will find it. Hopefully this will
+make the setup more resilient to changes in your worlds.</p>
+<p>The Migration will try to find the skill previously linked and use the rqid on that skill to update
+to the new way of linking skills, if it fails (because it can't find a skill with an rqid on it) it
+will save the previous values and show "NOT FOUND" when the weapon use tab is shown, and hovering
+will tell you the content of the previous links. In this screenshot the weapon was broken even
+before the migration since both links were "undefined".</p>
+<p><img loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/not-found-weapon-skill-link-f7e482273a0660956abc98979ab7ad69.png" width="449" height="201" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rqid-batch-editor-steps">Rqid Batch Editor steps<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0#rqid-batch-editor-steps" class="hash-link" aria-label="Direct link to Rqid Batch Editor steps" title="Direct link to Rqid Batch Editor steps">​</a></h2>
+<p>Starting to use Rqids for linking weapon skills is a big change and to migrate your worlds I've
+incorporated a "Batch Rqid Editor" that is run before the actual migration scrips in order to set
+Rqids on the items that needs it (similar to the CoC one if you've seen that one). It will go
+through all items in your world and for each item that is missing an rqid it will display a row for
+each distinct name (for example Jump) to let you set the rqid for all items with that name.
+Currently it will show forms to set rqids for skill, rune magic &amp; hit location items one after the
+other. If it finds an exact match for the name of an item with an existing item that already has a
+set rqid, then it will autofill that rqid in the form. The "Existing Rqids" dropdown lists all rqids
+that exist in the system.</p>
+<p>There is a "magic wand" icon to the right of the rqid input field that will take the name of the
+item and convert that into a rqid. That can speed up the entering of data a lot, but take care to
+try and use the already existing rqids where possible. The rqid should be in english even if you
+have translated the system.</p>
+<p><strong>⚠ One word of caution</strong> - on my machine the form makes Chrome crash on larger worlds, and after a
+lot of debugging I came to the conclusion that it was a Chrome extension that went haywire when it
+saw this form with all those input fields. It's not so fun to come half way into filling this form
+only to have everything disappear, so if you want to be on the safe side I would recommend doing the
+migration in an incognito window without any extensions.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-skills">① Skills<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0#-skills" class="hash-link" aria-label="Direct link to ① Skills" title="Direct link to ① Skills">​</a></h3>
+<p>The important ones to set Rqid on are the weapon skills and Dodge, Jump, Move Quietly &amp; Spirit
+Combat. The others can be left blank. When it comes to weapon skills there has been a lot of
+variation historically what they have been called. Even though it will currently work whatever rqid
+you set, I recommend to try and follow this standard for the rqid:</p>
+<p><strong>Melee-weapon skills</strong> usually are called something like <code>1H Daggers (Dagger)</code> note plural on the
+category <code>Daggers</code> which translates to a rqid of <code>i.skill.1h-daggers-dagger</code>. Most of you probably
+do not have offhand skills, but if you do, the rqid should be the same as the primary hand skill
+with a <code>-offhand</code> suffix, for example <code>1h-daggers-dagger-offhand</code>. There are exceptions like
+Quarterstaff that only is a category with no specialisation.</p>
+<p><strong>Missile-weapon skills</strong> follow the same pattern of category (specialisation), <code>Javelins (Javelin)</code>
+or as rqid <code>i.skill.javelins.javelin</code>.</p>
+<p><strong>Natural weapon skills</strong> partly follow the same pattern for fist type weapons <code>Fists (Fist)</code>, but
+there are also one of a kind types like <code>Grapple</code> etc.</p>
+<p><img loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/weapon-skill-rqids-ff858509159f3778c8a01dda367f38f6.png" width="997" height="479" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-rune-magic-spells">② Rune Magic Spells<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0#-rune-magic-spells" class="hash-link" aria-label="Direct link to ② Rune Magic Spells" title="Direct link to ② Rune Magic Spells">​</a></h3>
+<p>The system only cares about the common rune magic spells (Command Cult Spirit, Divination, Sanctify,
+Summon Cult Spirit, Dismiss Magic, Extension, Multispell, Find Enemy, Heal Wound, Soul Sight, Spirit
+Block, and Warding). It is used to mark these spells in the rune magic spell list on the actor sheet
+(see screenshot further down )</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-hit-locations">③ Hit Locations<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0#-hit-locations" class="hash-link" aria-label="Direct link to ③ Hit Locations" title="Direct link to ③ Hit Locations">​</a></h3>
+<p>The Hit location needs Rqids to make the token hud effects work as they should (the protection
+effect will search for humanoid bodyparts on the actor). Please set Rqids on the human hitlocations
+"Head", "Left Arm", "Right Arm", "Chest", "Abdomen", "Left Leg" &amp; "Right Leg" to the "humanoids"
+version of rqids. You might see more rows depending on what creatures you have in your world, but
+you can ignore the other hitlocations and leave them unset.</p>
+<p><img loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/hit-location-rqids-12cf1fe80bb3eb75b57a48c72895f0f1.png" width="1015" height="495" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="new-syntax-for-custom-active-effects-breaking-issue-442">New Syntax for custom active effects <em>[Breaking!]</em> <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/442" target="_blank" rel="noopener noreferrer">Issue #442</a><a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0#new-syntax-for-custom-active-effects-breaking-issue-442" class="hash-link" aria-label="Direct link to new-syntax-for-custom-active-effects-breaking-issue-442" title="Direct link to new-syntax-for-custom-active-effects-breaking-issue-442">​</a></h2>
+<p>The syntax for custom Active Effects that affect items have changed. This is a breaking change and
+will need manual fixing when encountered. The syntax for custom Active Effects previously was
+<code>&lt;item type&gt;</code>:<code>&lt;item name&gt;</code>:<code>&lt;affected path&gt;</code> (for example skill:Dodge<!-- -->:system<!-- -->.baseChance). This is
+now changed to <code>&lt;rqid&gt;</code>:<code>&lt;affected path&gt;</code> (for example i.skill.dodge<!-- -->:system<!-- -->.baseChance). This makes
+the AE work in any language as well as simplifying the logic when embedding an item with an AE on an
+actor. The rqid for an item can be found by opening the item sheet and clicking "Rqid" in the sheet
+window header. The custom AE now also works on string values (previously it only worked on numbers).
+For example you could make an effect that increases weapon damage by 1d6 by setting the "Attribute
+Key" to i.weapon.broadsword<!-- -->:system<!-- -->.usage.oneHand.damage and the "Effect Value" to +1d6.</p>
+<p><img loading="lazy" alt="not-found" src="https://sun-dragon-cult.github.io/assets/images/string-active-effect-919b97bcf8cea8165ad6619352bdcae7.png" width="912" height="341" class="img_ev3q"></p>
+<p>When you load your world you will get warning logs in the browser console (F12) looking something
+like this if you have active effects using the old syntax.</p>
+<p><img loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/old-ae-warning-94d8de9d6e897e47933cc12f6e98ed0a.png" width="1062" height="60" class="img_ev3q"></p>
+<p>Foundry does not let you edit AE on embedded items, so to fix an actor with a broken AE you need to
+drag the item to the sidebar, delete the item from the actor, edit the AE on the item and then drag
+it back to the actor.</p>
+<p>Please note that I still consider the custom Active Effects as experimental (only a little less so
+after this change).</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="sub-cult-refactoring-breaking-issue-343">Sub cult refactoring <em>[Breaking!]</em> <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/343" target="_blank" rel="noopener noreferrer">Issue #343</a><a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0#sub-cult-refactoring-breaking-issue-343" class="hash-link" aria-label="Direct link to sub-cult-refactoring-breaking-issue-343" title="Direct link to sub-cult-refactoring-breaking-issue-343">​</a></h2>
+<p>The previous cult item could not model Orlanth's different subcults and still have one rune pool for
+all of them. Now there is a concept of "deity" and "sub cults". Currently this is mostly important
+for Orlanth, so if you already have a cult item with the deity Orlanth, when you drag another
+subcult of orlanth to the actor they will get merged so that they share the same pool of rune
+points. You can also edit the subcults of a cult item in "Cult" tab on the cult item sheet.</p>
+<p><strong>⚠ Please note that if you had entered text in the previous field "Subcults" that is now gone.</strong>
+So before upgrading it could be wise to look at that field for any actors where it might be
+important (read PC actors) and note what subcults they should have so you can manually add them
+after the upgrade!</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="add-common-rune-magic-when-embedding-a-cult-issue-153">add common rune magic when embedding a cult <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/153" target="_blank" rel="noopener noreferrer">Issue #153</a><a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0#add-common-rune-magic-when-embedding-a-cult-issue-153" class="hash-link" aria-label="Direct link to add-common-rune-magic-when-embedding-a-cult-issue-153" title="Direct link to add-common-rune-magic-when-embedding-a-cult-issue-153">​</a></h2>
+<p>The cults supplied with the system now has a list of common rune magic spells that you get when
+joining the cult (there is a field in the cult item sheet where they are listed). When dragging a
+cult to an actor the actor will get all of those added. Most cults have the same set, but there are
+exceptions (like Eurmal that has fewer).</p>
+<p>Note that existing cults items will not get retrofitted with the common runemagic spells
+automatically. The common runemagic spells will be marked on the actor sheet with a cult symbol as
+long as they got the correct Rqid in the pre-migration Rqid form.</p>
+<p><img loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/common-rune-magic-marks-efb724a900fb18159a6b368b0bfe6ce1.png" width="1191" height="529" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="token-hud-effects-issue-54">Token HUD Effects <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/54" target="_blank" rel="noopener noreferrer">Issue #54</a><a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0#token-hud-effects-issue-54" class="hash-link" aria-label="Direct link to token-hud-effects-issue-54" title="Direct link to token-hud-effects-issue-54">​</a></h2>
+<p>The token effects have been updated to match some magic spells, like protection (1 - 4), strength,
+Befuddle, Bladesharp, Bludgeon, Coordination, Counter magic, Demoralize, Dullblade, Fanatacism,
+Fireblade, Glamour, Glue, Ironhand, Lantern, Light, Mobility, Parry, Shimmer, Slow, Spirit screen,
+Vigour, as well as some of the previously ones like Asleep, Prone etc. In addition there are 6
+general purpose effects. If you install the module
+<a href="https://foundryvtt.com/packages/times-up" target="_blank" rel="noopener noreferrer">Times Up</a>, the effects with a background all disappear
+after 10 melee rounds, and the ones with a brighter orange background actually affect the actor as
+well (using active effects).</p>
+<p><img loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/token-effects-416b0a774e9d72a96c59cb532393b1d5.png" width="377" height="407" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="actorsheet-wounded-effects">ActorSheet wounded effects<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0#actorsheet-wounded-effects" class="hash-link" aria-label="Direct link to ActorSheet wounded effects" title="Direct link to ActorSheet wounded effects">​</a></h2>
+<p>The actor sheet now makes wounds more immersive, starting with a red tint if the actor is wounded
+going through blurring and eventually greyscale if the actor is shocked, unconscious or dead.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="skills-without-specialisation-warning-on-actor-sheet">Skills without specialisation warning on Actor Sheet<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0#skills-without-specialisation-warning-on-actor-sheet" class="hash-link" aria-label="Direct link to Skills without specialisation warning on Actor Sheet" title="Direct link to Skills without specialisation warning on Actor Sheet">​</a></h2>
+<p>Previously you would get a dialog forcing you to specify the specialization of a skill that had an
+unspecified specialization (...) when you dragged it to an actor. Now the skill is embedded - but
+you get a warning on the skill-tab that you should complete the skill by entering what the skill
+specialization is.</p>
+<p><img loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/skill-specialization-warning-df6bdc7de119b4ab47156278d8afbec0.png" width="825" height="263" class="img_ev3q"></p>]]></content>
+        <category label="rqg" term="rqg"/>
+        <category label="release" term="release"/>
+        <category label="changelog" term="changelog"/>
+    </entry>
 </feed>
