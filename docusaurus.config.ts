@@ -41,7 +41,7 @@ const config: Config = {
         },
         blog: {
           showReadingTime: true,
-          path: "releaseNotes",
+          path: "release-notes",
           routeBasePath: "release-notes",
           blogSidebarTitle: "Release Notes",
           blogSidebarCount: "ALL",
