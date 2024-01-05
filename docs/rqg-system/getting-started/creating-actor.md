@@ -18,7 +18,7 @@ actor.
 
 :::
 
-If you want to start from a freshly created actor to be able to miximise the customisation, these
+If you want to start from a freshly created actor to be able to maximise the customisation, these
 are the steps.
 
 ## 1) Add Hitlocations
