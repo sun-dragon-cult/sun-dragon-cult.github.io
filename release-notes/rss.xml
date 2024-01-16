@@ -4,12 +4,129 @@
         <title>RuneQuest Glorantha for Foundry VTT Blog</title>
         <link>https://sun-dragon-cult.github.io/release-notes</link>
         <description>RuneQuest Glorantha for Foundry VTT Blog</description>
-        <lastBuildDate>Thu, 07 Dec 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 16 Jan 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
-            <title><![CDATA[Release Notes RQG 3.4.0]]></title>
+            <title><![CDATA[RQG 3.4.1]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1</guid>
+            <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supported Foundry Versions]]></description>
+            <content:encoded><![CDATA[<p><img loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.1/system.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.1/rqg.zip" alt="Download Count" class="img_ev3q"></p>
+<p>This released is a smaller update, mainly to match the wiki release
+<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0">1.3.0</a>.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rename-command-cult-spirit-elemental-to-command-cult-spirit">Rename "Command Cult Spirit (Elemental)" to "Command Cult spirit"<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#rename-command-cult-spirit-elemental-to-command-cult-spirit" class="hash-link" aria-label="Direct link to Rename &quot;Command Cult Spirit (Elemental)&quot; to &quot;Command Cult spirit&quot;" title="Direct link to Rename &quot;Command Cult Spirit (Elemental)&quot; to &quot;Command Cult spirit&quot;">​</a></h2>
+<label>Issue</label>
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/682" target="_blank" rel="noopener noreferrer">#682</a></label></span>
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/17" target="_blank" rel="noopener noreferrer">#17</a></label></span>
+<p>The common rune magic spell <code>Command Cult Spirit</code> was named <code>Command Cult Spirit (Elemental)</code> so
+that has been changed, and the rqid for it that was changed to <code>i.rune-magic.command-cult-spirit</code>
+from <code>i.rune-magic.command-cult-spirit-elemental</code> along with the journal entry description rqid that
+is now <code>je..command-cult-spirit</code>. This is a common rune magic that is added to most cults, so to not
+break any existing links there is a migration that updates these names and rqids (for English only).</p>
+<p>The wiki version <a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0">1.3.0</a> has the corresponding change.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="remove-old-migrations">Remove old migrations<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#remove-old-migrations" class="hash-link" aria-label="Direct link to Remove old migrations" title="Direct link to Remove old migrations">​</a></h2>
+<label>Issue</label>
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/685" target="_blank" rel="noopener noreferrer">#685</a></label></span>
+<p>A lot of old migrations have been removed, partly because they no longer should be necessary, and
+partly because the code in them was not going to work in Foundry v12 that deprecates a lot of old
+style code.</p>
+<p>The removal of migrateWeaponItemDamageBonus will make sure any weapon damage bonus definitions are
+not overwritten when updating the system. Previously a system update would enforce melee weapons to
+get damage bonus, missile weapons to remove any damage bonus and thrown weapons to get half db. Now
+the update will leave the weapons as they are defined.</p>
+<p>Of the system provided macros, only the assign rqid to journals macro is left.
+assign-rqid-to-hit-locations does not work after hit location setting was removed, and
+migrate-old-journal-links should not be necessary anymore.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
+<ul>
+<li>Update the wiki installation documentation link to the new documentation site:
+<a href="https://sun-dragon-cult.github.io/rqg-system/getting-started" target="_blank" rel="noopener noreferrer">https://sun-dragon-cult.github.io/rqg-system/getting-started</a></li>
+<li>Rename default armor material names to make them consistent<!-- -->
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/679" target="_blank" rel="noopener noreferrer">#679</a></label></span>
+</li>
+<li>Rune types ("element", "power", ...) are should be in lower case to match wiki runes<!-- -->
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/680" target="_blank" rel="noopener noreferrer">#680</a></label></span>
+</li>
+<li>Update documentation<!-- -->
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/62" target="_blank" rel="noopener noreferrer">#62</a></label></span>
+</li>
+<li>Fix usage of deprecated code in preparation for Foundry v12<!-- -->
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/686" target="_blank" rel="noopener noreferrer">#686</a></label></span>
+</li>
+</ul>]]></content:encoded>
+            <category>rqg</category>
+            <category>release</category>
+            <category>changelog</category>
+        </item>
+        <item>
+            <title><![CDATA[Wiki 1.3.0]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0</guid>
+            <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supported Foundry Versions]]></description>
+            <content:encoded><![CDATA[<p><img loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.0/en-module.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.0/wiki-en-rqg.zip" alt="Download Count" class="img_ev3q"></p>
+<p>This release corrects a lot of errors in the definitions and adds token images to the bestiary.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="an-incomplete-list-of-bug-fixes--improvements">An incomplete list of Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0#an-incomplete-list-of-bug-fixes--improvements" class="hash-link" aria-label="Direct link to An incomplete list of Bug Fixes &amp; Improvements" title="Direct link to An incomplete list of Bug Fixes &amp; Improvements">​</a></h2>
+<ul>
+<li>farm description link is wrong</li>
+<li>misspelling in boat description</li>
+<li>wiki actors should not be in edit mode by default<!-- -->
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/15" target="_blank" rel="noopener noreferrer">#15</a></label></span>
+</li>
+<li>add harpies <!-- --> <!-- -->
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/5" target="_blank" rel="noopener noreferrer">#5</a></label></span>
+</li>
+<li>add scorpion men<!-- -->
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/6" target="_blank" rel="noopener noreferrer">#6</a></label></span>
+</li>
+<li>add tusk riders<!-- -->
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/7" target="_blank" rel="noopener noreferrer">#7</a></label></span>
+</li>
+<li>scorpion men hitlocation baseHpDelta is wrong</li>
+<li>passion-base mixup of images and names</li>
+<li>long spear missing max hp</li>
+<li>vasana should have hate lunar instead of devotion</li>
+<li>cult Mostal description has wrong tagline</li>
+<li>cult Yelm description has incorrect title</li>
+<li>rune magic description, axe trance should not indicate it's stackable</li>
+<li>rune magic description, heal body order of runes is wrong</li>
+<li>rune magic description, healing trance is missing fertility rune</li>
+<li>add actor token images<!-- -->
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/9" target="_blank" rel="noopener noreferrer">#9</a></label></span>
+</li>
+<li>@RQID link format interferes with the <code>${{key}}$</code> translation syntax, change to <code>§_key_§</code>
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/16" target="_blank" rel="noopener noreferrer">#16</a></label></span>
+</li>
+<li>rune type is in Capitals in system but lowercase in wiki<!-- -->
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/680" target="_blank" rel="noopener noreferrer">#680</a></label></span>
+</li>
+<li>update uiContent.json and correct armor material names<!-- -->
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/679" target="_blank" rel="noopener noreferrer">#679</a></label></span>
+</li>
+<li>"Command Cult Spirit (Elemental)" should be "Command Cult Spirit"<!-- -->
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/17" target="_blank" rel="noopener noreferrer">#17</a></label></span>
+</li>
+<li>lots of errata for rune magic &amp; spirit magic spells</li>
+<li>split summon &amp; dismiss elemental rune magic spells into separate items</li>
+<li>incorrect armor leather greaves &amp; pants ENC, composite helm cost</li>
+<li>self bow HP</li>
+<li>singlestick min DEX</li>
+<li>javelins(shortspear) base chance</li>
+<li>hug weapon skill link name</li>
+<li>incorrect passion item base images</li>
+<li>add vanity passion base</li>
+</ul>]]></content:encoded>
+            <category>wiki</category>
+            <category>release</category>
+            <category>changelog</category>
+        </item>
+        <item>
+            <title><![CDATA[RQG 3.4.0]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0</guid>
             <pubDate>Thu, 07 Dec 2023 00:00:00 GMT</pubDate>
@@ -17,7 +134,11 @@
             <content:encoded><![CDATA[<p><img loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.0/system.json" alt="Supported Foundry Versions" class="img_ev3q">
 <img loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.0/rqg.zip" alt="Download Count" class="img_ev3q"></p>
 <p>This released focuses on making the editability for players.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="edit-mode-on-actor-sheets--issue-639--663--667">Edit mode on actor sheets – <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/639" target="_blank" rel="noopener noreferrer">Issue #639</a> &amp; <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/663" target="_blank" rel="noopener noreferrer">#663</a> &amp; <a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/667" target="_blank" rel="noopener noreferrer">#667</a><a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#edit-mode-on-actor-sheets--issue-639--663--667" class="hash-link" aria-label="Direct link to edit-mode-on-actor-sheets--issue-639--663--667" title="Direct link to edit-mode-on-actor-sheets--issue-639--663--667">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="edit-mode-on-actor-sheets">Edit mode on actor sheets<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#edit-mode-on-actor-sheets" class="hash-link" aria-label="Direct link to Edit mode on actor sheets" title="Direct link to Edit mode on actor sheets">​</a></h2>
+<label>Issue</label>
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/639" target="_blank" rel="noopener noreferrer">#639</a></label></span>
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/663" target="_blank" rel="noopener noreferrer">#663</a></label></span>
+<span class="theme-doc-version-badge badge badge--secondary"><label><a href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/667" target="_blank" rel="noopener noreferrer">#667</a></label></span>
 <p>There are now two modes on the actor sheet, <span class="lightInvert_V1ax"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512" fill="#FFF"><path d="M224 256a128 128 0 1 0 0-256 128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3 0 498.7 13.3 512 29.7 512h293.1c-3.1-8.8-3.7-18.4-1.4-27.8l15-60.1c2.8-11.3 8.6-21.5 16.8-29.7l40.3-40.3c-32.1-31-75.7-50.1-123.9-50.1h-91.3zm435.5-68.3c-15.6-15.6-40.9-15.6-56.6 0l-29.4 29.4 71 71 29.4-29.4c15.6-15.6 15.6-40.9 0-56.6l-14.4-14.4zM375.9 417c-4.1 4.1-7 9.2-8.4 14.9l-15 60.1c-1.4 5.5.2 11.2 4.2 15.2s9.7 5.6 15.2 4.2l60.1-15c5.6-1.4 10.8-4.3 14.9-8.4l129.2-129.3-71-71L375.9 417z"></path></svg></span> <strong>Edit Mode</strong>
 and <span class="lightInvert_V1ax"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512" fill="#FFF"><path d="M74.6 373.2c41.7 36.1 108 82.5 166.1 73.7 6.1-.9 12.1-2.5 18-4.5-9.2-12.3-17.3-24.4-24.2-35.4-21.9-35-28.8-75.2-25.9-113.6-20.6 4.1-39.2 13-54.7 25.4-6.5 5.2-16.3 1.3-14.8-7 6.4-33.5 33-60.9 68.2-66.3 2.6-.4 5.3-.7 7.9-.8l19.4-131.3c2-13.8 8-32.7 25-45.9 18.6-14.3 50.9-30.5 103.6-35.3l-2.4-2.1c-20.2-15.6-72.4-41.6-185.1-24.5S20.5 63 5.7 83.9C0 91.9-.8 102 .6 111.8l24.2 164.3c5.5 37.3 21.5 72.6 49.8 97.2zm87.7-219.6c4.4-3.1 10.8-2 11.8 3.3.1.5.2 1.1.3 1.6 3.2 21.8-11.6 42-33.1 45.3S99.8 192 96.6 170.3c-.1-.5-.1-1.1-.2-1.6-.6-5.4 5.2-8.4 10.3-6.7 9 3 18.8 3.9 28.7 2.4s19.1-5.3 26.8-10.8zM261.6 390c29.4 46.9 79.5 110.9 137.6 119.7s124.5-37.5 166.1-73.7c28.3-24.5 44.3-59.8 49.8-97.2l24.2-164.3c1.4-9.8.6-19.9-5.1-27.9-14.8-20.9-57.3-61.2-170-78.3s-164.8 8.9-185 24.5c-7.8 6-11.5 15.4-12.9 25.2l-24.2 164.3c-5.5 37.3-.4 75.8 19.6 107.7zm142.9-154.7c-7.7-5.5-16.8-9.3-26.8-10.8s-19.8-.6-28.7 2.4c-5.1 1.7-10.9-1.3-10.3-6.7.1-.5.1-1.1.2-1.6 3.2-21.8 23.2-36.8 44.7-33.5s36.3 23.5 33.1 45.3c-.1.5-.2 1.1-.3 1.6-1 5.3-7.4 6.4-11.8 3.3zm136.2 15.5c-1 5.3-7.4 6.4-11.8 3.3-7.7-5.5-16.8-9.3-26.8-10.8s-19.8-.6-28.7 2.4c-5.1 1.7-10.9-1.3-10.3-6.7.1-.5.1-1.1.2-1.6 3.2-21.8 23.2-36.8 44.7-33.5s36.3 23.5 33.1 45.3c-.1.5-.2 1.1-.3 1.6zM530 350.2c-19.6 44.7-66.8 72.5-116.8 64.9s-87.1-48.2-93-96.7c-1-8.3 8.9-12.1 15.2-6.7 23.9 20.8 53.6 35.3 87 40.3s66.1.1 94.9-12.8c7.6-3.4 16 3.2 12.6 10.9z"></path></svg></span> <strong>Play Mode</strong>. You can switch between the modes by
 clicking on those icons in the actor sheet title bar.</p>
@@ -84,7 +205,7 @@ to get a quick evaluation of NPCs.</p>
             <category>changelog</category>
         </item>
         <item>
-            <title><![CDATA[Release Notes RQG 3.3.0]]></title>
+            <title><![CDATA[RQG 3.3.0]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.3.0</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.3.0</guid>
             <pubDate>Fri, 17 Nov 2023 00:00:00 GMT</pubDate>
@@ -137,7 +258,7 @@ location rqid.</p>
             <category>changelog</category>
         </item>
         <item>
-            <title><![CDATA[Release Notes RQG 3.2.1]]></title>
+            <title><![CDATA[RQG 3.2.1]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.2.1</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.2.1</guid>
             <pubDate>Thu, 26 Oct 2023 00:00:00 GMT</pubDate>
@@ -177,7 +298,7 @@ magic tab. Just click on the focus column to edit.</p>
             <category>changelog</category>
         </item>
         <item>
-            <title><![CDATA[Release Notes RQG 3.2.0]]></title>
+            <title><![CDATA[RQG 3.2.0]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.2.0</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.2.0</guid>
             <pubDate>Sat, 21 Oct 2023 00:00:00 GMT</pubDate>
@@ -229,7 +350,7 @@ relevant according to the type of the rune.</p>
             <category>changelog</category>
         </item>
         <item>
-            <title><![CDATA[Release Notes RQG 3.1.1]]></title>
+            <title><![CDATA[RQG 3.1.1]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.1.1</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.1.1</guid>
             <pubDate>Fri, 29 Sep 2023 00:00:00 GMT</pubDate>
@@ -249,7 +370,7 @@ not any ongoing combat.</p>
             <category>changelog</category>
         </item>
         <item>
-            <title><![CDATA[Release Notes RQG 3.1.0]]></title>
+            <title><![CDATA[RQG 3.1.0]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.1.0</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.1.0</guid>
             <pubDate>Wed, 27 Sep 2023 00:00:00 GMT</pubDate>
@@ -330,7 +451,7 @@ Provider" settings in the drag ruler module settings.</p>
             <category>changelog</category>
         </item>
         <item>
-            <title><![CDATA[Release Notes RQG 3.0.0]]></title>
+            <title><![CDATA[RQG 3.0.0]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.0.0</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.0.0</guid>
             <pubDate>Tue, 08 Aug 2023 00:00:00 GMT</pubDate>
@@ -400,7 +521,7 @@ shown as a tooltip.</p>
             <category>changelog</category>
         </item>
         <item>
-            <title><![CDATA[Release Notes RQG 2.2.6]]></title>
+            <title><![CDATA[RQG 2.2.6]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.6</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.6</guid>
             <pubDate>Thu, 20 Jul 2023 00:00:00 GMT</pubDate>
@@ -430,7 +551,7 @@ changes.</p>
             <category>changelog</category>
         </item>
         <item>
-            <title><![CDATA[Release Notes RQG 2.2.5]]></title>
+            <title><![CDATA[RQG 2.2.5]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.5</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.5</guid>
             <pubDate>Fri, 14 Jul 2023 00:00:00 GMT</pubDate>
@@ -476,7 +597,7 @@ standard Rqid for that hit location.</p>]]></content:encoded>
             <category>changelog</category>
         </item>
         <item>
-            <title><![CDATA[Release Notes RQG 2.2.4]]></title>
+            <title><![CDATA[RQG 2.2.4]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.4</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.4</guid>
             <pubDate>Sat, 08 Jul 2023 00:00:00 GMT</pubDate>
@@ -490,7 +611,7 @@ missed line that still used the old style of weapon to skill links.</p>]]></cont
             <category>changelog</category>
         </item>
         <item>
-            <title><![CDATA[Release Notes RQG 2.2.3]]></title>
+            <title><![CDATA[RQG 2.2.3]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.3</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.3</guid>
             <pubDate>Wed, 05 Jul 2023 00:00:00 GMT</pubDate>
@@ -504,7 +625,7 @@ that.</p>]]></content:encoded>
             <category>changelog</category>
         </item>
         <item>
-            <title><![CDATA[Release Notes RQG 2.2.2]]></title>
+            <title><![CDATA[RQG 2.2.2]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.2</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.2</guid>
             <pubDate>Mon, 03 Jul 2023 00:00:00 GMT</pubDate>
@@ -518,7 +639,7 @@ with the old active effect style, the migration crashes. This release should fix
             <category>changelog</category>
         </item>
         <item>
-            <title><![CDATA[Release Notes RQG 2.2.1]]></title>
+            <title><![CDATA[RQG 2.2.1]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.1</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.1</guid>
             <pubDate>Sun, 02 Jul 2023 00:00:00 GMT</pubDate>
@@ -540,7 +661,7 @@ forward (assuming you have the module "Times up").</p>
             <category>changelog</category>
         </item>
         <item>
-            <title><![CDATA[Release Notes RQG 2.2.0]]></title>
+            <title><![CDATA[RQG 2.2.0]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.0</guid>
             <pubDate>Wed, 14 Jun 2023 00:00:00 GMT</pubDate>
@@ -548,7 +669,8 @@ forward (assuming you have the module "Times up").</p>
             <content:encoded><![CDATA[<p><img loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v2.2.0/system.json" alt="Supported Foundry Versions" class="img_ev3q">
 <img loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v2.2.0/rqg.zip" alt="Download Count" class="img_ev3q"></p>
 <div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>Please note that if you have items / actors in compendiums, the migration won't work for them. That
-will be fixed in <a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.1">version 2.2.1</a></p></div></div>
+will be fixed in <a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.1">version 2.2.1</a> will be fixed in
+<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.1">version 2.2.1</a></p></div></div>
 <p>This release might be a bit disruptive to already existing worlds since it changes the model of how
 things are stored. Sorry for this wall of text but please read it before upgrading. And as always -
 really do take a backup before you start! The full changelog can be found here
