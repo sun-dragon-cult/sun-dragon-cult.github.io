@@ -1,0 +1,77 @@
+---
+slug: rqg-v3.4.1
+title: RQG 3.4.1
+tags:
+  - rqg
+  - release
+  - changelog
+---
+
+import EditModeSvg from "./edit-mode.svg";
+import PlayModeSvg from "./play-mode.svg";
+import { ThemeInvert } from "../../../src/components/MdxHelpers";
+
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.1/system.json)
+![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.1/rqg.zip)
+
+This released is a smaller update, mainly to match the wiki release
+[1.3.0](/release-notes/wiki-v1.3.0).
+
+## Rename "Command Cult Spirit (Elemental)" to "Command Cult spirit"
+
+<label>Issue</label>
+<span className="theme-doc-version-badge badge badge--secondary">
+  <label>[#682](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/682)</label>
+</span>
+<span className="theme-doc-version-badge badge badge--secondary">
+  <label>[#17](https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/17)</label>
+</span>
+
+The common rune magic spell `Command Cult Spirit` was named `Command Cult Spirit (Elemental)` so
+that has been changed, and the rqid for it that was changed to `i.rune-magic.command-cult-spirit`
+from `i.rune-magic.command-cult-spirit-elemental` along with the journal entry description rqid that
+is now `je..command-cult-spirit`. This is a common rune magic that is added to most cults, so to not
+break any existing links there is a migration that updates these names and rqids (for English only).
+
+The wiki version [1.3.0](/release-notes/wiki-v1.3.0) has the corresponding change.
+
+## Remove old migrations
+
+<label>Issue</label>
+<span className="theme-doc-version-badge badge badge--secondary">
+  <label>[#685](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/685)</label>
+</span>
+
+A lot of old migrations have been removed, partly because they no longer should be necessary, and
+partly because the code in them was not going to work in Foundry v12 that deprecates a lot of old
+style code.
+
+The removal of migrateWeaponItemDamageBonus will make sure any weapon damage bonus definitions are
+not overwritten when updating the system. Previously a system update would enforce melee weapons to
+get damage bonus, missile weapons to remove any damage bonus and thrown weapons to get half db. Now
+the update will leave the weapons as they are defined.
+
+Of the system provided macros, only the assign rqid to journals macro is left.
+assign-rqid-to-hit-locations does not work after hit location setting was removed, and
+migrate-old-journal-links should not be necessary anymore.
+
+## Other Bug Fixes & Improvements
+
+- Update the wiki installation documentation link to the new documentation site:
+  https://sun-dragon-cult.github.io/rqg-system/getting-started
+- Rename default armor material names to make them consistent
+  <span className="theme-doc-version-badge badge badge--secondary">
+    <label>[#679](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/679)</label>
+  </span>
+- Rune types ("element", "power", ...) are should be in lower case to match wiki runes
+  <span className="theme-doc-version-badge badge badge--secondary">
+    <label>[#680](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/680)</label>
+  </span>
+- Update documentation
+  <span className="theme-doc-version-badge badge badge--secondary">
+    <label>[#62](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/62)</label>
+  </span>
+- Fix usage of deprecated code in preparation for Foundry v12
+  <span className="theme-doc-version-badge badge badge--secondary">
+    <label>[#686](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/686)</label>
+  </span>
