@@ -14,7 +14,10 @@ This release requires a separate wiki module to be installed and activated. Plea
 
 :::
 
-## Move system compendiums into a separate wiki module [Issue #597](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/597) & [Issue #598](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/598)
+## Move system compendiums into a separate wiki module
+
+<GithubIssue issue="597" repo="fvtt-system-rqg" />
+<GithubIssue issue="598" repo="fvtt-system-rqg" />
 
 Having the compendiums as a separate module, one per language, mean a lot less compendiums in the
 system in the future when we have multiple languages. It also simplifies the administration of what
@@ -26,7 +29,9 @@ The previous compendium packs were built for the previous Foundry database NeDB,
 module builds database files for the v11+ database "classic level" so Foundry does not need to
 convert them at startup anymore.
 
-## Add SR buttons to actor sheet [Issue #620](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/620)
+## Add SR buttons to actor sheet
+
+<GithubIssue issue="620" repo="fvtt-system-rqg" />
 
 For linked actors that currently are in combat there is now a row of 12 SR buttons. Clicking one of
 those will add a combatant to the current combat tracker at that SR, and clicking it again will
@@ -35,13 +40,18 @@ actions take. The DEX SR and SIZ SR are visualised by background color as an aid
 
 ![](sr-buttons.png)
 
-## Reset Initiative removes duplicate combatants [Issue #509](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/509)
+## Reset Initiative removes duplicate combatants
+
+<GithubIssue issue="509" repo="fvtt-system-rqg" />
 
 The top of the combat tracker is updated so that the "Reset Initiative" ↺ button clears all
 duplicate combatants and their SRs. The previous buttons "Roll All" & "Roll NPCs" are removed since
 they make no sense for RQG.
 
-## Missile weapon SR buttons [Issue #510](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/510) & [Issue #504](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/504)
+## Missile weapon SR buttons
+
+<GithubIssue issue="510" repo="fvtt-system-rqg" />
+<GithubIssue issue="504" repo="fvtt-system-rqg" />
 
 Missile weapons now have buttons for populating the combat tracker at the SRs they can shoot. For
 weapons with rate S/MR there are two buttons depending on if you start the round with a loaded arrow
@@ -50,7 +60,9 @@ tab.
 
 ![](missile-sr-buttons.png)
 
-## Actor name extendedName field [Issue #549](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/549)
+## Actor name extendedName field
+
+<GithubIssue issue="549" repo="fvtt-system-rqg" />
 
 The actor name is now divided into the name field and an extendedName / epithet field. The intended
 use is to keep the name short since that is what is displayed in sidebars, chat etc. The epithet
@@ -60,7 +72,9 @@ width is reduced the image is hidden to conserve space.
 
 ![](epithet.png)
 
-## Integration with module Drag Ruler [Issue #618](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/618)
+## Integration with module Drag Ruler
+
+<GithubIssue issue="618" repo="fvtt-system-rqg" />
 
 If you have the module [Drag Ruler](https://foundryvtt.com/packages/drag-ruler) active then you will
 get feedback on how far you can move your token. By default the green color means you are within
@@ -73,19 +87,11 @@ Provider" settings in the drag ruler module settings.
 ## Smaller bug fixes, features and refactorings
 
 - Actors now fall unconscious when they reach zero magic points
-  [Issue #414](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/414)
-
-- CON 0 gives wrong Max ENC
-  [Issue #610](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/610)
-
-- Improve restart settings code
-  [Issue #616](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/616)
-
-- Improve Active Effect tab [by showing a link to the item an AE originates from
-  [Issue #617](https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/617)
-
+  <GithubIssue issue="414" repo="fvtt-system-rqg" />
+- CON 0 gives wrong Max ENC <GithubIssue issue="610" repo="fvtt-system-rqg" />
+- Improve restart settings code <GithubIssue issue="616" repo="fvtt-system-rqg" />
+- Improve Active Effect tab by showing a link to the item an AE originates from
+  <GithubIssue issue="617" repo="fvtt-system-rqg" />
 - add translations for sheet names (items, actor & rollTable)
-
 - fix error message for non integer ENC Factor values
-
 - make default item icon colors black in the settings dialog
