@@ -1,0 +1,43 @@
+---
+slug: rqg-v3.4.2
+title: RQG 3.4.2
+tags:
+  - rqg
+  - release
+  - changelog
+---
+
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.2/system.json)
+![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.2/rqg.zip)
+
+This released is a smaller update, mainly to fix the issue with mixed languages for runes and hit
+locations.
+
+## Mixed languages for runes / hitlocation dropdowns
+
+<GithubIssue issue="689" repo="fvtt-system-rqg" />
+
+If you have runes or items in multiple languages in your compendiums, then you could get a mix of
+languages in the dropdowns to select those item type. This fix prioritises:
+
+1. world language (a setting)
+2. english (fallback language)
+3. any other language
+
+and in each category the item with the highest priority wins.
+
+## Make it possible to drag a compendium pack to an actor
+
+<GithubIssue issue="691" repo="fvtt-system-rqg" />
+
+Until now it's not been possible to drag a compendium of for example hit locations directly from the
+compendium to an actor. You would either have to drag each individual hit location or import the
+compendium to a folder in the world and drag that folder to the actor.
+
+Now it's possible to drag a compendium folder to an actor to get all items inside it.
+
+## Other Bug Fixes & Improvements
+
+- Make actorSheet getData handling of common runemagic up to 10x faster, assume common runemagic has
+  rqid.
+  <GithubIssue issue="688" repo="fvtt-system-rqg" />
