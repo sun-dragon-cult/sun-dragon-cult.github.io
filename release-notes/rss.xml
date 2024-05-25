@@ -4,10 +4,30 @@
         <title>RuneQuest Glorantha for Foundry VTT Blog</title>
         <link>https://sun-dragon-cult.github.io/release-notes</link>
         <description>RuneQuest Glorantha for Foundry VTT Blog</description>
-        <lastBuildDate>Mon, 29 Jan 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 26 May 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[RQG 3.4.3]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.3</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.3</guid>
+            <pubDate>Sun, 26 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supported Foundry Versions]]></description>
+            <content:encoded><![CDATA[<p><img loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.3/system.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.3/rqg.zip" alt="Download Count" class="img_ev3q"></p>
+<p>This released is a tiny update, with the sole purpose of making RQG work in Foundry v12.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-fixes">Bug Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.3#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h2>
+<ul>
+<li>Make actorSheet getData handling of common runemagic up to 10x faster, assume common runemagic has
+rqid.<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/706" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->706</label></a>
+</li>
+</ul>]]></content:encoded>
+            <category>rqg</category>
+            <category>release</category>
+            <category>changelog</category>
+        </item>
         <item>
             <title><![CDATA[RQG 3.4.2]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.2</link>

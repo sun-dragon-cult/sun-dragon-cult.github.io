@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksun_dragon_cult=self.webpackChunksun_dragon_cult||[]).push([[6812],{5917:e=>{e.exports=JSON.parse('{"label":"release","permalink":"/release-notes/tags/release","allTagsPath":"/release-notes/tags","count":18,"unlisted":false}')}}]);
