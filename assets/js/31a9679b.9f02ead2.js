@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksun_dragon_cult=self.webpackChunksun_dragon_cult||[]).push([[7614],{3056:e=>{e.exports=JSON.parse('{"label":"wiki","permalink":"/release-notes/tags/wiki","allTagsPath":"/release-notes/tags","count":3,"unlisted":false}')}}]);
