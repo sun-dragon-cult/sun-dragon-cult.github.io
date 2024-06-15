@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksun_dragon_cult=self.webpackChunksun_dragon_cult||[]).push([[8885],{4216:e=>{e.exports=JSON.parse('{"permalink":"/release-notes/tags/release/page/2","page":2,"postsPerPage":10,"totalPages":2,"totalCount":19,"previousPage":"/release-notes/tags/release","blogDescription":"Blog","blogTitle":"Blog"}')}}]);
