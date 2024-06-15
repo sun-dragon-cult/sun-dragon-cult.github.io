@@ -1,0 +1,4 @@
+position: 10 # float position is supported
+label: Wiki Module
+collapsible: true
+collapsed: false
