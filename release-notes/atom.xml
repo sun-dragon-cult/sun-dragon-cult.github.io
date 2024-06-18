@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sun-dragon-cult.github.io/release-notes</id>
     <title>RuneQuest Glorantha for Foundry VTT Blog</title>
-    <updated>2024-06-15T00:00:00.000Z</updated>
+    <updated>2024-06-18T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sun-dragon-cult.github.io/release-notes"/>
     <subtitle>RuneQuest Glorantha for Foundry VTT Blog</subtitle>
     <icon>https://sun-dragon-cult.github.io/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[RQG 3.4.6]]></title>
+        <id>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.6</id>
+        <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.6"/>
+        <updated>2024-06-18T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.3/system.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.3/rqg.zip" alt="Download Count" class="img_ev3q"></p>
+<p>This released contains an updated link to the RQG Wiki Module now that it has been released.</p>]]></content>
+        <category label="rqg" term="rqg"/>
+        <category label="release" term="release"/>
+        <category label="changelog" term="changelog"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RQG 3.4.5]]></title>
         <id>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.5</id>
@@ -757,20 +770,6 @@ missed line that still used the old style of weapon to skill links.</p>]]></cont
 <img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v2.2.3/rqg.zip" alt="Download Count" class="img_ev3q"></p>
 <p>The search for item Rqids embedded in actors in compendiums was really slow. This release should fix
 that.</p>]]></content>
-        <category label="rqg" term="rqg"/>
-        <category label="release" term="release"/>
-        <category label="changelog" term="changelog"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RQG 2.2.2]]></title>
-        <id>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.2</id>
-        <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.2"/>
-        <updated>2023-07-03T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
-        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v2.2.2/system.json" alt="Supported Foundry Versions" class="img_ev3q">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v2.2.2/rqg.zip" alt="Download Count" class="img_ev3q"></p>
-<p>This is an even smaller followup bugfix release. If you have an actor compendium with embedded items
-with the old active effect style, the migration crashes. This release should fix that.</p>]]></content>
         <category label="rqg" term="rqg"/>
         <category label="release" term="release"/>
         <category label="changelog" term="changelog"/>
