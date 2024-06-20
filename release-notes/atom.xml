@@ -46,8 +46,8 @@
         <link href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.2"/>
         <updated>2024-06-15T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
-        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.0/en-module.json" alt="Supported Foundry Versions" class="img_ev3q">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.0/wiki-en-rqg.zip" alt="Download Count" class="img_ev3q"></p>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.2/en-module.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.2/wiki-en-rqg.zip" alt="Download Count" class="img_ev3q"></p>
 <p>This release only updates the license text.</p>]]></content>
         <category label="wiki" term="wiki"/>
         <category label="foundry-release" term="foundry-release"/>
@@ -60,8 +60,8 @@
         <link href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.1"/>
         <updated>2024-05-27T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
-        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.0/en-module.json" alt="Supported Foundry Versions" class="img_ev3q">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.0/wiki-en-rqg.zip" alt="Download Count" class="img_ev3q"></p>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.1/en-module.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.1/wiki-en-rqg.zip" alt="Download Count" class="img_ev3q"></p>
 <p>This release only updates the compatability to include Foundry 12.</p>]]></content>
         <category label="wiki" term="wiki"/>
         <category label="wiki-1" term="wiki-1"/>
