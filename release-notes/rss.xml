@@ -14,12 +14,13 @@
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.6</guid>
             <pubDate>Tue, 18 Jun 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.3/system.json" alt="Supported Foundry Versions" class="img_ev3q">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.3/rqg.zip" alt="Download Count" class="img_ev3q"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.6/system.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.6/rqg.zip" alt="Download Count" class="img_ev3q"></p>
 <p>This released contains an updated link to the RQG Wiki Module now that it has been released.</p>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>foundry-release</category>
+            <category>rqg-3</category>
+            <category>rqg-3-4</category>
         </item>
         <item>
             <title><![CDATA[RQG 3.4.5]]></title>
@@ -27,8 +28,8 @@
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.5</guid>
             <pubDate>Sat, 15 Jun 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.3/system.json" alt="Supported Foundry Versions" class="img_ev3q">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.3/rqg.zip" alt="Download Count" class="img_ev3q"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.5/system.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.5/rqg.zip" alt="Download Count" class="img_ev3q"></p>
 <p>This released contains a bugfix for some translations when using Foundry v12.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-fixes">Bug Fixes<a class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes" href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.5#bug-fixes">​</a></h2>
 <ul>
@@ -37,8 +38,8 @@
 </li>
 </ul>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-3</category>
+            <category>rqg-3-4</category>
         </item>
         <item>
             <title><![CDATA[Wiki 1.3.2]]></title>
@@ -50,8 +51,9 @@
 <img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.0/wiki-en-rqg.zip" alt="Download Count" class="img_ev3q"></p>
 <p>This release only updates the license text.</p>]]></content:encoded>
             <category>wiki</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>foundry-release</category>
+            <category>wiki-1</category>
+            <category>wiki-1-3</category>
         </item>
         <item>
             <title><![CDATA[Wiki 1.3.1]]></title>
@@ -63,8 +65,8 @@
 <img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.0/wiki-en-rqg.zip" alt="Download Count" class="img_ev3q"></p>
 <p>This release only updates the compatability to include Foundry 12.</p>]]></content:encoded>
             <category>wiki</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>wiki-1</category>
+            <category>wiki-1-3</category>
         </item>
         <item>
             <title><![CDATA[RQG 3.4.4]]></title>
@@ -72,8 +74,8 @@
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.4</guid>
             <pubDate>Sun, 26 May 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.3/system.json" alt="Supported Foundry Versions" class="img_ev3q">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.3/rqg.zip" alt="Download Count" class="img_ev3q"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.4/system.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.4/rqg.zip" alt="Download Count" class="img_ev3q"></p>
 <p>This released contains a bugfix for the damage roll when using Foundry v12.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-fixes">Bug Fixes<a class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes" href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.4#bug-fixes">​</a></h2>
 <ul>
@@ -82,8 +84,8 @@
 </li>
 </ul>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-3</category>
+            <category>rqg-3-4</category>
         </item>
         <item>
             <title><![CDATA[RQG 3.4.3]]></title>
@@ -101,8 +103,8 @@
 </li>
 </ul>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-3</category>
+            <category>rqg-3-4</category>
         </item>
         <item>
             <title><![CDATA[RQG 3.4.2]]></title>
@@ -138,8 +140,8 @@ rqid.<!-- -->
 </li>
 </ul>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-3</category>
+            <category>rqg-3-4</category>
         </item>
         <item>
             <title><![CDATA[RQG 3.4.1]]></title>
@@ -188,8 +190,8 @@ migrate-old-journal-links should not be necessary anymore.</p>
 </li>
 </ul>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-3</category>
+            <category>rqg-3-4</category>
         </item>
         <item>
             <title><![CDATA[Wiki 1.3.0]]></title>
@@ -252,8 +254,8 @@ well as extending the bestiary with harpies, scorpion men and tusk riders.</p>
 <li>add vanity passion base</li>
 </ul>]]></content:encoded>
             <category>wiki</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>wiki-1</category>
+            <category>wiki-1-3</category>
         </item>
         <item>
             <title><![CDATA[RQG 3.4.0]]></title>
@@ -339,8 +341,8 @@ to get a quick evaluation of NPCs.</p>
 </li>
 </ul>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-3</category>
+            <category>rqg-3-4</category>
         </item>
         <item>
             <title><![CDATA[RQG 3.3.0]]></title>
@@ -398,8 +400,8 @@ location rqid.</p>
 </li>
 </ul>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-3</category>
+            <category>rqg-3-3</category>
         </item>
         <item>
             <title><![CDATA[RQG 3.2.1]]></title>
@@ -440,8 +442,8 @@ magic tab. Just click on the focus column to edit.</p>
 <li>add tooltip to show rune name &amp; chance on character runes in header</li>
 </ul>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-3</category>
+            <category>rqg-3-2</category>
         </item>
         <item>
             <title><![CDATA[RQG 3.2.0]]></title>
@@ -499,8 +501,8 @@ relevant according to the type of the rune.</p>
 <li>Combat panel SR button is not right aligned for natural weapons</li>
 </ul>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-3</category>
+            <category>rqg-3-2</category>
         </item>
         <item>
             <title><![CDATA[RQG 3.1.1]]></title>
@@ -518,8 +520,8 @@ not any ongoing combat.</p>
 <li>Missing translation on weapon itemSheet</li>
 </ul>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-3</category>
+            <category>rqg-3-1</category>
         </item>
         <item>
             <title><![CDATA[RQG 3.1.0]]></title>
@@ -593,8 +595,8 @@ Provider" settings in the drag ruler module settings.</p>
 <li>make default item icon colors black in the settings dialog</li>
 </ul>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-3</category>
+            <category>rqg-3-1</category>
         </item>
         <item>
             <title><![CDATA[RQG 3.0.0]]></title>
@@ -671,8 +673,8 @@ shown as a tooltip.</p>
 </li>
 </ul>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>foundry-update</category>
+            <category>rqg-3</category>
         </item>
         <item>
             <title><![CDATA[RQG 2.2.6]]></title>
@@ -701,8 +703,8 @@ changes.</p>
 <li>weapon skills not added to actor in some cases <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/589" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->589</label></a></li>
 </ul>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-2</category>
+            <category>rqg-2-2</category>
         </item>
         <item>
             <title><![CDATA[RQG 2.2.5]]></title>
@@ -744,8 +746,8 @@ hit locations to drag from, just add them to the system hit location setting, an
 <p>When "Update" is clicked, all hit location items in compendiums, world and scenes will get the
 standard Rqid for that hit location.</p>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-2</category>
+            <category>rqg-2-2</category>
         </item>
         <item>
             <title><![CDATA[RQG 2.2.4]]></title>
@@ -758,8 +760,8 @@ standard Rqid for that hit location.</p>]]></content:encoded>
 <p>This release fixes the errors <code>Got unexpected item type in assert, undefined ≠ skill</code>. There was a
 missed line that still used the old style of weapon to skill links.</p>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-2</category>
+            <category>rqg-2-2</category>
         </item>
         <item>
             <title><![CDATA[RQG 2.2.3]]></title>
@@ -772,8 +774,8 @@ missed line that still used the old style of weapon to skill links.</p>]]></cont
 <p>The search for item Rqids embedded in actors in compendiums was really slow. This release should fix
 that.</p>]]></content:encoded>
             <category>rqg</category>
-            <category>release</category>
-            <category>changelog</category>
+            <category>rqg-2</category>
+            <category>rqg-2-2</category>
         </item>
     </channel>
 </rss>
