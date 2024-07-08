@@ -4,10 +4,29 @@
         <title>RuneQuest Glorantha for Foundry VTT Blog</title>
         <link>https://sun-dragon-cult.github.io/release-notes</link>
         <description>RuneQuest Glorantha for Foundry VTT Blog</description>
-        <lastBuildDate>Tue, 18 Jun 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 08 Jul 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Wiki 1.3.3]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.3</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.3</guid>
+            <pubDate>Mon, 08 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supported Foundry Versions]]></description>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.3/en-module.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.3/wiki-en-rqg.zip" alt="Download Count" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-fix">Bug Fix<a class="hash-link" aria-label="Direct link to Bug Fix" title="Direct link to Bug Fix" href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.3#bug-fix">​</a></h2>
+<ul>
+<li>wheels are worth 20L not 10L<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/19" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->19</label></a>
+</li>
+</ul>]]></content:encoded>
+            <category>wiki</category>
+            <category>foundry-release</category>
+            <category>wiki-1</category>
+            <category>wiki-1-3</category>
+        </item>
         <item>
             <title><![CDATA[RQG 3.4.6]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.6</link>
@@ -51,7 +70,6 @@
 <img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.2/wiki-en-rqg.zip" alt="Download Count" class="img_ev3q"></p>
 <p>This release only updates the license text.</p>]]></content:encoded>
             <category>wiki</category>
-            <category>foundry-release</category>
             <category>wiki-1</category>
             <category>wiki-1-3</category>
         </item>
@@ -759,20 +777,6 @@ standard Rqid for that hit location.</p>]]></content:encoded>
 <img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v2.2.4/rqg.zip" alt="Download Count" class="img_ev3q"></p>
 <p>This release fixes the errors <code>Got unexpected item type in assert, undefined ≠ skill</code>. There was a
 missed line that still used the old style of weapon to skill links.</p>]]></content:encoded>
-            <category>rqg</category>
-            <category>rqg-2</category>
-            <category>rqg-2-2</category>
-        </item>
-        <item>
-            <title><![CDATA[RQG 2.2.3]]></title>
-            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.3</link>
-            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.3</guid>
-            <pubDate>Wed, 05 Jul 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v2.2.3/system.json" alt="Supported Foundry Versions" class="img_ev3q">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v2.2.3/rqg.zip" alt="Download Count" class="img_ev3q"></p>
-<p>The search for item Rqids embedded in actors in compendiums was really slow. This release should fix
-that.</p>]]></content:encoded>
             <category>rqg</category>
             <category>rqg-2</category>
             <category>rqg-2-2</category>
