@@ -4,10 +4,51 @@
         <title>RuneQuest Glorantha for Foundry VTT Blog</title>
         <link>https://sun-dragon-cult.github.io/release-notes</link>
         <description>RuneQuest Glorantha for Foundry VTT Blog</description>
-        <lastBuildDate>Mon, 08 Jul 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 21 Jul 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[RQG 3.4.7]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.7</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.7</guid>
+            <pubDate>Sun, 21 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supported Foundry Versions]]></description>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.7/system.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.7/rqg.zip" alt="Download Count" class="img_ev3q"></p>
+<p>This released contains a bunch of bugfixes that should remove some annoyances. When entering
+modifications for rolls in the chat, it no longer loses focus after every key press. The calculation
+of the chance to improve skills is no longer incorrectly affected by how much you carry. And other
+fixes, see the linked github issues for details.</p>
+<p>It also adds a log to the dev tools console to indicate how long caching of runes &amp; hit locations
+take. It look like this, and the first line will always take a lot longer than the second, since the
+second line will "benefit" from the caching done by the first. You can use this information as an
+indication if things are running slowly.</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">RQG | Caching Runes took: 106.442138671875 ms</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">RQG | Caching Hit Locations took: 0.569091796875 ms</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-fixes--improvements">Bug Fixes &amp; Improvements<a class="hash-link" aria-label="Direct link to Bug Fixes &amp; Improvements" title="Direct link to Bug Fixes &amp; Improvements" href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.7#bug-fixes--improvements">​</a></h2>
+<ul>
+<li>Can only add one digit at a time to Modifiers box<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/716" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->716</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/712" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->712</label></a>
+</li>
+<li>Selecting Ammo on Combat Section of Character Sheet Initiates a Dice Roll Card<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/701" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->701</label></a>
+</li>
+<li>XP gain rolls are modified by ENC penalties when they should not be<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/704" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->704</label></a>
+</li>
+<li>Implement the context menu equipped entries<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/723" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->723</label></a>
+</li>
+<li>Untranslated strings if concat value is null<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/725" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->725</label></a>
+</li>
+</ul>]]></content:encoded>
+            <category>rqg</category>
+            <category>foundry-release</category>
+            <category>rqg-3</category>
+            <category>rqg-3-4</category>
+        </item>
         <item>
             <title><![CDATA[Wiki 1.3.3]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.3</link>
@@ -763,20 +804,6 @@ English names.</p>
 hit locations to drag from, just add them to the system hit location setting, and rerun this macro.</p>
 <p>When "Update" is clicked, all hit location items in compendiums, world and scenes will get the
 standard Rqid for that hit location.</p>]]></content:encoded>
-            <category>rqg</category>
-            <category>rqg-2</category>
-            <category>rqg-2-2</category>
-        </item>
-        <item>
-            <title><![CDATA[RQG 2.2.4]]></title>
-            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.4</link>
-            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.4</guid>
-            <pubDate>Sat, 08 Jul 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v2.2.4/system.json" alt="Supported Foundry Versions" class="img_ev3q">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v2.2.4/rqg.zip" alt="Download Count" class="img_ev3q"></p>
-<p>This release fixes the errors <code>Got unexpected item type in assert, undefined ≠ skill</code>. There was a
-missed line that still used the old style of weapon to skill links.</p>]]></content:encoded>
             <category>rqg</category>
             <category>rqg-2</category>
             <category>rqg-2-2</category>
