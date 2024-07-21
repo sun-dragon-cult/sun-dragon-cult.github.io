@@ -1,0 +1,41 @@
+---
+slug: rqg-v3.4.7
+title: RQG 3.4.7
+tags:
+  - rqg
+  - foundry-release
+  - rqg-3
+  - rqg-3-4
+---
+
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.7/system.json)
+![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.7/rqg.zip)
+
+This released contains a bunch of bugfixes that should remove some annoyances. When entering
+modifications for rolls in the chat, it no longer loses focus after every key press. The calculation
+of the chance to improve skills is no longer incorrectly affected by how much you carry. And other
+fixes, see the linked github issues for details.
+
+It also adds a log to the dev tools console to indicate how long caching of runes & hit locations
+take. It look like this, and the first line will always take a lot longer than the second, since the
+second line will "benefit" from the caching done by the first. You can use this information as an
+indication if things are running slowly.
+
+```
+RQG | Caching Runes took: 106.442138671875 ms
+RQG | Caching Hit Locations took: 0.569091796875 ms
+```
+
+## Bug Fixes & Improvements
+
+- Can only add one digit at a time to Modifiers box
+  <GithubIssue issue="716" repo="fvtt-system-rqg" />
+  <GithubIssue issue="712" repo="fvtt-system-rqg" />
+- Selecting Ammo on Combat Section of Character Sheet Initiates a Dice Roll Card
+  <GithubIssue issue="701" repo="fvtt-system-rqg" />
+- XP gain rolls are modified by ENC penalties when they should not be
+  <GithubIssue issue="704" repo="fvtt-system-rqg" />
+- Implement the context menu equipped entries
+  <GithubIssue issue="723" repo="fvtt-system-rqg" />
+- Untranslated strings if concat value is null
+  <GithubIssue issue="725" repo="fvtt-system-rqg" />
