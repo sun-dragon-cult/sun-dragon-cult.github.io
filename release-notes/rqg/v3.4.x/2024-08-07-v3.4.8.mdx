@@ -1,0 +1,30 @@
+---
+slug: rqg-v3.4.8
+title: RQG 3.4.8
+tags:
+  - rqg
+  - foundry-release
+  - rqg-3
+  - rqg-3-4
+---
+
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.8/system.json)
+![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.8/rqg.zip)
+
+If your world has a lot of compendiums, you might have got warnings about runes that can't be found,
+and that compendiums are not yet indexed while starting. This release should fix that. It also
+contains size adjustments of runes icons.
+
+In addition it updated the way the build tools are set up to make it possible to remove the game
+system warning about
+`The "RuneQuest Glorantha" system's manifest contained the following unknown keys: "type", "release-please-start"`
+The other warnings will be removed in the next major RQG release when Foundry 11 support will be
+dropped. In addition dependencies are updated, and the package manager is changed from the
+deprecated version of yarn to pnpm (this won't affect the game).
+
+## Bug Fixes & Improvements
+
+- Warnings about compendiums not indexed etc
+  <GithubIssue issue="729" repo="fvtt-system-rqg" />
+- Some runes appear to be too small
+  <GithubIssue issue="727" repo="fvtt-system-rqg" />
