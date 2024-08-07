@@ -2,11 +2,42 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sun-dragon-cult.github.io/release-notes</id>
     <title>RuneQuest Glorantha for Foundry VTT Blog</title>
-    <updated>2024-07-21T00:00:00.000Z</updated>
+    <updated>2024-08-07T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sun-dragon-cult.github.io/release-notes"/>
     <subtitle>RuneQuest Glorantha for Foundry VTT Blog</subtitle>
     <icon>https://sun-dragon-cult.github.io/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[RQG 3.4.8]]></title>
+        <id>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.8</id>
+        <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.8"/>
+        <updated>2024-08-07T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.8/system.json" alt="Supported Foundry Versions" class="img_ev3q">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.8/rqg.zip" alt="Download Count" class="img_ev3q"></p>
+<p>If your world has a lot of compendiums, you might have got warnings about runes that can't be found,
+and that compendiums are not yet indexed while starting. This release should fix that. It also
+contains size adjustments of runes icons.</p>
+<p>In addition it updated the way the build tools are set up to make it possible to remove the game
+system warning about
+<code>The "RuneQuest Glorantha" system's manifest contained the following unknown keys: "type", "release-please-start"</code>
+The other warnings will be removed in the next major RQG release when Foundry 11 support will be
+dropped. In addition dependencies are updated, and the package manager is changed from the
+deprecated version of yarn to pnpm (this won't affect the game).</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-fixes--improvements">Bug Fixes &amp; Improvements<a class="hash-link" aria-label="Direct link to Bug Fixes &amp; Improvements" title="Direct link to Bug Fixes &amp; Improvements" href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.8#bug-fixes--improvements">​</a></h2>
+<ul>
+<li>Warnings about compendiums not indexed etc<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/729" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->729</label></a>
+</li>
+<li>Some runes appear to be too small<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/727" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->727</label></a>
+</li>
+</ul>]]></content>
+        <category label="rqg" term="rqg"/>
+        <category label="foundry-release" term="foundry-release"/>
+        <category label="rqg-3" term="rqg-3"/>
+        <category label="rqg-3-4" term="rqg-3-4"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RQG 3.4.7]]></title>
         <id>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.7</id>
@@ -760,49 +791,6 @@ changes.</p>
 </li>
 <li>weapon skills not added to actor in some cases <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/589" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->589</label></a></li>
 </ul>]]></content>
-        <category label="rqg" term="rqg"/>
-        <category label="rqg-2" term="rqg-2"/>
-        <category label="rqg-2-2" term="rqg-2-2"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RQG 2.2.5]]></title>
-        <id>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.5</id>
-        <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.5"/>
-        <updated>2023-07-14T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
-        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v2.2.5/system.json" alt="Supported Foundry Versions" class="img_ev3q">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v2.2.5/rqg.zip" alt="Download Count" class="img_ev3q"></p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="fixed-bugs">Fixed bugs:<a class="hash-link" aria-label="Direct link to Fixed bugs:" title="Direct link to Fixed bugs:" href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.5#fixed-bugs">​</a></h2>
-<ul>
-<li>add missing scorpion man hitlocation items <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/575" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->575</label></a></li>
-<li>migration is run for new worlds <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/573" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->573</label></a></li>
-<li>replace the broken hitlocation rqid setter form with a macro<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/576" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->576</label></a>
-</li>
-<li>update compendium hit-location rqids to new standard form<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/576" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->576</label></a>
-</li>
-<li>skillSheet &amp; HitLocationSheet is missing values <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/572" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->572</label></a></li>
-<li>wrong rqid on i.skill.fists-fist in compendium <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/574" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->574</label></a></li>
-<li>show a rqid form for rune items <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/577" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->577</label></a></li>
-</ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="set-hit-location-rqids-macro">Set Hit Location Rqids Macro<a class="hash-link" aria-label="Direct link to Set Hit Location Rqids Macro" title="Direct link to Set Hit Location Rqids Macro" href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.5#set-hit-location-rqids-macro">​</a></h2>
-<p>There has been a design change in how the rqids for hit locations should be constructed. Now the
-system default syntax is for example <code>i.hit-location.left-leg</code> and there is a macro in the
-compendium "Rqid Macros" called "Set Hit Location Rqids" that can set the correct rqid on all
-hit-locations (even on those that already has a rqid set).</p>
-<p>This syntax is expected by the token effect for protection, so to make that work this macro needs to
-be run, and at least the humanoid hitlocations needs to be updated.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/hit-location-rqid-dialog-bf6cc35135961bd36288448599313474.jpg" width="735" height="783" class="img_ev3q"></p>
-<p>This macro will list RQG hit location names and let you match them to the location names from the
-system settings by drag-n-drop. Yellow background means that the name does not exist as a setting.
-That might be fine if you do not have any creatures that need that hit location. It could also be
-because you have translated the hit location to another language so that they don't match the
-English names.</p>
-<p>Drag the names from the right setting table to the corresponding hit location. If you are missing a
-hit locations to drag from, just add them to the system hit location setting, and rerun this macro.</p>
-<p>When "Update" is clicked, all hit location items in compendiums, world and scenes will get the
-standard Rqid for that hit location.</p>]]></content>
         <category label="rqg" term="rqg"/>
         <category label="rqg-2" term="rqg-2"/>
         <category label="rqg-2-2" term="rqg-2-2"/>
