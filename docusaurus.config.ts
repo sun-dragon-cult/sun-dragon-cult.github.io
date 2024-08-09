@@ -45,6 +45,7 @@ const config: Config = {
           routeBasePath: "release-notes",
           blogSidebarTitle: "Release Notes",
           blogSidebarCount: "ALL",
+          onUntruncatedBlogPosts: "ignore",
         },
         theme: {
           customCss: "./src/css/custom.css",
