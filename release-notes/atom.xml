@@ -113,19 +113,6 @@ indication if things are running slowly.</p>
         <category label="rqg-3-4" term="rqg-3-4"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Wiki 1.3.2]]></title>
-        <id>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.2</id>
-        <link href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.2"/>
-        <updated>2024-06-15T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
-        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.2/en-module.json" alt="Supported Foundry Versions" class="img_AiE3">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.2/wiki-en-rqg.zip" alt="Download Count" class="img_AiE3"></p>
-<p>This release only updates the license text.</p>]]></content>
-        <category label="wiki" term="wiki"/>
-        <category label="wiki-1" term="wiki-1"/>
-        <category label="wiki-1-3" term="wiki-1-3"/>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[RQG 3.4.5]]></title>
         <id>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.5</id>
         <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.5"/>
@@ -143,6 +130,19 @@ indication if things are running slowly.</p>
         <category label="rqg" term="rqg"/>
         <category label="rqg-3" term="rqg-3"/>
         <category label="rqg-3-4" term="rqg-3-4"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Wiki 1.3.2]]></title>
+        <id>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.2</id>
+        <link href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.2"/>
+        <updated>2024-06-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.2/en-module.json" alt="Supported Foundry Versions" class="img_AiE3">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.2/wiki-en-rqg.zip" alt="Download Count" class="img_AiE3"></p>
+<p>This release only updates the license text.</p>]]></content>
+        <category label="wiki" term="wiki"/>
+        <category label="wiki-1" term="wiki-1"/>
+        <category label="wiki-1-3" term="wiki-1-3"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Wiki 1.3.1]]></title>
@@ -233,6 +233,56 @@ rqid.<!-- -->
         <category label="rqg-3-4" term="rqg-3-4"/>
     </entry>
     <entry>
+        <title type="html"><![CDATA[RQG 3.4.1]]></title>
+        <id>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1</id>
+        <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1"/>
+        <updated>2024-01-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.1/system.json" alt="Supported Foundry Versions" class="img_AiE3">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.1/rqg.zip" alt="Download Count" class="img_AiE3"></p>
+<p>This released is a smaller update, mainly to match the wiki release
+<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0">1.3.0</a>.</p>
+<h2 class="anchor anchorWithStickyNavbar_5Vfa" id="rename-command-cult-spirit-elemental-to-command-cult-spirit">Rename "Command Cult Spirit (Elemental)" to "Command Cult spirit"<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#rename-command-cult-spirit-elemental-to-command-cult-spirit" class="hash-link" aria-label="Direct link to Rename &quot;Command Cult Spirit (Elemental)&quot; to &quot;Command Cult spirit&quot;" title="Direct link to Rename &quot;Command Cult Spirit (Elemental)&quot; to &quot;Command Cult spirit&quot;">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/682" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->682</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/17" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->17</label></a>
+<p>The common rune magic spell <code>Command Cult Spirit</code> was named <code>Command Cult Spirit (Elemental)</code> so
+that has been changed, and the rqid for it that was changed to <code>i.rune-magic.command-cult-spirit</code>
+from <code>i.rune-magic.command-cult-spirit-elemental</code> along with the journal entry description rqid that
+is now <code>je..command-cult-spirit</code>. This is a common rune magic that is added to most cults, so to not
+break any existing links there is a migration that updates these names and rqids (for English only).</p>
+<p>The wiki version <a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0">1.3.0</a> has the corresponding change.</p>
+<h2 class="anchor anchorWithStickyNavbar_5Vfa" id="remove-old-migrations">Remove old migrations<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#remove-old-migrations" class="hash-link" aria-label="Direct link to Remove old migrations" title="Direct link to Remove old migrations">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/685" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->685</label></a>
+<p>A lot of old migrations have been removed, partly because they no longer should be necessary, and
+partly because the code in them was not going to work in Foundry v12 that deprecates a lot of old
+style code.</p>
+<p>The removal of migrateWeaponItemDamageBonus will make sure any weapon damage bonus definitions are
+not overwritten when updating the system. Previously a system update would enforce melee weapons to
+get damage bonus, missile weapons to remove any damage bonus and thrown weapons to get half db. Now
+the update will leave the weapons as they are defined.</p>
+<p>Of the system provided macros, only the assign rqid to journals macro is left.
+assign-rqid-to-hit-locations does not work after hit location setting was removed, and
+migrate-old-journal-links should not be necessary anymore.</p>
+<h2 class="anchor anchorWithStickyNavbar_5Vfa" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
+<ul>
+<li>Update the wiki installation documentation link to the new documentation site:
+<a href="https://sun-dragon-cult.github.io/rqg-system/getting-started" target="_blank" rel="noopener noreferrer">Getting Started</a></li>
+<li>Rename default armor material names to make them consistent<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/679" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->679</label></a>
+</li>
+<li>Rune types ("element", "power", ...) are should be in lower case to match wiki runes<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/680" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->680</label></a>
+</li>
+<li>Update documentation <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/62" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->62</label></a></li>
+<li>Fix usage of deprecated code in preparation for Foundry v12<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/686" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->686</label></a>
+</li>
+</ul>]]></content>
+        <category label="rqg" term="rqg"/>
+        <category label="rqg-3" term="rqg-3"/>
+        <category label="rqg-3-4" term="rqg-3-4"/>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Wiki 1.3.0]]></title>
         <id>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0</id>
         <link href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0"/>
@@ -295,56 +345,6 @@ well as extending the bestiary with harpies, scorpion men and tusk riders.</p>
         <category label="wiki" term="wiki"/>
         <category label="wiki-1" term="wiki-1"/>
         <category label="wiki-1-3" term="wiki-1-3"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RQG 3.4.1]]></title>
-        <id>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1</id>
-        <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1"/>
-        <updated>2024-01-16T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
-        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.1/system.json" alt="Supported Foundry Versions" class="img_AiE3">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.1/rqg.zip" alt="Download Count" class="img_AiE3"></p>
-<p>This released is a smaller update, mainly to match the wiki release
-<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0">1.3.0</a>.</p>
-<h2 class="anchor anchorWithStickyNavbar_5Vfa" id="rename-command-cult-spirit-elemental-to-command-cult-spirit">Rename "Command Cult Spirit (Elemental)" to "Command Cult spirit"<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#rename-command-cult-spirit-elemental-to-command-cult-spirit" class="hash-link" aria-label="Direct link to Rename &quot;Command Cult Spirit (Elemental)&quot; to &quot;Command Cult spirit&quot;" title="Direct link to Rename &quot;Command Cult Spirit (Elemental)&quot; to &quot;Command Cult spirit&quot;">​</a></h2>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/682" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->682</label></a>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/17" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->17</label></a>
-<p>The common rune magic spell <code>Command Cult Spirit</code> was named <code>Command Cult Spirit (Elemental)</code> so
-that has been changed, and the rqid for it that was changed to <code>i.rune-magic.command-cult-spirit</code>
-from <code>i.rune-magic.command-cult-spirit-elemental</code> along with the journal entry description rqid that
-is now <code>je..command-cult-spirit</code>. This is a common rune magic that is added to most cults, so to not
-break any existing links there is a migration that updates these names and rqids (for English only).</p>
-<p>The wiki version <a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0">1.3.0</a> has the corresponding change.</p>
-<h2 class="anchor anchorWithStickyNavbar_5Vfa" id="remove-old-migrations">Remove old migrations<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#remove-old-migrations" class="hash-link" aria-label="Direct link to Remove old migrations" title="Direct link to Remove old migrations">​</a></h2>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/685" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->685</label></a>
-<p>A lot of old migrations have been removed, partly because they no longer should be necessary, and
-partly because the code in them was not going to work in Foundry v12 that deprecates a lot of old
-style code.</p>
-<p>The removal of migrateWeaponItemDamageBonus will make sure any weapon damage bonus definitions are
-not overwritten when updating the system. Previously a system update would enforce melee weapons to
-get damage bonus, missile weapons to remove any damage bonus and thrown weapons to get half db. Now
-the update will leave the weapons as they are defined.</p>
-<p>Of the system provided macros, only the assign rqid to journals macro is left.
-assign-rqid-to-hit-locations does not work after hit location setting was removed, and
-migrate-old-journal-links should not be necessary anymore.</p>
-<h2 class="anchor anchorWithStickyNavbar_5Vfa" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
-<ul>
-<li>Update the wiki installation documentation link to the new documentation site:
-<a href="https://sun-dragon-cult.github.io/rqg-system/getting-started" target="_blank" rel="noopener noreferrer">Getting Started</a></li>
-<li>Rename default armor material names to make them consistent<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/679" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->679</label></a>
-</li>
-<li>Rune types ("element", "power", ...) are should be in lower case to match wiki runes<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/680" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->680</label></a>
-</li>
-<li>Update documentation <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/62" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->62</label></a></li>
-<li>Fix usage of deprecated code in preparation for Foundry v12<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/686" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->686</label></a>
-</li>
-</ul>]]></content>
-        <category label="rqg" term="rqg"/>
-        <category label="rqg-3" term="rqg-3"/>
-        <category label="rqg-3-4" term="rqg-3-4"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[RQG 3.4.0]]></title>
