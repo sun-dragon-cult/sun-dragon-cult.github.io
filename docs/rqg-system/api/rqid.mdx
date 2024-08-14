@@ -4,18 +4,6 @@ title: RQG System ID (rqid)
 tags: []
 ---
 
-The RQG System manages content in different languages using the RQG System ID or "rqid". Currently
-journals, actors & items have full support for rqid. The id's are stored as flags on documents under
-the "rqg" scope as an object "documentRqidFlags" containing id, lang & priority properties.
-
-When a macro, module, or internal RQG system code, needs a specific document, for example a
-Broadsword or the journal entry describing dwarves, it can call
-`await game.system.api.rqid.fromRqid("i.weapon.broadsword", "es")`, where the first parameter is the
-invariant rqid, and the second parameter is the requested language code. If you do not include a
-language code, it will return the English language version of the item, and if you request a
-language other than english and the document is not found then a search for an English document is
-done as a fallback.
-
 First the system looks for documents the user has created or imported into the world that have
 "rqid" and "lang" matching the provided parameters. If it finds any documents, it will return the
 one with the highest priority. In this way the Game Master can import items and "override" the
@@ -25,3 +13,307 @@ If the system does not find any matching documents in the world, it will look th
 compendia for documents that have a matching "rqid" and "lang", and it will return the one with the
 highest priority. This allows later RQG content packs to override older information. The GM can also
 use this to create compendium packs with documents that override the ones provided by the system.
+
+---
+
+---
+
+## What is it for
+
+The RQG System manages content in different languages and different compendiums or in the world by
+using a RQG System ID or "rqid". The id's are stored as flags on documents under the "rqg" scope as
+an object "documentRqidFlags" containing **id**, **lang** & **priority** properties.
+
+A rqid is not a unique id, instead it defines what "kind" a document is. The purpose is to let
+different versions of the same document coexist so the "best" version can be used. A "kind" can be
+something like a specific skill like "Dodge", or a description of a specific spell. It also defines
+what language the document is written in, and it has a priority that ranks documents with the same
+id and language (higher is better).
+
+An advantage of using rqid for links between documents is that the risk of broken links are greatly
+reduced, compared to linking documents using the Foundry Uuid. If a link is broken you just need to
+either make sure a document matching the requested rqid once again is available in your world or in
+a compendium, or change the link to some other rqid that exists. See
+[Current usage in the system](/rqg-system/api/rqid#current-usage-in-the-system) for details on what
+it's currently used for.
+
+If you want to link to a specific instance of a document you should use the Foundry uuid instead.
+
+## What are the parts
+
+A normal rqid comes in 3 parts separated by dots `.` like this: `i.skill.fast-talk`. It should be
+all lower case letters without any spaces.
+
+1. The first part is an abbreviated document type, see below. It supports many different document
+   types, but the system only uses links to items and journals so far.
+
+<details>
+<summary>Document type abbreviation table</summary>
+
+    |        | Foundry Document Type                                         |
+    | ------ | ------------------------------------------------------------- |
+    | **a**  | Actor                                                         |
+    | **c**  | Cards                                                         |
+    | **i**  | Item                                                          |
+    | **je** | JournalEntry                                                  |
+    | **jp** | JournalEntryPage _(Only allowed as embedded in JournalEntry)_ |
+    | **m**  | Macro                                                         |
+    | **p**  | Playlist                                                      |
+    | **rt** | RollTable                                                     |
+    | **s**  | Scene                                                         |
+
+</details>
+
+2. The second part is the document subtype if there is any. In RQG there are a number of item types
+   like `skill`, `hit-location` and `rune` etc.
+
+3. The third part is usually related to the name of the document in english. If it is a journal
+   entry for example is describing the spell bladesharp (rqid `i.spirit-magic.bladesharp`), it can
+   be called `je..bladesharp`
+
+:::info rqids for embedded documents
+
+There is also a possibility to link to a document that is embedded. This is mostly useful for adding
+a link to a journal entry page inside a journal entry. The rqid for that can look like this
+`je..spells.jp..ignite` where the first section (`je..spells`) defines what document it is, and the
+appended section (`jp..ignite`) defines what embedded document to find inside that document.
+
+:::
+
+## Search priorities
+
+The available documents matching "rqid" and "lang" will be searched, and it will return the one with
+the highest priority. This allows later RQG content packs to override older information. The GM can
+also use this to create compendium packs with documents that override the ones provided by the
+system.
+
+A search for a document can look like this:
+`await game.system.api.rqid.fromRqid("i.skill.act", "es")` to find the best available act skill in
+Spanish.
+
+The priorities are:
+
+1. The id has to match the query
+2. The language - either the one specified in the query, the world language (as in the setting) or
+   the fallback language (english)
+3. The found document is in the world - documents in compendium are only searched if no match is
+   found in imported world documents.
+
+:::danger
+
+Currently, any document in the world will have a higher "effective" priority compared to a document
+in a compendium, even if the priority value is lower.
+
+It's under consideration to change this so the priority is honored no matter where the document is
+located.
+
+:::
+
+<details>
+
+{" "}
+
+<summary>Examples of priorities and search results</summary>
+
+A spell item has a rqid link `je..befuddle` to a journal entry that describes that spell. When a
+player clicks the link a search is done to find the best match.
+
+Suppose these journal entries describing some spirit magic spells exist:
+
+1. rqid: `je..befuddle`, language: `en`, priority: `0` _(from the wiki module)_
+2. rqid: `je..befuddle`, language: `en`, priority: `1000` _(from a future english Red Book of Magic
+   module)_
+3. rqid: `je..befuddle`, language: `es`, priority: `0` _(from a custom "translation to Spanish"
+   module)_
+4. rqid: `je..demoralize`, language: `en`, priority: `0` _(from the wiki module)_
+5. rqid: `je..demoralize`, language: `en`, priority: `1000` _(from a future english Red Book of
+   Magic module)_
+
+- A search for `fromRqid("je..befuddle", "en")` would return journal entry 2, since that has the
+  highest priority.
+- A search for `fromRqid("je..befuddle", "es")` would return journal entry 3 even though journal
+  entry 2 has a higher priority since the language is more important than the priority.
+- A search for `fromRqid("je..demoralize", "es")` would return journal entry 5 since there is no
+  spanish version with that rqid, but the fallback language is english, and journal entry 5 has a
+  higher priority compared to journal entry 4.
+
+</details>
+
+## Current usage in the system
+
+### 1. Open the "best" description of skills, spells etc
+
+A number of RQG items have a "rqidLink" to a journal entry description. The advantage of this is
+that the "best" version will be opened. For example if you only have the wiki module installed then
+that (limited) description will be opened. If you in the future install a premium module that
+contains a more elaborated description with the same rqid, but higher priority, then that will be
+opened instead.
+
+This can also be used to change what language version is opened, since the world language setting is
+tried first. If no description is found in that language the english version is opened (if that
+exists).
+
+:::note For reference, these RQG items that have a rqid description link
+
+- Cult
+- Rune
+- Rune Magic
+- Spirit Magic
+
+:::
+
+:::note discussion
+
+Removing the world language setting and relying on the user language is probably a bad idea since it
+could make it hard to know what the players actually will see.
+
+For example a game played in Spanish where one player has selected Swedish as the Foundry language
+would mean that the Swedish user would get the default English versions of any linked journal
+entries - and they might not match the journals the GM has prepared.
+
+I think it's natural that a game is played in one language (matching the world language setting) and
+that all players see the documents in that language. Then again you could argue that since there is
+a user language setting in Foundry, and since that will affect the Foundry interface language, it
+might make sense to use that instead.
+
+:::
+
+### 2. Identify "special" skills
+
+There are a few skills that need special handling, and these are identified by the system by looking
+at the rqid of the skills. This allows the name of these skills to be translated into any language.
+
+- dodge: `i.skill.dodge`,
+- jump: `i.skill.jump`,
+- moveQuietly: `i.skill.move-quietly`,
+- spiritCombat: `i.skill.spirit-combat`,
+
+### 3. Specify what hit locations each armor piece protects
+
+Armor items needs to specify what hit locations they protect. This is accomplished by a list of
+rqids for hit location items. When a piece of armor is embedded in an actor and equipped, the
+embedded hit location items that matches the rqids in the armor item is found and the protection is
+applied.
+
+Note that this usage of rqid does not use the language, instead it only searches for the rqids in
+the embedded items of the actor using the `actor.getBestEmbeddedDocumentByRqid(rqid)` function on
+the RqgActor class.
+
+_The list of available hit-locations is indexed at startup, see green box further down._
+
+### 4. Link Rune magic spells to runes
+
+Rune Magic spells have a list of rune rqids to identify what runes they can be cast with. When the
+spell is cast the rqids are used to find the rune items that are embedded in the actor to figure out
+success chances.
+
+_The list of available runes is indexed at startup, see green box further down._
+
+### 5. Link Sorcery spells (skills) to runes
+
+:::danger
+
+Support for sorcery is still alpha level and **will** change, see
+[Sorcery](/rqg-system/character-sheet/sorcery).
+
+:::
+
+_The list of available runes is indexed at startup, see green box further down._
+
+### 6. Rune links
+
+Runes use rqid to define what the minor and opposite runes are for a particular rune. Currently only
+the "opposite" rune link is used for finding what other Power rune to adjust when a Power runes
+chance is adjusted.
+
+_The list of available runes is indexed at startup, see green box further down._
+
+### 7. Active Effects
+
+:::danger
+
+The RQG Active Effects implementation is still alpha level and could change completely, possibly
+without a migration for any active effects in current worlds.
+
+:::
+
+The RQG system specific way of adding Foundry active effects to embedded items is to add a `Custom`
+active effect where the "Attribute Key" is following the format `<rqid:path>`. For example the
+system supplied "protection" token effects use this to add natural armor to an actor. This is
+currently done by adding a list of Active Effects like `i.hit-location.head:system.naturalAp` for
+each humanoid hit location.
+
+:::note Possible future improvement
+
+- This could be improved if the rqid part could contain partial rqids. In the example above a
+  "natural armor" active effect could then be described by a single effect like
+  `i.hit-location.:system.naturalAp` and it would affect all hit locations embedded in an actor.
+- It's also currently only possible to add values, since the "CUSTOM" change mode is used to
+  describe that an item should be affected. Making use of the normal Change Modes like "ADD",
+  "SUBTRACT", "MULTIPLY", etc. could improve the usability further.
+
+:::
+
+:::tip Runes and hit location items in compendiums are indexed at startup (usage 3-5)
+
+When (re)loading the browser all compendiums containing all rune and hit location items are indexed
+and lists of all unique runes / hit locations that are available are compiled. The world language is
+used to select what language should be part of the list, and the highest priority item that matched
+the world language for each rqid is kept. These lists are used to populate dropdowns of available
+runes / hit locations.
+
+Please note that world runes / hit locations are not part of this indexing, so if you want to add
+more runes or hit locations than are provided by the wiki module, then you need to put the extra
+items in a compendium pack of your own.
+
+:::
+
+## Using it from a macro
+
+When a macro or module, needs a specific document, for example a Broadsword or the journal entry
+describing dwarves, it can call `await game.system.api.rqid.fromRqid("i.weapon.broadsword", "es")`,
+where the first parameter is the invariant rqid, and the second parameter is the requested language
+code. If you do not include a language code, it will use the language from the setting "world
+language" when searching for the document. If the document is not available in the requested
+language it will try to find it in English as a fallback before giving up.
+
+:::danger Not Yet Implemented - TODO ⚠️
+
+## Changing language in a world
+
+Actors and items embedded in an actor will not be changed even if you switch language in the world
+language setting, or activate a module that contains higher priority versions of the same items.
+
+It should be possible to "migrate" a world to a different language. Or change an English module to
+use for example Spanish item names.
+
+It's probably only reasonable to let such a migration affect world items?
+
+Possible ways this could be done:
+
+- A script that goes through all world actors and the embedded items, and for each item overwrites
+  the name and possibly other properties from the item with the same rqid, but matching the world
+  language.
+- A way to migrate a specific actor, maybe with an "upgrade" button on the actor sheet in edit mode
+  that searches for the best version of each embedded item and overwrites selected properties from
+  there.
+
+<!--
+### Define what should be copied / retained in each item type
+
+- Armor: name
+- Cult: JoinedCults[] cultName, tagline, holydays,
+- Gear:
+- Hit Location: name
+- Homeland: name, ...
+- Occupation: name: ...
+- Passion: name, subject
+- Rune: name, rune
+- Rune Magic Spell: name
+- Skill: name, skillName, specialization
+- Spirit Magic Spell: name
+- Weapon: name, CombatManeuver.name, hitpointLocation
+
+-->
+
+:::
