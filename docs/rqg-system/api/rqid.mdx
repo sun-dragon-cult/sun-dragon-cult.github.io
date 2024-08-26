@@ -240,6 +240,27 @@ each humanoid hit location.
 
 :::
 
+### 8. Link to weapon skills
+
+Weapons are linked to which skills they use for each usage (like one handed, two handed or missile).
+The links use rqid and when a weapon is embedded, first a check if a skill matching the rqid is
+already embedded, and if not a search for the best skill is done and that one is embedded on the
+actor.
+
+When a weapon is used the rqid is used to find the embedded skill to roll against.
+
+### 9. Cults & Rune Magic Spells
+
+Cults have rqid links to both what runes the cult has and what common rune magic spells you should
+get when joining the cult.
+
+The linked common rune spells are embedded in the actor when the cult item is embedded in the actor.
+If the spell is not already embedded in the actor, a search for the best version of the linked
+spells is done using the world language. On the actor sheet these spells have a marking, and to know
+which spells gets marks is compares the rqid to that list.
+
+When casting rune magic spells the runes to cast with is searched in the actor by using rqid.
+
 :::tip Runes and hit location items in compendiums are indexed at startup (usage 3-5)
 
 When (re)loading the browser all compendiums containing all rune and hit location items are indexed
