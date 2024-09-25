@@ -4,10 +4,29 @@
         <title>RuneQuest Glorantha for Foundry VTT Blog</title>
         <link>https://sun-dragon-cult.github.io/release-notes</link>
         <description>RuneQuest Glorantha for Foundry VTT Blog</description>
-        <lastBuildDate>Wed, 07 Aug 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 25 Sep 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Wiki 1.3.4]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.4</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.4</guid>
+            <pubDate>Wed, 25 Sep 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supported Foundry Versions]]></description>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.4/en-module.json" alt="Supported Foundry Versions" class="img_AiE3">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.4/wiki-en-rqg.zip" alt="Download Count" class="img_AiE3"></p>
+<h2 class="anchor anchorWithStickyNavbar_5Vfa" id="bug-fix">Bug Fix<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.4#bug-fix" class="hash-link" aria-label="Direct link to Bug Fix" title="Direct link to Bug Fix">​</a></h2>
+<ul>
+<li>descriptions not showing for Manipulation skills<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/21" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->21</label></a>
+</li>
+</ul>]]></content:encoded>
+            <category>wiki</category>
+            <category>foundry-release</category>
+            <category>wiki-1</category>
+            <category>wiki-1-3</category>
+        </item>
         <item>
             <title><![CDATA[RQG 3.4.8]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.8</link>
@@ -765,36 +784,6 @@ shown as a tooltip.</p>
             <category>rqg</category>
             <category>foundry-update</category>
             <category>rqg-3</category>
-        </item>
-        <item>
-            <title><![CDATA[RQG 2.2.6]]></title>
-            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.6</link>
-            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.6</guid>
-            <pubDate>Thu, 20 Jul 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v2.2.6/system.json" alt="Supported Foundry Versions" class="img_AiE3">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v2.2.6/rqg.zip" alt="Download Count" class="img_AiE3"></p>
-<p>A number of bug fixes, and "behind the scenes" <a href="https://eslint.org/" target="_blank" rel="noopener noreferrer">eslint</a> was added to the build.
-That should improve code quality going forward, but it also meant that more or less every file has
-changes.</p>
-<h2 class="anchor anchorWithStickyNavbar_5Vfa" id="bug-fixes">Bug Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.6#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h2>
-<ul>
-<li>embedding a weapon shows a warning for usages without linked skill<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/591" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->591</label></a>
-</li>
-<li>runes in sorcery tab should not display chance <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/586" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->586</label></a></li>
-<li>system background is broken (in Foundry v11) <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/579" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->579</label></a></li>
-<li>system compendiums are missing embedded (descendant) documents (in Foundry v11)<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/588" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->588</label></a>
-</li>
-<li>weapon chat shows all usages regardless if it has the skill or not<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/590" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->590</label></a>
-</li>
-<li>weapon skills not added to actor in some cases <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/589" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->589</label></a></li>
-</ul>]]></content:encoded>
-            <category>rqg</category>
-            <category>rqg-2</category>
-            <category>rqg-2-2</category>
         </item>
     </channel>
 </rss>

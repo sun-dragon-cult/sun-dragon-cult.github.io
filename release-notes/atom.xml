@@ -2,11 +2,30 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sun-dragon-cult.github.io/release-notes</id>
     <title>RuneQuest Glorantha for Foundry VTT Blog</title>
-    <updated>2024-08-07T00:00:00.000Z</updated>
+    <updated>2024-09-25T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sun-dragon-cult.github.io/release-notes"/>
     <subtitle>RuneQuest Glorantha for Foundry VTT Blog</subtitle>
     <icon>https://sun-dragon-cult.github.io/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[Wiki 1.3.4]]></title>
+        <id>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.4</id>
+        <link href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.4"/>
+        <updated>2024-09-25T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.4/en-module.json" alt="Supported Foundry Versions" class="img_AiE3">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.4/wiki-en-rqg.zip" alt="Download Count" class="img_AiE3"></p>
+<h2 class="anchor anchorWithStickyNavbar_5Vfa" id="bug-fix">Bug Fix<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.4#bug-fix" class="hash-link" aria-label="Direct link to Bug Fix" title="Direct link to Bug Fix">​</a></h2>
+<ul>
+<li>descriptions not showing for Manipulation skills<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/21" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->21</label></a>
+</li>
+</ul>]]></content>
+        <category label="wiki" term="wiki"/>
+        <category label="foundry-release" term="foundry-release"/>
+        <category label="wiki-1" term="wiki-1"/>
+        <category label="wiki-1-3" term="wiki-1-3"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RQG 3.4.8]]></title>
         <id>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.8</id>
@@ -764,35 +783,5 @@ shown as a tooltip.</p>
         <category label="rqg" term="rqg"/>
         <category label="foundry-update" term="foundry-update"/>
         <category label="rqg-3" term="rqg-3"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RQG 2.2.6]]></title>
-        <id>https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.6</id>
-        <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.6"/>
-        <updated>2023-07-20T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
-        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v2.2.6/system.json" alt="Supported Foundry Versions" class="img_AiE3">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v2.2.6/rqg.zip" alt="Download Count" class="img_AiE3"></p>
-<p>A number of bug fixes, and "behind the scenes" <a href="https://eslint.org/" target="_blank" rel="noopener noreferrer">eslint</a> was added to the build.
-That should improve code quality going forward, but it also meant that more or less every file has
-changes.</p>
-<h2 class="anchor anchorWithStickyNavbar_5Vfa" id="bug-fixes">Bug Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v2.2.6#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h2>
-<ul>
-<li>embedding a weapon shows a warning for usages without linked skill<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/591" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->591</label></a>
-</li>
-<li>runes in sorcery tab should not display chance <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/586" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->586</label></a></li>
-<li>system background is broken (in Foundry v11) <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/579" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->579</label></a></li>
-<li>system compendiums are missing embedded (descendant) documents (in Foundry v11)<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/588" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->588</label></a>
-</li>
-<li>weapon chat shows all usages regardless if it has the skill or not<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/590" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->590</label></a>
-</li>
-<li>weapon skills not added to actor in some cases <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/589" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->589</label></a></li>
-</ul>]]></content>
-        <category label="rqg" term="rqg"/>
-        <category label="rqg-2" term="rqg-2"/>
-        <category label="rqg-2-2" term="rqg-2-2"/>
     </entry>
 </feed>
