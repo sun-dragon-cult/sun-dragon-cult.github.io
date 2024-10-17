@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksun_dragon_cult=self.webpackChunksun_dragon_cult||[]).push([[3003],{5678:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/release-notes/page/2","page":2,"postsPerPage":10,"totalPages":3,"totalCount":28,"previousPage":"/release-notes","nextPage":"/release-notes/page/3","blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
