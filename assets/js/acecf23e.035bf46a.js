@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksun_dragon_cult=self.webpackChunksun_dragon_cult||[]).push([[1903],{1912:e=>{e.exports=JSON.parse('{"blogBasePath":"/release-notes","blogTitle":"Blog","authorsListPath":"/release-notes/authors"}')}}]);
