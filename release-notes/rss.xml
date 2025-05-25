@@ -4,10 +4,29 @@
         <title>RuneQuest Glorantha for Foundry VTT Blog</title>
         <link>https://sun-dragon-cult.github.io/release-notes</link>
         <description>RuneQuest Glorantha for Foundry VTT Blog</description>
-        <lastBuildDate>Wed, 14 May 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 25 May 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Wiki 1.3.5]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.5</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.5</guid>
+            <pubDate>Sun, 25 May 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supported Foundry Versions]]></description>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.5/en-module.json" alt="Supported Foundry Versions" class="img_iT1D">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.5/wiki-en-rqg.zip" alt="Download Count" class="img_iT1D"></p>
+<h2 class="anchor anchorWithStickyNavbar_AmVc" id="bug-fix">Bug Fix<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.5#bug-fix" class="hash-link" aria-label="Direct link to Bug Fix" title="Direct link to Bug Fix">​</a></h2>
+<ul>
+<li>Skill Typo: Speak (Darktongue) misspelled Darktoungue<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/24" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->24</label></a>
+</li>
+</ul>]]></content:encoded>
+            <category>wiki</category>
+            <category>foundry-release</category>
+            <category>wiki-1</category>
+            <category>wiki-1-3</category>
+        </item>
         <item>
             <title><![CDATA[RQG 4.0.1]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.1</link>
@@ -863,25 +882,6 @@ relevant according to the type of the rune.</p>
             <category>rqg</category>
             <category>rqg-3</category>
             <category>rqg-3-2</category>
-        </item>
-        <item>
-            <title><![CDATA[RQG 3.1.1]]></title>
-            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.1.1</link>
-            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.1.1</guid>
-            <pubDate>Fri, 29 Sep 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.1.1/system.json" alt="Supported Foundry Versions" class="img_iT1D">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.1.1/rqg.zip" alt="Download Count" class="img_iT1D"></p>
-<p>The previous release contained a serious bug that prevented actor sheets to be opened if there were
-not any ongoing combat.</p>
-<h2 class="anchor anchorWithStickyNavbar_AmVc" id="bug-fixes">Bug Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.1.1#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h2>
-<ul>
-<li>Impossible to open character sheets <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/627" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->627</label></a></li>
-<li>Missing translation on weapon itemSheet</li>
-</ul>]]></content:encoded>
-            <category>rqg</category>
-            <category>rqg-3</category>
-            <category>rqg-3-1</category>
         </item>
     </channel>
 </rss>
