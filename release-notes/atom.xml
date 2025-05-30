@@ -13,8 +13,8 @@
         <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2"/>
         <updated>2025-05-30T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
-        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v4,0.0/system.json" alt="Supported Foundry Versions" class="img_iT1D">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v4.0.0/rqg.zip" alt="Download Count" class="img_iT1D"></p>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v4,0.2/system.json" alt="Supported Foundry Versions" class="img_iT1D">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v4.0.2/rqg.zip" alt="Download Count" class="img_iT1D"></p>
 <p>This long overdue release completely rewrites the handling of rolls. Under the hood it introduces
 multiple new Foundry rolls:</p>
 <ul>
