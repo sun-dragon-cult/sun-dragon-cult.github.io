@@ -4,39 +4,20 @@
         <title>RuneQuest Glorantha for Foundry VTT Blog</title>
         <link>https://sun-dragon-cult.github.io/release-notes</link>
         <description>RuneQuest Glorantha for Foundry VTT Blog</description>
-        <lastBuildDate>Sun, 25 May 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 30 May 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
-            <title><![CDATA[Wiki 1.3.5]]></title>
-            <link>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.5</link>
-            <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.5</guid>
-            <pubDate>Sun, 25 May 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.5/en-module.json" alt="Supported Foundry Versions" class="img_iT1D">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.5/wiki-en-rqg.zip" alt="Download Count" class="img_iT1D"></p>
-<h2 class="anchor anchorWithStickyNavbar_AmVc" id="bug-fix">Bug Fix<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.5#bug-fix" class="hash-link" aria-label="Direct link to Bug Fix" title="Direct link to Bug Fix">​</a></h2>
-<ul>
-<li>Skill Typo: Speak (Darktongue) misspelled Darktoungue<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/24" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->24</label></a>
-</li>
-</ul>]]></content:encoded>
-            <category>wiki</category>
-            <category>foundry-release</category>
-            <category>wiki-1</category>
-            <category>wiki-1-3</category>
-        </item>
-        <item>
-            <title><![CDATA[RQG 4.0.1]]></title>
-            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.1</link>
-            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.1</guid>
-            <pubDate>Wed, 14 May 2025 00:00:00 GMT</pubDate>
+            <title><![CDATA[RQG 4.0.2]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2</guid>
+            <pubDate>Fri, 30 May 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
             <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v4,0.0/system.json" alt="Supported Foundry Versions" class="img_iT1D">
 <img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v4.0.0/rqg.zip" alt="Download Count" class="img_iT1D"></p>
-<p>This long overdue release completely rewrites the handling of rolls. It introduces multiple new
-Foundry rolls:</p>
+<p>This long overdue release completely rewrites the handling of rolls. Under the hood it introduces
+multiple new Foundry rolls:</p>
 <ul>
 <li>AbilityRoll</li>
 <li>CharacteristicRoll</li>
@@ -46,7 +27,7 @@ Foundry rolls:</p>
 <li>SpiritMagicRoll</li>
 </ul>
 <p>In addition, it has a completely new take on the combat flow with attack / defence rolls.</p>
-<h2 class="anchor anchorWithStickyNavbar_AmVc" id="rewrite-of-the-roll-system-and-combat-flow">Rewrite of the roll system and combat flow<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.1#rewrite-of-the-roll-system-and-combat-flow" class="hash-link" aria-label="Direct link to Rewrite of the roll system and combat flow" title="Direct link to Rewrite of the roll system and combat flow">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_AmVc" id="rewrite-of-the-roll-system-and-combat-flow">Rewrite of the roll system and combat flow<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#rewrite-of-the-roll-system-and-combat-flow" class="hash-link" aria-label="Direct link to Rewrite of the roll system and combat flow" title="Direct link to Rewrite of the roll system and combat flow">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/639" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->639</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/116" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->116</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/138" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->138</label></a>
@@ -57,12 +38,17 @@ Foundry rolls:</p>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/526" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->526</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/705" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->705</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/737" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->737</label></a>
-<div class="theme-admonition theme-admonition-warning admonition_blcK alert alert--warning"><div class="admonitionHeading_JvW0"><span class="admonitionIcon_WBg9"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_SKVj"><p>Since a lot of the roll handling has changed, it is recommended to test the new system in a safe
-environment before using it in a live game.</p></div></div>
 <p>When you click on a rune, skill, spell, passion, characteristic or a weapon, it will now show a roll
 dialog, instead of displaying a chatmessage. The dialogs are built with Foundry ApplicationV2, so
 they will adjust to your light/dark mode Foundry setting, see below.</p>
-<h3 class="anchor anchorWithStickyNavbar_AmVc" id="ability-check">Ability Check<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.1#ability-check" class="hash-link" aria-label="Direct link to Ability Check" title="Direct link to Ability Check">​</a></h3>
+<p>The visual representation of these rolls in the chat are also completely rewritten, and tries to be
+more easily scannable for the eye by using visual clues for different success levels, bold text for
+what is rolled, and by adding toned down background images according to what is rolled. Another
+design intent is to keep the chat messages as small as possible to not clutter the chat. In line
+with that is the expand roll feature, which will show the modifiers used in the roll if the roll is
+clicked.</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_AmVc" id="ability-check">Ability Check<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#ability-check" class="hash-link" aria-label="Direct link to Ability Check" title="Direct link to Ability Check">​</a></h3>
 <p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/ability-check-rune-211eacf931f2b040a4b2d50682306b6d.png" width="404" height="399" class="img_iT1D"> <img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/ability-check-rune-light-34ae87c53b53feaa19048e09351a9bc2.png" width="300" height="299" class="img_iT1D"></p>
 <p>At the top it will display what ability you are rolling for (rune, skill, passion or reputation),
 and the "native" percent chance.</p>
@@ -73,7 +59,7 @@ and the "native" percent chance.</p>
 <li><strong>Meditate</strong> - a dropdown to choose any meditations in effect.</li>
 <li><strong>Other Modifier</strong> - a text field to enter any other modifiers. This is not a dropdown, so you can
 enter anything you want, both in the describing text field, and in the numeric percentage
-modification field. It will be shown in the chat message.</li>
+modification field. It will be shown in the expanded roll in the chat message.</li>
 </ul>
 <p>At the bottom you can see the target percentage that you will roll against. You can also select the
 roll mode (Public Roll, GM Private Roll, GM Roll or Self Roll). And to the right is a button to do
@@ -85,7 +71,7 @@ and if you click the "Success" line it will expand to show what modifiers were u
 and easy to see the outcome. It shows the result (Fumble / Fail / Success / Special / Critical), the
 result of the dice roll, and the target you need to roll under.</p>
 <hr>
-<h3 class="anchor anchorWithStickyNavbar_AmVc" id="characteristic-check">Characteristic Check<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.1#characteristic-check" class="hash-link" aria-label="Direct link to Characteristic Check" title="Direct link to Characteristic Check">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_AmVc" id="characteristic-check">Characteristic Check<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#characteristic-check" class="hash-link" aria-label="Direct link to Characteristic Check" title="Direct link to Characteristic Check">​</a></h3>
 <p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/characteristic-check-81009e002f93439595bad95067ee6686.png" width="402" height="437" class="img_iT1D"></p>
 <p>Similar to the ability check, but for characteristics. At the top it will show the characteristic
 name and value.</p>
@@ -103,7 +89,7 @@ modification field. It will be shown in the chat message.</li>
 when the result is expanded to show any modifiers.</p>
 <p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-characteristic-expanded-4376aa7ac0fc3b0b9f386ae9bd361bc3.png" width="400" height="148" class="img_iT1D"></p>
 <hr>
-<h3 class="anchor anchorWithStickyNavbar_AmVc" id="spirit-magic">Spirit Magic<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.1#spirit-magic" class="hash-link" aria-label="Direct link to Spirit Magic" title="Direct link to Spirit Magic">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_AmVc" id="spirit-magic">Spirit Magic<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#spirit-magic" class="hash-link" aria-label="Direct link to Spirit Magic" title="Direct link to Spirit Magic">​</a></h3>
 <p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/spirit-magic-fa4773c335a32e6f1a6a1f14924170de.png" width="403" height="479" class="img_iT1D"></p>
 <p>Similar to the ability check, but for casting Spirit Magic. At the top it will show the spell name
 and properties.</p>
@@ -123,7 +109,7 @@ modification field. It will be shown in the chat message.</li>
 when the result is expanded to show any modifiers.</p>
 <p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-spirit-magic-expanded-17ff9ec42fa8bdba8f3f4c0831b19a74.png" width="400" height="177" class="img_iT1D"></p>
 <hr>
-<h3 class="anchor anchorWithStickyNavbar_AmVc" id="rune-magic">Rune Magic<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.1#rune-magic" class="hash-link" aria-label="Direct link to Rune Magic" title="Direct link to Rune Magic">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_AmVc" id="rune-magic">Rune Magic<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#rune-magic" class="hash-link" aria-label="Direct link to Rune Magic" title="Direct link to Rune Magic">​</a></h3>
 <p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/rune-magic-ecaed4ecc7f22150a0ffec35591860a8.png" width="403" height="516" class="img_iT1D"></p>
 <p>Similar to the ability check, but for casting Rune Magic. At the top it will show the spell name and
 properties.</p>
@@ -144,8 +130,9 @@ modification field. It will be shown in the chat message.</li>
 </ul>
 <p>The bottom part is the same as the ability check above. And the chat message will look like this
 when the result is expanded to show any modifiers.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-rune-magic-expanded-9c990f14df82e82ef56ee08311142659.png" width="400" height="180" class="img_iT1D"></p>
 <hr>
-<h3 class="anchor anchorWithStickyNavbar_AmVc" id="combat--attack--defence">Combat – Attack &amp; Defence<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.1#combat--attack--defence" class="hash-link" aria-label="Direct link to Combat – Attack &amp; Defence" title="Direct link to Combat – Attack &amp; Defence">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_AmVc" id="combat--attack--defence">Combat – Attack &amp; Defence<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#combat--attack--defence" class="hash-link" aria-label="Direct link to Combat – Attack &amp; Defence" title="Direct link to Combat – Attack &amp; Defence">​</a></h3>
 <p>The way combat works has changed. Ideally you should have a token selected that is the target of the
 attack before clicking the weapon you want to attack with. It is possible to use this without
 setting a target, and instead let anyone defend, but you cannot aim an attack unless you have a
@@ -158,7 +145,9 @@ the "native" percent chance.</p>
 <li><strong>Attacking Actor</strong> - the token actor that is doing the attack. If you own more than one actor
 (token) you can change the actor via this dropdown.</li>
 <li><strong>Defending Actor</strong> - This will display the name of the targeted token, or say "No target
-selected" if none is selected.</li>
+selected" if none is selected. You can only have one token targeted, if you have selected more
+than one you will get a notification about that, and one of them (whatever happens to be the
+"first") will be used as the target.</li>
 <li><strong>Attacking Weapon</strong> - the weapon that is used to attack. The dropdown will contain the weapons
 the attacking actor has equipped.</li>
 <li><strong>Usage</strong> - this decides how the weapon will be used, for example one-handed or two-handed. The
@@ -168,8 +157,8 @@ if you are doing a charge. It is preselected to the attacking actor, but can be 
 other token on the current scene that you are the owner of that is not a humanoid.</li>
 <li><strong>Extra Damage</strong> - You can add either a number or a roll formula here. It can for example be used
 to get the extra damage from a bladesharp spell to be part of the damage calculations.</li>
-<li><strong>Hit Location Formula</strong> - The dropdown contains 3 options; the normal 1d20, 1d10 &amp; 1d10+10 to
-allow attacking from below or above. If "Aimed Blow" (below) is selected, this will be disabled
+<li><strong>Hit Location Formula</strong> - The dropdown contains 3 options; the normal <code>1d20</code>, <code>1d10</code> &amp; <code>1d10+10</code>
+to allow attacking from below or above. If "Aimed Blow" (below) is selected, this will be disabled
 since you will hit the hit location chosen there.</li>
 </ul>
 <p><strong>Below the "Modifiers" heading there are different modifiers you can apply</strong></p>
@@ -229,14 +218,17 @@ multiple attacks.</li>
 enter anything you want, both in the describing text field, and in the numeric percentage
 modification field. It will be shown in the chat message.</li>
 <li><strong>Master Opponent Penalty</strong> - if the attacker has a chance above 100% you can get a penalty to the
-defence here. If you have over 100% on the defence the attacking roll can also get a penalty.</li>
+defence here. If you have over 100% on the defence, the attacking roll will get a penalty.</li>
 </ul>
 <p>At the bottom you can see the target percentage that you will roll against, as well as a button to
-do the selected defence. Pressing that button will update the chatmessage with more info like this:</p>
+do the selected defence.</p>
+<p>Pressing that button will roll the attack and defence rolls, and update the previous chat message
+with info about the rolls, and the outcome from the attack/parry, or the attack/dodge table like
+this:</p>
 <p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-defended-fafb31019d3d91b9f8f737318028a495.png" width="400" height="425" class="img_iT1D"></p>
-<p>The rolls can be expanded to reveal the modifiers applied. Depending on the outcome you will see a
-different things, but in this example clicking on "Roll Damage &amp; Hit Location" will update the
-chatmessage with those rolls as well:</p>
+<p>The rolls can be expanded to reveal the modifiers applied. Depending on the outcome you will see
+different things, but in this example clicking on the button "Roll Damage &amp; Hit Location" will do
+these rolls, and update the chatmessage with the outcome of those as well:</p>
 <p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-damage-rolled-expanded-800285a19e8ce589e592cdaf70e68761.png" width="400" height="713" class="img_iT1D"></p>
 <p>Again exactly what will be show will depend on the outcome, but in this example the damage roll was
 clicked to show the details of the damage roll, and you can apply the damage to the parrying weapon,
@@ -253,6 +245,25 @@ nothing went through.</p>
             <category>rqg</category>
             <category>rqg-4</category>
             <category>rqg-4-0</category>
+        </item>
+        <item>
+            <title><![CDATA[Wiki 1.3.5]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.5</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.5</guid>
+            <pubDate>Sun, 25 May 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supported Foundry Versions]]></description>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.5/en-module.json" alt="Supported Foundry Versions" class="img_iT1D">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.5/wiki-en-rqg.zip" alt="Download Count" class="img_iT1D"></p>
+<h2 class="anchor anchorWithStickyNavbar_AmVc" id="bug-fix">Bug Fix<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.5#bug-fix" class="hash-link" aria-label="Direct link to Bug Fix" title="Direct link to Bug Fix">​</a></h2>
+<ul>
+<li>Skill Typo: Speak (Darktongue) misspelled Darktoungue<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/24" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->24</label></a>
+</li>
+</ul>]]></content:encoded>
+            <category>wiki</category>
+            <category>foundry-release</category>
+            <category>wiki-1</category>
+            <category>wiki-1-3</category>
         </item>
         <item>
             <title><![CDATA[RQG 3.4.9]]></title>
