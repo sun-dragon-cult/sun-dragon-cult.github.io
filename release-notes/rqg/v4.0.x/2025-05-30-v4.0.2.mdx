@@ -1,6 +1,6 @@
 ---
-slug: rqg-v4.0.1
-title: RQG 4.0.1
+slug: rqg-v4.0.2
+title: RQG 4.0.2
 tags:
   - rqg
   - rqg-4
@@ -10,8 +10,8 @@ tags:
 ![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v4,0.0/system.json)
 ![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v4.0.0/rqg.zip)
 
-This long overdue release completely rewrites the handling of rolls. It introduces multiple new
-Foundry rolls:
+This long overdue release completely rewrites the handling of rolls. Under the hood it introduces
+multiple new Foundry rolls:
 
 - AbilityRoll
 - CharacteristicRoll
@@ -35,16 +35,18 @@ In addition, it has a completely new take on the combat flow with attack / defen
 <GithubIssue issue="705" repo="fvtt-system-rqg" />
 <GithubIssue issue="737" repo="fvtt-system-rqg" />
 
-:::warning
-
-Since a lot of the roll handling has changed, it is recommended to test the new system in a safe
-environment before using it in a live game.
-
-:::
-
 When you click on a rune, skill, spell, passion, characteristic or a weapon, it will now show a roll
 dialog, instead of displaying a chatmessage. The dialogs are built with Foundry ApplicationV2, so
 they will adjust to your light/dark mode Foundry setting, see below.
+
+The visual representation of these rolls in the chat are also completely rewritten, and tries to be
+more easily scannable for the eye by using visual clues for different success levels, bold text for
+what is rolled, and by adding toned down background images according to what is rolled. Another
+design intent is to keep the chat messages as small as possible to not clutter the chat. In line
+with that is the expand roll feature, which will show the modifiers used in the roll if the roll is
+clicked.
+
+---
 
 ### Ability Check
 
@@ -60,7 +62,7 @@ In the middle you can see
 - **Meditate** - a dropdown to choose any meditations in effect.
 - **Other Modifier** - a text field to enter any other modifiers. This is not a dropdown, so you can
   enter anything you want, both in the describing text field, and in the numeric percentage
-  modification field. It will be shown in the chat message.
+  modification field. It will be shown in the expanded roll in the chat message.
 
 At the bottom you can see the target percentage that you will roll against. You can also select the
 roll mode (Public Roll, GM Private Roll, GM Roll or Self Roll). And to the right is a button to do
@@ -152,6 +154,8 @@ In the middle you can see
 The bottom part is the same as the ability check above. And the chat message will look like this
 when the result is expanded to show any modifiers.
 
+![](chat-rune-magic-expanded.png)
+
 ---
 
 ### Combat – Attack & Defence
@@ -171,7 +175,9 @@ In the middle you can see
 - **Attacking Actor** - the token actor that is doing the attack. If you own more than one actor
   (token) you can change the actor via this dropdown.
 - **Defending Actor** - This will display the name of the targeted token, or say "No target
-  selected" if none is selected.
+  selected" if none is selected. You can only have one token targeted, if you have selected more
+  than one you will get a notification about that, and one of them (whatever happens to be the
+  "first") will be used as the target.
 - **Attacking Weapon** - the weapon that is used to attack. The dropdown will contain the weapons
   the attacking actor has equipped.
 - **Usage** - this decides how the weapon will be used, for example one-handed or two-handed. The
@@ -181,8 +187,8 @@ In the middle you can see
   other token on the current scene that you are the owner of that is not a humanoid.
 - **Extra Damage** - You can add either a number or a roll formula here. It can for example be used
   to get the extra damage from a bladesharp spell to be part of the damage calculations.
-- **Hit Location Formula** - The dropdown contains 3 options; the normal 1d20, 1d10 & 1d10+10 to
-  allow attacking from below or above. If "Aimed Blow" (below) is selected, this will be disabled
+- **Hit Location Formula** - The dropdown contains 3 options; the normal `1d20`, `1d10` & `1d10+10`
+  to allow attacking from below or above. If "Aimed Blow" (below) is selected, this will be disabled
   since you will hit the hit location chosen there.
 
 **Below the "Modifiers" heading there are different modifiers you can apply**
@@ -238,16 +244,20 @@ In the middle you can see
   enter anything you want, both in the describing text field, and in the numeric percentage
   modification field. It will be shown in the chat message.
 - **Master Opponent Penalty** - if the attacker has a chance above 100% you can get a penalty to the
-  defence here. If you have over 100% on the defence the attacking roll can also get a penalty.
+  defence here. If you have over 100% on the defence, the attacking roll will get a penalty.
 
 At the bottom you can see the target percentage that you will roll against, as well as a button to
-do the selected defence. Pressing that button will update the chatmessage with more info like this:
+do the selected defence.
+
+Pressing that button will roll the attack and defence rolls, and update the previous chat message
+with info about the rolls, and the outcome from the attack/parry, or the attack/dodge table like
+this:
 
 ![](chat-defended.png)
 
-The rolls can be expanded to reveal the modifiers applied. Depending on the outcome you will see a
-different things, but in this example clicking on "Roll Damage & Hit Location" will update the
-chatmessage with those rolls as well:
+The rolls can be expanded to reveal the modifiers applied. Depending on the outcome you will see
+different things, but in this example clicking on the button "Roll Damage & Hit Location" will do
+these rolls, and update the chatmessage with the outcome of those as well:
 
 ![](chat-damage-rolled-expanded.png)
 
