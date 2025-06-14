@@ -2,11 +2,44 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sun-dragon-cult.github.io/release-notes</id>
     <title>RuneQuest Glorantha for Foundry VTT Blog</title>
-    <updated>2025-05-30T00:00:00.000Z</updated>
+    <updated>2025-06-14T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sun-dragon-cult.github.io/release-notes"/>
     <subtitle>RuneQuest Glorantha for Foundry VTT Blog</subtitle>
     <icon>https://sun-dragon-cult.github.io/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[RQG 4.0.3]]></title>
+        <id>https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.3</id>
+        <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.3"/>
+        <updated>2025-06-14T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v4,0.3/system.json" alt="Supported Foundry Versions" class="img_ew4o">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v4.0.3/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+<p>The previous release inadvertently removed the possibility to do combat without having tokens on a
+scene. This release fixes that, and also adds a few new features and improvements.</p>
+<h2 class="anchor anchorWithStickyNavbar_D40C" id="allow-actors-to-combat-even-without-tokens">Allow actors to combat even without tokens<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.3#allow-actors-to-combat-even-without-tokens" class="hash-link" aria-label="Direct link to Allow actors to combat even without tokens" title="Direct link to Allow actors to combat even without tokens">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/760" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->760</label></a>
+<p>In version 4.0.2 you could only use tokens on a scene to do combat. This release adds both tokens
+and actors to the attacker and defender dropdowns in the combat dialogs.</p>
+<p>Since adding this feature will increase the number of items in those dropdowns there is now a new
+system setting that lets you opt out of seeing actors.</p>
+<p>An added feature is that the dropdowns will specify if the dropdown item is a token or an actor. And
+if you are a GM you will also see a 🔗 icon next to the actors that are linked.
+<img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/attack-attacker-dropdown-eb9cec50e7e8ff29a2dac8aedf369dd1.png" width="365" height="357" class="img_ew4o"></p>
+<h2 class="anchor anchorWithStickyNavbar_D40C" id="make-it-possible-to-roll-weapon-damage-directly">Make it possible to roll weapon damage directly<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.3#make-it-possible-to-roll-weapon-damage-directly" class="hash-link" aria-label="Direct link to Make it possible to roll weapon damage directly" title="Direct link to Make it possible to roll weapon damage directly">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/759" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->759</label></a>
+<p>It is now possible to roll the damage of a weapon directly from the weapon line in the combat tab.
+This will be a completely manual roll without any automation. It will also be a "normal" roll so no
+support for special successes or criticals. But any damage bonus will be added and rolled.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-direct-damage-roll-732ed1f35b97219eaf42430a49c77abb.png" width="677" height="152" class="img_ew4o"></p>
+<h2 class="anchor anchorWithStickyNavbar_D40C" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.3#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
+<ul>
+<li>There were some debug logs left by mistake in the previous release, this release removes those.</li>
+</ul>]]></content>
+        <category label="rqg" term="rqg"/>
+        <category label="rqg-4" term="rqg-4"/>
+        <category label="rqg-4-0" term="rqg-4-0"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RQG 4.0.2]]></title>
         <id>https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2</id>
@@ -829,65 +862,6 @@ magic tab. Just click on the focus column to edit.</p>
 </li>
 <li>column <code>Focus</code> on spirit magic tab should be editable</li>
 <li>add tooltip to show rune name &amp; chance on character runes in header</li>
-</ul>]]></content>
-        <category label="rqg" term="rqg"/>
-        <category label="rqg-3" term="rqg-3"/>
-        <category label="rqg-3-2" term="rqg-3-2"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RQG 3.2.0]]></title>
-        <id>https://sun-dragon-cult.github.io/release-notes/rqg-v3.2.0</id>
-        <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.2.0"/>
-        <updated>2023-10-21T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
-        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.2.0/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.2.0/rqg.zip" alt="Download Count" class="img_ew4o"></p>
-<div class="theme-admonition theme-admonition-warning admonition_caGu alert alert--warning"><div class="admonitionHeading_No7B"><span class="admonitionIcon_KBCd"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_Dd60"><p>Make sure to update the wiki module to at least version 1.0.0 since this system version includes
-changes to document types that needs to be reflected in these documents. Please look at the
-<a href="https://sun-dragon-cult.github.io/rqg-system/getting-started">Installing</a> page for details about the wiki module.</p></div></div>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="make-damage-bonus-part-of-weapon-damage-string">Make damage bonus part of weapon damage string<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.2.0#make-damage-bonus-part-of-weapon-damage-string" class="hash-link" aria-label="Direct link to Make damage bonus part of weapon damage string" title="Direct link to Make damage bonus part of weapon damage string">​</a></h2>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/106" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->106</label></a>
-<p>In previous versions the system tried to figure out if full, half, or no damage bonus should be
-added to the weapon damage by looking at if it's a melee, thrown or missile weapon. This worked for
-the majority of weapons, but could not capture exceptions like sling that is a projectile weapon,
-but anyway should get half damage bonus.</p>
-<p>Starting with this version you need to add <code>+db</code> or <code>+db/2</code> to the damage string of the weapon if
-you want it to include a damage bonus. The damage listed in the Weapons &amp; Equipment books are
-expressed in the same way (except they write halv damage bonus like <code>+½db</code>).</p>
-<p>There is a migration included that should update all existing damage strings.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/weapon-db-4e93d322368f0cd61f13811a989a60d7.png" width="893" height="775" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="make-runes-translatable-by-using-rqid-for-linking">Make runes translatable by using rqid for linking<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.2.0#make-runes-translatable-by-using-rqid-for-linking" class="hash-link" aria-label="Direct link to Make runes translatable by using rqid for linking" title="Direct link to Make runes translatable by using rqid for linking">​</a></h2>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/270" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->270</label></a>
-<p>Previous versions used the name of rune items for linking to them, with this change the rqid of the
-runes are used instead. This should make it possible to translate the name of the runes.</p>
-<p>The links that were changed was; opposing &amp; minor runes links in the rune item, cult item runes,
-rune magic item runes, and skill runes (used for sorcery spells until a dedicated sorcery spell item
-type exists). With this change the system setting for the name of the magic rune was removed and the
-rqid of the magic rune is now a CONFIG instead (set to <code>i.rune.magic-condition</code> by default).</p>
-<p>There are migrations for all the item changes needed for this.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="improvements-to-the-rqid-editor">Improvements to the rqid editor<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.2.0#improvements-to-the-rqid-editor" class="hash-link" aria-label="Direct link to Improvements to the rqid editor" title="Direct link to Improvements to the rqid editor">​</a></h2>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/457" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->457</label></a>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/642" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->642</label></a>
-<p>The Rqid editor field for the id now autofills the part of the id that fully depends on the document
-type. It also handles setting language and priority better when creating a new rqid. You will get
-default values for that when you set a rqid.</p>
-<p>The info display, as well as the list of other items with the same rqid now has an improved display
-of what folder the document is located in.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/rqid-editor-3dc0f79b29715acc5c6f5f233b0d8a4d.png" width="598" height="472" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="hide-opposing--minor-rune-settings-depending-on-runetype-on-rune-item-sheet">Hide Opposing / Minor rune settings depending on runeType on Rune Item Sheet<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.2.0#hide-opposing--minor-rune-settings-depending-on-runetype-on-rune-item-sheet" class="hash-link" aria-label="Direct link to Hide Opposing / Minor rune settings depending on runeType on Rune Item Sheet" title="Direct link to Hide Opposing / Minor rune settings depending on runeType on Rune Item Sheet">​</a></h2>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/269" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->269</label></a>
-<p>The settings for opposing and minor runes in the rune item sheet are now only shown when they are
-relevant according to the type of the rune.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="bug-fixes">Bug fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.2.0#bug-fixes" class="hash-link" aria-label="Direct link to Bug fixes" title="Direct link to Bug fixes">​</a></h2>
-<ul>
-<li>Name of special damage in chat damage roll is impale even for slash damage<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/629" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->629</label></a>
-</li>
-<li>Actor without POW / MP is shown as unconscious and also show MP input field<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/631" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->631</label></a>
-</li>
-<li>Null exception if hit location lacks rqid flag "id" when dragged to actorSheet</li>
-<li>Combat panel SR button is not right aligned for natural weapons</li>
 </ul>]]></content>
         <category label="rqg" term="rqg"/>
         <category label="rqg-3" term="rqg-3"/>
