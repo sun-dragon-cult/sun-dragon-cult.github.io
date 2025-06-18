@@ -4,28 +4,70 @@
         <title>RuneQuest Glorantha for Foundry VTT Blog</title>
         <link>https://sun-dragon-cult.github.io/release-notes</link>
         <description>RuneQuest Glorantha for Foundry VTT Blog</description>
-        <lastBuildDate>Tue, 17 Jun 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 18 Jun 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[RQG 5.0.0]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v5.0.0</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v5.0.0</guid>
+            <pubDate>Wed, 18 Jun 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supported Foundry Versions]]></description>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v5.0.0/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v5.0.0/rqg.zip" alt="Download Count" class="img_JaH4"></p>
+<div class="theme-admonition theme-admonition-warning admonition_xHNz alert alert--warning"><div class="admonitionHeading_sHd0"><span class="admonitionIcon_CRsm"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_obza"><p>This release drops support for Foundry 12 and introduces support for Foundry 13, so you need to
+update Foundry to v13 before you can update this system to v5.0.0</p></div></div>
+<p>There are a lot of changes under the hood to follow the Foundry v13 way of doing things. The amount
+of deprecation warnings are greatly reduced, but there are some still left since they require larger
+rewrites that will come later. They should not impact the functionality though.</p>
+<p>There are not a lot of new features in this release, but the styling in various places have been
+updated to look more like Foundry v13.</p>
+<p>Also in the previous versions you did not get strike rank buttons for unlinked actors, this release
+will show those buttons for unlinked actors as well. See
+<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.1.0#add-sr-buttons-to-actor-sheet" target="_blank" rel="noopener noreferrer">SR Buttons</a>
+for more info about how they work.</p>
+<p>Foundry v13 have a system where you can see the last chat even if you have the chat collapsed. This
+RQG version introduces a setting so you can decide if the chat should be expanded when you roll
+something. That should make the feeling more similar to how it was before.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/setting-activate-chat-b3c8c2161c4a2dd71eccbb3398e8be59.png" width="861" height="223" class="img_JaH4"></p>
+<p>There are now links to the Release Notes (this), Documentation and Bug Reports (Github issues) under
+the settings sidebar for easy reference.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/setting-links-e5b6b276259c0051046a4863859e4a98.png" width="332" height="254" class="img_JaH4"></p>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="add-copyable-rqid-journal-link-to-rqid-editor">Add copyable RQID journal link to RQID editor<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v5.0.0#add-copyable-rqid-journal-link-to-rqid-editor" class="hash-link" aria-label="Direct link to Add copyable RQID journal link to RQID editor" title="Direct link to Add copyable RQID journal link to RQID editor">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/765" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->765</label></a>
+<p>A small new feature in this version is that you can now get a premade Rqid link string that you can
+paste into your journals if you want a link to a "type" of document. This is not a new feature, but
+before you had to type the link manually. Now you get a premade string that you can use from the
+Rqid editor that you can open via the <img class="lightInvert_V1ax" src="https://sun-dragon-cult.github.io/img/rqid.svg" width="18"> icon in the
+document titlebar. The styling of the dialog was also slightly improved.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/rqid-editor-journal-link-0d4d188b83d92333d9a36fa22982d66f.png" width="587" height="395" class="img_JaH4"></p>
+<p>After pasting that string into the journal it will look like this. You can tell if the link is a
+default Foundry UUID link or a RQID link by the surrounding border. RQID links have a dashed,
+rounded border where the UUID links have a thin solid border without rounding instead.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/journal-rqid-links-f029b6742218212f10cbf54bdcc89e17.png" width="904" height="402" class="img_JaH4"></p>]]></content:encoded>
+            <category>rqg</category>
+            <category>rqg-5</category>
+            <category>rqg-5-0</category>
+        </item>
         <item>
             <title><![CDATA[RQG 4.0.4]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.4</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.4</guid>
             <pubDate>Tue, 17 Jun 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v4.0.4/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v4.0.4/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v4.0.4/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v4.0.4/rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This release contains a few bug fixes and improvements, the main feature is that it is now possible
 to do an ability roll directly from the combat tab weapon chance.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="allow-simple-weapon-skill-ability-check">Allow simple weapon skill ability check<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.4#allow-simple-weapon-skill-ability-check" class="hash-link" aria-label="Direct link to Allow simple weapon skill ability check" title="Direct link to Allow simple weapon skill ability check">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="allow-simple-weapon-skill-ability-check">Allow simple weapon skill ability check<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.4#allow-simple-weapon-skill-ability-check" class="hash-link" aria-label="Direct link to Allow simple weapon skill ability check" title="Direct link to Allow simple weapon skill ability check">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/768" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->768</label></a>
 <p>This allows you to do a simple ability check for the weapons skill from the combat tab without
 initiating a full combat flow. A single click on the percentage chance will open the ability roll
 dialog for the skill row clicked. Double-clicking will roll directly to chat without any dialog in
 the same way any other ability roll works.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-direct-ability-roll-f25c970eefb9b85bbcf86389a275f9f9.png" width="766" height="509" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.4#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-direct-ability-roll-f25c970eefb9b85bbcf86389a275f9f9.png" width="766" height="509" class="img_JaH4"></p>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.4#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
 <ul>
 <li>Slashing Damage incapacitation was incorrectly being applied to all cut(ting) attack<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/764" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->764</label></a>
@@ -41,11 +83,11 @@ the same way any other ability roll works.</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.3</guid>
             <pubDate>Sat, 14 Jun 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v4.0.3/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v4.0.3/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v4.0.3/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v4.0.3/rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>The previous release inadvertently removed the possibility to do combat without having tokens on a
 scene. This release fixes that, and also adds a few new features and improvements.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="allow-actors-to-combat-even-without-tokens">Allow actors to combat even without tokens<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.3#allow-actors-to-combat-even-without-tokens" class="hash-link" aria-label="Direct link to Allow actors to combat even without tokens" title="Direct link to Allow actors to combat even without tokens">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="allow-actors-to-combat-even-without-tokens">Allow actors to combat even without tokens<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.3#allow-actors-to-combat-even-without-tokens" class="hash-link" aria-label="Direct link to Allow actors to combat even without tokens" title="Direct link to Allow actors to combat even without tokens">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/760" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->760</label></a>
 <p>In version 4.0.2 you could only use tokens on a scene to do combat. This release adds both tokens
 and actors to the attacker and defender dropdowns in the combat dialogs.</p>
@@ -53,14 +95,14 @@ and actors to the attacker and defender dropdowns in the combat dialogs.</p>
 system setting that lets you opt out of seeing actors.</p>
 <p>An added feature is that the dropdowns will specify if the dropdown item is a token or an actor. And
 if you are a GM you will also see a 🔗 icon next to the actors that are linked.
-<img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/attack-attacker-dropdown-eb9cec50e7e8ff29a2dac8aedf369dd1.png" width="365" height="357" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="make-it-possible-to-roll-weapon-damage-directly">Make it possible to roll weapon damage directly<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.3#make-it-possible-to-roll-weapon-damage-directly" class="hash-link" aria-label="Direct link to Make it possible to roll weapon damage directly" title="Direct link to Make it possible to roll weapon damage directly">​</a></h2>
+<img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/attack-attacker-dropdown-eb9cec50e7e8ff29a2dac8aedf369dd1.png" width="365" height="357" class="img_JaH4"></p>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="make-it-possible-to-roll-weapon-damage-directly">Make it possible to roll weapon damage directly<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.3#make-it-possible-to-roll-weapon-damage-directly" class="hash-link" aria-label="Direct link to Make it possible to roll weapon damage directly" title="Direct link to Make it possible to roll weapon damage directly">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/759" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->759</label></a>
 <p>It is now possible to roll the damage of a weapon directly from the weapon line in the combat tab.
 This will be a completely manual roll without any automation. It will also be a "normal" roll so no
 support for special successes or criticals. But any damage bonus will be added and rolled.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-direct-damage-roll-732ed1f35b97219eaf42430a49c77abb.png" width="677" height="152" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.3#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-direct-damage-roll-732ed1f35b97219eaf42430a49c77abb.png" width="677" height="152" class="img_JaH4"></p>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.3#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
 <ul>
 <li>There were some debug logs left by mistake in the previous release, this release removes those.</li>
 </ul>]]></content:encoded>
@@ -74,8 +116,8 @@ support for special successes or criticals. But any damage bonus will be added a
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2</guid>
             <pubDate>Fri, 30 May 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v4.0.2/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v4.0.2/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v4.0.2/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v4.0.2/rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This long overdue release completely rewrites the handling of rolls. Under the hood it introduces
 multiple new Foundry rolls:</p>
 <ul>
@@ -87,7 +129,7 @@ multiple new Foundry rolls:</p>
 <li>SpiritMagicRoll</li>
 </ul>
 <p>In addition, it has a completely new take on the combat flow with attack / defence rolls.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="rewrite-of-the-roll-system-and-combat-flow">Rewrite of the roll system and combat flow<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#rewrite-of-the-roll-system-and-combat-flow" class="hash-link" aria-label="Direct link to Rewrite of the roll system and combat flow" title="Direct link to Rewrite of the roll system and combat flow">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="rewrite-of-the-roll-system-and-combat-flow">Rewrite of the roll system and combat flow<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#rewrite-of-the-roll-system-and-combat-flow" class="hash-link" aria-label="Direct link to Rewrite of the roll system and combat flow" title="Direct link to Rewrite of the roll system and combat flow">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/639" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->639</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/116" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->116</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/138" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->138</label></a>
@@ -108,8 +150,8 @@ design intent is to keep the chat messages as small as possible to not clutter t
 with that is the expand roll feature, which will show the modifiers used in the roll if the roll is
 clicked.</p>
 <hr>
-<h3 class="anchor anchorWithStickyNavbar_D40C" id="ability-check">Ability Check<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#ability-check" class="hash-link" aria-label="Direct link to Ability Check" title="Direct link to Ability Check">​</a></h3>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/ability-check-rune-211eacf931f2b040a4b2d50682306b6d.png" width="404" height="399" class="img_ew4o"> <img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/ability-check-rune-light-34ae87c53b53feaa19048e09351a9bc2.png" width="300" height="299" class="img_ew4o"></p>
+<h3 class="anchor anchorWithStickyNavbar_O991" id="ability-check">Ability Check<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#ability-check" class="hash-link" aria-label="Direct link to Ability Check" title="Direct link to Ability Check">​</a></h3>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/ability-check-rune-211eacf931f2b040a4b2d50682306b6d.png" width="404" height="399" class="img_JaH4"> <img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/ability-check-rune-light-34ae87c53b53feaa19048e09351a9bc2.png" width="300" height="299" class="img_JaH4"></p>
 <p>At the top it will display what ability you are rolling for (rune, skill, passion or reputation),
 and the "native" percent chance.</p>
 <p>In the middle you can see</p>
@@ -124,15 +166,15 @@ modification field. It will be shown in the expanded roll in the chat message.</
 <p>At the bottom you can see the target percentage that you will roll against. You can also select the
 roll mode (Public Roll, GM Private Roll, GM Roll or Self Roll). And to the right is a button to do
 the roll and open a chat message to show the result.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-rune-9f669b9272763d24df089814e8235ce1.png" width="290" height="88" class="img_ew4o"> <img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-rune-expanded-618a7edbc0db72a2139e91c5617a0088.png" width="281" height="111" class="img_ew4o"></p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-rune-9f669b9272763d24df089814e8235ce1.png" width="290" height="88" class="img_JaH4"> <img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-rune-expanded-618a7edbc0db72a2139e91c5617a0088.png" width="281" height="111" class="img_JaH4"></p>
 <p>The chat message will show what was rolled, what token that did the roll, the result of the roll,
 and if you click the "Success" line it will expand to show what modifiers were used.</p>
 <p>The "Success" line will be differently styled depending on the result of the roll to make it quick
 and easy to see the outcome. It shows the result (Fumble / Fail / Success / Special / Critical), the
 result of the dice roll, and the target you need to roll under.</p>
 <hr>
-<h3 class="anchor anchorWithStickyNavbar_D40C" id="characteristic-check">Characteristic Check<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#characteristic-check" class="hash-link" aria-label="Direct link to Characteristic Check" title="Direct link to Characteristic Check">​</a></h3>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/characteristic-check-81009e002f93439595bad95067ee6686.png" width="402" height="437" class="img_ew4o"></p>
+<h3 class="anchor anchorWithStickyNavbar_O991" id="characteristic-check">Characteristic Check<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#characteristic-check" class="hash-link" aria-label="Direct link to Characteristic Check" title="Direct link to Characteristic Check">​</a></h3>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/characteristic-check-81009e002f93439595bad95067ee6686.png" width="402" height="437" class="img_JaH4"></p>
 <p>Similar to the ability check, but for characteristics. At the top it will show the characteristic
 name and value.</p>
 <p>In the middle you can see</p>
@@ -147,10 +189,10 @@ modification field. It will be shown in the chat message.</li>
 </ul>
 <p>The bottom part is the same as the ability check above. And the chat message will look like this
 when the result is expanded to show any modifiers.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-characteristic-expanded-4376aa7ac0fc3b0b9f386ae9bd361bc3.png" width="400" height="148" class="img_ew4o"></p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-characteristic-expanded-4376aa7ac0fc3b0b9f386ae9bd361bc3.png" width="400" height="148" class="img_JaH4"></p>
 <hr>
-<h3 class="anchor anchorWithStickyNavbar_D40C" id="spirit-magic">Spirit Magic<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#spirit-magic" class="hash-link" aria-label="Direct link to Spirit Magic" title="Direct link to Spirit Magic">​</a></h3>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/spirit-magic-fa4773c335a32e6f1a6a1f14924170de.png" width="403" height="479" class="img_ew4o"></p>
+<h3 class="anchor anchorWithStickyNavbar_O991" id="spirit-magic">Spirit Magic<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#spirit-magic" class="hash-link" aria-label="Direct link to Spirit Magic" title="Direct link to Spirit Magic">​</a></h3>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/spirit-magic-fa4773c335a32e6f1a6a1f14924170de.png" width="403" height="479" class="img_JaH4"></p>
 <p>Similar to the ability check, but for casting Spirit Magic. At the top it will show the spell name
 and properties.</p>
 <p>In the middle you can see</p>
@@ -167,10 +209,10 @@ modification field. It will be shown in the chat message.</li>
 </ul>
 <p>The bottom part is the same as the ability check above. And the chat message will look like this
 when the result is expanded to show any modifiers.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-spirit-magic-expanded-17ff9ec42fa8bdba8f3f4c0831b19a74.png" width="400" height="177" class="img_ew4o"></p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-spirit-magic-expanded-17ff9ec42fa8bdba8f3f4c0831b19a74.png" width="400" height="177" class="img_JaH4"></p>
 <hr>
-<h3 class="anchor anchorWithStickyNavbar_D40C" id="rune-magic">Rune Magic<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#rune-magic" class="hash-link" aria-label="Direct link to Rune Magic" title="Direct link to Rune Magic">​</a></h3>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/rune-magic-ecaed4ecc7f22150a0ffec35591860a8.png" width="403" height="516" class="img_ew4o"></p>
+<h3 class="anchor anchorWithStickyNavbar_O991" id="rune-magic">Rune Magic<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#rune-magic" class="hash-link" aria-label="Direct link to Rune Magic" title="Direct link to Rune Magic">​</a></h3>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/rune-magic-ecaed4ecc7f22150a0ffec35591860a8.png" width="403" height="516" class="img_JaH4"></p>
 <p>Similar to the ability check, but for casting Rune Magic. At the top it will show the spell name and
 properties.</p>
 <p>In the middle you can see</p>
@@ -190,14 +232,14 @@ modification field. It will be shown in the chat message.</li>
 </ul>
 <p>The bottom part is the same as the ability check above. And the chat message will look like this
 when the result is expanded to show any modifiers.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-rune-magic-expanded-9c990f14df82e82ef56ee08311142659.png" width="400" height="180" class="img_ew4o"></p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-rune-magic-expanded-9c990f14df82e82ef56ee08311142659.png" width="400" height="180" class="img_JaH4"></p>
 <hr>
-<h3 class="anchor anchorWithStickyNavbar_D40C" id="combat--attack--defence">Combat – Attack &amp; Defence<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#combat--attack--defence" class="hash-link" aria-label="Direct link to Combat – Attack &amp; Defence" title="Direct link to Combat – Attack &amp; Defence">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_O991" id="combat--attack--defence">Combat – Attack &amp; Defence<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v4.0.2#combat--attack--defence" class="hash-link" aria-label="Direct link to Combat – Attack &amp; Defence" title="Direct link to Combat – Attack &amp; Defence">​</a></h3>
 <p>The way combat works has changed. Ideally you should have a token selected that is the target of the
 attack before clicking the weapon you want to attack with. It is possible to use this without
 setting a target, and instead let anyone defend, but you cannot aim an attack unless you have a
 target selected.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/attack-5e33aef73cc291b08356c6dd6b391d4b.png" width="400" height="837" class="img_ew4o"></p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/attack-5e33aef73cc291b08356c6dd6b391d4b.png" width="400" height="837" class="img_JaH4"></p>
 <p>Similar to the ability check, but for attacking someone. At the top it will show the skill name, and
 the "native" percent chance.</p>
 <p>In the middle you can see</p>
@@ -238,10 +280,10 @@ modification field. It will be shown in the chat message.</li>
 <p>At the bottom you can see the target percentage that you will roll against, as well as buttons with
 the attack modes you can do with the selected weapon. Clicking one of these buttons will give this
 chat message:</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-attacked-c1633c276eb47df9dfa7628c5c27a574.png" width="400" height="125" class="img_ew4o"></p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-attacked-c1633c276eb47df9dfa7628c5c27a574.png" width="400" height="125" class="img_JaH4"></p>
 <p>If there is a target selected, only users that own that target will see the defend button. Clicking
 it will open the defence dialog:</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/defend-44950e8c26c6b3a14e2b935acf76e2a3.png" width="400" height="691" class="img_ew4o"></p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/defend-44950e8c26c6b3a14e2b935acf76e2a3.png" width="400" height="691" class="img_JaH4"></p>
 <p>This is similar to the attack dialog, but for defending an attack against you. At the top it will
 show the skill name, and the "native" percent chance.</p>
 <p>In the middle you can see</p>
@@ -285,11 +327,11 @@ do the selected defence.</p>
 <p>Pressing that button will roll the attack and defence rolls, and update the previous chat message
 with info about the rolls, and the outcome from the attack/parry, or the attack/dodge table like
 this:</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-defended-fafb31019d3d91b9f8f737318028a495.png" width="400" height="425" class="img_ew4o"></p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-defended-fafb31019d3d91b9f8f737318028a495.png" width="400" height="425" class="img_JaH4"></p>
 <p>The rolls can be expanded to reveal the modifiers applied. Depending on the outcome you will see
 different things, but in this example clicking on the button "Roll Damage &amp; Hit Location" will do
 these rolls, and update the chatmessage with the outcome of those as well:</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-damage-rolled-expanded-800285a19e8ce589e592cdaf70e68761.png" width="400" height="713" class="img_ew4o"></p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-damage-rolled-expanded-800285a19e8ce589e592cdaf70e68761.png" width="400" height="713" class="img_JaH4"></p>
 <p>Again exactly what will be show will depend on the outcome, but in this example the damage roll was
 clicked to show the details of the damage roll, and you can apply the damage to the parrying weapon,
 and also apply the damage that went through the weapon to the defenders head.</p>
@@ -299,9 +341,9 @@ weapon).</p>
 should ignore armor. If the damage is stopped by the armor a ui notification will inform about that
 nothing went through.</p>
 <p>The buttons will disappear when clicked, leaving a summary of the attack in the chat.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-damage-applied-df49bcce14b8e687718fa41047cc8914.png" width="400" height="477" class="img_ew4o"></p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/chat-damage-applied-df49bcce14b8e687718fa41047cc8914.png" width="400" height="477" class="img_JaH4"></p>
 <p>Exporting the chat will also give a summary of what happened:</p>
-<div class="language-text codeBlockContainer_BHaZ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_riZu"><pre tabindex="0" class="prism-code language-text codeBlock_nrU2 thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_SKZO"><span class="token-line" style="color:#393A34"><span class="token plain">[5/14/2025, 1:13:16 PM] Uzko (Dark Troll) token</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">attacks Vasana token</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">AttackRoll: 39 / 65 = Success</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">DefenceRoll: 54 / 90 = Success</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Attacker rolls normal damage.Defender’s parrying weapon takes 1 HP damage if damage more than its current HP. Any excess damage goes to the affected hit location.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">DamageRoll: 2d8[weapon damage] + 1d6[damage bonus] = 7 + 5 = 12</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">HitLocationRoll: 19 = 19 = Head</span><br></span></code></pre></div></div>]]></content:encoded>
+<div class="language-text codeBlockContainer_k0iy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_Gxyl"><pre tabindex="0" class="prism-code language-text codeBlock_hMwm thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_KN7R"><span class="token-line" style="color:#393A34"><span class="token plain">[5/14/2025, 1:13:16 PM] Uzko (Dark Troll) token</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">attacks Vasana token</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">AttackRoll: 39 / 65 = Success</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">DefenceRoll: 54 / 90 = Success</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Attacker rolls normal damage.Defender’s parrying weapon takes 1 HP damage if damage more than its current HP. Any excess damage goes to the affected hit location.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">DamageRoll: 2d8[weapon damage] + 1d6[damage bonus] = 7 + 5 = 12</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">HitLocationRoll: 19 = 19 = Head</span><br></span></code></pre></div></div>]]></content:encoded>
             <category>rqg</category>
             <category>rqg-4</category>
             <category>rqg-4-0</category>
@@ -312,9 +354,9 @@ nothing went through.</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.5</guid>
             <pubDate>Sun, 25 May 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.5/en-module.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.5/wiki-en-rqg.zip" alt="Download Count" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="bug-fix">Bug Fix<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.5#bug-fix" class="hash-link" aria-label="Direct link to Bug Fix" title="Direct link to Bug Fix">​</a></h2>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.5/en-module.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.5/wiki-en-rqg.zip" alt="Download Count" class="img_JaH4"></p>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="bug-fix">Bug Fix<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.5#bug-fix" class="hash-link" aria-label="Direct link to Bug Fix" title="Direct link to Bug Fix">​</a></h2>
 <ul>
 <li>Skill Typo: Speak (Darktongue) misspelled Darktoungue<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/24" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->24</label></a>
@@ -331,14 +373,14 @@ nothing went through.</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.9</guid>
             <pubDate>Thu, 17 Oct 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.9/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.9/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.9/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.9/rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This is a minor release that just contains one improvement. It is now possible to type anything in
 the homeland field in the background tab. Up until now it was a dropdown with only preselected
 values, you still get the dropdown but can also choose to type freetext into the input field.</p>
 <p>There are also some behind the scenes changes of how a release is done (but that doesn't affect the
 game).</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="improvement">Improvement<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.9#improvement" class="hash-link" aria-label="Direct link to Improvement" title="Direct link to Improvement">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="improvement">Improvement<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.9#improvement" class="hash-link" aria-label="Direct link to Improvement" title="Direct link to Improvement">​</a></h2>
 <ul>
 <li>Allow free text in homeland field<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/731" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->731</label></a>
@@ -355,9 +397,9 @@ game).</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.4</guid>
             <pubDate>Wed, 25 Sep 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.4/en-module.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.4/wiki-en-rqg.zip" alt="Download Count" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="bug-fix">Bug Fix<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.4#bug-fix" class="hash-link" aria-label="Direct link to Bug Fix" title="Direct link to Bug Fix">​</a></h2>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.4/en-module.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.4/wiki-en-rqg.zip" alt="Download Count" class="img_JaH4"></p>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="bug-fix">Bug Fix<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.4#bug-fix" class="hash-link" aria-label="Direct link to Bug Fix" title="Direct link to Bug Fix">​</a></h2>
 <ul>
 <li>descriptions not showing for Manipulation skills<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/21" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->21</label></a>
@@ -374,8 +416,8 @@ game).</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.8</guid>
             <pubDate>Wed, 07 Aug 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.8/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.8/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.8/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.8/rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>If your world has a lot of compendiums, you might have got warnings about runes that can't be found,
 and that compendiums are not yet indexed while starting. This release should fix that. It also
 contains size adjustments of runes icons.</p>
@@ -385,7 +427,7 @@ system warning about
 The other warnings will be removed in the next major RQG release when Foundry 11 support will be
 dropped. In addition dependencies are updated, and the package manager is changed from the
 deprecated version of yarn to pnpm (this won't affect the game).</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="bug-fixes--improvements">Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.8#bug-fixes--improvements" class="hash-link" aria-label="Direct link to Bug Fixes &amp; Improvements" title="Direct link to Bug Fixes &amp; Improvements">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="bug-fixes--improvements">Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.8#bug-fixes--improvements" class="hash-link" aria-label="Direct link to Bug Fixes &amp; Improvements" title="Direct link to Bug Fixes &amp; Improvements">​</a></h2>
 <ul>
 <li>Warnings about compendiums not indexed etc<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/729" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->729</label></a>
@@ -405,8 +447,8 @@ deprecated version of yarn to pnpm (this won't affect the game).</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.7</guid>
             <pubDate>Sun, 21 Jul 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.7/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.7/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.7/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.7/rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This released contains a bunch of bugfixes that should remove some annoyances. When entering
 modifications for rolls in the chat, it no longer loses focus after every key press. The calculation
 of the chance to improve skills is no longer incorrectly affected by how much you carry. And other
@@ -415,8 +457,8 @@ fixes, see the linked github issues for details.</p>
 take. It look like this, and the first line will always take a lot longer than the second, since the
 second line will "benefit" from the caching done by the first. You can use this information as an
 indication if things are running slowly.</p>
-<div class="language-text codeBlockContainer_BHaZ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_riZu"><pre tabindex="0" class="prism-code language-text codeBlock_nrU2 thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_SKZO"><span class="token-line" style="color:#393A34"><span class="token plain">RQG | Caching Runes took: 106.442138671875 ms</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">RQG | Caching Hit Locations took: 0.569091796875 ms</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="bug-fixes--improvements">Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.7#bug-fixes--improvements" class="hash-link" aria-label="Direct link to Bug Fixes &amp; Improvements" title="Direct link to Bug Fixes &amp; Improvements">​</a></h2>
+<div class="language-text codeBlockContainer_k0iy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_Gxyl"><pre tabindex="0" class="prism-code language-text codeBlock_hMwm thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_KN7R"><span class="token-line" style="color:#393A34"><span class="token plain">RQG | Caching Runes took: 106.442138671875 ms</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">RQG | Caching Hit Locations took: 0.569091796875 ms</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="bug-fixes--improvements">Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.7#bug-fixes--improvements" class="hash-link" aria-label="Direct link to Bug Fixes &amp; Improvements" title="Direct link to Bug Fixes &amp; Improvements">​</a></h2>
 <ul>
 <li>Can only add one digit at a time to Modifiers box<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/716" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->716</label></a>
@@ -446,9 +488,9 @@ indication if things are running slowly.</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.3</guid>
             <pubDate>Mon, 08 Jul 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.3/en-module.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.3/wiki-en-rqg.zip" alt="Download Count" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="bug-fix">Bug Fix<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.3#bug-fix" class="hash-link" aria-label="Direct link to Bug Fix" title="Direct link to Bug Fix">​</a></h2>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.3/en-module.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.3/wiki-en-rqg.zip" alt="Download Count" class="img_JaH4"></p>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="bug-fix">Bug Fix<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.3#bug-fix" class="hash-link" aria-label="Direct link to Bug Fix" title="Direct link to Bug Fix">​</a></h2>
 <ul>
 <li>wheels are worth 20L not 10L<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/19" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->19</label></a>
@@ -465,8 +507,8 @@ indication if things are running slowly.</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.6</guid>
             <pubDate>Tue, 18 Jun 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.6/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.6/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.6/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.6/rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This released contains an updated link to the RQG Wiki Module now that it has been released.</p>]]></content:encoded>
             <category>rqg</category>
             <category>foundry-release</category>
@@ -479,10 +521,10 @@ indication if things are running slowly.</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.5</guid>
             <pubDate>Sat, 15 Jun 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.5/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.5/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.5/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.5/rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This released contains a bugfix for some translations when using Foundry v12.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="bug-fixes">Bug Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.5#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="bug-fixes">Bug Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.5#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h2>
 <ul>
 <li>some spirit magic texts are not translated in Foundry 12.<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/713" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->713</label></a>
@@ -498,8 +540,8 @@ indication if things are running slowly.</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.2</guid>
             <pubDate>Sat, 15 Jun 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.2/en-module.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.2/wiki-en-rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.2/en-module.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.2/wiki-en-rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This release only updates the license text.</p>]]></content:encoded>
             <category>wiki</category>
             <category>wiki-1</category>
@@ -511,8 +553,8 @@ indication if things are running slowly.</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.1</guid>
             <pubDate>Mon, 27 May 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.1/en-module.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.1/wiki-en-rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.1/en-module.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.1/wiki-en-rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This release only updates the compatability to include Foundry 12.</p>]]></content:encoded>
             <category>wiki</category>
             <category>wiki-1</category>
@@ -524,10 +566,10 @@ indication if things are running slowly.</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.4</guid>
             <pubDate>Sun, 26 May 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.4/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.4/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.4/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.4/rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This released contains a bugfix for the damage roll when using Foundry v12.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="bug-fixes">Bug Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.4#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="bug-fixes">Bug Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.4#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h2>
 <ul>
 <li>cannot roll damage or hit location in Version 12.<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/709" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->709</label></a>
@@ -543,10 +585,10 @@ indication if things are running slowly.</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.3</guid>
             <pubDate>Sat, 25 May 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.3/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.3/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.3/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.3/rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This released is a tiny update, with the sole purpose of making RQG work in Foundry v12.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="bug-fixes">Bug Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.3#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="bug-fixes">Bug Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.3#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes">​</a></h2>
 <ul>
 <li>Make RQG Foundry v12 compatible by handling change in <code>game.system.documentTypes</code>.<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/706" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->706</label></a>
@@ -562,11 +604,11 @@ indication if things are running slowly.</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.2</guid>
             <pubDate>Mon, 29 Jan 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.2/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.2/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.2/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.2/rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This released is a smaller update, mainly to fix the issue with mixed languages for runes and hit
 locations.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="mixed-languages-for-runes--hitlocation-dropdowns">Mixed languages for runes / hitlocation dropdowns<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.2#mixed-languages-for-runes--hitlocation-dropdowns" class="hash-link" aria-label="Direct link to Mixed languages for runes / hitlocation dropdowns" title="Direct link to Mixed languages for runes / hitlocation dropdowns">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="mixed-languages-for-runes--hitlocation-dropdowns">Mixed languages for runes / hitlocation dropdowns<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.2#mixed-languages-for-runes--hitlocation-dropdowns" class="hash-link" aria-label="Direct link to Mixed languages for runes / hitlocation dropdowns" title="Direct link to Mixed languages for runes / hitlocation dropdowns">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/689" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->689</label></a>
 <p>If you have runes or items in multiple languages in your compendiums, then you could get a mix of
 languages in the dropdowns to select those item type. This fix prioritises:</p>
@@ -576,13 +618,13 @@ languages in the dropdowns to select those item type. This fix prioritises:</p>
 <li>any other language</li>
 </ol>
 <p>and in each category the item with the highest priority wins.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="make-it-possible-to-drag-a-compendium-pack-to-an-actor">Make it possible to drag a compendium pack to an actor<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.2#make-it-possible-to-drag-a-compendium-pack-to-an-actor" class="hash-link" aria-label="Direct link to Make it possible to drag a compendium pack to an actor" title="Direct link to Make it possible to drag a compendium pack to an actor">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="make-it-possible-to-drag-a-compendium-pack-to-an-actor">Make it possible to drag a compendium pack to an actor<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.2#make-it-possible-to-drag-a-compendium-pack-to-an-actor" class="hash-link" aria-label="Direct link to Make it possible to drag a compendium pack to an actor" title="Direct link to Make it possible to drag a compendium pack to an actor">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/691" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->691</label></a>
 <p>Until now it's not been possible to drag a compendium of for example hit locations directly from the
 compendium to an actor. You would either have to drag each individual hit location or import the
 compendium to a folder in the world and drag that folder to the actor.</p>
 <p>Now it's possible to drag a compendium folder to an actor to get all items inside it.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.2#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.2#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
 <ul>
 <li>Make actorSheet getData handling of common runemagic up to 10x faster, assume common runemagic has
 rqid.<!-- -->
@@ -599,11 +641,11 @@ rqid.<!-- -->
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1</guid>
             <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.1/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.1/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.1/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.1/rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This released is a smaller update, mainly to match the wiki release
 <a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0">1.3.0</a>.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="rename-command-cult-spirit-elemental-to-command-cult-spirit">Rename "Command Cult Spirit (Elemental)" to "Command Cult spirit"<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#rename-command-cult-spirit-elemental-to-command-cult-spirit" class="hash-link" aria-label="Direct link to Rename &quot;Command Cult Spirit (Elemental)&quot; to &quot;Command Cult spirit&quot;" title="Direct link to Rename &quot;Command Cult Spirit (Elemental)&quot; to &quot;Command Cult spirit&quot;">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="rename-command-cult-spirit-elemental-to-command-cult-spirit">Rename "Command Cult Spirit (Elemental)" to "Command Cult spirit"<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#rename-command-cult-spirit-elemental-to-command-cult-spirit" class="hash-link" aria-label="Direct link to Rename &quot;Command Cult Spirit (Elemental)&quot; to &quot;Command Cult spirit&quot;" title="Direct link to Rename &quot;Command Cult Spirit (Elemental)&quot; to &quot;Command Cult spirit&quot;">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/682" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->682</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/17" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->17</label></a>
 <p>The common rune magic spell <code>Command Cult Spirit</code> was named <code>Command Cult Spirit (Elemental)</code> so
@@ -612,7 +654,7 @@ from <code>i.rune-magic.command-cult-spirit-elemental</code> along with the jour
 is now <code>je..command-cult-spirit</code>. This is a common rune magic that is added to most cults, so to not
 break any existing links there is a migration that updates these names and rqids (for English only).</p>
 <p>The wiki version <a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0">1.3.0</a> has the corresponding change.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="remove-old-migrations">Remove old migrations<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#remove-old-migrations" class="hash-link" aria-label="Direct link to Remove old migrations" title="Direct link to Remove old migrations">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="remove-old-migrations">Remove old migrations<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#remove-old-migrations" class="hash-link" aria-label="Direct link to Remove old migrations" title="Direct link to Remove old migrations">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/685" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->685</label></a>
 <p>A lot of old migrations have been removed, partly because they no longer should be necessary, and
 partly because the code in them was not going to work in Foundry v12 that deprecates a lot of old
@@ -624,7 +666,7 @@ the update will leave the weapons as they are defined.</p>
 <p>Of the system provided macros, only the assign rqid to journals macro is left.
 assign-rqid-to-hit-locations does not work after hit location setting was removed, and
 migrate-old-journal-links should not be necessary anymore.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.1#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
 <ul>
 <li>Update the wiki installation documentation link to the new documentation site:
 <a href="https://sun-dragon-cult.github.io/rqg-system/getting-started" target="_blank" rel="noopener noreferrer">Getting Started</a></li>
@@ -649,11 +691,11 @@ migrate-old-journal-links should not be necessary anymore.</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0</guid>
             <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.0/en-module.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.0/wiki-en-rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.0/en-module.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.0/wiki-en-rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This release corrects a lot of errors in the definitions and adds token images to the bestiary, as
 well as extending the bestiary with harpies, scorpion men and tusk riders.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="an-incomplete-list-of-bug-fixes--improvements">An incomplete list of Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0#an-incomplete-list-of-bug-fixes--improvements" class="hash-link" aria-label="Direct link to An incomplete list of Bug Fixes &amp; Improvements" title="Direct link to An incomplete list of Bug Fixes &amp; Improvements">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="an-incomplete-list-of-bug-fixes--improvements">An incomplete list of Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0#an-incomplete-list-of-bug-fixes--improvements" class="hash-link" aria-label="Direct link to An incomplete list of Bug Fixes &amp; Improvements" title="Direct link to An incomplete list of Bug Fixes &amp; Improvements">​</a></h2>
 <ul>
 <li>farm description link is wrong</li>
 <li>misspelling in boat description</li>
@@ -713,24 +755,24 @@ well as extending the bestiary with harpies, scorpion men and tusk riders.</p>
             <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0</guid>
             <pubDate>Thu, 07 Dec 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.0/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.0/rqg.zip" alt="Download Count" class="img_ew4o"></p>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.0/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.0/rqg.zip" alt="Download Count" class="img_JaH4"></p>
 <p>This released focuses on making the editability for players.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="edit-mode-on-actor-sheets">Edit mode on actor sheets<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#edit-mode-on-actor-sheets" class="hash-link" aria-label="Direct link to Edit mode on actor sheets" title="Direct link to Edit mode on actor sheets">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="edit-mode-on-actor-sheets">Edit mode on actor sheets<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#edit-mode-on-actor-sheets" class="hash-link" aria-label="Direct link to Edit mode on actor sheets" title="Direct link to Edit mode on actor sheets">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/639" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->639</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/663" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->663</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/667" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->667</label></a>
 <p>There are now two modes on the actor sheet, <span class="lightInvert_V1ax"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="#FFF" viewBox="0 0 640 512"><path d="M224 256a128 128 0 1 0 0-256 128 128 0 1 0 0 256m-45.7 48C79.8 304 0 383.8 0 482.3 0 498.7 13.3 512 29.7 512h293.1c-3.1-8.8-3.7-18.4-1.4-27.8l15-60.1c2.8-11.3 8.6-21.5 16.8-29.7l40.3-40.3c-32.1-31-75.7-50.1-123.9-50.1zm435.5-68.3c-15.6-15.6-40.9-15.6-56.6 0l-29.4 29.4 71 71 29.4-29.4c15.6-15.6 15.6-40.9 0-56.6zM375.9 417c-4.1 4.1-7 9.2-8.4 14.9l-15 60.1c-1.4 5.5.2 11.2 4.2 15.2s9.7 5.6 15.2 4.2l60.1-15c5.6-1.4 10.8-4.3 14.9-8.4l129.2-129.3-71-71z"></path></svg></span> <strong>Edit Mode</strong>
 and <span class="lightInvert_V1ax"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="#FFF" viewBox="0 0 640 512"><path d="M74.6 373.2c41.7 36.1 108 82.5 166.1 73.7 6.1-.9 12.1-2.5 18-4.5-9.2-12.3-17.3-24.4-24.2-35.4-21.9-35-28.8-75.2-25.9-113.6-20.6 4.1-39.2 13-54.7 25.4-6.5 5.2-16.3 1.3-14.8-7 6.4-33.5 33-60.9 68.2-66.3 2.6-.4 5.3-.7 7.9-.8l19.4-131.3c2-13.8 8-32.7 25-45.9 18.6-14.3 50.9-30.5 103.6-35.3l-2.4-2.1c-20.2-15.6-72.4-41.6-185.1-24.5S20.5 63 5.7 83.9C0 91.9-.8 102 .6 111.8l24.2 164.3c5.5 37.3 21.5 72.6 49.8 97.2zm87.7-219.6c4.4-3.1 10.8-2 11.8 3.3.1.5.2 1.1.3 1.6 3.2 21.8-11.6 42-33.1 45.3S99.8 192 96.6 170.3c-.1-.5-.1-1.1-.2-1.6-.6-5.4 5.2-8.4 10.3-6.7 9 3 18.8 3.9 28.7 2.4s19.1-5.3 26.8-10.8zM261.6 390c29.4 46.9 79.5 110.9 137.6 119.7s124.5-37.5 166.1-73.7c28.3-24.5 44.3-59.8 49.8-97.2l24.2-164.3c1.4-9.8.6-19.9-5.1-27.9-14.8-20.9-57.3-61.2-170-78.3s-164.8 8.9-185 24.5c-7.8 6-11.5 15.4-12.9 25.2l-24.2 164.3c-5.5 37.3-.4 75.8 19.6 107.7zm142.9-154.7c-7.7-5.5-16.8-9.3-26.8-10.8s-19.8-.6-28.7 2.4c-5.1 1.7-10.9-1.3-10.3-6.7.1-.5.1-1.1.2-1.6 3.2-21.8 23.2-36.8 44.7-33.5s36.3 23.5 33.1 45.3c-.1.5-.2 1.1-.3 1.6-1 5.3-7.4 6.4-11.8 3.3zm136.2 15.5c-1 5.3-7.4 6.4-11.8 3.3-7.7-5.5-16.8-9.3-26.8-10.8s-19.8-.6-28.7 2.4c-5.1 1.7-10.9-1.3-10.3-6.7.1-.5.1-1.1.2-1.6 3.2-21.8 23.2-36.8 44.7-33.5s36.3 23.5 33.1 45.3c-.1.5-.2 1.1-.3 1.6zM530 350.2c-19.6 44.7-66.8 72.5-116.8 64.9s-87.1-48.2-93-96.7c-1-8.3 8.9-12.1 15.2-6.7 23.9 20.8 53.6 35.3 87 40.3s66.1.1 94.9-12.8c7.6-3.4 16 3.2 12.6 10.9z"></path></svg></span> <strong>Play Mode</strong>. You can switch between the modes by
 clicking on those icons in the actor sheet title bar.</p>
-<div class="theme-admonition theme-admonition-note admonition_caGu alert alert--secondary"><div class="admonitionHeading_No7B"><span class="admonitionIcon_KBCd"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_Dd60"><p>To be able to switch between the edit &amp; play mode you need to be a trusted player or higher. Even
+<div class="theme-admonition theme-admonition-note admonition_xHNz alert alert--secondary"><div class="admonitionHeading_sHd0"><span class="admonitionIcon_CRsm"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_obza"><p>To be able to switch between the edit &amp; play mode you need to be a trusted player or higher. Even
 normal players can edit their values if their GM switches the mode for them, but they can not change
 mode themselves.</p></div></div>
 <p>In edit mode it is possible to edit characteristics, rune, skill &amp; passion values. The screenshot of
 the skills tab, shows the gained chance input field. The percent chance shown to the right is the
 "normal" chance that includes both base chance and skill category bonus, as well as the gained
 chance.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/edit-mode-skills-d77e8e51f046c9fd4006c2386d12757a.png" width="1980" height="802" class="img_ew4o"></p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/edit-mode-skills-d77e8e51f046c9fd4006c2386d12757a.png" width="1980" height="802" class="img_JaH4"></p>
 <p>To make it easy to see what mode the actor is in, a lot of accent colors are changed to green when
 it is in edit mode.</p>
 <p>Play mode hides some things for the GM to make the actor sheet less cluttered. An example of this is
@@ -738,47 +780,47 @@ the <code>Creature?</code> toggle that only is available in edit mode.</p>
 <p>A new actor starts in edit mode, this means that after this upgrade all actors will be in edit mode.
 You can easily fix that by clicking on the edit mode toggle, or you can run a script that will be
 supplied separately.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="add-gear-items-directly-from-actorsheet">Add gear items directly from actorSheet<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#add-gear-items-directly-from-actorsheet" class="hash-link" aria-label="Direct link to Add gear items directly from actorSheet" title="Direct link to Add gear items directly from actorSheet">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="add-gear-items-directly-from-actorsheet">Add gear items directly from actorSheet<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#add-gear-items-directly-from-actorsheet" class="hash-link" aria-label="Direct link to Add gear items directly from actorSheet" title="Direct link to Add gear items directly from actorSheet">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/671" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->671</label></a>
 <p>It is now possible for players (and GMs) to add new gear (gear, currency &amp; consumables) themselves
 by clicking on a + icon.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/add-gear-a6424ec92d0e75c1702ec3ea0223ae85.png" width="863" height="277" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="loosen-duplicate-embedded-item-name-check">Loosen duplicate embedded item name check<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#loosen-duplicate-embedded-item-name-check" class="hash-link" aria-label="Direct link to Loosen duplicate embedded item name check" title="Direct link to Loosen duplicate embedded item name check">​</a></h2>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/add-gear-a6424ec92d0e75c1702ec3ea0223ae85.png" width="863" height="277" class="img_JaH4"></p>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="loosen-duplicate-embedded-item-name-check">Loosen duplicate embedded item name check<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#loosen-duplicate-embedded-item-name-check" class="hash-link" aria-label="Direct link to Loosen duplicate embedded item name check" title="Direct link to Loosen duplicate embedded item name check">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/672" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->672</label></a>
 <p>As a followup to being able to create new gear, it is now also possible to have duplicates.
 Previously you could only have one gear, armor or weapon named the same, but now you can have as
 many as you like.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="drag-a-weapon-to-a-pack-animal-without-adding-the-weapon-skills">Drag a weapon to a pack animal without adding the weapon skills<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#drag-a-weapon-to-a-pack-animal-without-adding-the-weapon-skills" class="hash-link" aria-label="Direct link to Drag a weapon to a pack animal without adding the weapon skills" title="Direct link to Drag a weapon to a pack animal without adding the weapon skills">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="drag-a-weapon-to-a-pack-animal-without-adding-the-weapon-skills">Drag a weapon to a pack animal without adding the weapon skills<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#drag-a-weapon-to-a-pack-animal-without-adding-the-weapon-skills" class="hash-link" aria-label="Direct link to Drag a weapon to a pack animal without adding the weapon skills" title="Direct link to Drag a weapon to a pack animal without adding the weapon skills">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/450" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->450</label></a>
 <p>If you drag a weapon to an actor the skills linked to that weapon will also be added so that the
 actor can use the weapon. This is good in most cases, but if you drag a spear to a horse it doesn't
 make sense that the horse gets the skill to fight with that spear. This issue is solved by checking
 if the actor you drag the weapon to has arms (specifically a hitlocation with the rqid
 <code>i.hit-location.right-arm</code>) and if it doesn't it won't add the skills.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="background-tab-biography-field-should-be-player-editable">Background tab biography field should be player editable<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#background-tab-biography-field-should-be-player-editable" class="hash-link" aria-label="Direct link to Background tab biography field should be player editable" title="Direct link to Background tab biography field should be player editable">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="background-tab-biography-field-should-be-player-editable">Background tab biography field should be player editable<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#background-tab-biography-field-should-be-player-editable" class="hash-link" aria-label="Direct link to Background tab biography field should be player editable" title="Direct link to Background tab biography field should be player editable">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/670" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->670</label></a>
 <p>Only the GM could edit the biography text field on the background tab of the actor sheet. Now
 players can do that too.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/biography-player-editable-0be6a38e77e871e4d7d34f89acdd0717.png" width="904" height="300" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="add-hit-location-and-rune-dropdowns-into-rqidlink-areas">Add hit location and rune dropdowns into RqidLink areas<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#add-hit-location-and-rune-dropdowns-into-rqidlink-areas" class="hash-link" aria-label="Direct link to Add hit location and rune dropdowns into RqidLink areas" title="Direct link to Add hit location and rune dropdowns into RqidLink areas">​</a></h2>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/biography-player-editable-0be6a38e77e871e4d7d34f89acdd0717.png" width="904" height="300" class="img_JaH4"></p>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="add-hit-location-and-rune-dropdowns-into-rqidlink-areas">Add hit location and rune dropdowns into RqidLink areas<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#add-hit-location-and-rune-dropdowns-into-rqidlink-areas" class="hash-link" aria-label="Direct link to Add hit location and rune dropdowns into RqidLink areas" title="Direct link to Add hit location and rune dropdowns into RqidLink areas">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/656" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->656</label></a>
 <p>In all places where you can set a link to a rune or hit-location there now is a dropdown that will
 add a link. You can still drag-n-drop to the area but it is hopefully an easier way to adding these.</p>
 <p>The lists are populated by looking in compendiums for rqids of rune and hit locations, so if you
 would like to add more runes / hit locations, you would need to create a compendium and assign a new
 rqid to them.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/rune-hit-location-links-2f76e18fc93aad11afd9939fe7c22fee.png" width="470" height="115" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="make-hero-points-an-opt-in-setting">Make Hero Points an opt-in setting<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#make-hero-points-an-opt-in-setting" class="hash-link" aria-label="Direct link to Make Hero Points an opt-in setting" title="Direct link to Make Hero Points an opt-in setting">​</a></h2>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/rune-hit-location-links-2f76e18fc93aad11afd9939fe7c22fee.png" width="470" height="115" class="img_JaH4"></p>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="make-hero-points-an-opt-in-setting">Make Hero Points an opt-in setting<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#make-hero-points-an-opt-in-setting" class="hash-link" aria-label="Direct link to Make Hero Points an opt-in setting" title="Direct link to Make Hero Points an opt-in setting">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/661" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->661</label></a>
 <p>Hero points are not part of the standard rules but was still shown on the character sheet. You can
 now decide if you want them or not with a setting.</p>
-<div class="theme-admonition theme-admonition-warning admonition_caGu alert alert--warning"><div class="admonitionHeading_No7B"><span class="admonitionIcon_KBCd"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_Dd60"><p>If you use the hero points you need to enable them in the settings after upgrading to this release.</p></div></div>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="make-the-characteristics-ratings-an-opt-in-setting">Make the characteristics ratings an opt-in setting<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#make-the-characteristics-ratings-an-opt-in-setting" class="hash-link" aria-label="Direct link to Make the characteristics ratings an opt-in setting" title="Direct link to Make the characteristics ratings an opt-in setting">​</a></h2>
+<div class="theme-admonition theme-admonition-warning admonition_xHNz alert alert--warning"><div class="admonitionHeading_sHd0"><span class="admonitionIcon_CRsm"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_obza"><p>If you use the hero points you need to enable them in the settings after upgrading to this release.</p></div></div>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="make-the-characteristics-ratings-an-opt-in-setting">Make the characteristics ratings an opt-in setting<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#make-the-characteristics-ratings-an-opt-in-setting" class="hash-link" aria-label="Direct link to Make the characteristics ratings an opt-in setting" title="Direct link to Make the characteristics ratings an opt-in setting">​</a></h2>
 <p>Each user (GM or player) can now decide if they want to see the rating of the characteristics value
 as a red / green bar under the value. The setting is per user, but realistically it's mostly for GMs
 to get a quick evaluation of NPCs.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/characteristic-rating-ba53455308019dfeb40e5948fb737d48.png" width="837" height="193" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/characteristic-rating-ba53455308019dfeb40e5948fb737d48.png" width="837" height="193" class="img_JaH4"></p>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.0#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements">​</a></h2>
 <ul>
 <li>Rqid editor "Get Document Like This" is not filled in properly<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/665" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->665</label></a>
@@ -793,65 +835,6 @@ to get a quick evaluation of NPCs.</p>
             <category>rqg</category>
             <category>rqg-3</category>
             <category>rqg-3-4</category>
-        </item>
-        <item>
-            <title><![CDATA[RQG 3.3.0]]></title>
-            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.3.0</link>
-            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.3.0</guid>
-            <pubDate>Fri, 17 Nov 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.3.0/system.json" alt="Supported Foundry Versions" class="img_ew4o">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.3.0/rqg.zip" alt="Download Count" class="img_ew4o"></p>
-<div class="theme-admonition theme-admonition-warning admonition_caGu alert alert--warning"><div class="admonitionHeading_No7B"><span class="admonitionIcon_KBCd"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_Dd60"><p>Make sure to update the wiki module to at least version 1.2.0 since this system version includes
-changes to document types that needs to be reflected in these documents. Please look at the
-<a href="https://sun-dragon-cult.github.io/rqg-system/getting-started">Installing</a> page for details about the wiki module.</p></div></div>
-<p>A focus of this release has been to remove the last hindrances to translate the system. Now hit
-location names are no longer used for identification so they can be translated without affecting
-functionality. There is most likely still rough edges when it comes to translations, but from this
-version everything should be translatable.</p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="improve-ux-of-missile-weapons--projectiles">Improve UX of missile weapons &amp; projectiles<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.3.0#improve-ux-of-missile-weapons--projectiles" class="hash-link" aria-label="Direct link to Improve UX of missile weapons &amp; projectiles" title="Direct link to Improve UX of missile weapons &amp; projectiles">​</a></h2>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/154" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->154</label></a>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/492" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->492</label></a>
-<p>In previous versions only the GM could select what arrows a bow should use. With this update the
-players can do that themselves in the combat tab on the actor sheet. The quantity of projectiles and
-thrown weapons can now be edited directly in the combat tab as well. The input fields have a
-slightly brighter color than the rest of the sheet. And hopefully it should be easier to understand
-how much ammo you have. Please note that only equipped ammo will be shown in the dropdown.
-<img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/no-ammo-c9fd18c8071c0524646f3f1902c986fe.png" width="992" height="604" class="img_ew4o"> <img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/ammo-dropdown-76dbe74a64b7212cc9e79b651945b72c.png" width="1000" height="558" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="use-rqid-for-armor-coverage-and-remove-hit-locations-setting">Use rqid for armor coverage and remove hit locations setting<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.3.0#use-rqid-for-armor-coverage-and-remove-hit-locations-setting" class="hash-link" aria-label="Direct link to Use rqid for armor coverage and remove hit locations setting" title="Direct link to Use rqid for armor coverage and remove hit locations setting">​</a></h2>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/379" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->379</label></a>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/380" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->380</label></a>
-<p>The hitlocations were previously identified by name, and the available hitlocations were defined in
-a setting. That setting is now removed and the compendiums in the world are now scanned by the
-system for hit location rqids. This is part of making hit locations translatable, but it also makes
-it more important that the hit locations actually have a proper rqid, since that is used to identify
-what an armor item protects.</p>
-<p>You can either drag and drop a hit location item to the "Hit locations" area on the armor item or
-select one in the dropdown to add it to the set of hit locations the armor item protects.
-<img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/armor-sheet-380238d1369d99ed8201c8c16e23f692.png" width="1002" height="942" class="img_ew4o"> <img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/armor-dropdown-096e176bfbee8480bb2f5b324cf62950.png" width="996" height="956" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="change-the-hit-location-connected-to-field-to-use-rqid-instead">Change the hit location "Connected to" field to use rqid instead<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.3.0#change-the-hit-location-connected-to-field-to-use-rqid-instead" class="hash-link" aria-label="Direct link to Change the hit location &quot;Connected to&quot; field to use rqid instead" title="Direct link to Change the hit location &quot;Connected to&quot; field to use rqid instead">​</a></h2>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/449" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->449</label></a>
-<p>To completely remove any use of hit location names for identification, the "Connected to" property
-now also uses rqid. A hit location item "Connected to" setting is used in damage calculations. Hit
-locations that have a "for damage calculations act as" set to "Limb" and also are "Connected to" a
-hit location that have "for damage calculations act as" set to "Abdomen" will become useless if the
-Abdomen hit location gets a hard blow.</p>
-<p>Also since the rqid now is so important for hit location items it is shown among the other
-properties (see screenshot). If you need to edit it, the normal fingerprint icon in the header will
-open the rqid editor.</p>
-<p>The "Connected to" dropdown is populated by the hit locations in compendiums that have a hit
-location rqid.</p>
-<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/hit-location-connectedto-86ede83a58379122bf317b0a5eb40ffd.png" width="906" height="668" class="img_ew4o"></p>
-<h2 class="anchor anchorWithStickyNavbar_D40C" id="bug-fixes--improvements">Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.3.0#bug-fixes--improvements" class="hash-link" aria-label="Direct link to Bug Fixes &amp; Improvements" title="Direct link to Bug Fixes &amp; Improvements">​</a></h2>
-<ul>
-<li>add headbutt &amp; hit as combat maneuvers</li>
-<li>spirit Combat panel should not be visible without spirit combat skill<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/658" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->658</label></a>
-</li>
-</ul>]]></content:encoded>
-            <category>rqg</category>
-            <category>rqg-3</category>
-            <category>rqg-3-3</category>
         </item>
     </channel>
 </rss>
