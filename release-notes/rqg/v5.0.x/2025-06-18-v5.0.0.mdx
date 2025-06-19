@@ -22,7 +22,8 @@ of deprecation warnings are greatly reduced, but there are some still left since
 rewrites that will come later. They should not impact the functionality though.
 
 There are not a lot of new features in this release, but the styling in various places have been
-updated to look more like Foundry v13.
+updated to look more like Foundry v13. The system no longer uses the deprecated TinyMCE editor,
+instead it uses ProseMirror for text editing.
 
 Also in the previous versions you did not get strike rank buttons for unlinked actors, this release
 will show those buttons for unlinked actors as well. See
@@ -30,8 +31,9 @@ will show those buttons for unlinked actors as well. See
 for more info about how they work.
 
 Foundry v13 have a system where you can see the last chat even if you have the chat collapsed. This
-RQG version introduces a setting so you can decide if the chat should be expanded when you roll
-something. That should make the feeling more similar to how it was before.
+RQG version introduces a user level setting so you can decide if the chat should be expanded when
+you roll something. That should make the feeling more similar to how it was before. It is off by
+default, so you need to enable it in the settings if you want that behavior.
 
 ![](setting-activate-chat.png)
 
