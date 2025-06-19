@@ -22,14 +22,16 @@ update Foundry to v13 before you can update this system to v5.0.0</p></div></div
 of deprecation warnings are greatly reduced, but there are some still left since they require larger
 rewrites that will come later. They should not impact the functionality though.</p>
 <p>There are not a lot of new features in this release, but the styling in various places have been
-updated to look more like Foundry v13.</p>
+updated to look more like Foundry v13. The system no longer uses the deprecated TinyMCE editor,
+instead it uses ProseMirror for text editing.</p>
 <p>Also in the previous versions you did not get strike rank buttons for unlinked actors, this release
 will show those buttons for unlinked actors as well. See
 <a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.1.0#add-sr-buttons-to-actor-sheet" target="_blank" rel="noopener noreferrer">SR Buttons</a>
 for more info about how they work.</p>
 <p>Foundry v13 have a system where you can see the last chat even if you have the chat collapsed. This
-RQG version introduces a setting so you can decide if the chat should be expanded when you roll
-something. That should make the feeling more similar to how it was before.</p>
+RQG version introduces a user level setting so you can decide if the chat should be expanded when
+you roll something. That should make the feeling more similar to how it was before. It is off by
+default, so you need to enable it in the settings if you want that behavior.</p>
 <p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/setting-activate-chat-b3c8c2161c4a2dd71eccbb3398e8be59.png" width="861" height="223" class="img_JaH4"></p>
 <p>There are now links to the Release Notes (this), Documentation and Bug Reports (Github issues) under
 the settings sidebar for easy reference.</p>
