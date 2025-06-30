@@ -229,6 +229,31 @@ system supplied "protection" token effects use this to add natural armor to an a
 currently done by adding a list of Active Effects like `i.hit-location.head:system.naturalAp` for
 each humanoid hit location.
 
+The `path` is the path to the item system property that should be changed. It is not obvious how to
+find this, but looking at the code for the item type in question can help. For example looking at
+the defaultSkillData in the various item types at
+https://github.com/sun-dragon-cult/fvtt-system-rqg/tree/main/src/data-model/item-data can give a
+hint of what to write.
+
+Another way to find the path, especially for the actor, is to mark a token in a scene in Chrome,
+open the developer tools (press F12) and in the console type `_token.actor.system` and see what
+comes out.
+
+:::tip Active Effect Examples
+
+- Climb skill item bonus: **CUSTOM** `i.skill.climb:system.baseChance`
+- Magic point storage: **ADD** `system.attributes.magicPoints.max` (no Rqid) _most actor attributes
+  are derived from characteristics, which makes it impossible to affect them with active effects.
+  The magicPoints.max is an exception since it has special handling in contrast to for example
+  healing rate and encumbrance._
+- Strength actor bonus: **ADD** `system.characteristics.strength.value` (no Rqid) _note that there
+  already is a token effect for applying the Strength spirit magic effect._
+
+Skill category bonuses are not currently possible to affect with active effects, since they are
+derived.
+
+:::
+
 :::note Possible future improvement
 
 - This could be improved if the rqid part could contain partial rqids. In the example above a
