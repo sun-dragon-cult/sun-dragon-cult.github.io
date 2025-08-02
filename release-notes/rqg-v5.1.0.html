@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.8.1">
 <title data-rh="true">RQG 5.1.0 | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/release-notes/rqg-v5.1.0"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="RQG 5.1.0 | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="description" content="Supported Foundry Versions"><meta data-rh="true" property="og:description" content="Supported Foundry Versions"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-08-02T00:00:00.000Z"><meta data-rh="true" property="article:tag" content="rqg,rqg-5,rqg-5-1"><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/release-notes/rqg-v5.1.0"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/release-notes/rqg-v5.1.0" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/release-notes/rqg-v5.1.0" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://sun-dragon-cult.github.io/release-notes/rqg-v5.1.0","mainEntityOfPage":"https://sun-dragon-cult.github.io/release-notes/rqg-v5.1.0","url":"https://sun-dragon-cult.github.io/release-notes/rqg-v5.1.0","headline":"RQG 5.1.0","name":"RQG 5.1.0","description":"Supported Foundry Versions","datePublished":"2025-08-02T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://sun-dragon-cult.github.io/release-notes","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/assets/css/styles.1ccac7e3.css">
-<script src="/assets/js/runtime~main.9a3646dc.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.23098fe9.js" defer="defer"></script>
 <script src="/assets/js/main.02b24849.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -19,7 +19,7 @@
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/771" target="_blank"><label><img src="/img/github-mark.svg" width="13.5px"> #<!-- -->771</label></a>
 <p>The drag-ruler module is not compatible with Foundry v13. This release introduces a system native
 implementation that uses the new Foundry Token Drag Measurement API to color code token movement.</p>
-<p>There is some intregration with the Foundry movement actions. If you change the token movement to
+<p>There is some integration with the Foundry movement actions. If you change the token movement to
 swim or fly, then the MOV will be updated to reflect that according to the setting on the actor
 sheet.</p>
 <p><img decoding="async" loading="lazy" src="/assets/images/token-ruler-drag-a9ddb3693333dc97a46278f664f3f57a.png" width="878" height="298" class="img_JaH4"></p>
@@ -38,9 +38,9 @@ ruler is only visible for tokens that are in combat.</p>
 the different ranges.</p>
 <ul>
 <li>Attack: half MOV - you can still attack after moving this far.</li>
-<li>Walk: full MOV - you can walk this far but loose your attack.</li>
+<li>Walk: full MOV - you can walk this far but lose your attack.</li>
 <li>Sprint: range is decided by the sprint setting. It&#x27;s off (0) by default since this is an optional,
-non standard rule.</li>
+non-standard rule.</li>
 <li>Unreachable: you cannot move here. Note that you will not be prevented to move, but the line will
 be red (or whatever color you set it to).</li>
 </ul>

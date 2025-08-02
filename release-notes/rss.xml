@@ -21,7 +21,7 @@
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/771" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->771</label></a>
 <p>The drag-ruler module is not compatible with Foundry v13. This release introduces a system native
 implementation that uses the new Foundry Token Drag Measurement API to color code token movement.</p>
-<p>There is some intregration with the Foundry movement actions. If you change the token movement to
+<p>There is some integration with the Foundry movement actions. If you change the token movement to
 swim or fly, then the MOV will be updated to reflect that according to the setting on the actor
 sheet.</p>
 <p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/token-ruler-drag-a9ddb3693333dc97a46278f664f3f57a.png" width="878" height="298" class="img_JaH4"></p>
@@ -40,9 +40,9 @@ ruler is only visible for tokens that are in combat.</p>
 the different ranges.</p>
 <ul>
 <li>Attack: half MOV - you can still attack after moving this far.</li>
-<li>Walk: full MOV - you can walk this far but loose your attack.</li>
+<li>Walk: full MOV - you can walk this far but lose your attack.</li>
 <li>Sprint: range is decided by the sprint setting. It's off (0) by default since this is an optional,
-non standard rule.</li>
+non-standard rule.</li>
 <li>Unreachable: you cannot move here. Note that you will not be prevented to move, but the line will
 be red (or whatever color you set it to).</li>
 </ul>
