@@ -5,8 +5,8 @@
 <meta name="generator" content="Docusaurus v3.8.1">
 <title data-rh="true">3rd party modules | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/rqg-system/addons"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="3rd party modules | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="description" content="RQG does not require any modules (except for the RQG wiki module), but it is a goal that it should"><meta data-rh="true" property="og:description" content="RQG does not require any modules (except for the RQG wiki module), but it is a goal that it should"><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/rqg-system/addons"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/rqg-system/addons" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/rqg-system/addons" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Addons","item":"https://sun-dragon-cult.github.io/rqg-system/addons/"}]}</script><link rel="alternate" type="application/rss+xml" href="/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/assets/css/styles.1ccac7e3.css">
-<script src="/assets/js/runtime~main.c2364b03.js" defer="defer"></script>
-<script src="/assets/js/main.0461b453.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.9a3646dc.js" defer="defer"></script>
+<script src="/assets/js/main.02b24849.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -18,10 +18,11 @@ work with as many as possible. Here is a list of modules and their current state
 RQG system. A checked checkbox means that it should work in the latest released version of RQG.</p>
 <h2 class="anchor anchorWithStickyNavbar_O991" id="with-integration">With integration<a href="#with-integration" class="hash-link" aria-label="Direct link to With integration" title="Direct link to With integration">​</a></h2>
 <ul class="contains-task-list containsTaskList_qE40">
-<li class="task-list-item"><input type="checkbox" disabled="" checked=""> <a href="https://foundryvtt.com/packages/drag-ruler" target="_blank" rel="noopener noreferrer">Drag Ruler</a> that has an integration to color code
-token movement limits.</li>
 <li class="task-list-item"><input type="checkbox" disabled="" checked=""> <a href="https://foundryvtt.com/packages/times-up" target="_blank" rel="noopener noreferrer">Times Up</a> that will auto expire token effects like
 protection spells after 10 combat rounds.</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <del><a href="https://foundryvtt.com/packages/drag-ruler" target="_blank" rel="noopener noreferrer">Drag Ruler</a> that has an integration to color
+code token movement limits.</del> Not compatible with Foundry v13, and is no longer needed from
+RQG version 5.0.1 since the system has its own implementation of this functionality.</li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_O991" id="should-have-integration">Should have integration<a href="#should-have-integration" class="hash-link" aria-label="Direct link to Should have integration" title="Direct link to Should have integration">​</a></h2>
 <ul class="contains-task-list containsTaskList_qE40">
@@ -34,10 +35,13 @@ work) or modeling Gloranthan weeks as simple calendar months with simple calenda
 modeling glorantha seasons (week names work, but the month view only shows a week). Should be
 separate integration module. See module issues:
 <a href="https://github.com/vigoren/foundryvtt-simple-calendar/issues/161" target="_blank" rel="noopener noreferrer">Named Weeks</a> &amp;
-<a href="https://github.com/vigoren/foundryvtt-simple-calendar/issues/561" target="_blank" rel="noopener noreferrer">Config of week names</a></li>
+<a href="https://github.com/vigoren/foundryvtt-simple-calendar/issues/561" target="_blank" rel="noopener noreferrer">Config of week names</a>.
+Since Foundry now has a calendar API maybe this functionality can be added to the system
+directly. This module also looks promising for Foundry v13:
+<a href="https://github.com/rayners/fvtt-seasons-and-stars/issues/93" target="_blank" rel="noopener noreferrer">Seasons and Stars</a>.</li>
 <li class="task-list-item"><input type="checkbox" disabled=""> <a href="https://foundryvtt.com/packages/item-piles" target="_blank" rel="noopener noreferrer">Item Piles</a> This need a little more investigation
 to make it understand what items are unique. An incomplete setting can be found at
-[[Item-Pile-settings]]</li>
+<a href="/rqg-system/addons/addons/item-pile-settings">Item-Pile-settings</a>.</li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_O991" id="should-just-work">Should just work<a href="#should-just-work" class="hash-link" aria-label="Direct link to Should just work" title="Direct link to Should just work">​</a></h2>
 <ul class="contains-task-list containsTaskList_qE40">
