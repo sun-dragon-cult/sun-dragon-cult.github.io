@@ -13,10 +13,11 @@ RQG system. A checked checkbox means that it should work in the latest released 
 
 ## With integration
 
-- [x] [Drag Ruler](https://foundryvtt.com/packages/drag-ruler) that has an integration to color code
-      token movement limits.
 - [x] [Times Up](https://foundryvtt.com/packages/times-up) that will auto expire token effects like
       protection spells after 10 combat rounds.
+- [ ] ~~[Drag Ruler](https://foundryvtt.com/packages/drag-ruler) that has an integration to color
+      code token movement limits.~~ Not compatible with Foundry v13, and is no longer needed from
+      RQG version 5.0.1 since the system has its own implementation of this functionality.
 
 ## Should have integration
 
@@ -29,10 +30,13 @@ RQG system. A checked checkbox means that it should work in the latest released 
       modeling glorantha seasons (week names work, but the month view only shows a week). Should be
       separate integration module. See module issues:
       [Named Weeks](https://github.com/vigoren/foundryvtt-simple-calendar/issues/161) &
-      [Config of week names](https://github.com/vigoren/foundryvtt-simple-calendar/issues/561)
+      [Config of week names](https://github.com/vigoren/foundryvtt-simple-calendar/issues/561).
+      Since Foundry now has a calendar API maybe this functionality can be added to the system
+      directly. This module also looks promising for Foundry v13:
+      [Seasons and Stars](https://github.com/rayners/fvtt-seasons-and-stars/issues/93).
 - [ ] [Item Piles](https://foundryvtt.com/packages/item-piles) This need a little more investigation
       to make it understand what items are unique. An incomplete setting can be found at
-      [[Item-Pile-settings]]
+      [Item-Pile-settings](addons/addons/item-pile-settings).
 
 ## Should just work
 
