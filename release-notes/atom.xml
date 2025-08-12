@@ -24,11 +24,13 @@ makes all roll dialogs work more like standard Foundry dialogs. <a title="Relate
 </ul>
 <!-- -->
 <ul>
-<li>Natural weapons could not roll the percentage chance from actorSheet combat tab percent value. <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/798" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->798</label></a></li>
-</ul>
-<!-- -->
-<ul>
-<li>DEX based skills (Dodge &amp; Jump) sometimes lost baseChance value. <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/799" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->799</label></a></li>
+<li>
+<p>Natural weapons could not roll the percentage chance from actorSheet combat tab percent value. <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/798" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->798</label></a></p>
+</li>
+<li>
+<p>DEX based skills (Dodge &amp; Jump) sometimes lost the baseChance value. If your actors Dodge or Jump still is 0, then modify
+DEX and then change back to get it in sync again. <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/799" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->799</label></a></p>
+</li>
 </ul>
 <!-- -->
 <ul>
