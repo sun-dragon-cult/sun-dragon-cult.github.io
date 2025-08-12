@@ -2,11 +2,42 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sun-dragon-cult.github.io/release-notes</id>
     <title>RuneQuest Glorantha for Foundry VTT Blog</title>
-    <updated>2025-08-02T00:00:00.000Z</updated>
+    <updated>2025-08-12T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sun-dragon-cult.github.io/release-notes"/>
     <subtitle>RuneQuest Glorantha for Foundry VTT Blog</subtitle>
     <icon>https://sun-dragon-cult.github.io/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[RQG 5.1.1]]></title>
+        <id>https://sun-dragon-cult.github.io/release-notes/rqg-v5.1.1</id>
+        <link href="https://sun-dragon-cult.github.io/release-notes/rqg-v5.1.1"/>
+        <updated>2025-08-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v5.1.1/system.json" alt="Supported Foundry Versions" class="img_JaH4">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v5.1.1/rqg.zip" alt="Download Count" class="img_JaH4"></p>
+<p>This is a pure bugfix release.</p>
+<h2 class="anchor anchorWithStickyNavbar_O991" id="bug-fixes--improvements">Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v5.1.1#bug-fixes--improvements" class="hash-link" aria-label="Direct link to Bug Fixes &amp; Improvements" title="Direct link to Bug Fixes &amp; Improvements">​</a></h2>
+<!-- -->
+<ul>
+<li>No scrollbar in attack dialog. The attack dialog was not usable on smaller screens. This update
+makes all roll dialogs work more like standard Foundry dialogs. <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/797" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->797</label></a></li>
+</ul>
+<!-- -->
+<ul>
+<li>Natural weapons could not roll the percentage chance from actorSheet combat tab percent value. <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/798" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->798</label></a></li>
+</ul>
+<!-- -->
+<ul>
+<li>DEX based skills (Dodge &amp; Jump) sometimes lost baseChance value. <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/799" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->799</label></a></li>
+</ul>
+<!-- -->
+<ul>
+<li>Populate region "Click to Execute" with some boilerplate to have a starting point. <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/794" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->794</label></a></li>
+</ul>]]></content>
+        <category label="rqg" term="rqg"/>
+        <category label="rqg-5" term="rqg-5"/>
+        <category label="rqg-5-1" term="rqg-5-1"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RQG 5.1.0]]></title>
         <id>https://sun-dragon-cult.github.io/release-notes/rqg-v5.1.0</id>
@@ -773,69 +804,5 @@ migrate-old-journal-links should not be necessary anymore.</p>
         <category label="rqg" term="rqg"/>
         <category label="rqg-3" term="rqg-3"/>
         <category label="rqg-3-4" term="rqg-3-4"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Wiki 1.3.0]]></title>
-        <id>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0</id>
-        <link href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0"/>
-        <updated>2024-01-16T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
-        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.0/en-module.json" alt="Supported Foundry Versions" class="img_JaH4">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.0/wiki-en-rqg.zip" alt="Download Count" class="img_JaH4"></p>
-<p>This release corrects a lot of errors in the definitions and adds token images to the bestiary, as
-well as extending the bestiary with harpies, scorpion men and tusk riders.</p>
-<h2 class="anchor anchorWithStickyNavbar_O991" id="an-incomplete-list-of-bug-fixes--improvements">An incomplete list of Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.0#an-incomplete-list-of-bug-fixes--improvements" class="hash-link" aria-label="Direct link to An incomplete list of Bug Fixes &amp; Improvements" title="Direct link to An incomplete list of Bug Fixes &amp; Improvements">​</a></h2>
-<ul>
-<li>farm description link is wrong</li>
-<li>misspelling in boat description</li>
-<li>wiki actors should not be in edit mode by default<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/15" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->15</label></a>
-</li>
-<li>add harpies<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/5" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->5</label></a>
-</li>
-<li>add scorpion men<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/6" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->6</label></a>
-</li>
-<li>add tusk riders<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/7" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->7</label></a>
-</li>
-<li>scorpion men hitlocation baseHpDelta is wrong</li>
-<li>passion-base mixup of images and names</li>
-<li>long spear missing max hp</li>
-<li>vasana should have hate lunar instead of devotion</li>
-<li>cult Mostal description has wrong tagline</li>
-<li>cult Yelm description has incorrect title</li>
-<li>rune magic description, axe trance should not indicate it's stackable</li>
-<li>rune magic description, heal body order of runes is wrong</li>
-<li>rune magic description, healing trance is missing fertility rune</li>
-<li>add actor token images<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/9" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->9</label></a>
-</li>
-<li>@RQID link format interferes with the <code>${{key}}$</code> translation syntax, change to <code>§_key_§</code>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/16" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->16</label></a>
-</li>
-<li>rune type is in Capitals in system but lowercase in wiki<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/680" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->680</label></a>
-</li>
-<li>update uiContent.json and correct armor material names<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/679" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->679</label></a>
-</li>
-<li>"Command Cult Spirit (Elemental)" should be "Command Cult Spirit"<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/17" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->17</label></a>
-</li>
-<li>lots of errata for rune magic &amp; spirit magic spells</li>
-<li>split summon &amp; dismiss elemental rune magic spells into separate items</li>
-<li>incorrect armor leather greaves &amp; pants ENC, composite helm cost</li>
-<li>self bow HP</li>
-<li>singlestick min DEX</li>
-<li>javelins(shortspear) base chance</li>
-<li>hug weapon skill link name</li>
-<li>incorrect passion item base images</li>
-<li>add vanity passion base</li>
-</ul>]]></content>
-        <category label="wiki" term="wiki"/>
-        <category label="wiki-1" term="wiki-1"/>
-        <category label="wiki-1-3" term="wiki-1-3"/>
     </entry>
 </feed>
