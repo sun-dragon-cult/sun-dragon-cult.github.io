@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunksun_dragon_cult=globalThis.webpackChunksun_dragon_cult||[]).push([[9174],{5332(a){a.exports=JSON.parse('{"tags":[{"label":"module","permalink":"/tags/module","count":2}]}')}}]);
