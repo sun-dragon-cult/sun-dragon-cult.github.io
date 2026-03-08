@@ -4,10 +4,74 @@
         <title>RuneQuest Glorantha for Foundry VTT Blog</title>
         <link>https://sun-dragon-cult.github.io/release-notes</link>
         <description>RuneQuest Glorantha for Foundry VTT Blog</description>
-        <lastBuildDate>Mon, 02 Mar 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 08 Mar 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[RQG 5.3.0]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v5.3.0</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v5.3.0</guid>
+            <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supported Foundry Versions]]></description>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v5.3.0/system.json" alt="Supported Foundry Versions" class="img__ETU">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v5.3.0/rqg.zip" alt="Download Count" class="img__ETU"></p>
+<p>This version fixes a migration issue in version 5.2.0. It also adds a few additional features and
+fixes.</p>
+<h2 class="anchor anchorTargetStickyNavbar_UXZL" id="fix-the-migration-issue-from-v520">Fix the migration issue from v5.2.0<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v5.3.0#fix-the-migration-issue-from-v520" class="hash-link" aria-label="Direct link to Fix the migration issue from v5.2.0" title="Direct link to Fix the migration issue from v5.2.0" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/834" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->834</label></a>
+<p>In some worlds, you could get a lot of console logs, and the migration could take a very long time
+or even time out and stop. This version fixes that problem, and it also reduces the number of
+notifications that are shown by combining progress into fewer notifications.</p>
+<p>In addition to this, the performance of the editor where you can add RQIDs to documents that are
+missing it is improved. It should no longer potentially crash your browser if you have lots of
+edits, and it should feel a lot snappier.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/rqid-batch-editor-c1a12959734d629503e3216d71a24dff.png" width="766" height="260" class="img__ETU"></p>
+<h2 class="anchor anchorTargetStickyNavbar_UXZL" id="allow-active-effects-to-affect-multiple-items">Allow Active Effects to affect multiple items<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v5.3.0#allow-active-effects-to-affect-multiple-items" class="hash-link" aria-label="Direct link to Allow Active Effects to affect multiple items" title="Direct link to Allow Active Effects to affect multiple items" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/571" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->571</label></a>
+<p>It is now possible to create Active Effects that affect multiple items. By prepending the Rqid
+string with a ~ the Rqid will behave as a regex and all items that match that regex will be affected
+by the Active Effect.</p>
+<p>An example of what this could be used for is creating an Active Effect that applies to all hit
+location items like this: <code>~i.hit-location</code>. That would match any hit location like
+<code>i.hit-location.head</code> or <code>i.hit-location.left-wing</code>. You can also use the normal regex syntax to
+build something more complex like <code>~i.cult.*orlanth.*</code> to find any cult that contains the word
+orlanth.</p>
+<p>For people who know how to write regex: yes, the dots in, for example, <code>~i.hit-location</code> will be
+interpreted as "any one character". But in practice that should not matter. You could write it as
+<code>~i\.hit-location</code> to be more strict if you wanted to.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/active-effect-regex-93567e1761a0f2aa032e707af7409606.png" width="951" height="579" class="img__ETU"></p>
+<h2 class="anchor anchorTargetStickyNavbar_UXZL" id="show-warning-if-pow--18-for-priests">Show warning if POW &lt; 18 for priests<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v5.3.0#show-warning-if-pow--18-for-priests" class="hash-link" aria-label="Direct link to Show warning if POW < 18 for priests" title="Direct link to Show warning if POW < 18 for priests" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/652" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->652</label></a>
+<p>The POW characteristic now gets a warning if it falls below 18 for cult ranks that require a
+character to have at least 18 POW.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/priest-pow-warning-4a2b71e1191bcd3d6fe5920a1f3fa6cb.png" width="379" height="277" class="img__ETU"></p>
+<h2 class="anchor anchorTargetStickyNavbar_UXZL" id="attacking-from-prone">Attacking from prone<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v5.3.0#attacking-from-prone" class="hash-link" aria-label="Direct link to Attacking from prone" title="Direct link to Attacking from prone" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/789" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->789</label></a>
+<p>There is now a new checkbox in the attack dialog where you can select that you are attacking from a
+prone position. This follows the rulebook by changing the hit location die to 1d10 (From Below) and
+removing the damage bonus if you are not attacking with a natural weapon.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/prone-attacker-af333b8d2665f0698fd116974f8eaedd.png" width="526" height="773" class="img__ETU"></p>
+<h2 class="anchor anchorTargetStickyNavbar_UXZL" id="color-the-rqid-icon-red-if-its-missing">Color the RQID icon red if it's missing<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v5.3.0#color-the-rqid-icon-red-if-its-missing" class="hash-link" aria-label="Direct link to Color the RQID icon red if it's missing" title="Direct link to Color the RQID icon red if it's missing" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/813" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->813</label></a>
+<p>The sheet header RQID button is now colored red if the document does not have an RQID. This makes it
+easier to see at a glance if there is a problem.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/rqid-missing-header-icon-42b9fbb9c49cd0b224d429e132432897.png" width="632" height="268" class="img__ETU"></p>
+<h2 class="anchor anchorTargetStickyNavbar_UXZL" id="rqid-editor-now-handles-embedded-documents">RQID editor now handles embedded documents<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v5.3.0#rqid-editor-now-handles-embedded-documents" class="hash-link" aria-label="Direct link to RQID editor now handles embedded documents" title="Direct link to RQID editor now handles embedded documents" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/742" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->742</label></a>
+<p>The RQID editor previously did not handle embedded documents like pages in a journal. It now does,
+that, making it possible to link to a specific page for example. It could also be used to find other
+embedded documents like items in an actor, but I think the main use for this is pages in journals.</p>
+<p>With this you could add links directly to pages in another journal using rqid. Copy the link from
+the example at bottom of the editor and paste that into any other journal.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/embedded-document-working-4441d4c6230d9e58b9dafbea526e534d.png" width="662" height="502" class="img__ETU"></p>
+<p>It will warn if the parent document does not have an RQID set since the embedded RQID will not work
+in that case, see below.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/embedded-document-rqid-3f84da763a0004a66dc961a7d66a54c9.png" width="766" height="290" class="img__ETU"></p>]]></content:encoded>
+            <category>rqg</category>
+            <category>rqg-5</category>
+            <category>rqg-5-3</category>
+        </item>
         <item>
             <title><![CDATA[RQG 5.2.0]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v5.2.0</link>
@@ -787,43 +851,6 @@ indication if things are running slowly.</p>
 <ul>
 <li class="">Make RQG Foundry v12 compatible by handling change in <code>game.system.documentTypes</code>.<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/706" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->706</label></a>
-</li>
-</ul>]]></content:encoded>
-            <category>rqg</category>
-            <category>rqg-3</category>
-            <category>rqg-3-4</category>
-        </item>
-        <item>
-            <title><![CDATA[RQG 3.4.2]]></title>
-            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.2</link>
-            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.2</guid>
-            <pubDate>Mon, 29 Jan 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.2/system.json" alt="Supported Foundry Versions" class="img__ETU">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.2/rqg.zip" alt="Download Count" class="img__ETU"></p>
-<p>This released is a smaller update, mainly to fix the issue with mixed languages for runes and hit
-locations.</p>
-<h2 class="anchor anchorTargetStickyNavbar_UXZL" id="mixed-languages-for-runes--hitlocation-dropdowns">Mixed languages for runes / hitlocation dropdowns<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.2#mixed-languages-for-runes--hitlocation-dropdowns" class="hash-link" aria-label="Direct link to Mixed languages for runes / hitlocation dropdowns" title="Direct link to Mixed languages for runes / hitlocation dropdowns" translate="no">​</a></h2>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/689" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->689</label></a>
-<p>If you have runes or items in multiple languages in your compendiums, then you could get a mix of
-languages in the dropdowns to select those item type. This fix prioritises:</p>
-<ol>
-<li class="">world language (a setting)</li>
-<li class="">english (fallback language)</li>
-<li class="">any other language</li>
-</ol>
-<p>and in each category the item with the highest priority wins.</p>
-<h2 class="anchor anchorTargetStickyNavbar_UXZL" id="make-it-possible-to-drag-a-compendium-pack-to-an-actor">Make it possible to drag a compendium pack to an actor<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.2#make-it-possible-to-drag-a-compendium-pack-to-an-actor" class="hash-link" aria-label="Direct link to Make it possible to drag a compendium pack to an actor" title="Direct link to Make it possible to drag a compendium pack to an actor" translate="no">​</a></h2>
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/691" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->691</label></a>
-<p>Until now it's not been possible to drag a compendium of for example hit locations directly from the
-compendium to an actor. You would either have to drag each individual hit location or import the
-compendium to a folder in the world and drag that folder to the actor.</p>
-<p>Now it's possible to drag a compendium folder to an actor to get all items inside it.</p>
-<h2 class="anchor anchorTargetStickyNavbar_UXZL" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.2#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements" translate="no">​</a></h2>
-<ul>
-<li class="">Make actorSheet getData handling of common runemagic up to 10x faster, assume common runemagic has
-rqid.<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/688" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->688</label></a>
 </li>
 </ul>]]></content:encoded>
             <category>rqg</category>
