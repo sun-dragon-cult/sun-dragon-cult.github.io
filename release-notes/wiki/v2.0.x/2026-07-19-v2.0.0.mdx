@@ -1,0 +1,24 @@
+---
+slug: wiki-v2.0.0
+title: Wiki 2.0.0
+tags:
+  - wiki
+  - foundry-release
+  - wiki-2
+  - wiki-2-0
+---
+
+![Required RQG System Version](https://img.shields.io/badge/Required%20RQG%20System%20Version-v6.0.0%2B-blue)
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v2.0.0/en-module.json)
+![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v2.0.0/wiki-en-rqg.zip)
+
+This is the first release built on the modernized compendium data pipeline. It's a fresh-start
+release rather than a content update — no intentional gameplay or content changes were made. Its
+sole purpose is to establish a clean baseline that's fully aligned with the current `fvtt-system-rqg`
+data models.
+
+- Compendium data is now validated against JSON Schemas generated live from the `fvtt-system-rqg`
+  DataModels. This caught a batch of pre-existing content bugs — misspelled or renamed fields, invalid
+  `null` values on non-nullable fields, and similar issues — that had gone unnoticed until now.
+- This release requires rqg system v6.0.0+ and Foundry v14+. If you're running an older system
+  version, stay on the previous release (v1.3.5) for now.
