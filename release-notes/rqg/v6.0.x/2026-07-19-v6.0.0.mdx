@@ -239,8 +239,8 @@ value + unit instead of separate seconds/rounds/turns fields, and start time/rou
 now grouped under "start".
 
 Your existing effects are converted to this new format automatically when you update, including
-moving any legacy MP/HP max bonus paths to the new `effect.add.magicPoints.max` /
-`effect.add.hitPoints.max` fields described below.
+moving any legacy MP/HP max bonus paths to the new `system.effect.add.magicPoints.max` /
+`system.effect.add.hitPoints.max` fields described below.
 
 ### New Additive Fields
 
@@ -249,18 +249,18 @@ that weren't previously possible. None of these values could be targeted by an A
 with one exception: max Magic Points could be boosted directly through a hack in the old version.
 The DataModel cleanup removed that hack in favor of its own dedicated field, described below.
 
-#### effect.add.magicPoints.max _(on the character)_
+#### system.effect.add.magicPoints.max _(on the character)_
 
 A bonus to max Magic Points — for example from a POW storage crystal. In previous versions, an
 Active Effect could target `system.attributes.magicPoints.max` directly and it kind of worked, since
 that value was calculated before effects were applied; the DataModel cleanup now calculates it
 afterwards, so this dedicated field is needed instead.
 
-#### effect.add.hitPoints.max _(on the character)_
+#### system.effect.add.hitPoints.max _(on the character)_
 
 A bonus to max Hit Points.
 
-#### effect.add.skillCategoryModifiers.\<category\> _(on the character)_
+#### system.effect.add.skillCategoryModifiers.\<category\> _(on the character)_
 
 A bonus to a skill category — for example, to boost all Manipulation skills with an effect.
 
@@ -272,7 +272,7 @@ A bonus to a skill category — for example, to boost all Manipulation skills wi
 
 :::
 
-#### effect.add.melee.attack / effect.add.melee.parry / effect.add.missile.attack / effect.add.missile.parry _(on weapon items)_
+#### system.effect.add.melee.attack / system.effect.add.melee.parry / system.effect.add.missile.attack / system.effect.add.missile.parry _(on weapon items)_
 
 Bonuses to a weapon usage's attack and parry chance. As before, effects that target fields on an
 item (rather than the character) need to use the "Custom" application mode.
