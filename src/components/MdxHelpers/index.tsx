@@ -1,15 +1,19 @@
 import styles from "./styles.module.css";
-import type { JSX } from "react";
+import type { JSX, ReactNode } from "react";
 
-export const LightInvertSvg = ({ src, width }): JSX.Element => (
+export const LightInvertSvg = ({ src, width }: { src: string; width: string }): JSX.Element => (
   <img className={styles.lightInvert} src={src} width={width} />
 );
 
-export const CenterIt = ({ children }) => <span className={styles.centerIt}>{children}</span>;
+export const CenterIt = ({ children }: { children: ReactNode }): JSX.Element => (
+  <span className={styles.centerIt}>{children}</span>
+);
 
-export const ThemeInvert = ({ children }) => <span className={styles.lightInvert}>{children}</span>;
+export const ThemeInvert = ({ children }: { children: ReactNode }): JSX.Element => (
+  <span className={styles.lightInvert}>{children}</span>
+);
 
-export const GithubIssue = ({ issue, repo }) => (
+export const GithubIssue = ({ issue, repo }: { issue: string; repo: string }): JSX.Element => (
   <a
     title="Related Github Issue"
     className="theme-doc-version-badge badge badge--secondary"

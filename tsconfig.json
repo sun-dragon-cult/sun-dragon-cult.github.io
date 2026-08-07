@@ -2,6 +2,12 @@
   // This file is not used in compilation. It is here just for a nice editor experience.
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
-    "baseUrl": "."
+    // Re-declared so it resolves relative to this file (project root) instead of relative to
+    // @docusaurus/tsconfig's own location inside node_modules, which would break the `@site/*`
+    // path alias @docusaurus/tsconfig also declares.
+    "baseUrl": ".",
+    // baseUrl is deprecated as of TS 6 (still required above for `@site/*` to resolve); silence
+    // the warning until Docusaurus ships a TS7-compatible config upstream.
+    "ignoreDeprecations": "6.0"
   }
 }
