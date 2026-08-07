@@ -59,6 +59,18 @@ const config: Config = {
     ],
   ],
 
+  themes: [
+    [
+      "@easyops-cn/docusaurus-search-local",
+      {
+        hashed: true,
+        language: ["en"],
+        docsRouteBasePath: "/",
+        blogRouteBasePath: "release-notes",
+      },
+    ],
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: "img/sdc.jpg",
