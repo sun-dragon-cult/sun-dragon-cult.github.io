@@ -4,10 +4,165 @@
         <title>RuneQuest Glorantha for Foundry VTT Blog</title>
         <link>https://sun-dragon-cult.github.io/release-notes</link>
         <description>RuneQuest Glorantha for Foundry VTT Blog</description>
-        <lastBuildDate>Sun, 19 Jul 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 07 Aug 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[RQG 6.0.1]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v6.0.1</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v6.0.1</guid>
+            <pubDate>Fri, 07 Aug 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supported Foundry Versions]]></description>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v6.0.1/system.json" alt="Supported Foundry Versions" class="img_h5dG">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v6.0.1/rqg.zip" alt="Download Count" class="img_h5dG"></p>
+<p>This release follows up on 6.0.0 with a big batch of bug fixes, plus a new Research path for
+improving Skills and Runes, as well as a fix so healing a serious abdomen wound now restores the
+useless legs it caused.</p>
+<p>I was actually worried about more serious bugs after 6.0.0, especially since I'd just migrated to
+using Foundry's data models, which are far stricter about what values a document is allowed to have
+than the plain objects the system relied on before. Apart from the wiki module's invalid compendium
+data (see Invalid Weapon/Spell Data Cleanup below), nothing major has turned up.</p>
+<p>I've also been actively hunting for discrepancies against the rules and found a few minor ones: a
+wrong special success range for a 6-7% ability chance, and a 75%+ training restriction that blocked
+every skill regardless of whether it can gain experience or not. This release also includes several
+visual fixes for the v2 sheets.</p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="invalid-weaponspell-data-cleanup">Invalid Weapon/Spell Data Cleanup<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.0.1#invalid-weaponspell-data-cleanup" class="hash-link" aria-label="Direct link to Invalid Weapon/Spell Data Cleanup" title="Direct link to Invalid Weapon/Spell Data Cleanup" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/986" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->986</label></a>
+<p>Some older wiki module compendium content shipped with two values that don't match the current data
+model and get rejected by Foundry's schema validation:</p>
+<ul>
+<li class="">The <strong>Claw</strong>, <strong>Rip</strong>, and <strong>Gore</strong> natural weapon attacks had an invalid <code>damageType: "cut"</code>
+instead of <strong>Slash</strong>, which could show up as "Failed to initialize Item" console errors and make
+the attack unusable.</li>
+<li class="">The rune spell <strong>Ban</strong> had a malformed <code>isRitual</code> value from an authoring typo.</li>
+</ul>
+<p>Both trace back to the wiki module's compendium content, present through
+<strong><a class="" href="https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.5">v1.3.5 (2025-05-25)</a></strong> and fixed in
+<strong><a class="" href="https://sun-dragon-cult.github.io/release-notes/wiki-v2.0.0">v2.0.0 (2026-07-18)</a></strong>. Any item still carrying the invalid value is
+now repaired automatically on load, regardless of wiki module version — but updating to v2.0.0 or
+later is still recommended, since it fixes the source data too.</p>
+<div class="theme-admonition theme-admonition-caution admonition_uOdM alert alert--warning"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Manual check recommended if you imported this on RQG 6.0.0</div><div class="admonitionContent__X6G"><p>This only matters if you imported one of the affected items — the standalone <strong>Claw</strong>, <strong>Rip</strong>, or
+<strong>Gore</strong> weapon, a <strong>Brown Bear</strong>, <strong>Harpy</strong>, <strong>Shadowcat</strong>, or <strong>Tusker</strong> (which embed them), or
+the <strong>Ban</strong> spell. If that happened from <strong>wiki module v1.3.5 or earlier</strong> while running <strong>RQG
+6.0.0</strong>, the invalid value could have been silently replaced with a valid-but-wrong default instead
+of causing a crash — e.g. a Claw attack showing "Crush" instead of "Slash", or Ban not marked as
+Ritual. That data now looks normal and can't be detected or corrected automatically, so it's worth a
+quick check:</p><ul>
+<li class="">Weapon items → each combat maneuver's <strong>Damage Type</strong> should be <strong>Slash</strong> for Claw/Gore/Rip, not
+<strong>Crush</strong>.</li>
+<li class=""><strong>Ban</strong> → the <strong>Ritual</strong> checkbox should be on.</li>
+</ul><p>If you imported on an earlier or later RQG version, you're not affected — nothing to check.</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="research--improve-dialog-fixes">Research &amp; Improve Dialog Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.0.1#research--improve-dialog-fixes" class="hash-link" aria-label="Direct link to Research &amp; Improve Dialog Fixes" title="Direct link to Research &amp; Improve Dialog Fixes" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/952" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->952</label></a>
+<p>Skills and Runes can now be improved through Research on the Improve Ability dialog, alongside the
+existing Experience and Training paths — mirroring the Research option Characteristics already had.
+The qualifying roll matches the one used for Experience; on success, the gain is a flat +1% or
+1D6-2, chosen before rolling. As with Training, Research is not available for Passions. That it has
+been missing until now was an oversight.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/improvement-research-ed54b46fd357bbe590da8efb35d65df3.png" width="557" height="420" class="img_h5dG"></p>
+<p>A few related bugs in the Improve dialogs were fixed alongside this:</p>
+<ul>
+<li class="">Base the 75%-and-above restriction on whether the ability can gain experience at all (Core
+p.413), instead of chance alone, and apply the same 75%+ restriction to Research and to Runes,
+both of which previously stayed trainable/researchable at any chance<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/980" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->980</label></a>
+</li>
+<li class="">Block skill training at exactly 75%, not just strictly above it<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/947" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->947</label></a>
+</li>
+<li class="">Require POW training to pass the same POW-gain-roll chance check used for Experience, instead of
+allowing a free roll <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/948" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->948</label></a></li>
+<li class="">Derive the category modifier from unmodified source characteristics, so a temporary condition
+(e.g. a STR/DEX/CON-bonus status effect) no longer shifts the Experience/Research/Training
+qualifying roll <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/954" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->954</label></a></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="abdomen-wound-healing-restores-useless-legs">Abdomen Wound Healing Restores Useless Legs<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.0.1#abdomen-wound-healing-restores-useless-legs" class="hash-link" aria-label="Direct link to Abdomen Wound Healing Restores Useless Legs" title="Direct link to Abdomen Wound Healing Restores Useless Legs" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/981" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->981</label></a>
+<p>A serious wound to the abdomen (damage at or above the location's max HP) makes the attached legs
+useless until it heals. Healing that wound back below the threshold was supposed to restore them,
+but the healing logic always reported no legs to restore, so they stayed useless forever even after
+the wound had healed. Healing an abdomen wound now correctly restores the legs — to healthy, or to
+wounded if a leg had taken damage of its own. A leg that's useless from its own damage rather than
+the abdomen wound is left alone.</p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="improved-actor-portrait">Improved Actor Portrait<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.0.1#improved-actor-portrait" class="hash-link" aria-label="Direct link to Improved Actor Portrait" title="Direct link to Improved Actor Portrait" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/969" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->969</label></a>
+<p>The portrait on the v2 character sheet is no longer clipped by the window top, and its drop-shadow
+now follows the image's own shape instead of a fixed rectangular box — so round or transparent
+portraits no longer get a mismatched square shadow. Non-square images are no longer cropped or
+distorted. Right-clicking the portrait now opens Foundry's native image popout for a larger,
+on-demand view of the full resolution image.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/actor-profile-e4730cb029f6b31322f324041f09bd43.png" width="477" height="312" class="img_h5dG"></p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="other-styling-fixes">Other Styling Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.0.1#other-styling-fixes" class="hash-link" aria-label="Direct link to Other Styling Fixes" title="Direct link to Other Styling Fixes" translate="no">​</a></h2>
+<ul>
+<li class="">Give the four standard Power rune pairs fixed tab positions on the v2 sheet regardless of link
+state <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/970" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->970</label></a></li>
+<li class="">Fix reputation icon rendering as a broken image in worlds whose stored icon settings predate that
+key <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/976" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->976</label></a></li>
+<li class="">Make table styling consistent across all v2 sheet item-list tabs, including a rebuilt Active
+Effects tab that now shares the same look instead of using its own bespoke table<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/978" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->978</label></a>
+</li>
+<li class="">Prevent a long cult name from squeezing the name column on the v2 actor sheet<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/968" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->968</label></a>
+</li>
+<li class="">Fix rqg SVG icons not matching the invert filter when hosting on the Forge, making them white on
+the light theme <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/964" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->964</label></a></li>
+<li class="">Fix hit-location and Strike Rank background colors failing to resolve — rendering as transparent
+or dark blocks over light text — when a per-window theme override applies the theme class directly
+to the sheet instead of only to an ancestor like the page body<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/966" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->966</label></a>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="migration-fixes">Migration Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.0.1#migration-fixes" class="hash-link" aria-label="Direct link to Migration Fixes" title="Direct link to Migration Fixes" translate="no">​</a></h2>
+<ul>
+<li class="">Fix the Active Effect duration-unit migration re-triggering and reappearing under "Performed
+Migrations" on every migration instead of running once<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/984" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->984</label></a>
+</li>
+<li class="">Fix Active Effect path rewrites (e.g. Add Magic Points/Add Hit Points) being silently discarded
+when the duration-unit migration touched the same effect, and extend the world migration's
+compendium sweep to module-owned packs too, so content in your own modules now gets migrated along
+with the world's <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/942" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->942</label></a></li>
+<li class="">Fix the migration progress bar duplicating instead of updating when migration runs overlap<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/961" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->961</label></a>
+</li>
+<li class="">Migrate hit-location <code>connectedTo</code>/<code>hitLocationType</code> data that was stored as a stale display name
+instead of an rqid, which silently broke limb-useless and healing checks with no error<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/983" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->983</label></a>
+</li>
+<li class="">Stop running the migration that re-links opposing runes, so unlinking a pair to exempt an
+Illuminated actor from the opposed-rune 100% rule no longer gets reset on the next update<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/962" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->962</label></a>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="other-bug-fixes--improvements">Other Bug Fixes &amp; Improvements<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.0.1#other-bug-fixes--improvements" class="hash-link" aria-label="Direct link to Other Bug Fixes &amp; Improvements" title="Direct link to Other Bug Fixes &amp; Improvements" translate="no">​</a></h2>
+<ul>
+<li class="">Fix MOV and ENC Factor no longer being editable by the GM on the v2 actor sheet header<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/965" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->965</label></a>
+</li>
+<li class="">Localize hit-location damage notifications (limb severed, useless legs, instant death, bleeding
+unconscious, head unconscious) that were previously hardcoded in English<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/988" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->988</label></a>
+</li>
+<li class="">Correct the special success range for a 6-7% ability chance<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/946" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->946</label></a>
+</li>
+<li class="">Hide the health section and use Magic Points instead for actors with no hit points, such as
+spirits <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/488" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->488</label></a></li>
+<li class="">Limit Spirit Magic learning capacity by CHA instead of INT, and fix Sorcery's Free INT accounting
+and messaging <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/944" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->944</label></a></li>
+<li class="">Cap Rune Points max by CHA per cult, and default max to 0 instead of null/undefined<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/941" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->941</label></a>
+</li>
+<li class="">Clear a bow's linked projectile when the linked arrow is unequipped<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/655" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->655</label></a>
+</li>
+</ul>]]></content:encoded>
+            <category>rqg</category>
+            <category>rqg-6</category>
+            <category>rqg-6-0</category>
+        </item>
         <item>
             <title><![CDATA[RQG 6.0.0]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/rqg-v6.0.0</link>
@@ -1097,19 +1252,6 @@ indication if things are running slowly.</p>
             <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.2/en-module.json" alt="Supported Foundry Versions" class="img_h5dG">
 <img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.2/wiki-en-rqg.zip" alt="Download Count" class="img_h5dG"></p>
 <p>This release only updates the license text.</p>]]></content:encoded>
-            <category>wiki</category>
-            <category>wiki-1</category>
-            <category>wiki-1-3</category>
-        </item>
-        <item>
-            <title><![CDATA[Wiki 1.3.1]]></title>
-            <link>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.1</link>
-            <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v1.3.1</guid>
-            <pubDate>Mon, 27 May 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.1/en-module.json" alt="Supported Foundry Versions" class="img_h5dG">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.1/wiki-en-rqg.zip" alt="Download Count" class="img_h5dG"></p>
-<p>This release only updates the compatability to include Foundry 12.</p>]]></content:encoded>
             <category>wiki</category>
             <category>wiki-1</category>
             <category>wiki-1-3</category>
