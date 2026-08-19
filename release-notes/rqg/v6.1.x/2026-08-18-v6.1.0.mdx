@@ -145,9 +145,14 @@ Rune/Passion improvements not respecting their 100% cap.
   <GithubIssue issue="993" repo="fvtt-system-rqg" />
 - Stop shipping a duplicate manifest in the release package, which broke Forge's package caching
   <GithubIssue issue="1000" repo="fvtt-system-rqg" />
+- Allow a natural or hit-location-linked weapon (fist, bite, claw, etc.) to leave its own Hit
+  Points unset instead of forcing them to 0, since it uses the owning hit location's HP instead
+  <GithubIssue issue="1012" repo="fvtt-system-rqg" />
 
 {/* Draft notes for whoever finalizes this - not for publication: */}
-{/* 1. Confirm #999 (PR #1011) actually merged before publishing - written up above as shipped. */}
+{/* 1. Confirmed #999 (PR #1011) and #959 (PR #1013, Spell Matrix) merged - written up above as shipped. */}
 {/* 2. Filename date and any other TBD dates need to match the actual tag date. */}
 {/* 3. No real screenshots attached yet - see the placeholder comments above. */}
-{/* 4. Re-check the 6.1.0 milestone for anything closed after this draft was written. */}
+{/* 4. Checked the 6.1.0 milestone as of 2026-08-19: all closed issues are covered above except */}
+{/*    internal-only refactors/CSS work (#1006, #996, #971) which aren't user-facing. Still-open */}
+{/*    milestone issues (#913, #736, #734, #513, #512) aren't in this release - re-check before tag. */}
