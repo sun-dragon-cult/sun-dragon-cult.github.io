@@ -105,12 +105,17 @@ as an informational count on the Combat tab, GM-adjudicated rather than enforced
 <GithubIssue issue="959" repo="fvtt-system-rqg" />
 
 Any Gear, Weapon, or Armor item can now carry a Spell Matrix Enchantment (Core p.264-265): drag a
-Spirit Magic spell onto the item's sheet and it stores that spell's potentiality rather than a copy
-of its mechanics, so later changes to the original spell (or the compendium it came from) are picked
-up automatically the next time it's cast. Whoever is holding the item can cast the stored spell
-straight from the actor sheet - a gear-row indicator for a quick roll, or its own entry on the
-Spirit Magic tab under a "Matrix:" divider, alongside the existing "Allied Spirit:" and "Bound
-Spirit:" dividers, which are now labeled distinctly instead of sharing generic "From ..." wording.
+Spirit Magic spell onto the item's sheet to enchant it. The item only stores a link to that spell (a
+Rqid) plus the number of points enchanted into it - the spell itself is never embedded on the item
+or copied onto it. Every time the matrix is cast, the system looks up that Rqid fresh against
+whatever world or compendium item currently matches it, so a later correction to the spell (or an
+update to the compendium it came from) is picked up automatically instead of the matrix carrying a
+stale copy - the same reason Rqid already backs the rest of the system's cross-references.
+
+Whoever is holding the item can cast the stored spell straight from the actor sheet - a gear-row
+indicator for a quick roll, or its own entry on the Spirit Magic tab under a "Matrix:" divider,
+alongside the existing "Allied Spirit:" and "Bound Spirit:" dividers, which are now labeled
+distinctly instead of sharing generic "From ..." wording.
 
 Casting a matrix spell uses the caster's own POW×5 chance and their own Magic Points (through the
 same source picker as any other spell), matching Core's rule that access to the spell - not its
