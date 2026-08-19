@@ -126,12 +126,15 @@ own CHA spell-point limit, with no physical item, no sharing with anyone else, a
 this feature's data. That checkbox still exists and still works exactly as before, but it's
 superseded by real Spell Matrix Enchantments and should be treated as deprecated.
 
-There's no automatic migration for it, and can't reasonably be one: nothing in the data says which
-physical item (if any) an `isMatrix` spell was meant to represent, or who besides the caster was
-ever meant to hold it. If your world has spells flagged this way, the GM needs to go through them by
-hand - create or pick the physical item the matrix should actually live on, drag the spell onto it
-there, and uncheck `isMatrix` (or delete the old personal spell) once the real matrix item is in
-place.
+There's no fully automatic migration for it, and can't reasonably be one: nothing in the data says
+which physical item (if any) an `isMatrix` spell was meant to represent, or who besides the caster
+was ever meant to hold it - that part is always a GM call. To take the mechanical work off your
+hands, there's a "Migrate isMatrix Spells to Spell Matrix Items" macro in the "System Macros"
+compendium, in the "RuneQuest Glorantha System/Macros" folder: it finds every `isMatrix` spell in
+the world and, for each one you pick, creates a new Gear item on the same actor with the Spell
+Matrix Enchantment already linked and set to the same points. It never touches or deletes the
+original spell - move, rename, and reassign the new item to wherever it should really live, then
+uncheck `isMatrix` (or delete the old personal spell) once you're happy with the result.
 
 :::
 
