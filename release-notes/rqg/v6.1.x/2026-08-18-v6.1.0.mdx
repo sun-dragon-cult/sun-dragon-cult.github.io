@@ -118,6 +118,23 @@ limit, since it was never one of their personally-learned spells. If the same it
 Magic Point Enchantment (#956), its stored points already show up as an ordinary source in the
 picker for any spell, matrix-granted or not - no separate wiring needed to combine the two.
 
+:::caution The old "Matrix" checkbox on a personal spell is now deprecated
+
+Before this release, the closest approximation of a matrix was the "Matrix" checkbox on a
+character's own Spirit Magic spell (`isMatrix`) - it only ever excluded that spell from the caster's
+own CHA spell-point limit, with no physical item, no sharing with anyone else, and no connection to
+this feature's data. That checkbox still exists and still works exactly as before, but it's
+superseded by real Spell Matrix Enchantments and should be treated as deprecated.
+
+There's no automatic migration for it, and can't reasonably be one: nothing in the data says which
+physical item (if any) an `isMatrix` spell was meant to represent, or who besides the caster was
+ever meant to hold it. If your world has spells flagged this way, the GM needs to go through them by
+hand - create or pick the physical item the matrix should actually live on, drag the spell onto it
+there, and uncheck `isMatrix` (or delete the old personal spell) once the real matrix item is in
+place.
+
+:::
+
 :::info Not an embedded copy of the spell
 
 Enchanting a matrix only stores a link to the spell (a Rqid) plus the number of points enchanted into
