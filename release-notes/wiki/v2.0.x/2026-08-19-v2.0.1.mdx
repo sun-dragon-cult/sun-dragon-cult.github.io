@@ -1,0 +1,26 @@
+---
+slug: wiki-v2.0.1
+title: Wiki 2.0.1
+tags:
+  - wiki
+  - foundry-release
+  - wiki-2
+  - wiki-2-0
+---
+
+![Required RQG System Version](https://img.shields.io/badge/Required%20RQG%20System%20Version-v6.0.0%2B-blue)
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v2.0.1/en-module.json)
+![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v2.0.1/wiki-en-rqg.zip)
+
+This release adds a new layer of build-time content checks to the compendium data pipeline, and
+fixes a handful of pre-existing content bugs those checks caught.
+
+- `@RQID[...]` cross-references between spells, skills, and other content are now verified to
+  actually resolve, HTML in descriptions is checked for unclosed or mismatched tags, other Foundry
+  document links (journal entries, actors, etc.) are checked for leftover placeholder targets, and
+  locally-referenced token/artwork files are verified to exist.
+- These checks caught and fixed real issues already present in the compendium: unbalanced HTML
+  tags in several bestiary, rune magic, skill, and homeland description entries; the
+  Discorporation spell's "see also" link was a dead placeholder and now correctly links to the
+  Discorporation rune magic entry; and Create Fissure's reference to the falling rules was also a
+  dead placeholder, now citing the core rulebook (RQG p156) directly instead.
