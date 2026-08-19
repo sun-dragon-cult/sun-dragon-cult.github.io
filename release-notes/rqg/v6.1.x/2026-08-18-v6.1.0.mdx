@@ -1,0 +1,153 @@
+---
+slug: rqg-v6.1.0
+title: RQG 6.1.0
+tags:
+  - rqg
+  - rqg-6
+  - rqg-6-1
+---
+
+{/* DRAFT - not yet released. Before publishing, see notes at the bottom of this file. */}
+
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v6.1.0/system.json)
+![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v6.1.0/rqg.zip)
+
+This release's headline feature is a real magic point source picker: casting a spell now lets you
+choose where the points come from whenever more than one source is available. POW-storing crystals
+work as an alternate source instead of the old max-boosting hack, a Rune Priest's Allied Spirit can
+share magic points, Rune points, and spell knowledge with its priest, spirits trapped in an item via
+a Binding Enchantment can be drawn on the same way, and a Spell Matrix Enchantment lets a Spirit
+Magic spell travel with a physical item for anyone holding it to cast.
+
+Alongside that, resolving a season's worth of pending Experience checks no longer means chasing
+across the Skills, Rune, and Passion tabs to find every one and opening a separate dialog for each.
+A new Experience Roll Session lists everything pending at once with an optional Roll All action.
+
+## Magic Point Source Picker
+
+<GithubIssue issue="956" repo="fvtt-system-rqg" />
+
+Any Gear, Weapon, or Armor item can now carry stored magic points (Core p.263's Magic Point
+Enchantment) - the shape a POW-storing crystal takes in this system, though nothing stops it being
+used for any other item that fits. Once a GM marks an item's stored points identified, casting a
+Spirit or Rune Magic spell lets the caster choose where the points are drawn from: their own pool, a
+storage item, an Allied Spirit bond, or "Auto," which drains through all of them in a single
+GM/player-defined order - the caster's own pool is just one entry in that order, not a special
+fallback after it. That order - and which items show up as sources at all - is managed from a new
+Magic Point Sources popout on the character sheet, with drag-and-drop reordering.
+
+This replaces the old approach of bumping an actor's Magic Point max via an Active Effect on the
+item, which merged a crystal's points into the owner's own pool instead of keeping them as a
+separate, spendable reserve. Any item still using the old approach is migrated automatically the
+next time your world runs its migrations - no manual cleanup needed.
+
+:::caution Manual cleanup needed if you tracked crystal charges via Quantity
+
+If you instead house-ruled a crystal's remaining points by hand using its Quantity field (e.g.
+Quantity 5 meaning 5 points left, decrementing it as points were spent), that pattern isn't covered
+by the automatic migration - there's nothing in the data for it to recognize. Set the item's new
+Stored Magic Points value/max yourself, then set Quantity back to 1 - and consider switching the
+item's type to Unique if you no longer need it to behave as a Consumable.
+
+:::
+
+{/* screenshot: Magic Point Sources popout, and the source picker in the casting dialog */}
+
+## Allied Spirits
+
+<GithubIssue issue="957" repo="fvtt-system-rqg" />
+<GithubIssue issue="1002" repo="fvtt-system-rqg" />
+
+A Rune Priest's Allied Spirit (Core p.277) is now more than flavor text. Link the bond partner from
+the priest's Combat tab, and from then on - in either direction - the pair share Magic Points, Rune
+Points for any cult they're both initiated to, and known Spirit Magic and Rune Magic spells. That
+means a priest can cast a spell their Allied Spirit knows (or vice versa) by drawing on the other's
+points, even for spells they never personally learned - shown on the caster's own Spirit/Rune Magic
+tab under a "From \{name\}:" divider so it's clear the knowledge isn't really theirs.
+
+The bond is capped at one per priest, matching RAW, but that cap is GM-adjudicated rather than
+blocked in the UI - same as everywhere else this release leaves a soft RAW limit to the table rather
+than hard-coding it.
+
+:::info
+
+Rune Point sharing matches the priest's and Allied Spirit's cults by their Rqid - something cults
+never needed before this release, so an older cult item in your world may not have one. The Rune
+Magic casting dialog now tells you explicitly when a bonded Allied Spirit exists but isn't
+recognized as sharing a cult, instead of the source picker just silently not appearing, and the Rqid
+batch editor now covers cults too, so it can fix this for you.
+
+<GithubIssue issue="1004" repo="fvtt-system-rqg" />
+
+:::
+
+{/* screenshot: Allied Spirit link on the Combat tab, plus an external spell's divider */}
+
+## Bound Spirits
+
+<GithubIssue issue="999" repo="fvtt-system-rqg" />
+
+A spirit trapped in an item via a Binding Enchantment (Core p.249) can now be linked from that
+item's sheet by dragging the spirit's actor onto it. Once bound, whoever holds the item can draw on
+the spirit's Magic Points during casting - alongside storage crystals and an Allied Spirit bond in
+the same source picker - and can cast any Spirit Magic spell the spirit itself knows, shown under
+its own "From \{spirit\} in \{item\}:" divider.
+
+Draining a bound spirit's Magic Points to zero releases it from the binding rather than destroying
+it (per the Well of Daliath's correction to Weapons & Equipment p.120), and a cast that would do
+that prompts for confirmation first. The RAW cap of CHA÷3 total bound spirits (RQG p.250) is shown
+as an informational count on the Combat tab, GM-adjudicated rather than enforced.
+
+{/* screenshot: Bound Spirit dropzone on an item sheet, and the Combat tab summary */}
+
+## Spell Matrix Enchantments
+
+<GithubIssue issue="959" repo="fvtt-system-rqg" />
+
+Any Gear, Weapon, or Armor item can now carry a Spell Matrix Enchantment (Core p.264-265): drag a
+Spirit Magic spell onto the item's sheet and it stores that spell's potentiality rather than a copy
+of its mechanics, so later changes to the original spell (or the compendium it came from) are picked
+up automatically the next time it's cast. Whoever is holding the item can cast the stored spell
+straight from the actor sheet - a gear-row indicator for a quick roll, or its own entry on the
+Spirit Magic tab under a "Matrix:" divider, alongside the existing "Allied Spirit:" and "Bound
+Spirit:" dividers, which are now labeled distinctly instead of sharing generic "From ..." wording.
+
+Casting a matrix spell uses the caster's own POW×5 chance and their own Magic Points (through the
+same source picker as any other spell), matching Core's rule that access to the spell - not its
+casting cost - is what the item grants. It doesn't count against the holder's own CHA spell-point
+limit, since it was never one of their personally-learned spells. If the same item also carries a
+Magic Point Enchantment (#956), its stored points already show up as an ordinary source in the
+picker for any spell, matrix-granted or not - no separate wiring needed to combine the two.
+
+{/* screenshot: Matrix Spell dropzone on an item sheet, and the gear-row indicator/Spirit Magic tab entry */}
+
+## Experience Roll Session
+
+<GithubIssue issue="912" repo="fvtt-system-rqg" />
+
+A new button on the actor sheet header opens a single-screen session listing every pending
+Experience check on the character at once - skills, Runes, Passions, and POW - with an optional Roll
+All action and a fixed/random gain toggle, instead of working through each one's own Improve dialog
+in turn.
+
+Rolling through the per-item Improve dialogs (for Training and Research, which stay there) and the
+new session both now go through the same shared resolver, so a gain roll behaves identically either
+way - including a fix along the way for negative gain rolls incorrectly shrinking a value, and for
+Rune/Passion improvements not respecting their 100% cap.
+
+{/* screenshot: Experience Roll Session dialog */}
+
+## Other Bug Fixes
+
+- Fix Active Effect duration units reading the wrong (deprecated) property and localizing to a key
+  that doesn't exist in Foundry v14, which logged a warning on every render
+  <GithubIssue issue="992" repo="fvtt-system-rqg" />
+  <GithubIssue issue="993" repo="fvtt-system-rqg" />
+- Stop shipping a duplicate manifest in the release package, which broke Forge's package caching
+  <GithubIssue issue="1000" repo="fvtt-system-rqg" />
+
+{/* Draft notes for whoever finalizes this - not for publication: */}
+{/* 1. Confirm #999 (PR #1011) actually merged before publishing - written up above as shipped. */}
+{/* 2. Filename date and any other TBD dates need to match the actual tag date. */}
+{/* 3. No real screenshots attached yet - see the placeholder comments above. */}
+{/* 4. Re-check the 6.1.0 milestone for anything closed after this draft was written. */}
