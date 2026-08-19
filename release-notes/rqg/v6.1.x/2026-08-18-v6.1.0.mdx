@@ -105,24 +105,11 @@ as an informational count on the Combat tab, GM-adjudicated rather than enforced
 <GithubIssue issue="959" repo="fvtt-system-rqg" />
 
 Any Gear, Weapon, or Armor item can now carry a Spell Matrix Enchantment (Core p.264-265): drag a
-Spirit Magic spell onto the item's sheet to enchant it.
-
-:::info Not an embedded copy of the spell
-
-The item only stores a link to the spell (a Rqid) plus the number of points enchanted into it - the
-spell itself is never embedded on the item or copied onto it. Every time the matrix is cast, the
-system looks up that Rqid fresh against whatever world or compendium item currently matches it, so a
-later correction to the spell (or an update to the compendium it came from) is picked up
-automatically instead of the matrix carrying a stale copy. This is a new pattern for how an item can
-grant a spell in this system - the same Rqid lookup that already backs cross-references elsewhere,
-applied here to resolve a spell's mechanics live rather than storing them.
-
-:::
-
-Whoever is holding the item can cast the stored spell straight from the actor sheet - a gear-row
-indicator for a quick roll, or its own entry on the Spirit Magic tab under a "Matrix:" divider,
-alongside the existing "Allied Spirit:" and "Bound Spirit:" dividers, which are now labeled
-distinctly instead of sharing generic "From ..." wording.
+Spirit Magic spell onto the item's sheet to enchant it, and from then on whoever is holding the item
+can cast that spell, whether or not they personally know it. Casting it works straight from the
+actor sheet - a gear-row indicator for a quick roll, or its own entry on the Spirit Magic tab under a
+"Matrix:" divider, alongside the existing "Allied Spirit:" and "Bound Spirit:" dividers, which are
+now labeled distinctly instead of sharing generic "From ..." wording.
 
 Casting a matrix spell uses the caster's own POW×5 chance and their own Magic Points (through the
 same source picker as any other spell), matching Core's rule that access to the spell - not its
@@ -130,6 +117,18 @@ casting cost - is what the item grants. It doesn't count against the holder's ow
 limit, since it was never one of their personally-learned spells. If the same item also carries a
 Magic Point Enchantment (#956), its stored points already show up as an ordinary source in the
 picker for any spell, matrix-granted or not - no separate wiring needed to combine the two.
+
+:::info Not an embedded copy of the spell
+
+Enchanting a matrix only stores a link to the spell (a Rqid) plus the number of points enchanted into
+it - the spell's own mechanics are never embedded on the item or copied onto it. Every time the
+matrix is cast, the system resolves that Rqid fresh against whatever world or compendium item
+currently matches it, so a later correction to the spell (or an update to the compendium it came
+from) is picked up automatically instead of the matrix carrying a stale copy. It's a new way for an
+item to grant a spell in this system - the same Rqid lookup that already backs cross-references
+elsewhere, applied here to resolve a spell's mechanics live rather than storing them.
+
+:::
 
 {/* screenshot: Matrix Spell dropzone on an item sheet, and the gear-row indicator/Spirit Magic tab entry */}
 
