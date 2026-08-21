@@ -4,7 +4,7 @@
         <title>RuneQuest Glorantha for Foundry VTT Blog</title>
         <link>https://sun-dragon-cult.github.io/release-notes</link>
         <description>RuneQuest Glorantha for Foundry VTT Blog</description>
-        <lastBuildDate>Tue, 18 Aug 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 22 Aug 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[Wiki 2.0.1]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/wiki-v2.0.1</link>
             <guid>https://sun-dragon-cult.github.io/release-notes/wiki-v2.0.1</guid>
-            <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+            <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
             <description><![CDATA[Supported Foundry Versions]]></description>
             <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v2.0.1/en-module.json" alt="Supported Foundry Versions" class="img_h5dG">
 <img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v2.0.1/wiki-en-rqg.zip" alt="Download Count" class="img_h5dG"></p>
