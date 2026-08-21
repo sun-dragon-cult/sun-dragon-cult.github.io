@@ -13,12 +13,12 @@ tags:
 
 ## Bug Fix
 
-- Every Spirit Magic spell had broken internal metadata (a translation placeholder that never
-  actually resolved), so nothing could look a spell up directly by its rqid - most notably rqg
-  system 6.1.0's new Spell Matrix Enchantment item feature, which failed to find any Spirit Magic
-  spell dragged onto it from this compendium. Spells your characters had already learned were never
-  affected by this - only fresh lookups by rqid were broken, so this only becomes relevant once
-  you're running rqg system 6.1.0+.
+- Every Spirit Magic spell had broken Rqid flags (its language tag was a translation placeholder
+  that never actually resolved), so nothing could look a spell up directly by its rqid - most
+  notably rqg system 6.1.0's new Spell Matrix Enchantment item feature, which failed to find any
+  Spirit Magic spell dragged onto it from this compendium. Spells your characters had already
+  learned were never affected by this - only fresh lookups by rqid were broken, so this only becomes
+  relevant once you're running rqg system 6.1.0+.
 - Unbalanced HTML tags in several bestiary, rune magic, skill, and homeland description entries
   could make parts of the text render incorrectly - all now fixed.
 - The Discorporation spell's "see also" link and Create Fissure's reference to the falling rules
