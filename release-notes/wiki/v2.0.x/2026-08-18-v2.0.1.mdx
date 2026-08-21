@@ -1,0 +1,32 @@
+---
+slug: wiki-v2.0.1
+title: Wiki 2.0.1
+tags:
+  - wiki
+  - foundry-release
+  - wiki-2
+  - wiki-2-0
+---
+
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v2.0.1/en-module.json)
+![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v2.0.1/wiki-en-rqg.zip)
+
+## Bug Fix
+
+- Every Spirit Magic spell had broken Rqid flags (its language tag was a translation placeholder
+  that never actually resolved), so nothing could look a spell up directly by its rqid - most
+  notably rqg system 6.1.0's new Spell Matrix Enchantment item feature, which failed to find any
+  Spirit Magic spell dragged onto it from this compendium. Spells your characters had already
+  learned were never affected by this - only fresh lookups by rqid were broken, so this only becomes
+  relevant once you're running rqg system 6.1.0+.
+- Unbalanced HTML tags in several bestiary, rune magic, skill, and homeland description entries
+  could make parts of the text render incorrectly - all now fixed.
+- The Discorporation spell's "see also" link and Create Fissure's reference to the falling rules
+  were both dead placeholder links that never got filled in - Discorporation now links to the
+  correct spell, and Create Fissure now cites the core rulebook (RQG p156) directly.
+
+## Under the Hood
+
+- The build pipeline now automatically checks `@RQID[...]` cross-references, HTML structure, other
+  Foundry document links, and local asset file references against the actual compendium content on
+  every push, to catch this class of bug going forward before it ships.
