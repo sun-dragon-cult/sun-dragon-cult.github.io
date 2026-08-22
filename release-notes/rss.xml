@@ -4,10 +4,243 @@
         <title>RuneQuest Glorantha for Foundry VTT Blog</title>
         <link>https://sun-dragon-cult.github.io/release-notes</link>
         <description>RuneQuest Glorantha for Foundry VTT Blog</description>
-        <lastBuildDate>Sat, 22 Aug 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 23 Aug 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[RQG 6.1.0]]></title>
+            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v6.1.0</link>
+            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v6.1.0</guid>
+            <pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supported Foundry Versions]]></description>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v6.1.0/system.json" alt="Supported Foundry Versions" class="img_h5dG">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v6.1.0/rqg.zip" alt="Download Count" class="img_h5dG"></p>
+<p>This release's headline feature is a real magic point source picker: casting a spell now lets you
+choose where the points come from whenever more than one source is available. POW-storing crystals
+work as an alternate source instead of the old max-boosting hack, a Rune Priest's Allied Spirit can
+share Magic Points, Rune Points, and spell knowledge with its priest, spirits trapped in an item via
+a Binding Enchantment can be drawn on the same way, and a Spell Matrix Enchantment lets a Spirit
+Magic spell travel with a physical item for anyone holding it to cast.</p>
+<p>Magic Points and natural Hit Point healing also stop being something you have to track by hand: both
+now recover automatically as game time passes, computed straight from the world clock instead of a
+manual catch-up step.</p>
+<p>Alongside that, resolving a season's worth of pending Experience checks no longer means chasing
+across the Skills, Rune, and Passion tabs to find every one and opening a separate dialog for each.
+A new Experience Roll Session lists everything pending at once with an optional Roll All action. And
+a quadruped creature like a horse gets its own hit-location layout on the Combat tab now, instead of
+a default table layout.</p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="magic-point-storage-and-source-picker">Magic Point Storage and Source Picker<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.1.0#magic-point-storage-and-source-picker" class="hash-link" aria-label="Direct link to Magic Point Storage and Source Picker" title="Direct link to Magic Point Storage and Source Picker" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/956" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->956</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1023" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1023</label></a>
+<p>Any Gear, Weapon, or Armor item can now act as a POW-storing crystal. Open the item and set a value
+greater than 0 in the Stored Magic Points fields: the first represents how many points are currently
+stored, the second the maximum it can hold. The "Magic Points Identified?" checkbox is a gate the GM
+can use to hide from the players that the item is a POW-storage item.</p>
+<p>A storage item only counts as a usable source once it's both equipped and identified - equipped to
+match Core's "physical contact" requirement for a Magic Point Enchantment, identified so an
+unidentified crystal doesn't announce itself as a battery.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/pow-crystal-setup-8693884108ca8298c2794810e92b6b42.png" width="665" height="591" class="img_h5dG"></p>
+<p>Once a GM sets a max stored points value on the item, it joins the caster's own pool and any Allied
+Spirit bond as a possible Magic Point source. Which of those show up as sources at all, and in what
+order, is managed from a new Magic Point Source Order popout on the character sheet, with
+drag-and-drop reordering - the red numbers show that order. That popout also has a
+<img class="lightInvert_V1ax" src="https://sun-dragon-cult.github.io/img/magic-point-feed.svg" width="14"> button to move Magic Points from the
+character (self) into the crystal, moving as many as it can without knocking the character
+unconscious.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/mp-source-popout-pow-crystal-7af2b305864bde88ff45b1fad1d85d99.png" width="992" height="412" class="img_h5dG"></p>
+<p>Casting a Spirit Magic spell (or boosting a Rune Magic spell with magic points) now shows a "Magic
+Point Source" dropdown. It defaults to "Auto," which drains through the sources in that popout's
+order - the caster's own pool is just one entry in that order - but you can also choose to draw from
+one specific source for that cast only, if you want. Every option other than "Auto" itself shows its
+current/max Magic Points directly, so you can tell at a glance which source actually has anything
+left before choosing.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/cast-spirit-magic-mp-source1-452142e8878d9380d5dfe8b4fcdd7ae7.png" width="643" height="483" class="img_h5dG"></p>
+<p>This replaces the old approach of bumping an actor's Magic Point max via an Active Effect on the
+item, which merged a crystal's points into the owner's own pool instead of keeping them as a
+separate, spendable reserve. Any item still using the old active effect approach is migrated
+automatically the next time your world runs its migrations - no manual cleanup needed.</p>
+<div class="theme-admonition theme-admonition-caution admonition_uOdM alert alert--warning"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Manual cleanup needed if you tracked crystal charges via Quantity</div><div class="admonitionContent__X6G"><p>If you instead tracked a crystal's remaining points by hand using its Quantity field (e.g. Quantity
+5 meaning 5 points left, decrementing it as points were spent), that pattern isn't covered by the
+automatic migration - there's nothing in the data for it to recognize. Set the item's new Stored
+Magic Points value/max yourself, then set Quantity back to 1 - and consider switching the item's
+type to Unique since you no longer need it to behave as a Consumable.</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="allied-spirits">Allied Spirits<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.1.0#allied-spirits" class="hash-link" aria-label="Direct link to Allied Spirits" title="Direct link to Allied Spirits" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/957" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->957</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1002" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1002</label></a>
+<p>A Rune Priest's Allied Spirit is now more than flavor text. Link the bond partner from the priest's
+Combat tab in edit mode by dragging the spirit actor to the Allied Spirit dropzone.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/allied-spirit-connect-ae30a6338380852456d31ea37ecf010f.png" width="985" height="406" class="img_h5dG"></p>
+<p>From then on - in either direction - the pair share Magic Points, Rune Points for any cult they're
+both initiated to, and known Spirit Magic and Rune Magic spells. That means a priest can cast a
+spell their Allied Spirit knows (or vice versa) by drawing on the other's points, even for spells
+they never personally learned - shown on the caster's own Spirit/Rune Magic tab under an "Allied
+Spirit:" divider so it's clear the knowledge isn't really theirs.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/allied-rune-magic-276dc36dfe3821cf57ef0b7eb0f92b1b.png" width="1004" height="352" class="img_h5dG"></p>
+<p>Shared Magic Points also get their own entry in the Magic Point Source Order popout, marked with a
+spirit rune so you can tell an Allied (or bound) Spirit apart from a storage item at a glance.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/allied-mp-source-order-4ea12772d17fd7bb85d46199496ce856.png" width="401" height="247" class="img_h5dG"></p>
+<div class="theme-admonition theme-admonition-info admonition_uOdM alert alert--info"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent__X6G"><p>Rune Point sharing matches the priest's and Allied Spirit's cults by their Rqid - something cults
+never needed before this release, so an older cult item in your world may not have one. The Rune
+Magic casting dialog now tells you explicitly when a bonded Allied Spirit exists but isn't
+recognized as sharing a cult, instead of the source picker just silently not appearing, and the Add
+Rqids dialog that pops up during migrations now includes cults that lack Rqids, so it can fix this
+for you.</p><a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1004" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1004</label></a></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="bound-spirits">Bound Spirits<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.1.0#bound-spirits" class="hash-link" aria-label="Direct link to Bound Spirits" title="Direct link to Bound Spirits" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/999" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->999</label></a>
+<p>A spirit trapped in an item via a Binding Enchantment can now be linked from that
+item's sheet by dragging the spirit's actor onto it. It is possible to bind multiple spirits into
+one item, letting a single Foundry item represent something like a handful of bound crystals.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/bound-spirit-binding-30fd72c8c8ab7673f61fe7d777163cb3.png" width="664" height="613" class="img_h5dG"></p>
+<p>Once bound, whoever holds the item - in other words, has it equipped - can cast any Spirit Magic
+spell the spirit itself knows, shown under its own "Bound Spirit:" divider.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/bound-spirit-casting-0b14b01ec5dd6c3376cafe81d54640bf.png" width="739" height="514" class="img_h5dG"></p>
+<p>Casting can also draw on the bound spirit's own Magic Points, which get their own entry in the
+Magic Point Source Order popout.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/bound-spirit-mp-source-02e693bc17e2286903bc0b2ebcdaa748.png" width="693" height="305" class="img_h5dG"></p>
+<p>Draining a bound spirit's Magic Points to zero releases it from the binding, and a cast that would
+do that prompts for confirmation first. The cap of CHA / 3 total bound spirits is shown as an
+informational count on the Combat tab, with a warning if you go over it - since too many bound
+spirits should provoke a spirit rebellion.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/bound-spirit-max-display-ca27529ac0cd711c7160b58c772b1f01.png" width="778" height="317" class="img_h5dG"></p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="spell-matrix-enchantments">Spell Matrix Enchantments<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.1.0#spell-matrix-enchantments" class="hash-link" aria-label="Direct link to Spell Matrix Enchantments" title="Direct link to Spell Matrix Enchantments" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/959" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->959</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1021" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1021</label></a>
+<p>Any Gear, Weapon, or Armor item can now carry a Spell Matrix Enchantment: drag a Spirit Magic spell
+onto the item's sheet to enchant it, and from then on whoever has that item equipped can cast that
+spell, whether or not they personally know it.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/matrix-item-dropzone-6dd22235b46e1aa288281448d33f8501.png" width="573" height="416" class="img_h5dG"></p>
+<p>Casting it works straight from the actor sheet on its own entry on the Spirit Magic tab under a
+"Matrix:" divider, alongside any existing "Allied Spirit:" and "Bound Spirit:" dividers.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/matrix-spirit-casting-48858351ff317998a11ed12aa36e1680.png" width="568" height="467" class="img_h5dG"></p>
+<p>It uses the caster's own POW×5 chance and their own Magic Points, drawn through the same source
+picker as any other spell. A matrix spell doesn't count against the holder's own CHA spell-point
+limit, since it was never one of their personally-learned spells.</p>
+<p>An item isn't limited to one enchanted spell either: drop additional Spirit Magic spells onto the
+same item and each gets its own chip on the item sheet, with its own GM-only points field and its
+own delete button (points are only editable when the underlying spell is variable - a fixed-level
+spell shows its points read-only). In practice that means you could, for example, have several
+matrix-enchanted spells embedded in a single sword.</p>
+<p><img decoding="async" loading="lazy" src="data:image/png;base64,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" width="432" height="55" class="img_h5dG"></p>
+<div class="theme-admonition theme-admonition-caution admonition_uOdM alert alert--warning"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>The old "Held in Matrix" checkbox on a personal spell is now deprecated</div><div class="admonitionContent__X6G"><p>Before this release, the closest thing to a matrix was the "Held in Matrix" checkbox on a
+character's own Spirit Magic spell (<code>isMatrix</code>) - it only ever excluded that spell from the caster's
+own CHA spell-point limit, with no connection to a gear item. GMs ended up overloading that one
+checkbox for two different situations: a real physical matrix, or a bound/allied spirit's spell
+copied onto the character just so it wouldn't count against their CHA limit. This release's Allied
+Spirit and Bound Spirit spell-sharing now handles the second case properly, so the checkbox is
+superseded - it still exists and still works exactly as before, but should be treated as deprecated.</p><p>There's no fully automatic migration for it, and there can't reasonably be one: nothing in the data
+says which of the two situations above an <code>isMatrix</code> spell represents, and for the real-matrix case,
+nothing says which physical item (if any) it was meant to live in - both are always a GM call.</p><p>To make it easier to find and convert them, a "Migrate isMatrix Spells" macro in the "System
+Macros" compendium (folder "RuneQuest Glorantha System/Macros") lists every <code>isMatrix</code> spell in the
+world, with the actor and spell as clickable links and the spell's Focus text shown - many GMs use
+that field to note which item a matrix should live in. Each row lets you handle that spell at your
+own pace:</p><ul>
+<li class=""><strong>Create Gear</strong> - creates a new Gear item on the same actor with the Spell Matrix Enchantment
+already linked at the same points, and opens it for you to rename.</li>
+<li class=""><strong>Delete Spirit Magic</strong> (with a confirmation prompt) - removes the now-obsolete original Spirit
+Magic item, once you're happy with its replacement or once you've set up the bonded spirit's
+proper spell-sharing instead.</li>
+</ul><p>Neither action fires until you choose it, and a row you resolve just stops showing up the next time
+the macro runs.</p><p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/macro-is-matrix-1c9f792ef40c32d9fda131010447db78.png" width="600" height="380" class="img_h5dG"></p></div></div>
+<div class="theme-admonition theme-admonition-info admonition_uOdM alert alert--info"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Not an embedded copy of the spell</div><div class="admonitionContent__X6G"><p>Enchanting a matrix only stores a link to the spell (a Rqid) plus the number of points enchanted
+into it - the spell's own mechanics are never embedded on the item or copied onto it. Every time the
+matrix is cast, the system resolves that Rqid fresh against whatever world or compendium item
+currently matches it, so a later correction to the spell (or an update to the compendium it came
+from) is picked up automatically instead of the matrix carrying a stale copy. It's a new way for an
+item to grant a spell in this system - the same Rqid lookup that already backs cross-references
+elsewhere, applied here to resolve a spell's mechanics live rather than storing them.</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="magic-point-recovery">Magic Point Recovery<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.1.0#magic-point-recovery" class="hash-link" aria-label="Direct link to Magic Point Recovery" title="Direct link to Magic Point Recovery" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/512" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->512</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1028" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1028</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1035" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1035</label></a>
+<p>Magic Points now recover on their own as game time passes, computed straight from Foundry's world
+clock. Advancing that clock is a calendar module's job (e.g. Calendaria, GG Calendar, or Seasons &amp;
+Stars) - Foundry itself has no built-in way to move it forward, so without one there's no game time
+for this to catch up against. Simply opening a character's sheet is enough to catch it up, and so is
+the world clock advancing while the sheet is already open.</p>
+<p>A new recovery-rate indicator next to Magic Points on the character header shows the resulting
+points/day and time-per-point on hover.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/mp-recovery-tooltip-0b22686d880af8fad66889b7646892ea.png" width="612" height="267" class="img_h5dG"></p>
+<p>A gift or HeroQuest effect that speeds up or slows down recovery can target the new
+<code>system.attributes.magicPointRecoveryRateFactor</code> field directly with an Active Effect - e.g., a
+Humakti gift doubling recovery speed could <code>OVERRIDE</code> this to 2, in effect halving the time it takes
+to recover a Magic Point.</p>
+<p>For GMs who'd rather not have any silent auto-recovery at all, a new <strong>Automatic Magic Point
+Recovery</strong> world setting turns this off entirely, so Magic Point recovery goes back to being applied
+by hand. The default for this setting is on, so you need to opt out if you don't want this.</p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="natural-healing">Natural Healing<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.1.0#natural-healing" class="hash-link" aria-label="Direct link to Natural Healing" title="Direct link to Natural Healing" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/436" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->436</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1031" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1031</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1035" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1035</label></a>
+<p>Natural Hit Point healing now works the same way as Magic Point recovery: it's computed from elapsed
+game time instead of anything applied by hand. Each wounded hit location recovers its own healing
+rate in points, applied as a lump at the end of each elapsed game week rather than prorated,
+matching the Core rule. A location with more than one wound splits the recovered points evenly
+across them, with any remainder going to the lightest wound, and a severed or useless location's hit
+points still recover naturally even though regaining the use of the limb still takes magic capable
+of regrowing it.</p>
+<p>This only applies to <strong>player-owned characters</strong> - NPCs are unaffected and still need their healing
+applied by hand, same as before. Whether a character was actually resting - which Core requires for
+natural healing to apply - isn't tracked or enforced either: healing is applied automatically each
+elapsed game week regardless. There's no per-character override for this; the only control is the
+<strong>Automatic Natural Healing</strong> world setting, which turns automatic healing off entirely for GMs
+who'd rather enforce that condition by hand instead. The default is on, so you need to opt out if
+you don't want this.</p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="experience-roll-session">Experience Roll Session<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.1.0#experience-roll-session" class="hash-link" aria-label="Direct link to Experience Roll Session" title="Direct link to Experience Roll Session" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/912" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->912</label></a>
+<p>A new menu item on the actor sheet header opens a single-screen session listing every pending
+Experience check on the character at once - skills, Runes, Passions, and POW - with an optional Roll
+All action and a fixed/random gain toggle, instead of working through each one's own Improve dialog
+in turn.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/exp-menu-530a148fefe3a30ebd0ffd12b244b9b0.png" width="339" height="248" class="img_h5dG"></p>
+<p>Each row in the session shows what you need to know to make the call before rolling:</p>
+<ul>
+<li class="">The <strong>Fixed | Random</strong> selector (top left) chooses whether a successful improvement gains a fixed
+amount or a random one - what that amount actually is differs by improvement type, and is shown
+on each row (see the <code>+1d3-1</code> vs <code>+1d6%</code> in the screenshot below).</li>
+<li class="">The pill next to each item shows the target you need to roll to improve: <strong>under</strong> a value for
+Runes, <strong>over</strong> a value for everything else. Hovering it shows a tooltip explaining how that value
+was calculated.</li>
+</ul>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/exp-dialog-463ccdf99361153c82c80e037e390a66.png" width="557" height="664" class="img_h5dG"></p>
+<p>Rolling through the per-item improvements leaves a summary of how each improvement attempt went, so
+at the end you will have an overview of how lucky you were. Rolling also generates chat messages for
+the improvement rolls, and if you do a "Roll All" you get a combined chat message for all the rolls
+at once.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/exp-dialog-done-e78fe12498df48bfb41f173820c32604.png" width="556" height="583" class="img_h5dG"></p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="quadruped-hit-location-visualization">Quadruped Hit-Location Visualization<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.1.0#quadruped-hit-location-visualization" class="hash-link" aria-label="Direct link to Quadruped Hit-Location Visualization" title="Direct link to Quadruped Hit-Location Visualization" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1033" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1033</label></a>
+<p>The hit-location visualization on the Combat tab - previously laid out for humanoid actors only -
+now recognizes quadruped creatures too, based on their hit locations, and shows them against their
+own silhouette (head, forequarters, hindquarters, legs) instead of a default table layout.</p>
+<p><img decoding="async" loading="lazy" src="https://sun-dragon-cult.github.io/assets/images/health-4-legged-ed41b49112c2799426b55023c9c37b43.png" width="634" height="564" class="img_h5dG"></p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="other-bug-fixes">Other Bug Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v6.1.0#other-bug-fixes" class="hash-link" aria-label="Direct link to Other Bug Fixes" title="Direct link to Other Bug Fixes" translate="no">​</a></h2>
+<ul>
+<li class="">Fix Active Effect duration units reading the wrong (deprecated) property and localizing to a key
+that doesn't exist in Foundry v14, which logged a warning on every render<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/992" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->992</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/993" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->993</label></a>
+</li>
+<li class="">Stop shipping a duplicate manifest in the release package, which broke the Forge's package caching<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1000" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1000</label></a>
+</li>
+<li class="">Allow a natural or hit-location-linked weapon (fist, bite, claw, etc.) to leave its own Hit Points
+unset instead of forcing them to 0, since it uses the owning hit location's HP instead<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1012" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1012</label></a>
+</li>
+<li class="">Fix the Spirit Magic tab's points input rendering far wider than intended in edit mode, throwing
+off row alignment<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1016" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1016</label></a>
+</li>
+<li class="">Fix the actor sheet's drag-and-drop highlight getting stuck on, instead of clearing, when a drag
+moves onto an overlapping Item Sheet<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1025" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1025</label></a>
+</li>
+</ul>]]></content:encoded>
+            <category>rqg</category>
+            <category>rqg-6</category>
+            <category>rqg-6-1</category>
+        </item>
         <item>
             <title><![CDATA[Wiki 2.0.1]]></title>
             <link>https://sun-dragon-cult.github.io/release-notes/wiki-v2.0.1</link>
@@ -1254,25 +1487,6 @@ indication if things are running slowly.</p>
 <p>This released contains an updated link to the RQG Wiki Module now that it has been released.</p>]]></content:encoded>
             <category>rqg</category>
             <category>foundry-release</category>
-            <category>rqg-3</category>
-            <category>rqg-3-4</category>
-        </item>
-        <item>
-            <title><![CDATA[RQG 3.4.5]]></title>
-            <link>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.5</link>
-            <guid>https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.5</guid>
-            <pubDate>Sat, 15 Jun 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[Supported Foundry Versions]]></description>
-            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v3.4.5/system.json" alt="Supported Foundry Versions" class="img_h5dG">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v3.4.5/rqg.zip" alt="Download Count" class="img_h5dG"></p>
-<p>This released contains a bugfix for some translations when using Foundry v12.</p>
-<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="bug-fixes">Bug Fixes<a href="https://sun-dragon-cult.github.io/release-notes/rqg-v3.4.5#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes" translate="no">​</a></h2>
-<ul>
-<li class="">some spirit magic texts are not translated in Foundry 12.<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/713" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->713</label></a>
-</li>
-</ul>]]></content:encoded>
-            <category>rqg</category>
             <category>rqg-3</category>
             <category>rqg-3-4</category>
         </item>
