@@ -7,62 +7,64 @@ tags:
   - rqg-6-1
 ---
 
-{/* DRAFT - not yet released. Before publishing, see notes at the bottom of this file. */}
-
 ![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v6.1.0/system.json)
 ![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v6.1.0/rqg.zip)
 
 This release's headline feature is a real magic point source picker: casting a spell now lets you
 choose where the points come from whenever more than one source is available. POW-storing crystals
 work as an alternate source instead of the old max-boosting hack, a Rune Priest's Allied Spirit can
-share magic points, Rune points, and spell knowledge with its priest, spirits trapped in an item via
+share Magic Points, Rune Points, and spell knowledge with its priest, spirits trapped in an item via
 a Binding Enchantment can be drawn on the same way, and a Spell Matrix Enchantment lets a Spirit
 Magic spell travel with a physical item for anyone holding it to cast.
 
 Magic Points and natural Hit Point healing also stop being something you have to track by hand: both
 now recover automatically as game time passes, computed straight from the world clock instead of a
-manual catch-up step. And a quadruped creature like a horse gets its own hit-location layout on the
-Combat tab instead of a default table layout.
+manual catch-up step.
 
 Alongside that, resolving a season's worth of pending Experience checks no longer means chasing
 across the Skills, Rune, and Passion tabs to find every one and opening a separate dialog for each.
-A new Experience Roll Session lists everything pending at once with an optional Roll All action.
+A new Experience Roll Session lists everything pending at once with an optional Roll All action. And
+a quadruped creature like a horse gets its own hit-location layout on the Combat tab now, instead of
+a default table layout.
 
 ## Magic Point Storage and Source Picker
 
 <GithubIssue issue="956" repo="fvtt-system-rqg" />
 <GithubIssue issue="1023" repo="fvtt-system-rqg" />
 
-Any Gear, Weapon, or Armor item can now act as a POW-storing crystal. Open the item and add >0 value
-in the Stored Magic Points fields, the first one represents how many are currently stored and the
-second what the max you can store is. The "Magic Points Identified?" checkbox is a gate the GM can
-use to hide from the players that the item is a POW-storage item.
+Any Gear, Weapon, or Armor item can now act as a POW-storing crystal. Open the item and set a value
+greater than 0 in the Stored Magic Points fields: the first represents how many points are currently
+stored, the second the maximum it can hold. The "Magic Points Identified?" checkbox is a gate the GM
+can use to hide from the players that the item is a POW-storage item.
+
+A storage item only counts as a usable source once it's both equipped and identified - equipped to
+match Core's "physical contact" requirement for a Magic Point Enchantment, identified so an
+unidentified crystal doesn't announce itself as a battery.
 
 ![](pow-crystal-setup.png)
 
-Once a GM sets a max stored points value on the item, casting a Spirit or Rune Magic spell lets the
-caster choose where the points are drawn from: their own pool, a storage item, an Allied Spirit
-bond, or "Auto," which drains through all of them in a single player-defined order - the caster's
-own pool is just one entry in that order. That order - and which items show up as sources at all -
-is managed from a new Magic Point Sources popout on the character sheet, with drag-and-drop
-reordering, the used magic points are used from the top source to the bottom, the red numbers
-indicate the order. That popout also has a button to move Magic Points from the character (self)
-into the crystal, moving as many as it can without knocking the character unconscious.
+Once a GM sets a max stored points value on the item, it joins the caster's own pool and any Allied
+Spirit bond as a possible Magic Point source. Which of those show up as sources at all, and in what
+order, is managed from a new Magic Point Source Order popout on the character sheet, with
+drag-and-drop reordering - the red numbers show that order. That popout also has a
+<LightInvertSvg src="/img/magic-point-feed.svg" width="14" /> button to move Magic Points from the
+character (self) into the crystal, moving as many as it can without knocking the character
+unconscious.
 
 ![](mp-source-popout-pow-crystal.png)
 
-When casting a spirit Magic Spell (or boosting a Rune Magic spell with magic points) now show a
-"Magic Point Source" dropdown. It defaults to Auto, meaning it will follow the selected order, but
-you can also choose to draw from any specifix magic point source just for this usage if you want.
-Every option in the picker's dropdown - other than "Auto" itself, since it isn't a single pool -
-shows its current/max Magic Points directly, so you can tell at a glance which source actually has
-anything left before choosing.
+Casting a Spirit Magic spell (or boosting a Rune Magic spell with magic points) now shows a "Magic
+Point Source" dropdown. It defaults to "Auto," which drains through the sources in that popout's
+order - the caster's own pool is just one entry in that order - but you can also choose to draw from
+one specific source for that cast only, if you want. Every option other than "Auto" itself shows its
+current/max Magic Points directly, so you can tell at a glance which source actually has anything
+left before choosing.
 
 ![](cast-spirit-magic-mp-source1.png)
 
 This replaces the old approach of bumping an actor's Magic Point max via an Active Effect on the
 item, which merged a crystal's points into the owner's own pool instead of keeping them as a
-separate, spendable reserves. Any item still using the old active effect approach is migrated
+separate, spendable reserve. Any item still using the old active effect approach is migrated
 automatically the next time your world runs its migrations - no manual cleanup needed.
 
 :::caution Manual cleanup needed if you tracked crystal charges via Quantity
@@ -80,19 +82,22 @@ type to Unique since you no longer need it to behave as a Consumable.
 <GithubIssue issue="957" repo="fvtt-system-rqg" />
 <GithubIssue issue="1002" repo="fvtt-system-rqg" />
 
-A Rune Priest's Allied Spirit (Core p.277) is now more than flavor text. Link the bond partner from
-the priest's Combat tab in edit mode by dragging the spirit actor to the Allied Spirit dropzone, and
-from then on - in either direction - the pair share Magic Points, Rune Points for any cult they're
-both initiated to, and known Spirit Magic and Rune Magic spells. That means a priest can cast a
-spell their Allied Spirit knows (or vice versa) by drawing on the other's points, even for spells
-they never personally learned - shown on the caster's own Spirit/Rune Magic tab under a "Allied
-Spirit:" divider so it's clear the knowledge isn't really theirs.
+A Rune Priest's Allied Spirit is now more than flavor text. Link the bond partner from the priest's
+Combat tab in edit mode by dragging the spirit actor to the Allied Spirit dropzone.
 
 ![](allied-spirit-connect.png)
 
+From then on - in either direction - the pair share Magic Points, Rune Points for any cult they're
+both initiated to, and known Spirit Magic and Rune Magic spells. That means a priest can cast a
+spell their Allied Spirit knows (or vice versa) by drawing on the other's points, even for spells
+they never personally learned - shown on the caster's own Spirit/Rune Magic tab under an "Allied
+Spirit:" divider so it's clear the knowledge isn't really theirs.
+
 ![](allied-rune-magic.png)
 
-In the magic point source order popout, allied (or bound) spirits are marked with a spirit rune.
+Shared Magic Points also get their own entry in the Magic Point Source Order popout, marked with a
+spirit rune so you can tell an Allied (or bound) Spirit apart from a storage item at a glance.
+
 ![](allied-mp-source-order.png)
 
 :::info
@@ -112,17 +117,19 @@ for you.
 
 <GithubIssue issue="999" repo="fvtt-system-rqg" />
 
-A spirit trapped in an item via a Binding Enchantment (Core p.249) can now be linked from that
+A spirit trapped in an item via a Binding Enchantment can now be linked from that
 item's sheet by dragging the spirit's actor onto it. It is possible to bind multiple spirits into
-one item, to be able to model that a single Foundry item might contain multiple crystals.
+one item, letting a single Foundry item represent something like a handful of bound crystals.
 
 ![](bound-spirit-binding.png)
 
-Once bound, whoever holds the item, in other words have the item equipped, can draw on the spirit's
-Magic Points during casting - and can cast any Spirit Magic spell the spirit itself knows, shown
-under its own "Bound Spirit:" divider.
+Once bound, whoever holds the item - in other words, has it equipped - can cast any Spirit Magic
+spell the spirit itself knows, shown under its own "Bound Spirit:" divider.
 
 ![](bound-spirit-casting.png)
+
+Casting can also draw on the bound spirit's own Magic Points, which get their own entry in the
+Magic Point Source Order popout.
 
 ![](bound-spirit-mp-source.png)
 
@@ -139,7 +146,7 @@ spirits should provoke a spirit rebellion.
 <GithubIssue issue="1021" repo="fvtt-system-rqg" />
 
 Any Gear, Weapon, or Armor item can now carry a Spell Matrix Enchantment: drag a Spirit Magic spell
-onto the item's sheet to enchant it, and from then on whoever is holding the item can cast that
+onto the item's sheet to enchant it, and from then on whoever has that item equipped can cast that
 spell, whether or not they personally know it.
 
 ![](matrix-item-dropzone.png)
@@ -149,14 +156,14 @@ Casting it works straight from the actor sheet on its own entry on the Spirit Ma
 
 ![](matrix-spirit-casting.png)
 
-Casting a matrix spell uses the caster's own POW×5 chance and their own Magic Points, drawn through
-the same source picker as any other spell. It doesn't count against the holder's own CHA spell-point
+It uses the caster's own POW×5 chance and their own Magic Points, drawn through the same source
+picker as any other spell. A matrix spell doesn't count against the holder's own CHA spell-point
 limit, since it was never one of their personally-learned spells.
 
 An item isn't limited to one enchanted spell either: drop additional Spirit Magic spells onto the
 same item and each gets its own chip on the item sheet, with its own GM-only points field and its
 own delete button (points are only editable when the underlying spell is variable - a fixed-level
-spell shows its points read-only). The point of that is that you could, for example, have several
+spell shows its points read-only). In practice that means you could, for example, have several
 matrix-enchanted spells embedded in a single sword.
 
 ![](matrix-item-multiple-matrix.png)
@@ -165,25 +172,30 @@ matrix-enchanted spells embedded in a single sword.
 
 Before this release, the closest thing to a matrix was the "Held in Matrix" checkbox on a
 character's own Spirit Magic spell (`isMatrix`) - it only ever excluded that spell from the caster's
-own CHA spell-point limit, with no connections to a gear item. GMs ended up overloading that one
+own CHA spell-point limit, with no connection to a gear item. GMs ended up overloading that one
 checkbox for two different situations: a real physical matrix, or a bound/allied spirit's spell
-copied onto the character just so it wouldn't count against their CHA limit - a case this release's
-Allied Spirit and Bound Spirit spell-sharing now handles properly instead. The checkbox itself still
-exists and still works exactly as before, but it's superseded and should be treated as deprecated.
+copied onto the character just so it wouldn't count against their CHA limit. This release's Allied
+Spirit and Bound Spirit spell-sharing now handles the second case properly, so the checkbox is
+superseded - it still exists and still works exactly as before, but should be treated as deprecated.
 
-There's no fully automatic migration for it, and can't reasonably be one: nothing in the data says
-which of the two situations above an `isMatrix` spell represents, and for the real-matrix case,
-nothing says which physical item (if any) it was meant to live in - both are always a GM call. To
-make it easier to find and convert the spells that have this isMatrix set, there's a "Migrate
-isMatrix Spells" macro in the "System Macros" compendium, in the "RuneQuest Glorantha System/Macros"
-folder. It lists every `isMatrix` spell in the world - with the actor and spell as clickable links,
-and the spell's Focus text shown, since many GMs use that field to note which item a matrix should
-live in - and lets you handle each one at your own pace: "Create Gear" creates a new Gear item on
-the same actor with the Spell Matrix Enchantment already linked at the same points and opens it for
-you to rename, and "Delete Spirit Magic" (with a confirmation prompt) removes the now-obsolete
-original Spirit Magic item once you're happy with its replacement, or once you've set up the bonded
-spirit's proper spell-sharing instead. Neither action fires until you choose it, and a row you
-resolve just stops showing up the next time the macro runs.
+There's no fully automatic migration for it, and there can't reasonably be one: nothing in the data
+says which of the two situations above an `isMatrix` spell represents, and for the real-matrix case,
+nothing says which physical item (if any) it was meant to live in - both are always a GM call.
+
+To make it easier to find and convert them, a "Migrate isMatrix Spells" macro in the "System
+Macros" compendium (folder "RuneQuest Glorantha System/Macros") lists every `isMatrix` spell in the
+world, with the actor and spell as clickable links and the spell's Focus text shown - many GMs use
+that field to note which item a matrix should live in. Each row lets you handle that spell at your
+own pace:
+
+- **Create Gear** - creates a new Gear item on the same actor with the Spell Matrix Enchantment
+  already linked at the same points, and opens it for you to rename.
+- **Delete Spirit Magic** (with a confirmation prompt) - removes the now-obsolete original Spirit
+  Magic item, once you're happy with its replacement or once you've set up the bonded spirit's
+  proper spell-sharing instead.
+
+Neither action fires until you choose it, and a row you resolve just stops showing up the next time
+the macro runs.
 
 ![](macro-is-matrix.png)
 
@@ -208,11 +220,13 @@ elsewhere, applied here to resolve a spell's mechanics live rather than storing 
 <GithubIssue issue="1035" repo="fvtt-system-rqg" />
 
 Magic Points now recover on their own as game time passes, computed straight from Foundry's world
-clock. Advancing that clock is a calendar module's job (e.g. Simple Calendar) - Foundry itself has
-no built-in way to move it forward, so without one there's no game time for this to catch up
-against. Simply opening a character's sheet is enough to catch it up, and so is the world clock
-advancing while the sheet is already open. There is a new recovery-rate indicator next to Magic
-Points on the character header that shows the resulting points/day and time-per-point on hover.
+clock. Advancing that clock is a calendar module's job (e.g. Calendaria, GG Calendar, or Seasons &
+Stars) - Foundry itself has no built-in way to move it forward, so without one there's no game time
+for this to catch up against. Simply opening a character's sheet is enough to catch it up, and so is
+the world clock advancing while the sheet is already open.
+
+A new recovery-rate indicator next to Magic Points on the character header shows the resulting
+points/day and time-per-point on hover.
 
 ![](mp-recovery-tooltip.png)
 
@@ -239,12 +253,13 @@ across them, with any remainder going to the lightest wound, and a severed or us
 points still recover naturally even though regaining the use of the limb still takes magic capable
 of regrowing it.
 
-Whether a character was actually resting - which Core requires for natural healing to apply - isn't
-tracked or enforced; that stays a GM call, the same as everywhere else this release leaves a narrow
-RAW condition to the table rather than hard-coding it. For GMs who'd rather not have any silent
-auto-healing at all, a new **Automatic Natural Healing** world setting turns this off entirely, so
-healing goes back to being applied by hand. The default for this setting is on, so you need to opt
-out if you don't want this.
+This only applies to **player-owned characters** - NPCs are unaffected and still need their healing
+applied by hand, same as before. Whether a character was actually resting - which Core requires for
+natural healing to apply - isn't tracked or enforced either: healing is applied automatically each
+elapsed game week regardless. There's no per-character override for this; the only control is the
+**Automatic Natural Healing** world setting, which turns automatic healing off entirely for GMs
+who'd rather enforce that condition by hand instead. The default is on, so you need to opt out if
+you don't want this.
 
 ## Experience Roll Session
 
@@ -257,18 +272,21 @@ in turn.
 
 ![](exp-menu.png)
 
-The top left Fixed | Random selector chooses if you want a fixed amount or a random. The exact
-meaning of that differs depending on the type of improvement, but is shown on each row (see the
-+1d3-1 vs +1d6 in the screenshot below). You also see what you need to roll to improve. For Runes
-it's under a value, for everything else it's over a value. Hovering that "pill" will show a tooltip
-explaining how the value was calculated.
+Each row in the session shows what you need to know to make the call before rolling:
+
+- The **Fixed | Random** selector (top left) chooses whether a successful improvement gains a fixed
+  amount or a random one - what that amount actually is differs by improvement type, and is shown
+  on each row (see the `+1d3-1` vs `+1d6%` in the screenshot below).
+- The pill next to each item shows the target you need to roll to improve: **under** a value for
+  Runes, **over** a value for everything else. Hovering it shows a tooltip explaining how that value
+  was calculated.
 
 ![](exp-dialog.png)
 
 Rolling through the per-item improvements leaves a summary of how each improvement attempt went, so
 at the end you will have an overview of how lucky you were. Rolling also generates chat messages for
 the improvement rolls, and if you do a "Roll All" you get a combined chat message for all the rolls
-in one.
+at once.
 
 ![](exp-dialog-done.png)
 
@@ -299,13 +317,3 @@ own silhouette (head, forequarters, hindquarters, legs) instead of a default tab
 - Fix the actor sheet's drag-and-drop highlight getting stuck on, instead of clearing, when a drag
   moves onto an overlapping Item Sheet
   <GithubIssue issue="1025" repo="fvtt-system-rqg" />
-
-{/* Draft notes for whoever finalizes this - not for publication: */}
-{/* 1. Confirmed #999 (PR #1011), #959 (PR #1013/#1022/#1020), #1002 (PR #1008), #1028 (PR #1030), */}
-{/* #512 (PR #1029), #436/#1031, #1033 (PR #1034), and #1035 all merged - written up above as */}
-{/* shipped. */} {/* 2. Filename date and any other TBD dates need to match the actual tag date. */}
-{/* 3. No real screenshots attached yet - see the placeholder comments above. */}
-{/* 4. Re-checked the 6.1.0 milestone on 2026-08-21: open=0, closed=36 (30 non-PR issues), all */}
-{/* covered above except internal-only refactors/CSS work (#1006, #996, #971), and #913 (closed */}
-{/* wontfix - superseded by #910/#912, only real gap was "jump to chat," explicitly deferred, not */}
-{/* shipped). #736/#734 correctly moved to the 6.2.0 milestone and are out of scope here. */}
