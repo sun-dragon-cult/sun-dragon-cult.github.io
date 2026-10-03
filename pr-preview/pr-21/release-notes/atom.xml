@@ -149,6 +149,18 @@ its cast dialog.</li>
 <li class="">Ammunition that can't attack on its own, like arrows, and folders show a warning instead of making
 a macro that doesn't work.</li>
 </ul>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="api-for-macros-and-modules">API for Macros and Modules<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#api-for-macros-and-modules" class="hash-link" aria-label="Direct link to API for Macros and Modules" title="Direct link to API for Macros and Modules" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1129" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1129</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1131" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1131</label></a>
+<p>The system now has a documented API, <code>game.system.api</code>, for macros and modules. A macro can roll
+skills, runes, passions and characteristics, attack with a weapon, and cast spirit and rune magic,
+with the roll dialog or without it. It can also read a character's skills, weapon attacks and the
+spells they can cast, including spells from an Allied Spirit, a bound spirit or a spell matrix.
+Values stored on a character, like hit points and magic points, are read straight from the character
+data, which is now also part of the API.</p>
+<p>See the <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api">API overview</a> to get started, and the
+<a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/macro-examples">macro examples</a> for ready-to-use macros. From now on, changes that
+can break macros or modules are listed in the release notes.</p>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="for-content-creators">For Content Creators<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#for-content-creators" class="hash-link" aria-label="Direct link to For Content Creators" title="Direct link to For Content Creators" translate="no">​</a></h2>
 <ul>
 <li class="">Spells link to their effect with an <strong>Effect</strong> field on the spell sheet, next to the description
