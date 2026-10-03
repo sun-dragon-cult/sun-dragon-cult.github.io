@@ -28,6 +28,15 @@ const config: Config = {
     hooks: {
       onBrokenMarkdownLinks: "warn",
     },
+    // Production builds leave out `draft: true` pages, so PR previews (which set BASE_URL) drop the
+    // flag to show upcoming release notes and other drafts.
+    parseFrontMatter: async (params) => {
+      const result = await params.defaultParseFrontMatter(params);
+      if (process.env.BASE_URL) {
+        delete result.frontMatter.draft;
+      }
+      return result;
+    },
   },
 
   // Even if you don't use internationalization, you can use this field to set
