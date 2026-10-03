@@ -3,9 +3,9 @@
 This repo is the [Docusaurus](https://docusaurus.io/) site for **Sun Dragon Cult**, the community
 project behind the `fvtt-system-rqg` Foundry VTT system for RuneQuest Glorantha. It hosts
 documentation for the system, docs for the **Wiki Module** (a separate Foundry module required to
-run the system — `docs/wiki`), and release notes; it does not contain the Foundry system code
-itself (that lives in the separate `sun-dragon-cult/fvtt-system-rqg` repo, referenced via
-`<GithubIssue>` links).
+run the system — `docs/wiki`), and release notes; it does not contain the Foundry system code itself
+(that lives in the separate `sun-dragon-cult/fvtt-system-rqg` repo, referenced via `<GithubIssue>`
+links).
 
 ## Commands
 
@@ -20,7 +20,13 @@ fail).
 - Format check a single file: `pnpm prettier --check path/to/file.mdx` (add `--write` to fix)
 - There is no test suite. CI (`test-deploy.yml`) just runs `pnpm build` on PRs to `main`; a full
   successful build is the closest thing to "passing tests" here.
-- `deploy.yml` builds and pushes `build/` to `gh-pages` on every push to `main`.
+- `deploy.yml` builds and pushes `build/` to `gh-pages` on every push to `main`. It keeps
+  `pr-preview/` on that branch and doesn't force-push.
+- `preview.yml` deploys each PR from this repo (not from forks) to
+  `https://sun-dragon-cult.github.io/pr-preview/pr-<number>/`, comments the link on the PR and
+  removes the preview when the PR closes. The build reads the base URL from `BASE_URL`, and previews
+  are marked `noindex`.
+- Don't deploy by hand with `pnpm deploy`: it force-pushes `gh-pages` and deletes open previews.
 
 ## Architecture
 
@@ -35,20 +41,21 @@ fail).
     `blogSidebarCount: "ALL"`).
 - `onBrokenLinks: "throw"` in `docusaurus.config.ts` means `pnpm build` fails on any broken internal
   link — this is the main thing that catches mistakes when editing/moving docs.
-- Custom MDX components live in `src/components/MdxHelpers/index.tsx` and are registered globally via
-  `src/theme/MDXComponents.ts` (swizzled `@theme-original/MDXComponents`). They're available in any
-  `.mdx` file **without an import statement**: `<GithubIssue issue="123" repo="fvtt-system-rqg" />`,
-  `<LightInvertSvg>`, `<CenterIt>`, `<ThemeInvert>`. Add new shared MDX components in that same
-  folder and re-export them from `MDXComponents.ts` to make them global.
+- Custom MDX components live in `src/components/MdxHelpers/index.tsx` and are registered globally
+  via `src/theme/MDXComponents.ts` (swizzled `@theme-original/MDXComponents`). They're available in
+  any `.mdx` file **without an import statement**:
+  `<GithubIssue issue="123" repo="fvtt-system-rqg" />`, `<LightInvertSvg>`, `<CenterIt>`,
+  `<ThemeInvert>`. Add new shared MDX components in that same folder and re-export them from
+  `MDXComponents.ts` to make them global.
 
 ## Writing for the audience
 
 Content here is written primarily for **gamemasters running the RuneQuest Foundry system**, not
 programmers. Explain features/changes in terms of what a GM sees and does in-game, not
 implementation details. That said, don't strip out every technical detail — some readers are
-technically inclined or are Foundry module developers who rely on specifics (e.g. DataModels,
-Active Effect field paths, API changes). Keep such details brief and secondary to the GM-facing
-explanation rather than leading with them.
+technically inclined or are Foundry module developers who rely on specifics (e.g. DataModels, Active
+Effect field paths, API changes). Keep such details brief and secondary to the GM-facing explanation
+rather than leading with them.
 
 ## Conventions
 
@@ -63,7 +70,7 @@ explanation rather than leading with them.
   `:::info` for supplementary notes. Keep breaking-change/compatibility warnings focused on the
   warning itself; put the "what changed" narrative in normal body paragraphs, not inside the
   admonition.
-- Prettier is configured with `printWidth: 100` and `proseWrap: always` — prose in `.md`/`.mdx` files
-  is hard-wrapped at 100 columns, not left as long lines.
+- Prettier is configured with `printWidth: 100` and `proseWrap: always` — prose in `.md`/`.mdx`
+  files is hard-wrapped at 100 columns, not left as long lines.
 - `docs/**` pages use `_category_.yml` files (`position`, `label`, `collapsible`, `collapsed`) to
   control sidebar category presentation instead of editing `sidebars.ts`.

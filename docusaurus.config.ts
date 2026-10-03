@@ -11,7 +11,9 @@ const config: Config = {
   url: "https://sun-dragon-cult.github.io/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  // PR previews set BASE_URL to /pr-preview/pr-<number>/ (see .github/workflows/preview.yml)
+  baseUrl: process.env.BASE_URL ?? "/",
+  noIndex: !!process.env.BASE_URL,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

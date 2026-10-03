@@ -28,17 +28,10 @@ contents hosting service, or by running `pnpm serve`.
 
 ### Deployment
 
-Using SSH:
+The site deploys to GitHub Pages automatically on every push to `main`
+(`.github/workflows/deploy.yml`). Pull requests from this repo get a preview at
+`https://sun-dragon-cult.github.io/pr-preview/pr-<number>/`, linked in a comment on the PR
+(`.github/workflows/preview.yml`).
 
-```
-$ USE_SSH=true pnpm deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and
-push to the `gh-pages` branch.
+Don't run `pnpm deploy` by hand: it force-pushes the `gh-pages` branch and deletes the open PR
+previews.
