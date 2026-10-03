@@ -1,0 +1,78 @@
+---
+sidebar_position: 20
+slug: rolls
+title: Rolls
+tags: []
+---
+
+The functions in `game.system.api.rolls` do the same rolls as clicking on the character sheet. By
+default they open the normal roll dialog, where the player can add modifiers before rolling.
+
+With `skipDialog: true` the roll is made straight away instead, like double-clicking on the sheet.
+The function then returns the roll, so a macro can check the result with `roll.successLevel`. See
+[`SuccessLevel`](/rqg-system/api#whats-in-it).
+
+Experience checks, magic point and rune point costs are handled the same way as when rolling from
+the sheet.
+
+## Functions
+
+| Function                           | Rolls                                                           |
+| ---------------------------------- | --------------------------------------------------------------- |
+| `ability(item, options)`           | A skill, rune or passion                                        |
+| `characteristic(name, options)`    | A characteristic roll, ×5 by default                            |
+| `reputation(options)`              | The character's Reputation                                      |
+| `attack(weapon, { actor, usage })` | Opens the attack dialog for a weapon. It always uses the dialog |
+| `spiritMagic(spell, options)`      | Casts a spirit magic spell                                      |
+| `runeMagic(spell, options)`        | Casts a rune magic spell                                        |
+
+For `characteristic` the name is one of `"strength"`, `"constitution"`, `"size"`, `"dexterity"`,
+`"intelligence"`, `"power"` or `"charisma"`.
+
+For `attack`, `usage` picks how the weapon is used: `"oneHand"`, `"offHand"`, `"twoHand"` or
+`"missile"`. The choice is remembered on the weapon, just like when it's changed in the attack
+dialog.
+
+The spell functions can also cast spells the character doesn't have as an item: spells known through
+an Allied Spirit, a bound spirit or a spell matrix. Get those from
+[`query.spells`](/rqg-system/api/query) and pass one of them as the spell.
+
+## Options
+
+All options are optional.
+
+| Option            | Used by          | Meaning                                                                                     |
+| ----------------- | ---------------- | ------------------------------------------------------------------------------------------- |
+| `actor`           | all              | Who rolls, see [Pointing at actors and items](/rqg-system/api#pointing-at-actors-and-items) |
+| `skipDialog`      | all but `attack` | Roll at once and return the roll                                                            |
+| `modifiers`       | all but `attack` | A list of modifiers like `[{ description: "Darkness", value: -20 }]`                        |
+| `rollMode`        | all but `attack` | Foundry roll mode, for example `"gmroll"`                                                   |
+| `difficulty`      | `characteristic` | What to multiply the characteristic with, 5 by default                                      |
+| `levelUsed`       | spells           | Points to cast with, defaults to the spell's points                                         |
+| `magicPointBoost` | spells           | Extra magic points to boost the spell with                                                  |
+
+`rollMode` and `difficulty` are only used together with `skipDialog`, in the dialog the player picks
+them. The same goes for `modifiers`, except for `ability`: there they are added as fixed modifiers
+that the player can't change. They aren't shown as fields in the dialog, but they are included in
+the target chance, listed when hovering it, and shown on the chat card.
+
+## Examples
+
+```js
+const api = game.system.api;
+
+// Open the roll dialog for Scan, for the selected token
+await api.rolls.ability("Scan");
+
+// Roll Dodge for a specific token without a dialog, and check the result
+const roll = await api.rolls.ability("Dodge", { actor: token, skipDialog: true });
+if (roll.successLevel <= api.SuccessLevel.Success) {
+  ui.notifications.info("Dodged!");
+}
+
+// Cast Bladesharp 2
+await api.rolls.spiritMagic("Bladesharp", { skipDialog: true, levelUsed: 2 });
+```
+
+A spell that can't be cast, for example because there aren't enough magic points, shows a warning
+and returns nothing.
