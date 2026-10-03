@@ -36,40 +36,26 @@ needs a judgment call, the GM can rule on each row: takes effect, or no effect. 
 effect, the target's owner gets an <strong>Apply</strong> button. Clicking it puts the spell's effect on the
 target:</p>
 <ul>
-<li class="">A spell that works on a weapon (Bladesharp, Bludgeon, Dullblade, Fireblade) goes on the target's
-equipped weapon it fits, and asks which one if there's more than one.</li>
+<li class="">A spell that works on a weapon, like Bladesharp or Fireblade, goes on the target's equipped weapon
+it fits, and asks which one if there's more than one.</li>
 <li class="">Any other spell goes on the target itself.</li>
 <li class="">The effect is named after the spell and its level, like "Bladesharp (3)", and lasts the spell's
-duration: 2 minutes for spirit magic, 15 minutes for rune magic.</li>
+duration: 2 minutes for spirit magic, 15 minutes for rune magic. A few effects have a longer
+duration of their own, like Catseye's 12 hours.</li>
 </ul>
 <!-- -->
 <h3 class="anchor anchorTargetStickyNavbar_xPLm" id="which-spells-have-effects">Which spells have effects<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#which-spells-have-effects" class="hash-link" aria-label="Direct link to Which spells have effects" title="Direct link to Which spells have effects" translate="no">​</a></h3>
-<p>The spell effects ship with the wiki module.</p>
-<div class="theme-admonition theme-admonition-warning admonition_uOdM alert alert--warning"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Update the wiki module first</div><div class="admonitionContent__X6G"><p>Update the RQG wiki module <strong>before</strong> the system. When the world is upgraded, the migration links
-the spells already on your actors to their effects by looking them up in the wiki module's
+<p>The spell effects ship with wiki module 2.1.0, which has an effect for every spirit and rune spell
+that lasts for a while. Some change the sheet, like Strength raising STR or Bladesharp adding to the
+weapon's attack and damage. The others are reminders that show the spell is active until it runs
+out. See the <a href="https://sun-dragon-cult.github.io/release-notes/wiki-v2.1.0" target="_blank" rel="noopener noreferrer" class="">Wiki 2.1.0 release notes</a>
+for the full list.</p>
+<div class="theme-admonition theme-admonition-warning admonition_uOdM alert alert--warning"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Update the wiki module first</div><div class="admonitionContent__X6G"><p>Update the RQG wiki module to 2.1.0 <strong>before</strong> the system. When the world is upgraded, the migration
+links the spells already on your actors to their effects by looking them up in the wiki module's
 compendiums. If the wiki module is still the old version, those spells get no effect link. If that
 happens, update the wiki module and run the migration again: as the GM, click Trigger World
 Migration in the Game Settings sidebar tab. The world reloads and migrates again, and this time the
 spells get their links. Links that are already there are left alone, so running it again is safe.</p></div></div>
-<ul>
-<li class=""><strong>With game effects:</strong>
-<ul>
-<li class="">Strength, Vigor, Coordination, Glamour: raise STR, CON, DEX, CHA. Damage bonus, hit points and
-skill modifiers follow.</li>
-<li class="">Protection: armor on every hit location.</li>
-<li class="">Bladesharp, Bludgeon, Dullblade: attack and damage on the weapon.</li>
-<li class="">Fireblade: the weapon's damage becomes 3D6 plus damage bonus.</li>
-<li class="">Mobility, Slow: double or halve MOV.</li>
-<li class="">Light, Lantern: the token gives off light.</li>
-</ul>
-</li>
-<li class=""><strong>Reminders:</strong> some spells change nothing that the sheet can calculate, and show that the spell is
-active until it runs out. These are Befuddle, Countermagic, Demoralize, Fanaticism, Farsee,
-Forget, Glue, Shimmer, Sleep and Spirit Screen, and the rune spells Become Other Sex,
-Clairvoyance, Discorporation, Impede Chaos, Mind Read, Path Watch, Soul Sight, Truespeak and Wind
-Words.</li>
-</ul>
-<p>More spells will get effects in later releases.</p>
 <h3 class="anchor anchorTargetStickyNavbar_xPLm" id="recasting-and-incompatible-spells">Recasting and incompatible spells<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#recasting-and-incompatible-spells" class="hash-link" aria-label="Direct link to Recasting and incompatible spells" title="Direct link to Recasting and incompatible spells" translate="no">​</a></h3>
 <p>By the rules, casting a spell on a target that already has the same spell only works if the new
 casting is stronger, and some spells can't be on the same target at once. For example, Bladesharp
