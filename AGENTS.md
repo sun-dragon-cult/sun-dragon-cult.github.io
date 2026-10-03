@@ -63,6 +63,11 @@ rather than leading with them.
   `release-notes/rqg/v6.0.x/`), one file per release, named `YYYY-MM-DD-vX.Y.Z[suffix].mdx` (e.g.
   `2026-07-06-v6.0.0.mdx`). Frontmatter needs `slug`, `title`, and `tags` (convention:
   `[system, system-major, system-major-minor]`, e.g. `[rqg, rqg-6, rqg-6-0]`).
+- **Unreleased docs** stay on a branch with an open PR until the release, and the PR's preview (see
+  `preview.yml` above) shows them. Don't use `draft: true` or `unlisted: true` in frontmatter:
+  production builds, including PR previews, leave drafts out, and both flags only work on whole
+  pages, not on changes to an existing page. For a release, put the release notes and the changed
+  pages on the same branch (e.g. `docs/rqg-6.2.0-release-notes`).
 - Reference upstream GitHub issues/PRs with `<GithubIssue issue="NNN" repo="fvtt-system-rqg" />`
   rather than raw links — it renders a consistent badge with the GitHub mark icon.
 - Use Docusaurus admonitions (`:::warning`, `:::caution`, `:::info` ... `:::`) for callouts —
