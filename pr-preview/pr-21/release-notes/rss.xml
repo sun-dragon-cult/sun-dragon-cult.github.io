@@ -166,8 +166,7 @@ can break macros or modules are listed in the release notes.</p>
 <p>The newer character and item sheets are the default. Their names end in <strong>V2</strong>, like "Character
 Sheet V2". The old sheets, like "Character Sheet" and "Passion Item Sheet", can still be picked in a
 document's <strong>Sheet</strong> configuration, but they will be removed in RQG 6.3.0. Actors and items set to
-an old sheet then open in the V2 sheet automatically, so there's nothing you need to do. Modules
-that change the old sheets need to move to the V2 sheets.</p>
+an old sheet then open in the V2 sheet automatically, so there's nothing you need to do.</p>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="for-content-creators">For Content Creators<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#for-content-creators" class="hash-link" aria-label="Direct link to For Content Creators" title="Direct link to For Content Creators" translate="no">​</a></h2>
 <ul>
 <li class="">Spells link to their effect with an <strong>Effect</strong> field on the spell sheet, next to the description
