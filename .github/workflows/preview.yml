@@ -1,0 +1,52 @@
+name: Deploy PR previews
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+concurrency: preview-${{ github.ref }}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  deploy-preview:
+    name: Deploy PR preview
+    # The default token can't push to gh-pages from a fork
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        if: github.event.action != 'closed'
+        with:
+          node-version: 20
+      - name: Install pnpm
+        if: github.event.action != 'closed'
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Install dependencies
+        if: github.event.action != 'closed'
+        run: pnpm i
+      - name: Build website
+        if: github.event.action != 'closed'
+        run: pnpm build
+        env:
+          BASE_URL: /pr-preview/pr-${{ github.event.number }}/
+
+      # Deploys to gh-pages/pr-preview/pr-<number>/ and comments the link on the PR,
+      # removes the preview when the PR is closed
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./build/
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          qr-code: false
