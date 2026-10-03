@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunksun_dragon_cult||=[]).push([[9647],{71325(e,r,s){s.r(r),s.d(r,{default:()=>d});s(71763);var u=s(13526),a=s(61287),c=s(66860),n=s(36345),t=s(63698),l=s(91987);function d(e){return(0,l.jsx)(c.e3,{className:(0,u.A)(a.G.wrapper.docsPages),children:(0,l.jsx)(t.A,{children:(0,n.v)(e.route.routes)})})}}}]);
