@@ -1,0 +1,86 @@
+---
+slug: wiki-v2.1.0
+title: Wiki 2.1.0
+tags:
+  - wiki
+  - foundry-release
+  - wiki-2
+  - wiki-2-1
+---
+
+![Required RQG System Version](https://img.shields.io/badge/Required%20RQG%20System%20Version-v6.0.0%2B-blue)
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v2.1.0/en-module.json)
+![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v2.1.0/wiki-en-rqg.zip)
+
+This release adds the content for two features of RQG system 6.2.0: spell effects and starting a new
+actor from a template. It also gives every spell its own icon.
+
+The module still works with system 6.0 and 6.1. There the new content is simply not used yet.
+
+:::warning Update the wiki module before the system
+
+Install this release **before** you upgrade the system to 6.2.0. When the world is upgraded, the
+system links the spells already on your actors to their effects by looking them up in this module's
+compendiums. With an older wiki module, those spells get no effect link.
+
+:::
+
+## Spell Effects
+
+Two new compendiums, **Spirit Magic Effects** and **Rune Magic Effects**, hold an effect for every
+spirit and rune spell that lasts for a while. Each spell in the wiki links to its effect. With
+system 6.2.0, a cast spell can put its effect on the target, and the effect shows on the token until
+it runs out.
+
+Some effects change the character sheet:
+
+- Strength, Vigor, Coordination and Glamour raise STR, CON, DEX and CHA. Damage bonus, hit points
+  and skill modifiers follow.
+- Bear's Strength doubles STR and Bear's Charisma doubles CHA. Bear's Skin adds 6 SIZ and 4 points
+  of armor on every hit location.
+- Protection and Shield add armor on every hit location.
+- Bladesharp, Bludgeon and Dullblade change the weapon's attack and damage. Fireblade makes its
+  damage 3D6 plus damage bonus.
+- Axe Trance raises axe skills, Slash adds magic damage dice, and True Sword doubles the weapon's
+  damage dice.
+- Speedart goes on one arrow or other missile and gives +15% to hit and +3 damage. It's used up when
+  that missile is fired.
+- Mobility doubles and Slow halves MOV.
+- Light and Lantern make the token give off light.
+
+The others are reminders: they change nothing on the sheet, but show that the spell is active. Sleep
+and Discorporation also show their token status marker. The reminders are Ban, Become Other Sex,
+Befuddle, Bless Crops, Catseye, Clairvoyance, Cloud Call, Countermagic, Dark Walk, Decrease Wind,
+Demoralize, Discorporation, Earth Shield, Face Chaos, Fanaticism, Farsee, Fearless, Firearrow,
+Flight, Forget, Glue, Illusionary Sound, Impede Chaos, Increase Wind, Leap, Lock, Mind Read,
+Multimissile, Passage, Path Watch, Second Sight, Shimmer, Silence, Sleep, Soul Sight, Spirit Block,
+Spirit Screen, Truespeak, Visibility and Wind Words.
+
+Spells that can't be on the same target at once are marked as incompatible, for example Bladesharp,
+Bludgeon and Fireblade on a weapon, or Strength and Vigor on a person. Demoralize cancels an active
+Fanaticism. Spells with a long fixed duration carry it: Catseye 12 hours, Lock and Passage 56 days,
+and Ban 3 years.
+
+## Spell Icons
+
+Every spell now has its own icon, and related spells share a look. Detect and Find spells sit in a
+scope, Summon spells rise from a summoning circle and each Dismiss is its Summon slashed through,
+and healing spells carry a heart.
+
+The spell effects have icons too. An orange background means the effect changes the sheet, and a
+brown one means it's a reminder. The icons come from [game-icons.net](https://game-icons.net) (CC BY
+3.0), Font Awesome Free and the RQG system's own rune icons.
+
+## Actor Templates
+
+The adventurer and bestiary actors are marked as templates, so system 6.2.0's **Create Actor**
+dialog lists them under **Choose template...**. Filter them by class, role and species, for example
+the human adventurer templates by class Human.
+
+## For Content Creators
+
+- Every rune and spirit spell has its target kind (what it can be cast on), effect tier (how much of
+  the spell effect machinery it uses) and what resists it set, for the system's `targetKind`,
+  `effectTier` and `resistedBy` fields. Fanaticism is resisted with a resistance roll.
+- A spell finds its effect through `effectRqidLink`, and incompatible spells through
+  `incompatibleSpellRqidLinks`.
