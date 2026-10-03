@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunksun_dragon_cult||=[]).push([[2162],{37403(e){e.exports=JSON.parse('{"tags":[{"label":"module","permalink":"/pr-preview/pr-23/tags/module","count":2}]}')}}]);
