@@ -1,7 +1,103 @@
 ---
+sidebar_position: 50
 slug: migrate
 title: Migrate
 tags: []
 ---
 
-:::info TODO – Not yet written :::
+When the RQG system is updated, the first GM to open the world is guided through a world migration
+that brings old data up to date with the new version. The functions in `game.system.api.migration`
+let a GM run the steps of that migration by hand, for example to clean up after importing old
+content into a world that has already been migrated.
+
+All of them only work for a GM. Make a backup of the world before running them.
+
+## What happens when the system is updated
+
+When a GM opens a world that was last used with an older version of the system, these steps run in
+order:
+
+1. **Repair invalid data** – the Data Model Repair dialog lists actors and items that Foundry can't
+   load because some value is no longer valid, and lets you fix them. Foundry is reloaded afterwards
+   if anything was changed.
+2. **Add missing RQG ids** – the RQID batch editor asks for rqids on skills, rune magic, spirit
+   magic, runes and cults that don't have one. The system needs them, for example to connect weapons
+   to their skills. See [RQG System ID (rqid)](/rqg-system/api/rqid).
+3. **Migrate the world** – after you confirm, actors, items, active effects and unlinked tokens in
+   the world are updated, as well as those in compendiums from modules and the world. The system's
+   own compendiums are skipped since they already ship updated. A report journal entry lists what
+   was changed, and any warnings or errors.
+
+If the migration finishes without errors the world is marked as migrated, so it doesn't run again.
+
+## openDataModelRepairDialog()
+
+```js
+await game.system.api.migration.openDataModelRepairDialog();
+```
+
+Looks through the world's actors and items for documents Foundry can't load, and opens a dialog to
+fix them. Invalid values can be reset, and documents with a type that no longer exists can be
+deleted. Afterwards it asks if you want to reload Foundry, which is needed for the changes to take
+effect. If nothing is wrong you just get a notification saying so.
+
+## openRqidBatchEditor(...itemTypes)
+
+```js
+// Check the same item types as the world migration does
+await game.system.api.migration.openRqidBatchEditor();
+
+// Only check skills and passions
+await game.system.api.migration.openRqidBatchEditor("skill", "passion");
+```
+
+Finds items without an rqid, in the world and in compendiums, and opens an editor where you can give
+them one. Items with the same name are grouped so they get the same rqid. One editor opens per item
+type that has items missing an rqid.
+
+## applyWorldMigrations()
+
+```js
+const result = await game.system.api.migration.applyWorldMigrations();
+console.log(`${result.errorCount} errors, ${result.warningCount} warnings`);
+```
+
+Runs step 3 of the world migration again, with the same migrations as the update. It doesn't create
+a report journal entry; the returned result has `errorCount`, `warningCount` and `logEntries` with
+what happened. It's safe to run more than once, since the migrations only change data that still
+needs it.
+
+### Custom migrations
+
+:::caution
+
+Custom migrations change every matching document in the world and in compendiums. Test them on a
+copy of the world first.
+
+:::
+
+Module developers and technically minded GMs can pass their own migration functions instead of the
+system's:
+
+```js
+applyWorldMigrations(itemMigrations, actorMigrations, notification, activeEffectMigrations);
+```
+
+Each argument that is left out, or `undefined`, uses the system's own migrations. Pass an empty list
+`[]` for the kinds you don't want to migrate.
+
+- An **item migration** is an `async` function that gets the item and the actor owning it (if any),
+  and returns the update data for the item. Return `{}` to leave it unchanged.
+- An **actor migration** gets the actor and returns its update data. It isn't `async`.
+- An **active effect migration** is an `async` function that gets the effect and returns its update
+  data.
+
+This example renames the skill "Lore (Local)" to "Local Lore" everywhere, and doesn't run any other
+migrations:
+
+```js
+const renameLocalLore = async (item) =>
+  item.type === "skill" && item.name === "Lore (Local)" ? { name: "Local Lore" } : {};
+
+await game.system.api.migration.applyWorldMigrations([renameLocalLore], [], undefined, []);
+```

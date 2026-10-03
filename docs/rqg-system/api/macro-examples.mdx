@@ -1,0 +1,66 @@
+---
+sidebar_position: 40
+slug: macro-examples
+title: Macro Examples
+tags: []
+---
+
+Macros to copy and adapt. Create a new macro of type **Script** in Foundry and paste the code. See
+[Rolls](/rqg-system/api/rolls) and [Query](/rqg-system/api/query) for everything the functions can
+do.
+
+## Roll Scan for the selected token
+
+```js
+await game.system.api.rolls.ability("Scan");
+```
+
+## Roll Scan for every selected token, without dialogs
+
+Whispers the results to the GM.
+
+```js
+const api = game.system.api;
+const lines = [];
+for (const token of canvas.tokens.controlled) {
+  const roll = await api.rolls.ability("i.skill.scan", { actor: token, skipDialog: true });
+  const success = roll.successLevel <= api.SuccessLevel.Success;
+  lines.push(`${token.name}: ${success ? "spotted it" : "saw nothing"}`);
+}
+ChatMessage.create({
+  content: lines.join("<br>"),
+  whisper: ChatMessage.getWhisperRecipients("GM"),
+});
+```
+
+## POW×5 roll with a penalty
+
+```js
+await game.system.api.rolls.characteristic("power", {
+  skipDialog: true,
+  modifiers: [{ description: "Exhausted", value: -10 }],
+});
+```
+
+## Who in the party knows Heal?
+
+```js
+const api = game.system.api;
+const party = game.actors.filter((a) => a.hasPlayerOwner);
+const healers = party.filter((a) => api.query.spells(a).some((s) => s.name.startsWith("Heal")));
+ui.notifications.info(`Healers: ${healers.map((a) => a.name).join(", ") || "none"}`);
+```
+
+## Cast the selected token's first matrix spell
+
+```js
+const api = game.system.api;
+const spell = api.query.spells().find((s) => s.source === "matrix");
+if (spell) await api.rolls.spiritMagic(spell);
+```
+
+## Attack two-handed with a spear
+
+```js
+await game.system.api.rolls.attack("Spear", { usage: "twoHand" });
+```

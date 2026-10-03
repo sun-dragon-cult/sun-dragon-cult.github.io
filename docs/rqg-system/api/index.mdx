@@ -5,8 +5,47 @@ title: API Overview
 tags: []
 ---
 
-:::info
+The RQG system has an API that macros and modules can use to roll dice, cast spells and read
+information about characters. It's available in Foundry as `game.system.api`.
 
-TODO – Not yet written - landing page for explanation of api
+If you write macros to automate things at your table, or build a module that works with RQG, the API
+has two parts:
 
-:::
+- **The character data**, `actor.system` and `item.system`. Read values that are stored on a
+  character, like characteristics, hit points or a cult's Rune Points, straight from there, and
+  change them with Foundry's `actor.update` and `item.update`. See
+  [Values stored on the character](/rqg-system/api/query#values-stored-on-the-character).
+- **`game.system.api`**, for everything that needs the rules: rolling dice, casting spells, and
+  values the system works out, like a weapon's attack chance or which spells a character can cast.
+
+Don't call methods on RQG's actors and items or use other parts of the system directly. Those can
+change in any release.
+
+## What's in it
+
+- [Rolls](/rqg-system/api/rolls) – roll skills, runes, passions and characteristics, attack with
+  weapons and cast spirit and rune magic.
+- [Query](/rqg-system/api/query) – read skills, weapons and castable spells, and where to find hit
+  points, magic points, rune points and other values stored on a character.
+- [Macro examples](/rqg-system/api/macro-examples) – ready-to-use macros to start from.
+- [RQG System ID (rqid)](/rqg-system/api/rqid) – find the best version of a document by its RQG id.
+- `SuccessLevel` – the possible roll results:
+  `{ Critical: 0, Special: 1, Success: 2, Failure: 3, Fumble: 4 }`. A lower number is a better
+  result, so `roll.successLevel <= SuccessLevel.Success` means the roll succeeded.
+
+## Pointing at actors and items
+
+Wherever the API needs an **actor** you can give it an actor, a token, or the name, id or uuid of
+one. If you leave the actor out, the first selected token is used, or else your assigned character.
+
+Wherever it needs an **item** you can give it the item itself, or its name, id, uuid or rqid. Names
+are the easiest to read in a macro (`"Scan"`), while rqids (`"i.skill.scan"`) also work in worlds
+using another language.
+
+If something can't be found, the API shows an error notification and stops the macro.
+
+## Compatibility
+
+The API follows the RQG system version. When a system update changes the API or moves or renames a
+field in the character data in a way that can break macros or modules, the release notes say so.
+Check them when updating the system.
