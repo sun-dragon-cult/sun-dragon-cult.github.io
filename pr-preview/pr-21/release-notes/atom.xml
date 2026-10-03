@@ -2,11 +2,210 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes</id>
     <title>RuneQuest Glorantha for Foundry VTT Blog</title>
-    <updated>2026-08-23T12:00:00.000Z</updated>
+    <updated>2026-10-01T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes"/>
     <subtitle>RuneQuest Glorantha for Foundry VTT Blog</subtitle>
     <icon>https://sun-dragon-cult.github.io/pr-preview/pr-21/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[RQG 6.2.0]]></title>
+        <id>https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0</id>
+        <link href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0"/>
+        <updated>2026-10-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v6.2.0/system.json" alt="Supported Foundry Versions" class="img_h5dG">
+<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v6.2.0/rqg.zip" alt="Download Count" class="img_h5dG"></p>
+<p>This release's headline feature is spell effects. Cast a spell such as Bladesharp, Protection or
+Strength, and when it takes effect, the target's owner clicks Apply on the chat card to put the
+spell's effect on the right actor or weapon, with the right level and duration. Casting the same
+spell again, or a spell that can't share a target with one already there, is handled for you, and
+every spell on a token shows at the top of the token HUD, where the GM can open, remove or add one.</p>
+<p>It builds on resisted spells: a spell like Sleep or Befuddle now hands the target's owner a card to
+resist or accept, and rolls POW against POW on the resistance table.</p>
+<p>Active Effects get more capable too: an effect on an actor can now change the actor's items, such as
+one skill, every hit location, or the weapon it's on.</p>
+<p>Alongside that, a new actor can start from a template actor, and many more things can be dragged to
+the hotbar.</p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="spell-effects">Spell Effects<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#spell-effects" class="hash-link" aria-label="Direct link to Spell Effects" title="Direct link to Spell Effects" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/443" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->443</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1079" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1079</label></a>
+<h3 class="anchor anchorTargetStickyNavbar_xPLm" id="casting-and-applying">Casting and applying<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#casting-and-applying" class="hash-link" aria-label="Direct link to Casting and applying" title="Direct link to Casting and applying" translate="no">​</a></h3>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1078" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1078</label></a>
+<p>The spell card now shows one row per target, saying whether the spell took effect. If the outcome
+needs a judgment call, the GM can rule on each row: takes effect, or no effect. When the spell took
+effect, the target's owner gets an <strong>Apply</strong> button. Clicking it puts the spell's effect on the
+target:</p>
+<ul>
+<li class="">A spell that works on a weapon (Bladesharp, Bludgeon, Dullblade, Fireblade) goes on the target's
+equipped weapon it fits, and asks which one if there's more than one.</li>
+<li class="">Any other spell goes on the target itself.</li>
+<li class="">The effect is named after the spell and its level, like "Bladesharp (3)", and lasts the spell's
+duration: 2 minutes for spirit magic, 15 minutes for rune magic.</li>
+</ul>
+<!-- -->
+<h3 class="anchor anchorTargetStickyNavbar_xPLm" id="which-spells-have-effects">Which spells have effects<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#which-spells-have-effects" class="hash-link" aria-label="Direct link to Which spells have effects" title="Direct link to Which spells have effects" translate="no">​</a></h3>
+<p>The spell effects ship with the wiki module.</p>
+<div class="theme-admonition theme-admonition-warning admonition_uOdM alert alert--warning"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Update the wiki module first</div><div class="admonitionContent__X6G"><p>Update the RQG wiki module <strong>before</strong> the system. When the world is upgraded, the migration links
+the spells already on your actors to their effects by looking them up in the wiki module's
+compendiums. If the wiki module is still the old version, those spells get no effect link. If that
+happens, update the wiki module and run the migration again: as the GM, click Trigger World
+Migration in the Game Settings sidebar tab. The world reloads and migrates again, and this time the
+spells get their links. Links that are already there are left alone, so running it again is safe.</p></div></div>
+<ul>
+<li class=""><strong>With game effects:</strong>
+<ul>
+<li class="">Strength, Vigor, Coordination, Glamour: raise STR, CON, DEX, CHA. Damage bonus, hit points and
+skill modifiers follow.</li>
+<li class="">Protection: armor on every hit location.</li>
+<li class="">Bladesharp, Bludgeon, Dullblade: attack and damage on the weapon.</li>
+<li class="">Fireblade: the weapon's damage becomes 3D6 plus damage bonus.</li>
+<li class="">Mobility, Slow: double or halve MOV.</li>
+<li class="">Light, Lantern: the token gives off light.</li>
+</ul>
+</li>
+<li class=""><strong>Reminders:</strong> some spells change nothing that the sheet can calculate, and show that the spell is
+active until it runs out. These are Befuddle, Countermagic, Demoralize, Fanaticism, Farsee,
+Forget, Glue, Shimmer, Sleep and Spirit Screen, and the rune spells Become Other Sex,
+Clairvoyance, Discorporation, Impede Chaos, Mind Read, Path Watch, Soul Sight, Truespeak and Wind
+Words.</li>
+</ul>
+<p>More spells will get effects in later releases.</p>
+<h3 class="anchor anchorTargetStickyNavbar_xPLm" id="recasting-and-incompatible-spells">Recasting and incompatible spells<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#recasting-and-incompatible-spells" class="hash-link" aria-label="Direct link to Recasting and incompatible spells" title="Direct link to Recasting and incompatible spells" translate="no">​</a></h3>
+<p>By the rules, casting a spell on a target that already has the same spell only works if the new
+casting is stronger, and some spells can't be on the same target at once. For example, Bladesharp
+and Fireblade can't share a weapon, and neither can Protection and Shimmer on a person. When a spell
+has no effect for one of these reasons, Apply tells you why and the card records it. Only the
+target's owner sees the reason.</p>
+<p>The world setting <strong>Recast Spells Take Effect</strong> chooses the rule: <strong>Only if stronger</strong> (the rules as
+written) or <strong>Always</strong>, where every new casting replaces the old one.</p>
+<h3 class="anchor anchorTargetStickyNavbar_xPLm" id="spell-effects-on-the-token">Spell effects on the token<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#spell-effects-on-the-token" class="hash-link" aria-label="Direct link to Spell effects on the token" title="Direct link to Spell effects on the token" translate="no">​</a></h3>
+<p>A token's spell effects are shown at the top of the token HUD's status palette, above the condition
+markers, with their name, the item they're on and the time left. The GM can click one to open it,
+right-click to remove it, or change its level on the effect's sheet.</p>
+<p>The GM can also add a spell effect without casting, for example for a spell cast before the scene
+started. Click the <strong>+</strong> in the same section, search for the spell, set its level, and click Add.</p>
+<!-- -->
+<h3 class="anchor anchorTargetStickyNavbar_xPLm" id="token-status-markers">Token status markers<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#token-status-markers" class="hash-link" aria-label="Direct link to Token status markers" title="Direct link to Token status markers" translate="no">​</a></h3>
+<p>Because spells now show on tokens as spell effects, the token HUD's status palette no longer holds
+spell markers. Protection, Strength, Bladesharp and the other spell statuses are gone, and so are
+Ironhand, Parry and the 1–6 counters. The counters were a way to note a spell's level, which the
+spell effect's name now shows.</p>
+<p>The palette now has general condition markers only. The new ones are Helpless, Concentrating, In
+Spirit Combat, Discorporate, Possessed, Invisible, Flying and Burning, and Restrained is now called
+Immobilized.</p>
+<div class="theme-admonition theme-admonition-note admonition_uOdM alert alert--secondary"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>Upgrading</div><div class="admonitionContent__X6G"><p>A spell status that is already on a token when you upgrade stays on it as an ordinary effect until
+it runs out. You can also delete it from the actor's Effects tab. For a spell that has no spell
+effect yet, add a plain effect on the actor's Effects tab.</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="active-effects-that-change-an-actors-items">Active Effects That Change an Actor's Items<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#active-effects-that-change-an-actors-items" class="hash-link" aria-label="Direct link to Active Effects That Change an Actor's Items" title="Direct link to Active Effects That Change an Actor's Items" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/920" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->920</label></a>
+<p>Active Effects that change a value on the actor's items have a new, more versatile key format.
+Before, such a change had to use the <strong>Custom</strong> change type and could only add to the value. Now it
+can use all of Foundry's change types. For example, it can raise one skill, add armor to every hit
+location, or improve the weapon it's on. Start the change's key with <code>@</code>, followed by which items to
+change, a <code>:</code>, and the path of the value:</p>
+<table><thead><tr><th>Key</th><th>Changes</th><th>Example</th></tr></thead><tbody><tr><td><code>@&lt;rqid&gt;:system.&lt;path&gt;</code></td><td>The actor's item with that rqid</td><td><code>@i.skill.dodge:system.baseChance</code>, add 10</td></tr><tr><td><code>@~&lt;regex&gt;:system.&lt;path&gt;</code></td><td>Every item whose rqid matches the regular expression</td><td><code>@~^i\.hit-location\.:system.naturalAp</code>, add 2</td></tr><tr><td><code>@.:system.&lt;path&gt;</code></td><td>The item the effect is on</td><td><code>@.:system.effect.add.melee.attack</code> on a weapon, add 10</td></tr></tbody></table>
+<ul>
+<li class=""><strong>Change types:</strong> these changes use Foundry's normal types, Add, Multiply, Override, Upgrade and
+Downgrade, just like any other key. Keys that don't start with <code>@</code> work exactly as they do in
+Foundry.</li>
+<li class=""><strong>Weapon bonuses:</strong> the <code>system.effect.add</code> values are bonuses added on top of a value. A weapon
+has them for melee and missile attack, parry and damage. The damage bonus is new in this release,
+and a weapon's rolled damage never goes below 0.</li>
+<li class=""><strong>Spell level:</strong> in an effect that comes from a spell, <code>@level</code> in the value is the level the
+spell was cast at. For example, Bladesharp adds <code>@level * 5</code> to attack.</li>
+<li class=""><strong>Warnings:</strong> a key that can't be used, such as a mistyped rqid, an rqid the actor has no item
+for, or a change type a bonus can't use, shows the GM a warning saying what's wrong. When the
+world loads, these are collected into one summary.</li>
+</ul>
+<p>See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/rqid#7-active-effects">rqid: Active Effects</a> for the bonus values you can
+change and more examples.</p>
+<div class="theme-admonition theme-admonition-warning admonition_uOdM alert alert--warning"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Changed keys</div><div class="admonitionContent__X6G"><p>Before this release, a key like <code>i.skill.dodge:system.baseChance</code> on the <strong>Custom</strong> change type
+changed an item. The world migration rewrites these to the new form,
+<code>@i.skill.dodge:system.baseChance</code> on <strong>Add</strong>, so they keep doing the same thing. A key in the old
+form that the migration can't reach, such as one typed afterwards or in a module's compendium, shows
+the GM a warning and does nothing until it's updated.</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="resisted-spells-and-resistance-rolls">Resisted Spells and Resistance Rolls<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#resisted-spells-and-resistance-rolls" class="hash-link" aria-label="Direct link to Resisted Spells and Resistance Rolls" title="Direct link to Resisted Spells and Resistance Rolls" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/757" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->757</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/758" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->758</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1066" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1066</label></a>
+<p>A spell that the target can resist, like Sleep, Befuddle or Slow, now checks its target before any
+magic points are spent. It asks for confirmation if you have no target (a cast on yourself), and
+stops if you have more than one. The cast then posts a single card to the target's owner, who
+chooses <strong>Resist</strong> or <strong>Accept</strong>. The resistance roll pits the caster's POW against the target's POW
+on the resistance table. The target doesn't see which spell it is until it takes effect.</p>
+<p>The GM can also send any resistance roll to a player, for example STR against a trap, from the actor
+sheet's Combat tab, the combat tracker, the Actors sidebar, or a Token HUD button. The Token HUD
+button can be turned off in the settings.</p>
+<!-- -->
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="start-a-new-actor-from-a-template">Start a New Actor from a Template<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#start-a-new-actor-from-a-template" class="hash-link" aria-label="Direct link to Start a New Actor from a Template" title="Direct link to Start a New Actor from a Template" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/636" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->636</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/778" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->778</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1055" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1055</label></a>
+<p>Foundry's <strong>Create Actor</strong> dialog has a new <strong>Start from</strong> choice. <strong>Blank</strong> works as before, and
+<strong>Choose template...</strong> opens a list of template actors from the world and the compendiums. The wiki
+module provides templates for adventurers, like "Human (Base)" and "Mostali (Dwarf)", and for
+creatures, like animals, chaos monsters, elementals, mounts and spirits. Search the list by name, or
+filter it by class, role and species. The new actor is a copy of the template, with all its items.</p>
+<p>See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/getting-started/creating-actor">Creating an Adventurer</a> for how to make your own
+actors show up as templates.</p>
+<!-- -->
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="hotbar-drag-and-drop">Hotbar Drag-and-Drop<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#hotbar-drag-and-drop" class="hash-link" aria-label="Direct link to Hotbar Drag-and-Drop" title="Direct link to Hotbar Drag-and-Drop" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/402" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->402</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/874" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->874</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1059" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1059</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1060" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1060</label></a>
+<ul>
+<li class="">A <strong>weapon</strong> on the hotbar now opens its attack dialog, and a <strong>spirit or rune magic spell</strong> opens
+its cast dialog.</li>
+<li class="">Items on the actor sheet's Combat tab, including Dodge, can be dragged to the hotbar.</li>
+<li class="">A <strong>compendium</strong> on the hotbar opens it, a <strong>journal page</strong> opens its journal at that page, and a
+<strong>scene</strong> views it.</li>
+<li class="">Ammunition that can't attack on its own, like arrows, and folders show a warning instead of making
+a macro that doesn't work.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="for-content-creators">For Content Creators<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#for-content-creators" class="hash-link" aria-label="Direct link to For Content Creators" title="Direct link to For Content Creators" translate="no">​</a></h2>
+<ul>
+<li class="">Spells link to their effect with an <strong>Effect</strong> field on the spell sheet, next to the description
+link. Spells already on actors get their link from the compendium during the world migration.<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1086" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1086</label></a>
+</li>
+<li class="">Spells have a <strong>Resisted By</strong> field that says how a target can resist them. So far, only a
+resistance roll of POW against POW is supported; the other options are shown but not used yet.<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1068" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1068</label></a>
+</li>
+<li class="">Spells record what they can be cast on and what kind of effect they have, in two new fields.<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1080" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1080</label></a>
+</li>
+<li class="">Errors and warnings now carry a code like <code>RQG-W-0012</code>, which makes them easier to report and look
+up.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="other-bug-fixes">Other Bug Fixes<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#other-bug-fixes" class="hash-link" aria-label="Direct link to Other Bug Fixes" title="Direct link to Other Bug Fixes" translate="no">​</a></h2>
+<ul>
+<li class="">Let any owner of an actor drag-reorder its Spirit and Rune Magic spells, not just the GM<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1048" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1048</label></a>
+</li>
+<li class="">Sort Spell Matrix spells in with the actor's own Spirit Magic spells, marked with the matrix
+item's image and a tooltip, instead of listing them separately<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1047" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1047</label></a>
+</li>
+<li class="">Stop the Rqid batch editor's progress from filling the screen with notifications<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1052" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1052</label></a>
+</li>
+<li class="">Bring back the GM-only "is creature" checkbox on the new actor sheet<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1061" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1061</label></a>
+</li>
+<li class="">Update the attack dialog when you change target while it's open<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1072" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1072</label></a>
+</li>
+<li class="">Give embedded Spirit Magic spells their rqid during the world migration, so they can be matched to
+the compendium<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1085" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1085</label></a>
+</li>
+</ul>]]></content>
+        <category label="rqg" term="rqg"/>
+        <category label="rqg-6" term="rqg-6"/>
+        <category label="rqg-6-2" term="rqg-6-2"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RQG 6.1.1]]></title>
         <id>https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.1.1</id>
@@ -1473,24 +1672,5 @@ indication if things are running slowly.</p>
         <category label="foundry-release" term="foundry-release"/>
         <category label="rqg-3" term="rqg-3"/>
         <category label="rqg-3-4" term="rqg-3-4"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Wiki 1.3.3]]></title>
-        <id>https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/wiki-v1.3.3</id>
-        <link href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/wiki-v1.3.3"/>
-        <updated>2024-07-08T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Supported Foundry Versions]]></summary>
-        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v1.3.3/en-module.json" alt="Supported Foundry Versions" class="img_h5dG">
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v1.3.3/wiki-en-rqg.zip" alt="Download Count" class="img_h5dG"></p>
-<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="bug-fix">Bug Fix<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/wiki-v1.3.3#bug-fix" class="hash-link" aria-label="Direct link to Bug Fix" title="Direct link to Bug Fix" translate="no">​</a></h2>
-<ul>
-<li class="">wheels are worth 20L not 10L<!-- -->
-<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/issues/19" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->19</label></a>
-</li>
-</ul>]]></content>
-        <category label="wiki" term="wiki"/>
-        <category label="foundry-release" term="foundry-release"/>
-        <category label="wiki-1" term="wiki-1"/>
-        <category label="wiki-1-3" term="wiki-1-3"/>
     </entry>
 </feed>
