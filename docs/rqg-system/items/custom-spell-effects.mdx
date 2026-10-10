@@ -1,0 +1,163 @@
+---
+sidebar_position: 21
+slug: custom-spell-effects
+title: Giving Your Own Spells Effects
+tags: []
+---
+
+The wiki module gives the spells it ships with real effects: Apply puts a Bladesharp on a weapon,
+Dispel Magic removes spells, Summon Earth Elemental places a token. A spell that isn't in the wiki
+module, for example one from the Red Book of Magic or one you made up, keeps working like it always
+did. It is cast, the points are spent and the GM rules on the result by hand.
+
+This page shows how to give such a spell an effect of its own. Which way to go depends on what the
+spell should do:
+
+| The spell should…                                                         | Use                                                 |
+| ------------------------------------------------------------------------- | --------------------------------------------------- |
+| Add a bonus, change a value, or just show that it's active until it ends  | [An effect template](#an-effect-template), no code  |
+| Remove other spells, summon, stop other spells, or anything that is logic | [A behaviour in a module](#a-behaviour-in-a-module) |
+| Work like a wiki spell but with your own change                           | [A copy of the wiki spell](#changing-a-wiki-spell)  |
+
+## An effect template
+
+An effect template is an Active Effect that lives in a compendium. The spell links to it, and Apply
+puts a copy on the target. You do this once per spell. It needs four things: a compendium for
+effects, the effect, an rqid on the effect, and the link from the spell.
+
+### 1. Make a compendium for your effects
+
+In the Compendium Packs tab, click **Create Compendium**, choose the document type **Active
+Effect**, and give it a name. A world compendium is fine, you don't need a module. Effects can only
+be found by their rqid in a compendium, which is why they can't just be dropped in the world.
+
+### 2. Make the effect and give it an rqid
+
+An effect needs an rqid, like `ae..thunderfist`, so that spells can link to it. The effect sheet has
+no rqid button yet, so the easiest way is a macro. Create a **Script** macro, adapt it and run it as
+the GM:
+
+```js
+const pack = game.packs.get("world.my-spell-effects"); // the compendium from step 1
+await ActiveEffect.create(
+  {
+    name: "Thunderfist",
+    img: "icons/svg/lightning.svg",
+    type: "base",
+    system: {
+      // +5 to attack per level of the spell, on the weapon the spell is cast on
+      changes: [{ key: "@.:system.effect.add.melee.attack", type: "add", value: "@level * 5" }],
+    },
+    flags: { rqg: { documentRqidFlags: { id: "ae..thunderfist", lang: "en", priority: 0 } } },
+  },
+  { pack: pack.collection },
+);
+```
+
+The changes are the same as on any Active Effect. `@level` is the level the spell was cast at. See
+[Rqid: Active Effects](/rqg-system/api/rqid#7-active-effects) for the keys that change an actor or
+an item. An effect without any changes works as a reminder that the spell is active.
+
+You can also edit the effect afterwards from the compendium like any other effect. Unlock the
+compendium first.
+
+### 3. Link the spell to it
+
+Open the spell, and drag the effect from the compendium onto the **Spell Effect** field. If it
+doesn't link, the effect has no rqid. Do this for the spell where it is used: the spell on the
+actor, and the world or compendium spell that new copies come from.
+
+That is all for a spell that works on its caster or target. Cast the spell, let the target's owner
+click Apply, and the effect shows up on the token.
+
+### Optional: where it goes and what it can't share a target with
+
+By default an effect goes on the target actor. These two optional settings have no fields on the
+sheet yet, so set them in the same macro, under `system:`:
+
+```js
+system: {
+  changes: [/* … */],
+  // Goes on the target's equipped, non-missile weapon, and asks which one if there are several
+  spellTarget: {
+    documentType: "weapon",
+    where: [
+      { path: "equippedStatus", op: "eq", value: "equipped" },
+      { path: "isProjectileWeapon", op: "eq", value: "false" },
+    ],
+  },
+  // Can't be on the same weapon as Fireblade
+  incompatibleSpellRqidLinks: [{ rqid: "i.spirit-magic.fireblade", name: "Fireblade" }],
+},
+```
+
+`incompatibleSpellRqidLinks` lists spells that can't be on the same target, and
+`cancelsSpellRqidLinks` lists opposing spells, like Demoralize and Courage, that cancel each other
+so that neither remains. The Bladesharp and Demoralize effects in the wiki module are good examples
+to copy from.
+
+## A behaviour in a module
+
+An effect template can only add an effect to something. A spell that has to _do_ something, like
+removing other spells or placing a token, needs a small script in a module of your own. The script
+registers a **behaviour** for the spell's rqid.
+
+```js
+// scripts/my-spells.mjs, listed under esmodules in your module.json
+Hooks.once("rqg.registerSpellBehaviours", (registry) => {
+  const source = { lang: "en", priority: 10 };
+
+  registry.register(
+    "i.rune-magic.summon-wind-child",
+    {
+      // Run on the GM's client, since players can't create tokens
+      runAsGm: true,
+      // Called when Apply is clicked, instead of putting an effect on the target
+      apply: (scope) => game.system.api.spellEffects.summon(scope, "a.character.wind-child"),
+    },
+    source,
+  );
+});
+```
+
+A behaviour can have these parts, all optional:
+
+| Part              | When it runs                                                           | What it returns                                                                         |
+| ----------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `apply`           | When Apply is clicked, instead of attaching the effect template        | What happened, `{ outcome: "resolved" }` when it did its work without leaving an effect |
+| `onIncomingSpell` | When another spell is applied to an actor that has this spell's effect | `{ outcome: "stopped" \| "pass" }`                                                      |
+| `onEnd`           | When the spell's effect expires or is deleted, on the GM's client      | nothing                                                                                 |
+| `runAsGm`         | Makes `apply` run on the active GM's client                            | –                                                                                       |
+
+- `scope` has the `spell`, the `targetActor`, the `targetName`, and the `cast` with the level, magic
+  points and rune points spent and the caster's success level.
+- `game.system.api.spellEffects` has helpers for common things: `summon` places a token next to the
+  caster that goes away when its effect ends, `list` and `removeSpellEffects` find and remove the
+  spell effects on an actor, and `castStrength` and `effectRemovalCost` are what Dispel Magic uses.
+- A behaviour that throws is caught and reported, so one broken spell doesn't stop the others.
+- If more than one module registers a behaviour for the same spell, the one in the world's language
+  wins, then the highest `priority`. A module of your own with a higher priority than the wiki
+  module replaces the wiki's behaviour for that spell.
+
+The wiki module's own behaviours are the best examples: Countermagic and Shield share one
+`onIncomingSpell` so that layered defences are decided together, and the elemental spells use
+`summon`.
+
+{/* TODO: damage and healing from a behaviour (#1171), roll hooks (#1132), update when they land */}
+
+## Changing a wiki spell
+
+To change what a spell of the wiki module does, but not how it's cast, make your own version of the
+spell with the same rqid. A spell is matched to its effect and behaviour by rqid, so your copy keeps
+what the wiki module registered for it. Change the **Spell Effect** link on your copy to point at
+your own effect template to replace only the effect. Give yours a higher priority in its rqid editor
+to make it the [best version](/rqg-system/api/rqid#search-priorities).
+
+## Good to know
+
+- Spells the wiki module doesn't have keep working as before, so there is nothing you must do when
+  upgrading.
+- A world in another language still gets the wiki spells' effects and behaviours, since they are
+  found by rqid, not by name.
+- The effect and the spell don't have to come from the same module. Link a spell in one module to an
+  effect in another by its rqid.
