@@ -83,6 +83,23 @@ Immobilized.</p>
 <div class="theme-admonition theme-admonition-note admonition_uOdM alert alert--secondary"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>Upgrading</div><div class="admonitionContent__X6G"><p>A spell status that is already on a token when you upgrade stays on it as an ordinary effect until
 it runs out. You can also delete it from the actor's Effects tab. For a spell that has no spell
 effect yet, add a plain effect on the actor's Effects tab.</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="healing">Healing<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#healing" class="hash-link" aria-label="Direct link to Healing" title="Direct link to Healing" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1171" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1171</label></a>
+<p>The heal button on a hit location now opens one dialog for the whole actor. It lists every wounded
+location with its hit points and wounds, with the clicked location's largest wound selected. Heal
+one wound by up to the chosen points, the way First Aid treats one injury at a time, or switch to
+<strong>Remove All Damage</strong> to clear every location at once.</p>
+<p>A severed limb is no longer reattached just because 6 or more points were healed on it. Tick
+<strong>Reattach</strong> next to its wounds instead, since whether all parts are at hand is the GM's call.</p>
+<p>Heal, Heal Wound and Heal Body now heal when you click Apply on their cast card:</p>
+<ul>
+<li class=""><strong>Heal</strong> puts its points on one location. Click a wound to heal it first; the rest of the points
+go to the location's other wounds. With 6 points it can reattach a severed limb.</li>
+<li class=""><strong>Heal Wound</strong> heals as many hit points as the magic points spent with it. Click the dots under
+each wound to choose where the healing goes. With 6 magic points it can reattach one severed limb.</li>
+<li class=""><strong>Heal Body</strong> heals every location and the total hit points, and reattaches severed limbs.</li>
+</ul>
+<!-- -->
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="active-effects-that-change-an-actors-items">Active Effects That Change an Actor's Items<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#active-effects-that-change-an-actors-items" class="hash-link" aria-label="Direct link to Active Effects That Change an Actor's Items" title="Direct link to Active Effects That Change an Actor's Items" translate="no">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/920" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->920</label></a>
 <p>Active Effects that change a value on the actor's items have a new, more versatile key format.
@@ -162,6 +179,15 @@ data, which is now also part of the API.</p>
 <p>See the <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api">API overview</a> to get started, and the
 <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/macro-examples">macro examples</a> for ready-to-use macros. From now on, changes that
 can break macros or modules are listed in the release notes.</p>
+<h3 class="anchor anchorTargetStickyNavbar_xPLm" id="changes-that-can-break-macros">Changes that can break macros<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#changes-that-can-break-macros" class="hash-link" aria-label="Direct link to Changes that can break macros" title="Direct link to Changes that can break macros" translate="no">​</a></h3>
+<ul>
+<li class=""><code>actor.applyDamage(...)</code> is gone. Use <code>actor.damage({ amount, location, ignoreArmor })</code> to damage
+a hit location, where <code>location</code> is a hit location item or <code>"random"</code>, and
+<code>actor.heal({ location, points, wound, restoreSevered })</code> to heal one. Both return what they did.</li>
+<li class=""><code>item.applyWound(...)</code> and <code>item.healWound(...)</code> on hit location items are gone too; use
+<code>actor.damage</code> and <code>actor.heal</code>.</li>
+</ul>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1171" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1171</label></a>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="old-sheets-will-be-removed-in-630">Old Sheets Will Be Removed in 6.3.0<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#old-sheets-will-be-removed-in-630" class="hash-link" aria-label="Direct link to Old Sheets Will Be Removed in 6.3.0" title="Direct link to Old Sheets Will Be Removed in 6.3.0" translate="no">​</a></h2>
 <p>The newer character and item sheets are the default. Their names end in <strong>V2</strong>, like "Character
 Sheet V2". The old sheets, like "Character Sheet" and "Passion Item Sheet", can still be picked in a
