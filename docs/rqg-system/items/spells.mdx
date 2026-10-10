@@ -1,0 +1,68 @@
+---
+sidebar_position: 20
+slug: spells
+title: Spells
+tags: []
+---
+
+Spirit Magic Spells and Rune Magic Spells are different items, but they cast and take effect the
+same way. This page explains what they have in common. The two item pages cover what is particular
+to each: [Spirit Magic Spell](/rqg-system/items/spirit-magic) and
+[Rune Magic Spell](/rqg-system/items/rune-magic).
+
+## From cast to effect
+
+1. **Cast** the spell from the actor sheet. The cast card shows the roll and the magic points or
+   rune points it cost, and one row per target.
+2. If the target can resist the spell, the **Resisted By** field decides how. See
+   <GithubIssue issue="1066" repo="fvtt-system-rqg" />.
+3. When the spell takes effect, the target's owner gets an **Apply** button on the card. What Apply
+   does depends on what the spell has been given, see below.
+
+A spell that has been given nothing still works as a cast: the card is posted and the points are
+spent, but there is no Apply button and the GM and players handle the effect by hand. Spells you add
+yourself start out like this.
+
+## What a spell can be given
+
+There are two things that make Apply do something, and a spell can have both.
+
+**An effect template.** A spell links to an Active Effect in its **Spell Effect** field. Apply puts
+a copy of that effect on the target (or on the target's weapon), named after the spell and its
+level, like "Bladesharp (3)", and it shows on the token. Most spells in the wiki module work this
+way. This covers everything an Active Effect can do: change the sheet, or just remind everyone that
+the spell is active. The effect can also say what the spell can be cast on, and which spells can't
+share a target with it.
+
+**A behaviour.** Some spells need more than an effect on the target, like Dispel Magic, which
+removes other spells, the elemental summons, which place a token, or Countermagic and Shield, which
+stop other spells. These are small scripts that a module registers for the spell, which the system
+runs instead of attaching an effect. The wiki module registers the behaviours for the spells it has.
+Behaviours are matched on the spell's rqid, so a copy of a spell, in a world or another module, gets
+the behaviour as long as it keeps the rqid.
+
+The wiki module ships with both for the spells it covers. For any other spell, for example one from
+the Red Book of Magic, see [Giving your own spells effects](/rqg-system/items/custom-spell-effects).
+
+## Fields common to spells
+
+| Field                                    | What it does                                                                                            |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Duration**, **Range**                  | From the rulebook. A Temporal duration is also what Apply gives the effect.                             |
+| **Resisted By**                          | How a target can resist the spell. A single target resistance roll is automated.                        |
+| **Target Kind**, **Effect Tier**         | What the spell works on and how much of it can be automated. Informational for now.                     |
+| **Gets through Countermagic and Shield** | Check this for spells, like Dismiss Magic, that Countermagic and Shield don't stop.                     |
+| **Spell Effect**                         | The effect template to apply. Drop an Active Effect with an rqid here, or remove it with the trash can. |
+
+## Recasting and incompatible spells
+
+By the rules a spell cast on a target that already has it only works if the new casting is stronger,
+and some spells can't be on the same target together. The system checks this when Apply is clicked,
+by the spells' rqids. The world setting **Recast Spells Take Effect** chooses between the rules as
+written and always replacing. See the [6.2.0 release notes](/release-notes/rqg-v6.2.0) for details.
+
+## Related
+
+- [Rqid: Spell effects](/rqg-system/api/rqid#10-spell-effects) for how spells and effects are
+  linked.
+- [Rqid: Active Effects](/rqg-system/api/rqid#7-active-effects) for the keys an effect can change.
