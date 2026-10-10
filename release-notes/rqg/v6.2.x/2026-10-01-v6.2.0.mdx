@@ -108,6 +108,28 @@ effect yet, add a plain effect on the actor's Effects tab.
 
 :::
 
+## Healing
+
+<GithubIssue issue="1171" repo="fvtt-system-rqg" />
+
+The heal button on a hit location now opens one dialog for the whole actor. It lists every wounded
+location with its hit points and wounds, with the clicked location's largest wound selected. Heal
+one wound by up to the chosen points, the way First Aid treats one injury at a time, or switch to
+**Remove All Damage** to clear every location at once.
+
+A severed limb is no longer reattached just because 6 or more points were healed on it. Tick
+**Reattach** next to its wounds instead, since whether all parts are at hand is the GM's call.
+
+Heal, Heal Wound and Heal Body now heal when you click Apply on their cast card:
+
+- **Heal** puts its points on one location. Click a wound to heal it first; the rest of the points
+  go to the location's other wounds. With 6 points it can reattach a severed limb.
+- **Heal Wound** heals as many hit points as the magic points spent with it. Click the dots under
+  each wound to choose where the healing goes. With 6 magic points it can reattach one severed limb.
+- **Heal Body** heals every location and the total hit points, and reattaches severed limbs.
+
+{/* TODO screenshot: the Heal Wound dialog with dots */}
+
 ## Active Effects That Change an Actor's Items
 
 <GithubIssue issue="920" repo="fvtt-system-rqg" />
@@ -214,6 +236,16 @@ data, which is now also part of the API.
 See the [API overview](/rqg-system/api) to get started, and the
 [macro examples](/rqg-system/api/macro-examples) for ready-to-use macros. From now on, changes that
 can break macros or modules are listed in the release notes.
+
+### Changes that can break macros
+
+- `actor.applyDamage(...)` is gone. Use `actor.damage({ amount, location, ignoreArmor })` to damage
+  a hit location, where `location` is a hit location item or `"random"`, and
+  `actor.heal({ location, points, wound, restoreSevered })` to heal one. Both return what they did.
+- `item.applyWound(...)` and `item.healWound(...)` on hit location items are gone too; use
+  `actor.damage` and `actor.heal`.
+
+<GithubIssue issue="1171" repo="fvtt-system-rqg" />
 
 ## Old Sheets Will Be Removed in 6.3.0
 
