@@ -180,8 +180,9 @@ data, which is now also part of the API.</p>
 can break macros or modules are listed in the release notes.</p>
 <h3 class="anchor anchorTargetStickyNavbar_xPLm" id="changes-that-can-break-macros">Changes that can break macros<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#changes-that-can-break-macros" class="hash-link" aria-label="Direct link to Changes that can break macros" title="Direct link to Changes that can break macros" translate="no">​</a></h3>
 <ul>
-<li class=""><code>actor.applyDamage(...)</code> is gone. Use <code>actor.damage({ amount, location, ignoreArmor })</code> to damage
-a hit location, where <code>location</code> is a hit location item or <code>"random"</code>, and
+<li class=""><code>actor.applyDamage(...)</code> is gone. Use <code>actor.damage({ amount, location, armorPoints })</code> to damage
+a hit location, where <code>location</code> is a hit location item or <code>"random"</code> and <code>armorPoints</code> (default
+the location's own armor) is subtracted first, and
 <code>actor.heal({ location, points, wound, restoreSevered })</code> to heal one. Both return what they did.</li>
 <li class=""><code>item.applyWound(...)</code> and <code>item.healWound(...)</code> on hit location items are gone too; use
 <code>actor.damage</code> and <code>actor.heal</code>.</li>
