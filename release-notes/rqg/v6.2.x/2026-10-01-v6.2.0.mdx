@@ -239,8 +239,9 @@ can break macros or modules are listed in the release notes.
 
 ### Changes that can break macros
 
-- `actor.applyDamage(...)` is gone. Use `actor.damage({ amount, location, ignoreArmor })` to damage
-  a hit location, where `location` is a hit location item or `"random"`, and
+- `actor.applyDamage(...)` is gone. Use `actor.damage({ amount, location, armorPoints })` to damage
+  a hit location, where `location` is a hit location item or `"random"` and `armorPoints` (default
+  the location's own armor) is subtracted first, and
   `actor.heal({ location, points, wound, restoreSevered })` to heal one. Both return what they did.
 - `item.applyWound(...)` and `item.healWound(...)` on hit location items are gone too; use
   `actor.damage` and `actor.heal`.
