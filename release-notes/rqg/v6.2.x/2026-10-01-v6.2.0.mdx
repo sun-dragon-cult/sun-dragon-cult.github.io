@@ -255,6 +255,9 @@ Rolls now have one method each, taking an options object:
 - `item.roll(options)` rolls a skill, rune or passion.
 - `actor.rollCharacteristic(name, options)` rolls a characteristic.
 - `actor.rollReputation(options)` rolls Reputation.
+- `item.cast(options)` casts a spirit or rune magic spell as its owner, and
+  `actor.castSpell(spell, options)` casts one with that actor as the caster, including spells from
+  an Allied Spirit, a bound spirit or a matrix.
 
 Without `skipDialog: true` they open the roll dialog. With it they roll at once and return the roll.
 
@@ -265,6 +268,7 @@ Modules can react to rolls with hooks:
 | `rqg.preAbilityRoll`        | `rqg.abilityRoll`        |
 | `rqg.preCharacteristicRoll` | `rqg.characteristicRoll` |
 | `rqg.preReputationRoll`     | `rqg.reputationRoll`     |
+| `rqg.preSpellCast`          | `rqg.spellCast`          |
 
 A "pre" hook can add modifiers to the roll or cancel it.
 
@@ -276,6 +280,8 @@ replacement:
 | `item.abilityRoll` / `item.abilityRollImmediate`                 | `item.roll`                |
 | `actor.characteristicRoll` / `actor.characteristicRollImmediate` | `actor.rollCharacteristic` |
 | `actor.reputationRoll` / `actor.reputationRollImmediate`         | `actor.rollReputation`     |
+| `item.spiritMagicRoll` / `item.spiritMagicRollImmediate`         | `item.cast`                |
+| `item.runeMagicRoll` / `item.runeMagicRollImmediate`             | `item.cast`                |
 
 Hotbar macros made by dragging a skill to the hotbar in earlier versions use the old method. To
 update one, drag the skill to the hotbar again.
