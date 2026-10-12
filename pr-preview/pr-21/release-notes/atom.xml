@@ -197,10 +197,11 @@ the location's own armor) is subtracted first, and
 <li class=""><code>item.cast(options)</code> casts a spirit or rune magic spell as its owner, and
 <code>actor.castSpell(spell, options)</code> casts one with that actor as the caster, including spells from
 an Allied Spirit, a bound spirit or a matrix.</li>
+<li class=""><code>item.attack({ usage })</code> opens the attack dialog for a weapon, with <code>usage</code> preselected.</li>
 </ul>
 <p>Without <code>skipDialog: true</code> they open the roll dialog. With it they roll at once and return the roll.</p>
 <p>Modules can react to rolls with hooks:</p>
-<table><thead><tr><th>Before the roll</th><th>After the roll</th></tr></thead><tbody><tr><td><code>rqg.preAbilityRoll</code></td><td><code>rqg.abilityRoll</code></td></tr><tr><td><code>rqg.preCharacteristicRoll</code></td><td><code>rqg.characteristicRoll</code></td></tr><tr><td><code>rqg.preReputationRoll</code></td><td><code>rqg.reputationRoll</code></td></tr><tr><td><code>rqg.preSpellCast</code></td><td><code>rqg.spellCast</code></td></tr></tbody></table>
+<table><thead><tr><th>Before the roll</th><th>After the roll</th></tr></thead><tbody><tr><td><code>rqg.preAbilityRoll</code></td><td><code>rqg.abilityRoll</code></td></tr><tr><td><code>rqg.preCharacteristicRoll</code></td><td><code>rqg.characteristicRoll</code></td></tr><tr><td><code>rqg.preReputationRoll</code></td><td><code>rqg.reputationRoll</code></td></tr><tr><td><code>rqg.preSpellCast</code></td><td><code>rqg.spellCast</code></td></tr><tr><td><code>rqg.preAttack</code></td><td><code>rqg.attack</code></td></tr></tbody></table>
 <p>A "pre" hook can add modifiers to the roll or cancel it.</p>
 <p>The old methods still work until RQG 6.4.0, but log a warning in the browser console that names the
 replacement:</p>
