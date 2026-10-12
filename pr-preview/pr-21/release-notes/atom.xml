@@ -188,11 +188,29 @@ the location's own armor) is subtracted first, and
 <code>actor.damage</code> and <code>actor.heal</code>.</li>
 </ul>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1171" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1171</label></a>
+<h3 class="anchor anchorTargetStickyNavbar_xPLm" id="roll-methods-on-actors-and-items">Roll methods on actors and items<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#roll-methods-on-actors-and-items" class="hash-link" aria-label="Direct link to Roll methods on actors and items" title="Direct link to Roll methods on actors and items" translate="no">​</a></h3>
+<p>Rolls now have one method each, taking an options object:</p>
+<ul>
+<li class=""><code>item.roll(options)</code> rolls a skill, rune or passion.</li>
+<li class=""><code>actor.rollCharacteristic(name, options)</code> rolls a characteristic.</li>
+<li class=""><code>actor.rollReputation(options)</code> rolls Reputation.</li>
+</ul>
+<p>Without <code>skipDialog: true</code> they open the roll dialog. With it they roll at once and return the roll.</p>
+<p>Modules can react to rolls with hooks:</p>
+<table><thead><tr><th>Before the roll</th><th>After the roll</th></tr></thead><tbody><tr><td><code>rqg.preAbilityRoll</code></td><td><code>rqg.abilityRoll</code></td></tr><tr><td><code>rqg.preCharacteristicRoll</code></td><td><code>rqg.characteristicRoll</code></td></tr><tr><td><code>rqg.preReputationRoll</code></td><td><code>rqg.reputationRoll</code></td></tr></tbody></table>
+<p>A "pre" hook can add modifiers to the roll or cancel it.</p>
+<p>The old methods still work until RQG 6.4.0, but log a warning in the browser console that names the
+replacement:</p>
+<table><thead><tr><th>Old method</th><th>Replacement</th></tr></thead><tbody><tr><td><code>item.abilityRoll</code> / <code>item.abilityRollImmediate</code></td><td><code>item.roll</code></td></tr><tr><td><code>actor.characteristicRoll</code> / <code>actor.characteristicRollImmediate</code></td><td><code>actor.rollCharacteristic</code></td></tr><tr><td><code>actor.reputationRoll</code> / <code>actor.reputationRollImmediate</code></td><td><code>actor.rollReputation</code></td></tr></tbody></table>
+<p>Hotbar macros made by dragging a skill to the hotbar in earlier versions use the old method. To
+update one, drag the skill to the hotbar again.</p>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1132" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1132</label></a>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="old-sheets-will-be-removed-in-630">Old Sheets Will Be Removed in 6.3.0<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#old-sheets-will-be-removed-in-630" class="hash-link" aria-label="Direct link to Old Sheets Will Be Removed in 6.3.0" title="Direct link to Old Sheets Will Be Removed in 6.3.0" translate="no">​</a></h2>
 <p>The newer character and item sheets are the default. Their names end in <strong>V2</strong>, like "Character
 Sheet V2". The old sheets, like "Character Sheet" and "Passion Item Sheet", can still be picked in a
 document's <strong>Sheet</strong> configuration, but they will be removed in RQG 6.3.0. Actors and items set to
-an old sheet then open in the V2 sheet automatically, so there's nothing you need to do.</p>
+an old sheet then open in the V2 sheet automatically, so there's nothing you need to do. Until then,
+opening an old sheet logs a warning in the browser console.</p>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="for-content-creators">For Content Creators<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#for-content-creators" class="hash-link" aria-label="Direct link to For Content Creators" title="Direct link to For Content Creators" translate="no">​</a></h2>
 <ul>
 <li class="">Spells link to their effect with an <strong>Effect</strong> field on the spell sheet, next to the description
