@@ -248,12 +248,47 @@ can break macros or modules are listed in the release notes.
 
 <GithubIssue issue="1171" repo="fvtt-system-rqg" />
 
+### Roll methods on actors and items
+
+Rolls now have one method each, taking an options object:
+
+- `item.roll(options)` rolls a skill, rune or passion.
+- `actor.rollCharacteristic(name, options)` rolls a characteristic.
+- `actor.rollReputation(options)` rolls Reputation.
+
+Without `skipDialog: true` they open the roll dialog. With it they roll at once and return the roll.
+
+Modules can react to rolls with hooks:
+
+| Before the roll             | After the roll           |
+| --------------------------- | ------------------------ |
+| `rqg.preAbilityRoll`        | `rqg.abilityRoll`        |
+| `rqg.preCharacteristicRoll` | `rqg.characteristicRoll` |
+| `rqg.preReputationRoll`     | `rqg.reputationRoll`     |
+
+A "pre" hook can add modifiers to the roll or cancel it.
+
+The old methods still work until RQG 6.4.0, but log a warning in the browser console that names the
+replacement:
+
+| Old method                                                       | Replacement                |
+| ---------------------------------------------------------------- | -------------------------- |
+| `item.abilityRoll` / `item.abilityRollImmediate`                 | `item.roll`                |
+| `actor.characteristicRoll` / `actor.characteristicRollImmediate` | `actor.rollCharacteristic` |
+| `actor.reputationRoll` / `actor.reputationRollImmediate`         | `actor.rollReputation`     |
+
+Hotbar macros made by dragging a skill to the hotbar in earlier versions use the old method. To
+update one, drag the skill to the hotbar again.
+
+<GithubIssue issue="1132" repo="fvtt-system-rqg" />
+
 ## Old Sheets Will Be Removed in 6.3.0
 
 The newer character and item sheets are the default. Their names end in **V2**, like "Character
 Sheet V2". The old sheets, like "Character Sheet" and "Passion Item Sheet", can still be picked in a
 document's **Sheet** configuration, but they will be removed in RQG 6.3.0. Actors and items set to
-an old sheet then open in the V2 sheet automatically, so there's nothing you need to do.
+an old sheet then open in the V2 sheet automatically, so there's nothing you need to do. Until then,
+opening an old sheet logs a warning in the browser console.
 
 ## For Content Creators
 
