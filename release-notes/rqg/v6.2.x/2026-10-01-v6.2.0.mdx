@@ -271,8 +271,10 @@ Modules can react to rolls with hooks:
 | `rqg.preReputationRoll`     | `rqg.reputationRoll`     |
 | `rqg.preSpellCast`          | `rqg.spellCast`          |
 | `rqg.preAttack`             | `rqg.attack`             |
+| `rqg.preDefence`            | `rqg.defence`            |
 
-A "pre" hook can add modifiers to the roll or cancel it.
+A "pre" hook can add modifiers to the roll or cancel it. `rqg.preDefence` can also forbid a parry or
+dodge, for example for a Berserker, and add a note that shows on the attack card.
 
 The old methods still work until RQG 6.4.0, but log a warning in the browser console that names the
 replacement:
