@@ -258,6 +258,7 @@ Rolls now have one method each, taking an options object:
 - `item.cast(options)` casts a spirit or rune magic spell as its owner, and
   `actor.castSpell(spell, options)` casts one with that actor as the caster, including spells from
   an Allied Spirit, a bound spirit or a matrix.
+- `item.attack({ usage })` opens the attack dialog for a weapon, with `usage` preselected.
 
 Without `skipDialog: true` they open the roll dialog. With it they roll at once and return the roll.
 
@@ -269,6 +270,7 @@ Modules can react to rolls with hooks:
 | `rqg.preCharacteristicRoll` | `rqg.characteristicRoll` |
 | `rqg.preReputationRoll`     | `rqg.reputationRoll`     |
 | `rqg.preSpellCast`          | `rqg.spellCast`          |
+| `rqg.preAttack`             | `rqg.attack`             |
 
 A "pre" hook can add modifiers to the roll or cancel it.
 
