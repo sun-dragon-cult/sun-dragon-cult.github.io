@@ -194,14 +194,17 @@ the location's own armor) is subtracted first, and
 <li class=""><code>item.roll(options)</code> rolls a skill, rune or passion.</li>
 <li class=""><code>actor.rollCharacteristic(name, options)</code> rolls a characteristic.</li>
 <li class=""><code>actor.rollReputation(options)</code> rolls Reputation.</li>
+<li class=""><code>item.cast(options)</code> casts a spirit or rune magic spell as its owner, and
+<code>actor.castSpell(spell, options)</code> casts one with that actor as the caster, including spells from
+an Allied Spirit, a bound spirit or a matrix.</li>
 </ul>
 <p>Without <code>skipDialog: true</code> they open the roll dialog. With it they roll at once and return the roll.</p>
 <p>Modules can react to rolls with hooks:</p>
-<table><thead><tr><th>Before the roll</th><th>After the roll</th></tr></thead><tbody><tr><td><code>rqg.preAbilityRoll</code></td><td><code>rqg.abilityRoll</code></td></tr><tr><td><code>rqg.preCharacteristicRoll</code></td><td><code>rqg.characteristicRoll</code></td></tr><tr><td><code>rqg.preReputationRoll</code></td><td><code>rqg.reputationRoll</code></td></tr></tbody></table>
+<table><thead><tr><th>Before the roll</th><th>After the roll</th></tr></thead><tbody><tr><td><code>rqg.preAbilityRoll</code></td><td><code>rqg.abilityRoll</code></td></tr><tr><td><code>rqg.preCharacteristicRoll</code></td><td><code>rqg.characteristicRoll</code></td></tr><tr><td><code>rqg.preReputationRoll</code></td><td><code>rqg.reputationRoll</code></td></tr><tr><td><code>rqg.preSpellCast</code></td><td><code>rqg.spellCast</code></td></tr></tbody></table>
 <p>A "pre" hook can add modifiers to the roll or cancel it.</p>
 <p>The old methods still work until RQG 6.4.0, but log a warning in the browser console that names the
 replacement:</p>
-<table><thead><tr><th>Old method</th><th>Replacement</th></tr></thead><tbody><tr><td><code>item.abilityRoll</code> / <code>item.abilityRollImmediate</code></td><td><code>item.roll</code></td></tr><tr><td><code>actor.characteristicRoll</code> / <code>actor.characteristicRollImmediate</code></td><td><code>actor.rollCharacteristic</code></td></tr><tr><td><code>actor.reputationRoll</code> / <code>actor.reputationRollImmediate</code></td><td><code>actor.rollReputation</code></td></tr></tbody></table>
+<table><thead><tr><th>Old method</th><th>Replacement</th></tr></thead><tbody><tr><td><code>item.abilityRoll</code> / <code>item.abilityRollImmediate</code></td><td><code>item.roll</code></td></tr><tr><td><code>actor.characteristicRoll</code> / <code>actor.characteristicRollImmediate</code></td><td><code>actor.rollCharacteristic</code></td></tr><tr><td><code>actor.reputationRoll</code> / <code>actor.reputationRollImmediate</code></td><td><code>actor.rollReputation</code></td></tr><tr><td><code>item.spiritMagicRoll</code> / <code>item.spiritMagicRollImmediate</code></td><td><code>item.cast</code></td></tr><tr><td><code>item.runeMagicRoll</code> / <code>item.runeMagicRollImmediate</code></td><td><code>item.cast</code></td></tr></tbody></table>
 <p>Hotbar macros made by dragging a skill to the hotbar in earlier versions use the old method. To
 update one, drag the skill to the hotbar again.</p>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1132" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1132</label></a>
