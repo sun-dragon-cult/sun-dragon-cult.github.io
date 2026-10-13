@@ -133,7 +133,7 @@ A behaviour can have these parts, all optional:
   points and rune points spent and the caster's success level.
 - `game.system.api.spellEffects` has helpers for common things: `summon` places a token next to the
   caster that goes away when its effect ends, `list` and `removeSpellEffects` find and remove the
-  spell effects on an actor, and `castStrength` and `effectRemovalCost` are what Dispel Magic uses.
+  spell effects on an actor, and `castPoints` and `effectRemovalCost` are what Dispel Magic uses.
 - A behaviour that throws is caught and reported, so one broken spell doesn't stop the others.
 - If more than one module registers a behaviour for the same spell, the one in the world's language
   wins, then the highest `priority`. A module of your own with a higher priority than the wiki
