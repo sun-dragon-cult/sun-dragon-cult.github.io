@@ -24,7 +24,7 @@ const api = game.system.api;
 const lines = [];
 for (const token of canvas.tokens.controlled) {
   const roll = await api.rolls.ability("i.skill.scan", { actor: token, skipDialog: true });
-  const success = roll.successLevel <= api.SuccessLevel.Success;
+  const success = roll.successLevel <= api.rolls.SuccessLevel.Success;
   lines.push(`${token.name}: ${success ? "spotted it" : "saw nothing"}`);
 }
 ChatMessage.create({
