@@ -9,8 +9,10 @@ The functions in `game.system.api.rolls` do the same rolls as clicking on the ch
 default they open the normal roll dialog, where the player can add modifiers before rolling.
 
 With `skipDialog: true` the roll is made straight away instead, like double-clicking on the sheet.
-The function then returns the roll, so a macro can check the result with `roll.successLevel`. See
-[`SuccessLevel`](/rqg-system/api#whats-in-it).
+The function then returns the roll, so a macro can check the result with `roll.successLevel`.
+Compare it with `game.system.api.rolls.SuccessLevel`:
+`{ Critical: 0, Special: 1, Success: 2, Failure: 3, Fumble: 4 }`. A lower number is a better result,
+so `roll.successLevel <= SuccessLevel.Success` means the roll succeeded.
 
 Experience checks, magic point and rune point costs are handled the same way as when rolling from
 the sheet.
@@ -66,7 +68,7 @@ await api.rolls.ability("Scan");
 
 // Roll Dodge for a specific token without a dialog, and check the result
 const roll = await api.rolls.ability("Dodge", { actor: token, skipDialog: true });
-if (roll.successLevel <= api.SuccessLevel.Success) {
+if (roll.successLevel <= api.rolls.SuccessLevel.Success) {
   ui.notifications.info("Dodged!");
 }
 
