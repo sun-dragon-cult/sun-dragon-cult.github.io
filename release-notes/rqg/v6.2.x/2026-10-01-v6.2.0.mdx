@@ -78,6 +78,23 @@ target's owner sees the reason.
 The world setting **Recast Spells Take Effect** chooses the rule: **Only if stronger** (the rules as
 written) or **Always**, where every new casting replaces the old one.
 
+### Berserker and Fanaticism
+
+<GithubIssue issue="1170" repo="fvtt-system-rqg" />
+
+Berserker and Fanaticism now change the rolls of whoever has them:
+
+- **Berserker:** attacks get half again, or double against a creature with the Chaos rune. Parrying
+  and dodging are refused, with the reason on the attack card, and so is casting. CON is increased
+  by half, CON rolls succeed at 95%, and the berserker has Countermagic 2, or 4 against spells from
+  chaotic casters. When the spell ends, the berserker becomes Helpless. Berserker replaces a
+  Fanaticism on the target.
+- **Fanaticism:** attacks get half again, parrying is refused and Dodge is halved. Which spells a
+  fanatic may still cast is up to the GM.
+
+Being preserved from shock and unconsciousness while berserk is also up to the GM. The harpy in the
+wiki module now has the Chaos rune.
+
 ### Spell effects on the token
 
 A token's spell effects are shown at the top of the token HUD's status palette, above the condition
@@ -284,7 +301,9 @@ dodge, for example for a Berserker, and add a note that shows on the attack card
 [Roll hooks](/rqg-system/api/hooks).
 
 Modules can also make a skill do something after it's rolled, the way the wiki module's First Aid
-heals a wound. See [Behaviors](/rqg-system/api/behaviors).
+heals a wound, and a spell's effect can change rolls through
+[roll entries](/rqg-system/api/behaviors#roll-entries), like Berserker and Fanaticism. See
+[Behaviors](/rqg-system/api/behaviors).
 
 The old methods still work until RQG 6.4.0, but log a warning in the browser console that names the
 replacement:
