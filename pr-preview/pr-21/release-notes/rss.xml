@@ -114,10 +114,10 @@ each wound to choose where the healing goes. With 6 magic points it can reattach
 <li class=""><strong>Heal Body</strong> heals every location and the total hit points, and reattaches severed limbs.</li>
 </ul>
 <p>First Aid works the same way. Target the wounded token, or no one to treat yourself, and roll First
-Aid. On a success the roll card gets an Apply button: it rolls the healing (1D3, 2D3 on a special,
-1D3+3 on a critical) and asks which wound to treat. On a fumble Apply does 1D3 damage to the treated
-location instead. Stopping bleeding and treating each injury only once are still up to the GM. This
-needs the wiki module.</p>
+Aid. On a success the roll card gets an Apply button: it asks which wound to treat, then rolls the
+healing (1D3, 2D3 on a special, 1D3+3 on a critical) for that wound. On a fumble Apply asks which
+location was treated and does 1D3 damage to it instead. Stopping bleeding and treating each injury
+only once are still up to the GM. This needs the wiki module.</p>
 <!-- -->
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="active-effects-that-change-an-actors-items">Active Effects That Change an Actor's Items<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#active-effects-that-change-an-actors-items" class="hash-link" aria-label="Direct link to Active Effects That Change an Actor's Items" title="Direct link to Active Effects That Change an Actor's Items" translate="no">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/920" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->920</label></a>
