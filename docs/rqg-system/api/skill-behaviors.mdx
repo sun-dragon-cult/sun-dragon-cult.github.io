@@ -1,0 +1,73 @@
+---
+sidebar_position: 35
+slug: skill-behaviors
+title: Skill Behaviors
+tags: []
+---
+
+A skill can do something after it's rolled, like First Aid healing a wound. A module registers a
+**behavior** for the skill's rqid, and the skill's roll card then gets an **Apply** button for each
+target. The wiki module's First Aid is built this way.
+
+Skill behaviors work like
+[spell behaviours](/rqg-system/items/custom-spell-effects#a-behaviour-in-a-module), but for skills,
+runes and passions.
+
+## Registering a behavior
+
+```js
+// scripts/my-skills.mjs, listed under esmodules in your module.json
+Hooks.once("rqg.registerSkillBehaviors", (registry) => {
+  const { SuccessLevel } = game.system.api.rolls;
+
+  registry.register(
+    "i.skill.treat-poison",
+    {
+      // Called when Apply is clicked for a target on the roll card
+      apply: async ({ targetActor, targetName, successLevel }) => {
+        // ... remove the poison effect from targetActor
+        ui.notifications.info(`${targetName}'s poison is treated.`);
+        return { outcome: "resolved" };
+      },
+      // Only offer Apply on a success
+      successLevels: [SuccessLevel.Critical, SuccessLevel.Special, SuccessLevel.Success],
+    },
+    { lang: "en", priority: 10 },
+  );
+});
+```
+
+A behavior has these parts:
+
+- `apply` runs when Apply is clicked. Return `{ outcome: "resolved" }` when it's done. Return
+  nothing to leave Apply clickable, for example when a dialog was cancelled.
+- `successLevels` lists the results Apply is offered for, by default all of them. Compare with
+  `game.system.api.rolls.SuccessLevel`.
+
+`apply` gets one argument with:
+
+- `skill`, the rolled skill, rune or passion item
+- `actor`, the actor who rolled it
+- `targetActor` and `targetName`, the target Apply was clicked for. `targetName` is the token's own
+  name when the target is a token.
+- `successLevel` and `roll`, the result of the roll
+
+## Who gets Apply
+
+The targets are the tokens the user had targeted when rolling. With no target, the actor who rolled
+is the target, so First Aid can be used on yourself. Apply is only shown to the target's owners and
+the GM, and `apply` runs on the client of the user who clicks it.
+
+## Good to know
+
+- The hook is called at Foundry's `setup`, after every module's `init`, so `game.system.api` is
+  available when you register.
+- A behavior that throws is caught and reported, so one broken skill doesn't stop the others.
+- If more than one module registers a behavior for the same skill, the one in the world's language
+  wins, then the highest `priority`. A module of your own with a higher priority than the wiki
+  module replaces the wiki's behavior.
+- Behaviors are found by rqid, so they also work in a world in another language and for your own
+  copy of a skill with the same rqid.
+- The wiki module's `scripts/skills/first-aid.mjs` is a full example: it rolls the healing to chat,
+  asks which wound to treat and heals it with `actor.heal`, or damages the location on a fumble with
+  `actor.damage`.

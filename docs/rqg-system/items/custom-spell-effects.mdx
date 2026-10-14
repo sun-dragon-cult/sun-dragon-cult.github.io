@@ -143,7 +143,9 @@ The wiki module's own behaviours are the best examples: Countermagic and Shield 
 `onIncomingSpell` so that layered defences are decided together, and the elemental spells use
 `summon`.
 
-{/* TODO: damage and healing from a behaviour (#1171), roll hooks (#1132), update when they land */}
+To damage or heal the target, call `scope.targetActor.damage({ amount, location, armorPoints })` or
+`scope.targetActor.heal({ location, points, wound })`. To change the casting roll itself, for
+example to add a modifier, use the [roll hooks](/rqg-system/api/hooks) instead of a behaviour.
 
 ## Changing a wiki spell
 
