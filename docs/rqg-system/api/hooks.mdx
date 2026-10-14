@@ -8,6 +8,9 @@ tags: []
 Modules can react to rolls with Foundry hooks. Every roll calls a hook before it's rolled and one
 after, whether it was started from the character sheet, the hotbar, a macro or another module.
 
+For a spell effect that changes rolls, use the spell's
+[roll entries](/rqg-system/api/behaviors#roll-entries) instead of listening to these hooks.
+
 | Before the roll             | After the roll           | Arguments                              |
 | --------------------------- | ------------------------ | -------------------------------------- |
 | `rqg.preAbilityRoll`        | `rqg.abilityRoll`        | `item`, (`roll`), `options`            |
@@ -56,9 +59,10 @@ An attack is rolled when the defender defends, not when the attacker clicks Atta
 - `rqg.defence` is the first point where the attack's result is known. It gets the `attackRoll`, the
   `defenceRoll` (if there was a defence) and the updated `chatMessage`.
 
-The `attack` argument has the `attacker`, the `usage` (`"oneHand"`, `"offHand"`, `"twoHand"` or
-`"missile"`), the `combatManeuver`, the `projectile` (the missile fired, or the weapon itself when
-thrown) and the `rollOptions` of the attack roll.
+The `attack` argument has the `attacker`, the `target` (the actor of the token the user targeted
+when attacking, if any), the `usage` (`"oneHand"`, `"offHand"`, `"twoHand"` or `"missile"`), the
+`combatManeuver`, the `projectile` (the missile fired, or the weapon itself when thrown) and the
+`rollOptions` of the attack roll.
 
 The `defence` argument has the `attacker`, the `attackChatMessage`, the `defence` (`"parry"`,
 `"dodge"` or `"ignore"`), the `parryingWeapon` and `parryingWeaponUsage`, the `rollOptions` of the
@@ -72,18 +76,18 @@ attack card keeps waiting for one.
 ## Examples
 
 ```js
-// Characters with a "Demoralized" effect get -20% on every skill roll
+// House rule: -20% on every skill roll while blinded
 Hooks.on("rqg.preAbilityRoll", (item, options) => {
-  if (item.actor?.effects.some((e) => e.name === "Demoralized")) {
-    options.modifiers.push({ description: "Demoralized", value: -20 });
+  if (item.actor?.statuses.has("blind")) {
+    options.modifiers.push({ description: "Blinded", value: -20 });
   }
 });
 
-// A berserker can't parry or dodge
+// House rule: no parrying while prone
 Hooks.on("rqg.preDefence", (defender, defence) => {
-  if (defence.defence !== "ignore" && defender.statuses.has("berserk")) {
+  if (defence.defence === "parry" && defender.statuses.has("prone")) {
     defence.defence = "ignore";
-    defence.notes.push(`${defender.name} is berserk and can't defend.`);
+    defence.notes.push(`${defender.name} is prone and can't parry.`);
   }
 });
 

@@ -93,8 +93,9 @@ system: {
 
 `incompatibleSpellRqidLinks` lists spells that can't be on the same target, and
 `cancelsSpellRqidLinks` lists opposing spells, like Demoralize and Courage, that cancel each other
-so that neither remains. The Bladesharp and Demoralize effects in the wiki module are good examples
-to copy from.
+so that neither remains. `supersedesSpellRqidLinks` lists spells this one takes precedence over,
+like Berserker over Fanaticism: casting it removes them, and they have no effect while it's active.
+The Bladesharp and Demoralize effects in the wiki module are good examples to copy from.
 
 ## A behavior in a module
 
