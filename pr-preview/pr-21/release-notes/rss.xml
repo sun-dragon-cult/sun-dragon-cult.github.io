@@ -212,7 +212,7 @@ an Allied Spirit, a bound spirit or a matrix.</li>
 dodge, for example for a Berserker, and add a note that shows on the attack card. See
 <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/hooks">Roll hooks</a>.</p>
 <p>Modules can also make a skill do something after it's rolled, the way the wiki module's First Aid
-heals a wound. See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/skill-behaviors">Skill behaviors</a>.</p>
+heals a wound. See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors">Behaviors</a>.</p>
 <p>The old methods still work until RQG 6.4.0, but log a warning in the browser console that names the
 replacement:</p>
 <table><thead><tr><th>Old method</th><th>Replacement</th></tr></thead><tbody><tr><td><code>item.abilityRoll</code> / <code>item.abilityRollImmediate</code></td><td><code>item.roll</code></td></tr><tr><td><code>actor.characteristicRoll</code> / <code>actor.characteristicRollImmediate</code></td><td><code>actor.rollCharacteristic</code></td></tr><tr><td><code>actor.reputationRoll</code> / <code>actor.reputationRollImmediate</code></td><td><code>actor.rollReputation</code></td></tr><tr><td><code>item.spiritMagicRoll</code> / <code>item.spiritMagicRollImmediate</code></td><td><code>item.cast</code></td></tr><tr><td><code>item.runeMagicRoll</code> / <code>item.runeMagicRollImmediate</code></td><td><code>item.cast</code></td></tr></tbody></table>
