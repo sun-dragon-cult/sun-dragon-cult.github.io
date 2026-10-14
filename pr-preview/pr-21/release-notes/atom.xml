@@ -98,6 +98,11 @@ go to the location's other wounds. With 6 points it can reattach a severed limb.
 each wound to choose where the healing goes. With 6 magic points it can reattach one severed limb.</li>
 <li class=""><strong>Heal Body</strong> heals every location and the total hit points, and reattaches severed limbs.</li>
 </ul>
+<p>First Aid works the same way. Target the wounded token, or no one to treat yourself, and roll First
+Aid. On a success the roll card gets an Apply button: it rolls the healing (1D3, 2D3 on a special,
+1D3+3 on a critical) and asks which wound to treat. On a fumble Apply does 1D3 damage to the treated
+location instead. Stopping bleeding and treating each injury only once are still up to the GM. This
+needs the wiki module.</p>
 <!-- -->
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="active-effects-that-change-an-actors-items">Active Effects That Change an Actor's Items<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#active-effects-that-change-an-actors-items" class="hash-link" aria-label="Direct link to Active Effects That Change an Actor's Items" title="Direct link to Active Effects That Change an Actor's Items" translate="no">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/920" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->920</label></a>
@@ -203,7 +208,10 @@ an Allied Spirit, a bound spirit or a matrix.</li>
 <p>Modules can react to rolls with hooks:</p>
 <table><thead><tr><th>Before the roll</th><th>After the roll</th></tr></thead><tbody><tr><td><code>rqg.preAbilityRoll</code></td><td><code>rqg.abilityRoll</code></td></tr><tr><td><code>rqg.preCharacteristicRoll</code></td><td><code>rqg.characteristicRoll</code></td></tr><tr><td><code>rqg.preReputationRoll</code></td><td><code>rqg.reputationRoll</code></td></tr><tr><td><code>rqg.preSpellCast</code></td><td><code>rqg.spellCast</code></td></tr><tr><td><code>rqg.preAttack</code></td><td><code>rqg.attack</code></td></tr><tr><td><code>rqg.preDefence</code></td><td><code>rqg.defence</code></td></tr></tbody></table>
 <p>A "pre" hook can add modifiers to the roll or cancel it. <code>rqg.preDefence</code> can also forbid a parry or
-dodge, for example for a Berserker, and add a note that shows on the attack card.</p>
+dodge, for example for a Berserker, and add a note that shows on the attack card. See
+<a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/hooks">Roll hooks</a>.</p>
+<p>Modules can also make a skill do something after it's rolled, the way the wiki module's First Aid
+heals a wound. See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/skill-behaviors">Skill behaviors</a>.</p>
 <p>The old methods still work until RQG 6.4.0, but log a warning in the browser console that names the
 replacement:</p>
 <table><thead><tr><th>Old method</th><th>Replacement</th></tr></thead><tbody><tr><td><code>item.abilityRoll</code> / <code>item.abilityRollImmediate</code></td><td><code>item.roll</code></td></tr><tr><td><code>actor.characteristicRoll</code> / <code>actor.characteristicRollImmediate</code></td><td><code>actor.rollCharacteristic</code></td></tr><tr><td><code>actor.reputationRoll</code> / <code>actor.reputationRollImmediate</code></td><td><code>actor.rollReputation</code></td></tr><tr><td><code>item.spiritMagicRoll</code> / <code>item.spiritMagicRollImmediate</code></td><td><code>item.cast</code></td></tr><tr><td><code>item.runeMagicRoll</code> / <code>item.runeMagicRollImmediate</code></td><td><code>item.cast</code></td></tr></tbody></table>
