@@ -64,6 +64,20 @@ has no effect for one of these reasons, Apply tells you why and the card records
 target's owner sees the reason.</p>
 <p>The world setting <strong>Recast Spells Take Effect</strong> chooses the rule: <strong>Only if stronger</strong> (the rules as
 written) or <strong>Always</strong>, where every new casting replaces the old one.</p>
+<h3 class="anchor anchorTargetStickyNavbar_xPLm" id="berserker-and-fanaticism">Berserker and Fanaticism<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#berserker-and-fanaticism" class="hash-link" aria-label="Direct link to Berserker and Fanaticism" title="Direct link to Berserker and Fanaticism" translate="no">​</a></h3>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1170" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1170</label></a>
+<p>Berserker and Fanaticism now change the rolls of whoever has them:</p>
+<ul>
+<li class=""><strong>Berserker:</strong> attacks get half again, or double against a creature with the Chaos rune. Parrying
+and dodging are refused, with the reason on the attack card, and so is casting. CON is increased
+by half, CON rolls succeed at 95%, and the berserker has Countermagic 2, or 4 against spells from
+chaotic casters. When the spell ends, the berserker becomes Helpless. Berserker replaces a
+Fanaticism on the target.</li>
+<li class=""><strong>Fanaticism:</strong> attacks get half again, parrying is refused and Dodge is halved. Which spells a
+fanatic may still cast is up to the GM.</li>
+</ul>
+<p>Being preserved from shock and unconsciousness while berserk is also up to the GM. The harpy in the
+wiki module now has the Chaos rune.</p>
 <h3 class="anchor anchorTargetStickyNavbar_xPLm" id="spell-effects-on-the-token">Spell effects on the token<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#spell-effects-on-the-token" class="hash-link" aria-label="Direct link to Spell effects on the token" title="Direct link to Spell effects on the token" translate="no">​</a></h3>
 <p>A token's spell effects are shown at the top of the token HUD's status palette, above the condition
 markers, with their name, the item they're on and the time left. The GM can click one to open it,
@@ -211,7 +225,9 @@ an Allied Spirit, a bound spirit or a matrix.</li>
 dodge, for example for a Berserker, and add a note that shows on the attack card. See
 <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/hooks">Roll hooks</a>.</p>
 <p>Modules can also make a skill do something after it's rolled, the way the wiki module's First Aid
-heals a wound. See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors">Behaviors</a>.</p>
+heals a wound, and a spell's effect can change rolls through
+<a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors#roll-entries">roll entries</a>, like Berserker and Fanaticism. See
+<a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors">Behaviors</a>.</p>
 <p>The old methods still work until RQG 6.4.0, but log a warning in the browser console that names the
 replacement:</p>
 <table><thead><tr><th>Old method</th><th>Replacement</th></tr></thead><tbody><tr><td><code>item.abilityRoll</code> / <code>item.abilityRollImmediate</code></td><td><code>item.roll</code></td></tr><tr><td><code>actor.characteristicRoll</code> / <code>actor.characteristicRollImmediate</code></td><td><code>actor.rollCharacteristic</code></td></tr><tr><td><code>actor.reputationRoll</code> / <code>actor.reputationRollImmediate</code></td><td><code>actor.rollReputation</code></td></tr><tr><td><code>item.spiritMagicRoll</code> / <code>item.spiritMagicRollImmediate</code></td><td><code>item.cast</code></td></tr><tr><td><code>item.runeMagicRoll</code> / <code>item.runeMagicRollImmediate</code></td><td><code>item.cast</code></td></tr></tbody></table>
