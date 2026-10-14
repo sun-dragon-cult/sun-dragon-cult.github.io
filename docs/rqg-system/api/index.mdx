@@ -18,15 +18,19 @@ has two parts:
 - **`game.system.api`**, for everything that needs the rules: rolling dice, casting spells, and
   values the system works out, like a weapon's attack chance or which spells a character can cast.
 
-Don't call methods on RQG's actors and items or use other parts of the system directly. Those can
-change in any release.
+Modules can also call the [roll methods](/rqg-system/api/rolls#rolling-from-an-actor-or-item) on
+RQG's actors and items, and `actor.damage` and `actor.heal`. Don't call other methods on them or use
+other parts of the system directly. Those can change in any release.
 
 ## What's in it
 
 - [Rolls](/rqg-system/api/rolls) – roll skills, runes, passions and characteristics, attack with
   weapons and cast spirit and rune magic.
+- [Roll hooks](/rqg-system/api/hooks) – react to rolls, add modifiers, or forbid a parry or dodge.
 - [Query](/rqg-system/api/query) – read skills, weapons and castable spells, and where to find hit
   points, magic points, rune points and other values stored on a character.
+- [Skill behaviors](/rqg-system/api/skill-behaviors) – make a skill do something after it's rolled,
+  like First Aid healing a wound.
 - [Macro examples](/rqg-system/api/macro-examples) – ready-to-use macros to start from.
 - [RQG System ID (rqid)](/rqg-system/api/rqid) – find the best version of a document by its RQG id.
 

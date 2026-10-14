@@ -78,3 +78,37 @@ await api.rolls.spiritMagic("Bladesharp", { skipDialog: true, levelUsed: 2 });
 
 A spell that can't be cast, for example because there aren't enough magic points, shows a warning
 and returns nothing.
+
+## Rolling from an actor or item
+
+A module that already has the actor or item can call the roll methods on it directly, without
+looking it up by name. The functions above are thin wrappers around these:
+
+| Method                                    | Rolls                                                       |
+| ----------------------------------------- | ----------------------------------------------------------- |
+| `item.roll(options)`                      | A skill, rune or passion                                    |
+| `actor.rollCharacteristic(name, options)` | A characteristic, with `difficulty` like `characteristic`   |
+| `actor.rollReputation(options)`           | The character's Reputation                                  |
+| `item.cast(options)`                      | A spirit or rune magic spell, cast by the actor that has it |
+| `actor.castSpell(spell, options)`         | A spirit or rune magic spell, cast by this actor            |
+| `item.attack({ usage })`                  | Opens the attack dialog for a weapon                        |
+
+They take the same options as the functions, except `actor`. Pass `token` instead to choose which of
+the actor's tokens is the speaker on the chat card. Leaving it out uses the actor's own token, if it
+has one.
+
+Use `actor.castSpell` for a spell the actor knows through an Allied Spirit, a bound spirit or a
+matrix: the spell item belongs to the spirit or the matrix, but `actor` is the caster who spends the
+magic points. Rune magic also takes `runePointSource` (which cult's rune points to spend) and
+`usedRuneId` (which rune to roll), and both kinds take `magicPointSource`.
+
+```js
+// In a module: roll the Constitution ×3 of a combatant's token without a dialog
+const roll = await combatant.actor.rollCharacteristic("constitution", {
+  token: combatant.token,
+  difficulty: 3,
+  skipDialog: true,
+});
+```
+
+The [roll hooks](/rqg-system/api/hooks) run for every roll, wherever it was started from.

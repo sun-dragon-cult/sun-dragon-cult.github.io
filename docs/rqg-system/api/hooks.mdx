@@ -1,0 +1,96 @@
+---
+sidebar_position: 25
+slug: hooks
+title: Roll Hooks
+tags: []
+---
+
+Modules can react to rolls with Foundry hooks. Every roll calls a hook before it's rolled and one
+after, whether it was started from the character sheet, the hotbar, a macro or another module.
+
+| Before the roll             | After the roll           | Arguments                              |
+| --------------------------- | ------------------------ | -------------------------------------- |
+| `rqg.preAbilityRoll`        | `rqg.abilityRoll`        | `item`, (`roll`), `options`            |
+| `rqg.preCharacteristicRoll` | `rqg.characteristicRoll` | `actor`, (`roll`), `options`           |
+| `rqg.preReputationRoll`     | `rqg.reputationRoll`     | `actor`, (`roll`), `options`           |
+| `rqg.preSpellCast`          | `rqg.spellCast`          | `spell`, `caster`, (`roll`), `options` |
+| `rqg.preAttack`             | `rqg.attack`             | `weapon`, `attack`                     |
+| `rqg.preDefence`            | `rqg.defence`            | `defender`, `defence`                  |
+
+The `roll` argument is only given to the "after" hooks. The hooks run on the client of the user who
+rolls, or for `rqg.preDefence` and `rqg.defence`, the user who submits the defence: the defender's
+owner or the GM.
+
+## Before the roll
+
+A "pre" hook runs after the roll dialog is submitted, or straight away with `skipDialog`. It can:
+
+- **Add modifiers** by pushing to `options.modifiers`, for example
+  `{ description: "Demoralized", value: -20 }`. They are included in the chance and shown on the
+  chat card. For an attack, push to `attack.rollOptions.modifiers` instead.
+- **Cancel the roll** by returning `false`. Nothing is rolled or posted to chat, and the roll method
+  returns nothing.
+
+Listeners are called synchronously, so a "pre" hook can't wait for a dialog or a document update.
+
+`rqg.preSpellCast` runs before the cast is checked, so the spell can still be refused for lack of
+magic points or rune points afterwards. `caster` is the actor casting the spell, which can be a
+different actor from the one that has the spell item: a spell from an Allied Spirit, a bound spirit
+or a matrix is cast by the character.
+
+## After the roll
+
+An "after" hook gets the finished roll. Compare `roll.successLevel` with
+`game.system.api.rolls.SuccessLevel`, see [Rolls](/rqg-system/api/rolls). `rqg.abilityRoll` and
+`rqg.characteristicRoll` run before the experience check, `rqg.spellCast` after the spell's costs
+are paid.
+
+## Attack and defence
+
+An attack is rolled when the defender defends, not when the attacker clicks Attack. So:
+
+- `rqg.preAttack` and `rqg.attack` run when the attack is made. `rqg.attack` means the attack card
+  is posted and the ammunition used, and its `attack.chatMessage` is that card. The attack has no
+  result yet.
+- `rqg.preDefence` runs before the attack and defence are rolled.
+- `rqg.defence` is the first point where the attack's result is known. It gets the `attackRoll`, the
+  `defenceRoll` (if there was a defence) and the updated `chatMessage`.
+
+The `attack` argument has the `attacker`, the `usage` (`"oneHand"`, `"offHand"`, `"twoHand"` or
+`"missile"`), the `combatManeuver`, the `projectile` (the missile fired, or the weapon itself when
+thrown) and the `rollOptions` of the attack roll.
+
+The `defence` argument has the `attacker`, the `attackChatMessage`, the `defence` (`"parry"`,
+`"dodge"` or `"ignore"`), the `parryingWeapon` and `parryingWeaponUsage`, the `rollOptions` of the
+defence roll, and a list of `notes`.
+
+To forbid a parry or dodge, a `rqg.preDefence` listener sets `defence.defence = "ignore"` and pushes
+a note saying why. The note is shown on the attack card, and the attack is resolved as undefended.
+Other changes to `defence.defence` are undone. Returning `false` stops the defence instead, and the
+attack card keeps waiting for one.
+
+## Examples
+
+```js
+// Characters with a "Demoralized" effect get -20% on every skill roll
+Hooks.on("rqg.preAbilityRoll", (item, options) => {
+  if (item.actor?.effects.some((e) => e.name === "Demoralized")) {
+    options.modifiers.push({ description: "Demoralized", value: -20 });
+  }
+});
+
+// A berserker can't parry or dodge
+Hooks.on("rqg.preDefence", (defender, defence) => {
+  if (defence.defence !== "ignore" && defender.statuses.has("berserk")) {
+    defence.defence = "ignore";
+    defence.notes.push(`${defender.name} is berserk and can't defend.`);
+  }
+});
+
+// Post a message when someone fumbles a characteristic roll
+Hooks.on("rqg.characteristicRoll", (actor, roll, options) => {
+  if (roll.successLevel === game.system.api.rolls.SuccessLevel.Fumble) {
+    ChatMessage.create({ content: `${actor.name} fumbled ${options.characteristicName}!` });
+  }
+});
+```
