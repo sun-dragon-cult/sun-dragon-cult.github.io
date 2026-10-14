@@ -1,0 +1,158 @@
+---
+sidebar_position: 35
+slug: behaviors
+title: Behaviors
+tags: []
+---
+
+A **behavior** is a small script in a module that makes a spell or a skill _do_ something when Apply
+is clicked on its chat card: Dispel Magic removes spells, Summon Earth Elemental places a token,
+First Aid heals a wound. The wiki module's spells and skills are built this way, and a module of
+your own can add behaviors for other spells and skills, or replace the wiki's.
+
+A spell that only needs to add a bonus or show that it's active doesn't need a behavior. An
+[effect template](/rqg-system/items/custom-spell-effects) does that without code.
+
+## How behaviors work
+
+A module registers its behaviors from a hook, keyed by the rqid of the spell or skill:
+
+```js
+// scripts/my-behaviors.mjs, listed under esmodules in your module.json
+const source = { lang: "en", priority: 10 };
+
+Hooks.once("rqg.registerSpellBehaviours", (registry) => {
+  registry.register("i.rune-magic.summon-wind-child", spellBehavior, source);
+});
+
+Hooks.once("rqg.registerSkillBehaviors", (registry) => {
+  registry.register("i.skill.treat-poison", skillBehavior, source);
+});
+```
+
+The spell hook is spelled `rqg.registerSpellBehaviours`, with a British "behaviour", and will be
+renamed in a later release.
+
+What is the same for spells and skills:
+
+- **Registration.** Both hooks are called at Foundry's `setup`, after every module's `init`, so
+  `game.system.api` is available when you register.
+- **Matching.** Behaviors are found by rqid, not by name. They work in a world in another language,
+  and for your own copy of a spell or skill with the same rqid.
+- **Which module wins.** If more than one module registers a behavior for the same rqid, the one in
+  the world's language wins, then the highest `priority`. A module of your own with a higher
+  priority than the wiki module replaces the wiki's behavior.
+- **Who gets Apply.** The card shows Apply for each target, but only to the target's owners and the
+  GM. `apply` runs on the client of the user who clicks it.
+- **What `apply` returns.** `{ outcome: "resolved" }` when it has done its work, which uses up the
+  Apply. Return nothing to leave Apply clickable, for example when the user cancelled a dialog.
+- **Errors.** A behavior that throws is caught and reported, so one broken spell or skill doesn't
+  stop the others.
+
+## Spell behaviors
+
+```js
+Hooks.once("rqg.registerSpellBehaviours", (registry) => {
+  registry.register(
+    "i.rune-magic.summon-wind-child",
+    {
+      // Players can't create tokens, so run on the GM's client
+      runAsGm: true,
+      apply: (scope) => game.system.api.spellEffects.summon(scope, "a.character.wind-child"),
+    },
+    { lang: "en", priority: 10 },
+  );
+});
+```
+
+A spell behavior has these parts, all optional:
+
+| Part              | When it runs                                                           | What it returns                      |
+| ----------------- | ---------------------------------------------------------------------- | ------------------------------------ |
+| `apply`           | When Apply is clicked, instead of attaching the effect template        | `{ outcome: "resolved" }` or nothing |
+| `onIncomingSpell` | When another spell is applied to an actor that has this spell's effect | `{ outcome: "stopped" \| "pass" }`   |
+| `onEnd`           | When the spell's effect expires or is deleted, on the GM's client      | nothing                              |
+| `runAsGm`         | Makes `apply` run on the active GM's client instead                    | –                                    |
+
+Apply is offered for each target the spell affected, so not for a target that resisted it.
+
+`apply` gets one argument with:
+
+- `spell`, the cast spell item
+- `targetActor` and `targetName`, the target Apply was clicked for
+- `cast`, with the `level` cast at, the `magicPointsSpent` and `runePointsSpent`, the
+  `casterSuccessLevel` and the `casterUuid`
+- `duration`, what the effect of a Temporal spell lasts, otherwise undefined
+
+`onIncomingSpell` gets the same, plus `effects`: this spell's effects on the target. Return
+`{ outcome: "stopped" }` to stop the incoming spell, or `{ outcome: "pass" }` to let it through.
+Spells that register the same `onIncomingSpell` function are decided together, which is how the
+wiki's Countermagic and Shield handle layered defenses.
+
+`onEnd` gets `{ effect }`, the effect that ended.
+
+`game.system.api.spellEffects` has helpers for common things:
+
+- `summon` places a token next to the caster that goes away when its effect ends.
+- `list` and `removeSpellEffects` find and remove the spell effects on an actor.
+- `castPoints` and `effectRemovalCost` are what Dispel Magic uses.
+
+## Skill behaviors
+
+```js
+Hooks.once("rqg.registerSkillBehaviors", (registry) => {
+  const { SuccessLevel } = game.system.api.rolls;
+
+  registry.register(
+    "i.skill.treat-poison",
+    {
+      apply: async ({ targetActor, targetName }) => {
+        // ... remove the poison effect from targetActor
+        ui.notifications.info(`${targetName}'s poison is treated.`);
+        return { outcome: "resolved" };
+      },
+      // Only offer Apply on a success
+      successLevels: [SuccessLevel.Critical, SuccessLevel.Special, SuccessLevel.Success],
+    },
+    { lang: "en", priority: 10 },
+  );
+});
+```
+
+Skill behaviors work for skills, runes and passions. A skill behavior has these parts:
+
+| Part            | When it runs                                                 | What it returns                      |
+| --------------- | ------------------------------------------------------------ | ------------------------------------ |
+| `apply`         | When Apply is clicked. Required                              | `{ outcome: "resolved" }` or nothing |
+| `successLevels` | Not run: lists the results Apply is offered for, default all | –                                    |
+
+Compare `successLevels` with `game.system.api.rolls.SuccessLevel`.
+
+The targets are the tokens the user had targeted when rolling. With no target, the actor who rolled
+is the target, so First Aid can be used on yourself.
+
+`apply` gets one argument with:
+
+- `skill`, the rolled skill, rune or passion item
+- `actor`, the actor who rolled it
+- `targetActor` and `targetName`, the target Apply was clicked for. `targetName` is the token's own
+  name when the target is a token.
+- `successLevel` and `roll`, the result of the roll
+
+## Damage, healing and rolls
+
+- To damage or heal the target, call `targetActor.damage({ amount, location, armorPoints })` or
+  `targetActor.heal({ location, points, wound })`.
+- To change a roll itself, for example to add a modifier, use the
+  [roll hooks](/rqg-system/api/hooks) instead of a behavior.
+
+## Examples in the wiki module
+
+The wiki module's scripts are the best examples to copy from:
+
+- `scripts/spells/dispel-magic.mjs` finds and removes spell effects.
+- `scripts/spells/spell-barrier.mjs` is the shared `onIncomingSpell` of Countermagic and Shield.
+- `scripts/spells/elementals.mjs` summons with `spellEffects.summon`.
+- `scripts/spells/heal.mjs` heals with `actor.heal`.
+- `scripts/skills/first-aid.mjs` rolls the healing to chat, asks which wound to treat and heals it,
+  or damages the location on a fumble.
