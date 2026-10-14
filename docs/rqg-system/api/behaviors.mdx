@@ -195,5 +195,6 @@ The wiki module's scripts are the best examples to copy from:
 - `scripts/spells/heal.mjs` heals with `actor.heal`.
 - `scripts/spells/battle-rage.mjs` is Berserker and Fanaticism: roll entries for attack, defence,
   casting and CON rolls, and an `onEnd` that leaves the berserker Helpless.
-- `scripts/skills/first-aid.mjs` rolls the healing to chat, asks which wound to treat and heals it,
-  or damages the location on a fumble.
+- `scripts/skills/first-aid.mjs` asks which wound to treat, then rolls the healing to chat and heals
+  it, or damages the location on a fumble. It uses `game.system.api.dialogs.chooseWounds` without
+  `points`, which only picks the wound.
