@@ -74,7 +74,7 @@ A spell behavior has these parts, all optional:
 | `onIncomingSpell` | When another spell is applied to an actor that has this spell's effect | `{ outcome: "stopped" \| "pass" }`   |
 | `onEnd`           | When the spell's effect expires or is deleted, on the GM's client      | nothing                              |
 | `runAsGm`         | Makes `apply` run on the active GM's client instead                    | –                                    |
-| `onPre…` entries  | Before a roll by an actor that has this spell's effect, see below      | `false` to cancel the roll           |
+| `onPrepare…`      | When a roll by an actor with this spell's effect is prepared, below    | nothing                              |
 
 Apply is offered for each target the spell affected, so not for a target that resisted it.
 
@@ -96,32 +96,31 @@ wiki's Countermagic and Shield handle layered defenses.
 ### Roll entries
 
 A spell effect that changes rolls, like Berserker or Fanaticism, does it with roll entries. The
-system calls them from its own [roll hooks](/rqg-system/api/hooks), for every active effect of the
-spell on the actor who rolls. Each entry gets the same arguments as its hook, plus `effects`: this
-spell's active effects on that actor.
+system calls them from its own "prepare" [roll hooks](/rqg-system/api/hooks), for every active
+effect of the spell on the actor who rolls, so what they do shows in the roll dialog. Each entry
+gets the same arguments as its hook, plus `effects`: this spell's active effects on that actor.
 
-| Entry                     | Called from                 | Gets                                    |
-| ------------------------- | --------------------------- | --------------------------------------- |
-| `onPreAbilityRoll`        | `rqg.preAbilityRoll`        | `item`, `options`, `effects`            |
-| `onPreCharacteristicRoll` | `rqg.preCharacteristicRoll` | `actor`, `options`, `effects`           |
-| `onPreSpellCast`          | `rqg.preSpellCast`          | `spell`, `caster`, `options`, `effects` |
-| `onPreAttack`             | `rqg.preAttack`             | `weapon`, `attack`, `effects`           |
-| `onPreDefence`            | `rqg.preDefence`            | `defender`, `defence`, `effects`        |
+| Entry                         | Called from                     | Gets                                                   |
+| ----------------------------- | ------------------------------- | ------------------------------------------------------ |
+| `onPrepareAbilityRoll`        | `rqg.prepareAbilityRoll`        | `item`, `options`, `preparation`, `effects`            |
+| `onPrepareCharacteristicRoll` | `rqg.prepareCharacteristicRoll` | `actor`, `options`, `preparation`, `effects`           |
+| `onPrepareSpellCast`          | `rqg.prepareSpellCast`          | `spell`, `caster`, `options`, `preparation`, `effects` |
+| `onPrepareAttack`             | `rqg.prepareAttack`             | `weapon`, `attack`, `preparation`, `effects`           |
+| `onPrepareDefence`            | `rqg.prepareDefence`            | `defender`, `defence`, `preparation`, `effects`        |
 
-An entry changes the hook's arguments in place, for example by pushing to `options.modifiers`, and
-returns `false` to cancel the roll. Entries are called synchronously, so they can't wait for a
-dialog. Spells that register the same function are called once with all their effects, like
-`onIncomingSpell`.
+An entry pushes modifiers, for example to `options.modifiers`, or sets `preparation.forbidden` to
+why the roll isn't allowed. Like the prepare hooks, entries run whenever a roll dialog changes, so
+they must not do anything else. Spells that register the same function are called once with all
+their effects, like `onIncomingSpell`.
 
 ```js
 // No parrying while this spell is active
-const onPreDefence = ({ defender, defence, effects }) => {
+const onPrepareDefence = ({ defender, defence, preparation, effects }) => {
   if (defence.defence === "parry") {
-    defence.defence = "ignore";
-    defence.notes.push(`${defender.name} can't parry under ${effects[0].name}.`);
+    preparation.forbidden = `${defender.name} can't parry under ${effects[0].name}.`;
   }
 };
-registry.register("i.spirit-magic.fanaticism", { onPreDefence }, source);
+registry.register("i.spirit-magic.fanaticism", { onPrepareDefence }, source);
 ```
 
 Use roll entries rather than your own `Hooks.on` listeners for spell effects. A behavior is found by
