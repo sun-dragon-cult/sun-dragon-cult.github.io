@@ -134,7 +134,9 @@ higher priority can replace it.
 
 - `summon` places a token next to the caster that goes away when its effect ends.
 - `list` and `removeSpellEffects` find and remove the spell effects on an actor.
-- `castPoints` and `effectRemovalCost` are what Dispel Magic uses.
+- `castPoints` is how strong a cast is against defenses: its magic points plus double its rune
+  points. The wiki's Countermagic and Shield use it.
+- `effectRemovalCost` is how many points of Dispel Magic it takes to remove a spell effect.
 
 ## Skill behaviors
 
