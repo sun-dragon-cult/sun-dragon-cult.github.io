@@ -17,8 +17,9 @@
             <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" src="https://img.shields.io/badge/Required%20RQG%20System%20Version-v6.0.0%2B-blue" alt="Required RQG System Version" class="img_h5dG">
 <img decoding="async" loading="lazy" src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v2.1.0/en-module.json" alt="Supported Foundry Versions" class="img_h5dG">
 <img decoding="async" loading="lazy" src="https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v2.1.0/wiki-en-rqg.zip" alt="Download Count" class="img_h5dG"></p>
-<p>This release adds the content for two features of RQG system 6.2.0: spell effects and starting a new
-actor from a template. It also gives every spell its own icon.</p>
+<p>This release adds the content for features of RQG system 6.2.0: spell effects, spells and skills
+that do their work when Apply is clicked on their chat card, and starting a new actor from a
+template. It also gives every spell its own icon.</p>
 <p>The module still works with system 6.0 and 6.1. There the new content is simply not used yet.</p>
 <div class="theme-admonition theme-admonition-warning admonition_uOdM alert alert--warning"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Update the wiki module before the system</div><div class="admonitionContent__X6G"><p>Install this release <strong>before</strong> you upgrade the system to 6.2.0. When the world is upgraded, the
 system links the spells already on your actors to their effects by looking them up in this module's
@@ -40,21 +41,56 @@ damage 3D6 plus damage bonus.</li>
 <li class="">Axe Trance raises axe skills, Slash adds magic damage dice, and True Sword doubles the weapon's
 damage dice.</li>
 <li class="">Speedart goes on one arrow or other missile and gives +15% to hit and +3 damage. It's used up when
-that missile is fired.</li>
+that missile is fired. Multimissile and Firearrow also go on one missile and are used up with it.</li>
+<li class="">Berserker adds half again to CON.</li>
 <li class="">Mobility doubles and Slow halves MOV.</li>
 <li class="">Light and Lantern make the token give off light.</li>
 </ul>
 <p>The others are reminders: they change nothing on the sheet, but show that the spell is active. Sleep
 and Discorporation also show their token status marker. The reminders are Ban, Become Other Sex,
 Befuddle, Bless Crops, Catseye, Clairvoyance, Cloud Call, Countermagic, Dark Walk, Decrease Wind,
-Demoralize, Discorporation, Earth Shield, Face Chaos, Fanaticism, Farsee, Fearless, Firearrow,
-Flight, Forget, Glue, Illusionary Sound, Impede Chaos, Increase Wind, Leap, Lock, Mind Read,
-Multimissile, Passage, Path Watch, Second Sight, Shimmer, Silence, Sleep, Soul Sight, Spirit Block,
-Spirit Screen, Truespeak, Visibility and Wind Words.</p>
+Demoralize, Discorporation, Earth Shield, Face Chaos, Fanaticism, Farsee, Fearless, Flight, Forget,
+Glue, Illusionary Sound, Impede Chaos, Increase Wind, Leap, Lock, Mind Read, Passage, Path Watch,
+Second Sight, Shimmer, Silence, Sleep, Soul Sight, Spirit Block, Spirit Screen, Truespeak,
+Visibility and Wind Words. Countermagic and Fanaticism also have rules of their own, see below.</p>
 <p>Spells that can't be on the same target at once are marked as incompatible, for example Bladesharp,
 Bludgeon and Fireblade on a weapon, or Strength and Vigor on a person. Demoralize cancels an active
-Fanaticism. Spells with a long fixed duration carry it: Catseye 12 hours, Lock and Passage 56 days,
-and Ban 3 years.</p>
+Fanaticism, and Berserker replaces it. Spells with a long fixed duration carry it: Catseye 12 hours,
+Lock and Passage 56 days, and Ban 3 years.</p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="spells-with-rules">Spells With Rules<a href="https://sun-dragon-cult.github.io/pr-preview/pr-25/release-notes/wiki-v2.1.0#spells-with-rules" class="hash-link" aria-label="Direct link to Spells With Rules" title="Direct link to Spells With Rules" translate="no">​</a></h2>
+<p>With system 6.2.0, some spells do more than put an effect on the target. Their rules run when Apply
+is clicked on the spell's chat card, or while their effect is active:</p>
+<ul>
+<li class=""><strong>Dispel Magic</strong> and <strong>Dismiss Magic</strong>: the target's owner picks which spells on the target and
+its items to remove, within the points cast. The most powerful spells it can remove are picked to
+start with. Each point of Dismiss Magic removes 1 Rune point or 2 points of spirit magic.</li>
+<li class=""><strong>Summon Air Elemental</strong> and <strong>Summon Earth Elemental</strong> place the elemental next to the caster:
+small, medium or large for 1, 2 or 3 Rune points. It goes away when the spell ends. <strong>Dismiss Air
+Elemental</strong> and <strong>Dismiss Earth Elemental</strong> remove an elemental of their type when the Rune points
+cover its size. A GM must be logged in, since players can't create or remove tokens.</li>
+<li class=""><strong>Heal</strong>, <strong>Heal Wound</strong> and <strong>Heal Body</strong> open a dialog to choose the wounds to heal. Heal heals
+1 hit point per point on one location, and 6 points restore a severed limb. Heal Wound heals as
+many hit points as the magic points spent with it. Heal Body heals all damage and reattaches
+severed limbs.</li>
+<li class=""><strong>Countermagic</strong> and <strong>Shield</strong> stop spells cast at their target. A spell 2 or more points weaker
+than the Countermagic is stopped, one within a point of it is stopped but uses the Countermagic
+up, and a stronger one breaks it and goes on. Then the spell must be stronger than the Shield's
+defense.</li>
+<li class=""><strong>Berserker</strong>: attacks get half again, or double against a target with the Chaos rune. The
+berserker can't parry, dodge or cast spells, CON rolls succeed at 95%, and Countermagic 2 (4
+against a chaotic caster) protects them. When the spell ends, they are Helpless.</li>
+<li class=""><strong>Fanaticism</strong>: attacks get half again, the fanatic can't parry, and Dodge is halved. Casting only
+attack spells is left to the GM.</li>
+</ul>
+<p>Rules that aren't automated, like a berserker being spared shock and unconsciousness, are left to
+the GM.</p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="first-aid">First Aid<a href="https://sun-dragon-cult.github.io/pr-preview/pr-25/release-notes/wiki-v2.1.0#first-aid" class="hash-link" aria-label="Direct link to First Aid" title="Direct link to First Aid" translate="no">​</a></h2>
+<p>With system 6.2.0, a First Aid roll that succeeds or fumbles has an Apply button on its chat card.
+It asks which wound to treat, then rolls the healing: 1D3 on a success, 2D3 on a special and 1D3+3
+on a critical, up to the size of the wound. A fumble asks which location was treated and does 1D3
+damage to it.</p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="bestiary">Bestiary<a href="https://sun-dragon-cult.github.io/pr-preview/pr-25/release-notes/wiki-v2.1.0#bestiary" class="hash-link" aria-label="Direct link to Bestiary" title="Direct link to Bestiary" translate="no">​</a></h2>
+<p>Harpies have the Chaos rune at 60%, so Berserker's bonus against Chaos works on them.</p>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="spell-icons">Spell Icons<a href="https://sun-dragon-cult.github.io/pr-preview/pr-25/release-notes/wiki-v2.1.0#spell-icons" class="hash-link" aria-label="Direct link to Spell Icons" title="Direct link to Spell Icons" translate="no">​</a></h2>
 <p>Every spell now has its own icon, and related spells share a look. Detect and Find spells sit in a
 scope, Summon spells rise from a summoning circle and each Dismiss is its Summon slashed through,
@@ -72,7 +108,12 @@ the human adventurer templates by class Human.</p>
 the spell effect machinery it uses) and what resists it set, for the system's <code>targetKind</code>,
 <code>effectTier</code> and <code>resistedBy</code> fields. Fanaticism is resisted with a resistance roll.</li>
 <li class="">A spell finds its effect through <code>effectRqidLink</code>, and incompatible spells through
-<code>incompatibleSpellRqidLinks</code>.</li>
+<code>incompatibleSpellRqidLinks</code>. Berserker's effect removes Fanaticism through
+<code>supersedesSpellRqidLinks</code>.</li>
+<li class="">The rules of the spells above and of First Aid are behaviors: scripts in this module, registered
+with the system by the rqid of the spell or skill. A module of your own can replace them by
+registering behaviors for the same rqids with a higher priority. The system's API docs have a
+Behaviors page.</li>
 </ul>]]></content:encoded>
             <category>wiki</category>
             <category>foundry-release</category>
