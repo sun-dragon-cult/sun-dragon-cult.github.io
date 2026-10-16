@@ -165,7 +165,10 @@ target resists or accepts on its own card. Undead have no POW, so Turn Undead is
 target's current magic points.</li>
 <li class=""><strong>Spirit combat.</strong> Bind Ghost and Resurrect only work if the caster wins spirit combat. Until
 spirit combat is automated, the cast card waits for the GM to rule whether the caster won.</li>
-<li class=""><strong>Area spells.</strong> Harmony and Inviolable leave each target for the GM to rule on the cast card.</li>
+<li class=""><strong>Area spells.</strong> Harmony and Inviolable make one resistance roll for everyone the caster targets,
+the caster included, and the card says what it overcomes, for example "affects POW 15 or lower".
+Inviolable's own text reads the resistance table the other way round; it uses the same reading as
+Harmony and every other resistance roll.</li>
 <li class=""><strong>Reflection.</strong> A spell that fails against a target protected by Reflection is sent back at its
 caster, who then resists it with their own POW.<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1178" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1178</label></a>
