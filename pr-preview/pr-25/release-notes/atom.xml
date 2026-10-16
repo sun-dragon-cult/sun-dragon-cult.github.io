@@ -68,6 +68,11 @@ start with. Each point of Dismiss Magic removes 1 Rune point or 2 points of spir
 small, medium or large for 1, 2 or 3 Rune points. It goes away when the spell ends. <strong>Dismiss Air
 Elemental</strong> and <strong>Dismiss Earth Elemental</strong> remove an elemental of their type when the Rune points
 cover its size. A GM must be logged in, since players can't create or remove tokens.</li>
+<li class=""><strong>Summon</strong> and <strong>Dismiss</strong> work the same way for <strong>Darkness</strong>, <strong>Fire</strong>, <strong>Moon</strong> and <strong>Water
+Elementals</strong>. This module only includes air and earth elementals, so for the others create the
+actor yourself, for example from the <em>Glorantha Bestiary</em>, and give it the rqid
+<code>a.character.fire-elemental-medium</code> (with the element and size you want). The summoning spell
+tells you the rqid it is looking for.</li>
 <li class=""><strong>Heal</strong>, <strong>Heal Wound</strong> and <strong>Heal Body</strong> open a dialog to choose the wounds to heal. Heal heals
 1 hit point per point on one location, and 6 points restore a severed limb. Heal Wound heals as
 many hit points as the magic points spent with it. Heal Body heals all damage and reattaches
