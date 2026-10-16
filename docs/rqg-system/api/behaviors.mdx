@@ -72,6 +72,7 @@ A spell behavior has these parts, all optional:
 | `onResisted`      | When an actor with this spell's effect held against a spell            | `{ outcome: "reflected" \| "pass" }` |
 | `onEnd`           | When the spell's effect expires or is deleted, on the GM's client      | nothing                              |
 | `runAsGm`         | Makes `apply` run on the active GM's client instead                    | –                                    |
+| `areaRadius`      | Called by the cast dialog with the level being cast                    | the radius around the caster, in m   |
 | `onPrepare…`      | When a roll by an actor with this spell's effect is prepared, below    | nothing                              |
 
 Apply is offered for each target the spell affected, so not for a target that resisted it.
@@ -95,6 +96,10 @@ spell back at its caster: the system posts a new resistance card aimed at the ca
 they cast it against their POW now. A reflected spell is never reflected again.
 
 `onEnd` gets `{ effect }`, the effect that ended.
+
+`areaRadius(level)` returns how far around the caster, in meters, an area spell cast at that level
+reaches. The cast dialog then shows **Target everyone in range**, which targets every visible token
+that close to the caster's token, the caster included, by the scene's grid scale.
 
 ### Roll entries
 
