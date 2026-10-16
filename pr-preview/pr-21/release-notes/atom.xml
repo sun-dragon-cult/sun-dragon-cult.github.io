@@ -165,6 +165,10 @@ target's current magic points.</li>
 <li class=""><strong>Spirit combat.</strong> Bind Ghost and Resurrect only work if the caster wins spirit combat. Until
 spirit combat is automated, the cast card waits for the GM to rule whether the caster won.</li>
 <li class=""><strong>Area spells.</strong> Harmony and Inviolable leave each target for the GM to rule on the cast card.</li>
+<li class=""><strong>Reflection.</strong> A spell that fails against a target protected by Reflection is sent back at its
+caster, who then resists it with their own POW.<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1178" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1178</label></a>
+</li>
 </ul>
 <p>The GM can also send any resistance roll to a player, for example STR against a trap, from the actor
 sheet's Combat tab, the combat tracker, the Actors sidebar, or a Token HUD button. The Token HUD
