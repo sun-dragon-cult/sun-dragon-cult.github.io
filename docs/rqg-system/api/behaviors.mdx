@@ -22,7 +22,7 @@ A module registers its behaviors from a hook, keyed by the rqid of the spell or 
 // scripts/my-behaviors.mjs, listed under esmodules in your module.json
 const source = { lang: "en", priority: 10 };
 
-Hooks.once("rqg.registerSpellBehaviours", (registry) => {
+Hooks.once("rqg.registerSpellBehaviors", (registry) => {
   registry.register("i.rune-magic.summon-wind-child", spellBehavior, source);
 });
 
@@ -30,9 +30,6 @@ Hooks.once("rqg.registerSkillBehaviors", (registry) => {
   registry.register("i.skill.treat-poison", skillBehavior, source);
 });
 ```
-
-The spell hook is spelled `rqg.registerSpellBehaviours`, with a British "behaviour", and will be
-renamed in a later release.
 
 What is the same for spells and skills:
 
@@ -53,7 +50,7 @@ What is the same for spells and skills:
 ## Spell behaviors
 
 ```js
-Hooks.once("rqg.registerSpellBehaviours", (registry) => {
+Hooks.once("rqg.registerSpellBehaviors", (registry) => {
   registry.register(
     "i.rune-magic.summon-wind-child",
     {

@@ -199,12 +199,23 @@ the GM a warning and does nothing until it's updated.
 <GithubIssue issue="757" repo="fvtt-system-rqg" />
 <GithubIssue issue="758" repo="fvtt-system-rqg" />
 <GithubIssue issue="1066" repo="fvtt-system-rqg" />
+<GithubIssue issue="1076" repo="fvtt-system-rqg" />
+<GithubIssue issue="1077" repo="fvtt-system-rqg" />
 
 A spell that the target can resist, like Sleep, Befuddle or Slow, now checks its target before any
 magic points are spent. It asks for confirmation if you have no target (a cast on yourself), and
 stops if you have more than one. The cast then posts a single card to the target's owner, who
 chooses **Resist** or **Accept**. The resistance roll pits the caster's POW against the target's POW
 on the resistance table. The target doesn't see which spell it is until it takes effect.
+
+Some spells resist differently:
+
+- **One roll per target.** Turn Undead and Teleportation can be cast at several targets, and each
+  target resists or accepts on its own card. Undead have no POW, so Turn Undead is resisted with the
+  target's current magic points.
+- **Spirit combat.** Bind Ghost and Resurrect only work if the caster wins spirit combat. Until
+  spirit combat is automated, the cast card waits for the GM to rule whether the caster won.
+- **Area spells.** Harmony and Inviolable leave each target for the GM to rule on the cast card.
 
 The GM can also send any resistance roll to a player, for example STR against a trap, from the actor
 sheet's Combat tab, the combat tracker, the Actors sidebar, or a Token HUD button. The Token HUD
@@ -335,8 +346,9 @@ opening an old sheet logs a warning in the browser console.
 - Spells link to their effect with an **Effect** field on the spell sheet, next to the description
   link. Spells already on actors get their link from the compendium during the world migration.
   <GithubIssue issue="1086" repo="fvtt-system-rqg" />
-- Spells have a **Resisted By** field that says how a target can resist them. So far, only a
-  resistance roll of POW against POW is supported; the other options are shown but not used yet.
+- Spells have a **Resisted By** field that says how a target can resist them: a resistance roll
+  against one target or each target, spirit combat, or nothing. A **Resisted With** field says what
+  the target resists with: POW, or current magic points.
   <GithubIssue issue="1068" repo="fvtt-system-rqg" />
 - Spells record what they can be cast on and what kind of effect they have, in two new fields.
   <GithubIssue issue="1080" repo="fvtt-system-rqg" />
