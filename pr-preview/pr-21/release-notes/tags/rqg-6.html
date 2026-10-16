@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">5 posts tagged with &quot;rqg-6&quot; | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/tags/rqg-6"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" property="og:title" content="5 posts tagged with &quot;rqg-6&quot; | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="docusaurus_tag" content="blog_tags_posts"><meta data-rh="true" name="docsearch:docusaurus_tag" content="blog_tags_posts"><link data-rh="true" rel="icon" href="/pr-preview/pr-21/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/tags/rqg-6"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/tags/rqg-6" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/tags/rqg-6" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/pr-preview/pr-21/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/pr-preview/pr-21/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/pr-preview/pr-21/assets/css/styles.1168208c.css">
-<script src="/pr-preview/pr-21/assets/js/runtime~main.e3eca00a.js" defer="defer"></script>
+<script src="/pr-preview/pr-21/assets/js/runtime~main.7c6b9d5b.js" defer="defer"></script>
 <script src="/pr-preview/pr-21/assets/js/main.d8e0df65.js" defer="defer"></script>
 </head>
 <body>
@@ -149,11 +149,22 @@ the GM a warning and does nothing until it&#x27;s updated.</p></div></div>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/757" target="_blank"><label><img src="/img/github-mark.svg" width="13.5px"> #<!-- -->757</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/758" target="_blank"><label><img src="/img/github-mark.svg" width="13.5px"> #<!-- -->758</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1066" target="_blank"><label><img src="/img/github-mark.svg" width="13.5px"> #<!-- -->1066</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1076" target="_blank"><label><img src="/img/github-mark.svg" width="13.5px"> #<!-- -->1076</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1077" target="_blank"><label><img src="/img/github-mark.svg" width="13.5px"> #<!-- -->1077</label></a>
 <p>A spell that the target can resist, like Sleep, Befuddle or Slow, now checks its target before any
 magic points are spent. It asks for confirmation if you have no target (a cast on yourself), and
 stops if you have more than one. The cast then posts a single card to the target&#x27;s owner, who
 chooses <strong>Resist</strong> or <strong>Accept</strong>. The resistance roll pits the caster&#x27;s POW against the target&#x27;s POW
 on the resistance table. The target doesn&#x27;t see which spell it is until it takes effect.</p>
+<p>Some spells resist differently:</p>
+<ul>
+<li class=""><strong>One roll per target.</strong> Turn Undead and Teleportation can be cast at several targets, and each
+target resists or accepts on its own card. Undead have no POW, so Turn Undead is resisted with the
+target&#x27;s current magic points.</li>
+<li class=""><strong>Spirit combat.</strong> Bind Ghost and Resurrect only work if the caster wins spirit combat. Until
+spirit combat is automated, the cast card waits for the GM to rule whether the caster won.</li>
+<li class=""><strong>Area spells.</strong> Harmony and Inviolable leave each target for the GM to rule on the cast card.</li>
+</ul>
 <p>The GM can also send any resistance roll to a player, for example STR against a trap, from the actor
 sheet&#x27;s Combat tab, the combat tracker, the Actors sidebar, or a Token HUD button. The Token HUD
 button can be turned off in the settings.</p>
@@ -246,8 +257,9 @@ opening an old sheet logs a warning in the browser console.</p>
 link. Spells already on actors get their link from the compendium during the world migration.<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1086" target="_blank"><label><img src="/img/github-mark.svg" width="13.5px"> #<!-- -->1086</label></a>
 </li>
-<li class="">Spells have a <strong>Resisted By</strong> field that says how a target can resist them. So far, only a
-resistance roll of POW against POW is supported; the other options are shown but not used yet.<!-- -->
+<li class="">Spells have a <strong>Resisted By</strong> field that says how a target can resist them: a resistance roll
+against one target or each target, spirit combat, or nothing. A <strong>Resisted With</strong> field says what
+the target resists with: POW, or current magic points.<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1068" target="_blank"><label><img src="/img/github-mark.svg" width="13.5px"> #<!-- -->1068</label></a>
 </li>
 <li class="">Spells record what they can be cast on and what kind of effect they have, in two new fields.<!-- -->
