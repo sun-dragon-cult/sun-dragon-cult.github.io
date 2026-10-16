@@ -95,7 +95,10 @@ system: {
 `cancelsSpellRqidLinks` lists opposing spells, like Demoralize and Courage, that cancel each other
 so that neither remains. `supersedesSpellRqidLinks` lists spells this one takes precedence over,
 like Berserker over Fanaticism: casting it removes them, and they have no effect while it's active.
-The Bladesharp and Demoralize effects in the wiki module are good examples to copy from.
+`counteractsSpellRqidLinks` does the same, but only to spells that are weaker, like Harmony against
+Fanaticism. Strength counts Rune points double and includes boost magic points, and an equal spell
+isn't weaker. The Bladesharp, Demoralize and Harmony effects in the wiki module are good examples to
+copy from.
 
 ## A behavior in a module
 
