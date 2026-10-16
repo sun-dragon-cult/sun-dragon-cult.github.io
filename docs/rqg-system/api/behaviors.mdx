@@ -73,6 +73,8 @@ A spell behavior has these parts, all optional:
 | `onEnd`           | When the spell's effect expires or is deleted, on the GM's client      | nothing                              |
 | `runAsGm`         | Makes `apply` run on the active GM's client instead                    | –                                    |
 | `areaRadius`      | Called by the cast dialog with the level being cast                    | the radius around the caster, in m   |
+| `onAreaEnter`     | When a token enters the spell's area, on the active GM's client        | nothing                              |
+| `onAreaExit`      | When a token leaves the spell's area, on the active GM's client        | nothing                              |
 | `onPrepare…`      | When a roll by an actor with this spell's effect is prepared, below    | nothing                              |
 
 Apply is offered for each target the spell affected, so not for a target that resisted it.
@@ -96,6 +98,17 @@ spell back at its caster: the system posts a new resistance card aimed at the ca
 they cast it against their POW now. A reflected spell is never reflected again.
 
 `onEnd` gets `{ effect }`, the effect that ended.
+
+A spell whose effect is a place uses `game.system.api.spellEffects.createArea(scope, options)` in
+its `apply`. It makes a scene Region, centred on the caster for Self and Ritual spells, or where the
+caster clicks, within the spell's range, for Ranged spells. `options.shape` is
+`{ kind: "circle", radius }` or `{ kind: "square", side }` in meters; `duration` overrides the
+spell's own (`null` for none), and `visible: true` shows it to players. The area lasts as long as an
+effect it puts on the caster, so it ends when the spell does, and the GM can move or delete the
+Region. `onAreaEnter` and `onAreaExit` get `{ spell, cast, region, token, actor, crossed }`;
+`crossed` is false for a token that was inside when the area appeared. In them,
+`spellEffects.applyAreaEffect(scope)` and `removeAreaEffect(scope)` put the spell's effect template
+on the token and take it off again.
 
 `areaRadius(level)` returns how far around the caster, in meters, an area spell cast at that level
 reaches. The cast dialog then shows **Target everyone in range**, which targets every visible token
