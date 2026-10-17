@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Behaviors | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Behaviors | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="description" content="A behavior is a small script in a module that makes a spell or a skill do something when Apply"><meta data-rh="true" property="og:description" content="A behavior is a small script in a module that makes a spell or a skill do something when Apply"><link data-rh="true" rel="icon" href="/pr-preview/pr-21/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"API","item":"https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/"},{"@type":"ListItem","position":2,"name":"Behaviors","item":"https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors"}]}</script><link rel="alternate" type="application/rss+xml" href="/pr-preview/pr-21/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/pr-preview/pr-21/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/pr-preview/pr-21/assets/css/styles.1168208c.css">
-<script src="/pr-preview/pr-21/assets/js/runtime~main.38b5f6a5.js" defer="defer"></script>
+<script src="/pr-preview/pr-21/assets/js/runtime~main.c88a0f80.js" defer="defer"></script>
 <script src="/pr-preview/pr-21/assets/js/main.d8e0df65.js" defer="defer"></script>
 </head>
 <body>
@@ -61,15 +61,19 @@ spell back at its caster: the system posts a new resistance card aimed at the ca
 they cast it against their POW now. A reflected spell is never reflected again.</p>
 <p><code>onEnd</code> gets <code>{ effect }</code>, the effect that ended.</p>
 <p>A spell whose effect is a place uses <code>game.system.api.spellEffects.createArea(scope, options)</code> in
-its <code>apply</code>. It makes a scene Region, centered on the caster for Self and Ritual spells, or where the
-caster clicks, within the spell&#x27;s range, for Ranged spells. <code>options.shape</code> is
-<code>{ kind: &quot;circle&quot;, radius }</code> or <code>{ kind: &quot;square&quot;, side }</code> in meters; <code>duration</code> overrides the
-spell&#x27;s own (<code>null</code> for none), and <code>visible: true</code> shows it to players. The area lasts as long as an
-effect it puts on the caster, so it ends when the spell does, and the GM can move or delete the
-Region. <code>onAreaEnter</code> and <code>onAreaExit</code> get <code>{ spell, cast, region, token, actor, crossed }</code>;
-<code>crossed</code> is false for a token that was inside when the area appeared. In them,
-<code>spellEffects.applyAreaEffect(scope)</code> and <code>removeAreaEffect(scope)</code> put the spell&#x27;s effect template
-on the token and take it off again.</p>
+its <code>apply</code>. The caster places the area on the canvas, snapped to the scene&#x27;s grid with the squares
+or hexes it covers highlighted: within the spell&#x27;s range for a Ranged spell, anywhere for the rest,
+as a ritual is held where its area is. <code>options.shape</code> is <code>{ kind: &quot;circle&quot;, radius }</code> or
+<code>{ kind: &quot;square&quot;, side }</code> in meters, the square rotated with the mouse wheel, or
+<code>{ kind: &quot;polygon&quot;, corners, maxArea }</code>, clicked corner by corner, like a ward&#x27;s wands, and no
+larger than <code>maxArea</code> square meters. <code>placement: &quot;caster&quot;</code> puts a circle or square around the
+caster&#x27;s token instead. <code>duration</code> overrides the spell&#x27;s own, and <code>visible: true</code> shows the area to
+players. An area with a duration puts an effect on the caster, so it ends when the spell does; with
+<code>duration: null</code> the Region is the spell and lasts until it is deleted. The GM can move or delete
+the Region either way. <code>onAreaEnter</code> and <code>onAreaExit</code> get
+<code>{ spell, cast, region, token, actor, crossed }</code>; <code>crossed</code> is false for a token that was inside
+when the area appeared. In <code>onAreaEnter</code>, <code>spellEffects.applyAreaEffect(scope)</code> puts the spell&#x27;s
+effect template on the token; the system takes it off when the token leaves or the area goes.</p>
 <p><code>areaRadius(level)</code> returns how far around the caster, in meters, an area spell cast at that level
 reaches. The cast dialog then shows <strong>Target everyone in range</strong>, which targets every visible token
 that close to the caster&#x27;s token, the caster included, by the scene&#x27;s grid scale.</p>
