@@ -150,7 +150,7 @@ the GM a warning and does nothing until it's updated.</p></div></div>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="spell-areas-on-the-scene">Spell Areas on the Scene<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#spell-areas-on-the-scene" class="hash-link" aria-label="Direct link to Spell Areas on the Scene" title="Direct link to Spell Areas on the Scene" translate="no">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1168" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1168</label></a>
 <p>Spells that affect a place, like Shake Earth, Warding or Sanctify, now make a scene Region. A Ranged
-spell asks the caster to click where its area goes, within range; a ritual is centred on the caster.
+spell asks the caster to click where its area goes, within range; a ritual is centered on the caster.
 The area ends when the spell does, and the GM can move or delete it like any Region. With the wiki
 module, Shake Earth hinders everyone inside, wards strike hostile intruders and stop spells cast
 from outside, and Sanctify tells the caster when an outsider walks in.</p>
