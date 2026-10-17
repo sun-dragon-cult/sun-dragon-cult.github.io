@@ -1,0 +1,82 @@
+---
+sidebar_position: 30
+slug: query
+title: Query
+tags: []
+---
+
+The functions in `game.system.api.query` read information about a character, already calculated the
+same way the character sheet shows it. They return plain objects, a snapshot of how things are right
+now. Call the function again to get updated values.
+
+Each function takes an optional actor, see
+[Pointing at actors and items](/rqg-system/api#pointing-at-actors-and-items). Leave it out to use
+the selected token.
+
+## abilities(actor, options)
+
+The character's skills, runes and passions, sorted by name. Use `{ types: ["skill"] }` to only get
+some kinds.
+
+Each entry has `name`, `type` (`"skill"`, `"rune"` or `"passion"`), `chance`, `hasExperience`,
+`category` (skill category like `"perception"`, skills only), and `id`, `uuid`, `rqid` and `img`.
+
+## weaponUsages(actor, options)
+
+One entry for each way the character can attack with their equipped weapons, the same choices the
+attack dialog offers. A spear that can be used both one-handed and two-handed gives two entries. Use
+`{ includeUnequipped: true }` to also get weapons that are carried but not equipped.
+
+Each entry has `name`, `usage` (`"oneHand"`, `"offHand"`, `"twoHand"` or `"missile"`), `chance`
+(including weapon modifiers), `strikeRank`, `skillName`, `equippedStatus`, and `unusable`, which is
+true when the character is below the STR or DEX requirement. It also has `weaponId`, `weaponUuid`,
+`skillId` and `img`.
+
+## spells(actor)
+
+All spirit and rune magic the character can cast, their own spells first.
+
+Each entry has `type` (`"spiritMagic"` or `"runeMagic"`), `name`, `points` and `source`, which says
+where the spell comes from:
+
+| `source`        | The spell is known by                                       |
+| --------------- | ----------------------------------------------------------- |
+| `"own"`         | The character                                               |
+| `"allied"`      | The character's Allied Spirit, or the priest it's bonded to |
+| `"boundSpirit"` | A spirit bound into one of the character's items            |
+| `"matrix"`      | A spell matrix the character has equipped                   |
+
+Spells from somewhere else than the character also have `sourceName`, the name of the spirit or the
+matrix item. Spirit magic has `isVariable`, rune magic has `isOneUse` and the `cultId` and
+`cultName` of the cult it's cast through.
+
+Pass an entry to [`rolls.spiritMagic` or `rolls.runeMagic`](/rqg-system/api/rolls) to cast it.
+
+## Values stored on the character
+
+Values that are stored on a character, rather than worked out by the rules, have no query function.
+Read them from `actor.system`:
+
+```js
+const actor = canvas.tokens.controlled[0]?.actor;
+actor.system.characteristics.power.value; // 15
+actor.system.attributes.hitPoints; // { value: 12, max: 14 }
+actor.system.attributes.magicPoints; // { value: 9, max: 15 }
+actor.system.attributes.heroPoints; // 1
+actor.system.background.reputation; // 15
+```
+
+Rune Points are stored on each cult:
+
+```js
+for (const cult of actor.items.filter((i) => i.type === "cult")) {
+  console.log(cult.name, cult.system.runePoints); // Orlanth { value: 2, max: 3 }
+}
+```
+
+Some values, like `max` hit points and magic points, `dexStrikeRank`, `sizStrikeRank` and
+`damageBonus` under `actor.system.attributes`, are calculated from the characteristics every time
+the character changes. You can read them, but changing them has no lasting effect.
+
+To change a stored value, use Foundry's `update`, for example
+`actor.update({ "system.attributes.magicPoints.value": 5 })`.

@@ -1,0 +1,131 @@
+---
+sidebar_position: 25
+slug: hooks
+title: Roll Hooks
+tags: []
+---
+
+Modules can change and react to rolls with Foundry hooks. Every roll calls three hooks, whether it
+was started from the character sheet, the hotbar, a macro or another module:
+
+- a **prepare** hook, to add modifiers or say why the roll isn't allowed,
+- a **pre** hook, once just before the roll, to cancel it,
+- an **after** hook with the finished roll.
+
+For a spell effect that changes rolls, use the spell's
+[roll entries](/rqg-system/api/behaviors#roll-entries) instead of listening to these hooks.
+
+| Prepare the roll                | Before the roll             | After the roll           |
+| ------------------------------- | --------------------------- | ------------------------ |
+| `rqg.prepareAbilityRoll`        | `rqg.preAbilityRoll`        | `rqg.abilityRoll`        |
+| `rqg.prepareCharacteristicRoll` | `rqg.preCharacteristicRoll` | `rqg.characteristicRoll` |
+| `rqg.prepareReputationRoll`     | `rqg.preReputationRoll`     | `rqg.reputationRoll`     |
+| `rqg.prepareSpellCast`          | `rqg.preSpellCast`          | `rqg.spellCast`          |
+| `rqg.prepareAttack`             | `rqg.preAttack`             | `rqg.attack`             |
+| `rqg.prepareDefence`            | `rqg.preDefence`            | `rqg.defence`            |
+
+The hooks get these arguments:
+
+| Roll                 | Arguments                                               |
+| -------------------- | ------------------------------------------------------- |
+| Skill, rune, passion | `item`, (`roll`), `options`, (`preparation`)            |
+| Characteristic       | `actor`, (`roll`), `options`, (`preparation`)           |
+| Reputation           | `actor`, (`roll`), `options`, (`preparation`)           |
+| Spirit or rune magic | `spell`, `caster`, (`roll`), `options`, (`preparation`) |
+| Attack               | `weapon`, `attack`, (`preparation`)                     |
+| Defence              | `defender`, `defence`, (`preparation`)                  |
+
+`preparation` is only given to the "prepare" hooks, and `roll` only to the "after" hooks. The hooks
+run on the client of the user who rolls, or for a defence, the user who submits it: the defender's
+owner or the GM.
+
+## Preparing the roll
+
+A "prepare" hook runs whenever something changes in the roll dialog, and once more when the roll is
+made. It can:
+
+- **Add modifiers** by pushing to `options.modifiers`, for example
+  `{ description: "Blinded", value: -20 }`. The dialog includes them in its chance and lists them,
+  and they're shown on the chat card. For an attack or defence, push to
+  `attack.rollOptions.modifiers` or `defence.rollOptions.modifiers`.
+- **Forbid the roll** by setting `preparation.forbidden` to the reason, for example
+  `preparation.forbidden = "Vasana can't parry while prone."`. The dialog shows the reason and can't
+  roll. A roll started without the dialog, from a macro or another module, is refused with the
+  reason as a warning.
+
+Since it runs many times, a "prepare" hook must not do anything else: no notifications, chat
+messages or document updates. Those belong in the "pre" and "after" hooks.
+
+## Before the roll
+
+A "pre" hook runs once, when the roll is made: after the roll dialog is submitted, or straight away
+with `skipDialog`. It can cancel the roll by returning `false`. Nothing is rolled or posted to chat,
+and the roll method returns nothing.
+
+Listeners are called synchronously, so neither a "prepare" nor a "pre" hook can wait for a dialog or
+a document update.
+
+`rqg.prepareSpellCast` and `rqg.preSpellCast` run before the cast is checked, so the spell can still
+be refused for lack of magic points or rune points afterwards. `caster` is the actor casting the
+spell, which can be a different actor from the one that has the spell item: a spell from an Allied
+Spirit, a bound spirit or a matrix is cast by the character.
+
+## After the roll
+
+An "after" hook gets the finished roll. Compare `roll.successLevel` with
+`game.system.api.rolls.SuccessLevel`, see [Rolls](/rqg-system/api/rolls). `rqg.abilityRoll` and
+`rqg.characteristicRoll` run before the experience check, `rqg.spellCast` after the spell's costs
+are paid.
+
+## Attack and defence
+
+An attack is rolled when the defender defends, not when the attacker clicks Attack. So:
+
+- `rqg.prepareAttack` runs while the attack dialog is open, with no `combatManeuver` yet, since the
+  maneuver is the button that's clicked. It runs once more, with the maneuver, when the attack is
+  made.
+- `rqg.preAttack` and `rqg.attack` run when the attack is made. `rqg.attack` means the attack card
+  is posted and the ammunition used, and its `attack.chatMessage` is that card. The attack has no
+  result yet.
+- `rqg.prepareDefence` runs for the defence chosen in the defence dialog, but not for "ignore".
+- `rqg.preDefence` runs before the attack and defence are rolled.
+- `rqg.defence` is the first point where the attack's result is known. It gets the `attackRoll`, the
+  `defenceRoll` (if there was a defence) and the updated `chatMessage`.
+
+The `attack` argument has the `attacker`, the `target` (the actor of the token the user targeted
+when attacking, if any), the `usage` (`"oneHand"`, `"offHand"`, `"twoHand"` or `"missile"`), the
+`combatManeuver`, the `projectile` (the missile fired, or the weapon itself when thrown) and the
+`rollOptions` of the attack roll.
+
+The `defence` argument has the `attacker`, the `attackChatMessage`, the `defence` (`"parry"`,
+`"dodge"` or `"ignore"`, read only), the `parryingWeapon` and `parryingWeaponUsage`, and the
+`rollOptions` of the defence roll.
+
+To forbid a parry or dodge, a `rqg.prepareDefence` listener sets `preparation.forbidden`. The
+defence dialog shows the reason, and the defender picks another defence. Returning `false` from
+`rqg.preDefence` stops the defence instead, and the attack card keeps waiting for one.
+
+## Examples
+
+```js
+// House rule: -20% on every skill roll while blinded
+Hooks.on("rqg.prepareAbilityRoll", (item, options) => {
+  if (item.actor?.statuses.has("blind")) {
+    options.modifiers.push({ description: "Blinded", value: -20 });
+  }
+});
+
+// House rule: no parrying while prone
+Hooks.on("rqg.prepareDefence", (defender, defence, preparation) => {
+  if (defence.defence === "parry" && defender.statuses.has("prone")) {
+    preparation.forbidden = `${defender.name} is prone and can't parry.`;
+  }
+});
+
+// Post a message when someone fumbles a characteristic roll
+Hooks.on("rqg.characteristicRoll", (actor, roll, options) => {
+  if (roll.successLevel === game.system.api.rolls.SuccessLevel.Fumble) {
+    ChatMessage.create({ content: `${actor.name} fumbled ${options.characteristicName}!` });
+  }
+});
+```
