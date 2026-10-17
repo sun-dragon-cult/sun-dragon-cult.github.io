@@ -100,7 +100,7 @@ they cast it against their POW now. A reflected spell is never reflected again.
 `onEnd` gets `{ effect }`, the effect that ended.
 
 A spell whose effect is a place uses `game.system.api.spellEffects.createArea(scope, options)` in
-its `apply`. It makes a scene Region, centred on the caster for Self and Ritual spells, or where the
+its `apply`. It makes a scene Region, centered on the caster for Self and Ritual spells, or where the
 caster clicks, within the spell's range, for Ranged spells. `options.shape` is
 `{ kind: "circle", radius }` or `{ kind: "square", side }` in meters; `duration` overrides the
 spell's own (`null` for none), and `visible: true` shows it to players. The area lasts as long as an
