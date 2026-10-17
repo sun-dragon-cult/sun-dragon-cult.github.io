@@ -100,15 +100,19 @@ they cast it against their POW now. A reflected spell is never reflected again.
 `onEnd` gets `{ effect }`, the effect that ended.
 
 A spell whose effect is a place uses `game.system.api.spellEffects.createArea(scope, options)` in
-its `apply`. It makes a scene Region, centered on the caster for Self and Ritual spells, or where the
-caster clicks, within the spell's range, for Ranged spells. `options.shape` is
-`{ kind: "circle", radius }` or `{ kind: "square", side }` in meters; `duration` overrides the
-spell's own (`null` for none), and `visible: true` shows it to players. The area lasts as long as an
-effect it puts on the caster, so it ends when the spell does, and the GM can move or delete the
-Region. `onAreaEnter` and `onAreaExit` get `{ spell, cast, region, token, actor, crossed }`;
-`crossed` is false for a token that was inside when the area appeared. In them,
-`spellEffects.applyAreaEffect(scope)` and `removeAreaEffect(scope)` put the spell's effect template
-on the token and take it off again.
+its `apply`. The caster places the area on the canvas, snapped to the scene's grid with the squares
+or hexes it covers highlighted: within the spell's range for a Ranged spell, anywhere for the rest,
+as a ritual is held where its area is. `options.shape` is `{ kind: "circle", radius }` or
+`{ kind: "square", side }` in meters, the square rotated with the mouse wheel, or
+`{ kind: "polygon", corners, maxArea }`, clicked corner by corner, like a ward's wands, and no
+larger than `maxArea` square meters. `placement: "caster"` puts a circle or square around the
+caster's token instead. `duration` overrides the spell's own, and `visible: true` shows the area to
+players. An area with a duration puts an effect on the caster, so it ends when the spell does; with
+`duration: null` the Region is the spell and lasts until it is deleted. The GM can move or delete
+the Region either way. `onAreaEnter` and `onAreaExit` get
+`{ spell, cast, region, token, actor, crossed }`; `crossed` is false for a token that was inside
+when the area appeared. In `onAreaEnter`, `spellEffects.applyAreaEffect(scope)` puts the spell's
+effect template on the token; the system takes it off when the token leaves or the area goes.
 
 `areaRadius(level)` returns how far around the caster, in meters, an area spell cast at that level
 reaches. The cast dialog then shows **Target everyone in range**, which targets every visible token
