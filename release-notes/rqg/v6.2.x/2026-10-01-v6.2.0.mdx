@@ -101,6 +101,13 @@ A token's spell effects are shown at the top of the token HUD's status palette, 
 markers, with their name, the item they're on and the time left. The GM can click one to open it,
 right-click to remove it, or change its level on the effect's sheet.
 
+Hovering over an effect also says what it does. **Has automated effects** means it changes the sheet
+or its spell's rules act while it is on, like Bladesharp or Warding. **Only marks the spell while it
+lasts** means the GM rules on what it does, like Befuddle. A partly automated effect adds what is
+left to the GM, for example "Not automated: −1 strike rank" on Mobility.
+
+When a spell runs out, its effect is removed from the token and its item.
+
 The GM can also add a spell effect without casting, for example for a spell cast before the scene
 started. Click the **+** in the same section, search for the spell, set its level, and click Add.
 
@@ -198,11 +205,21 @@ the GM a warning and does nothing until it's updated.
 
 <GithubIssue issue="1168" repo="fvtt-system-rqg" />
 
-Spells that affect a place, like Shake Earth, Warding or Sanctify, now make a scene Region. A Ranged
-spell asks the caster to click where its area goes, within range; a ritual is centered on the caster.
-The area ends when the spell does, and the GM can move or delete it like any Region. With the wiki
-module, Shake Earth hinders everyone inside, wards strike hostile intruders and stop spells cast
-from outside, and Sanctify tells the caster when an outsider walks in.
+Spells that affect a place, like Shake Earth, Warding or Sanctify, now make a scene Region. The
+caster places it, snapped to the scene's grid, and the squares or hexes it will cover light up as it
+moves:
+
+- **Ranged spells** must lie wholly within range, centered on a point the caster can see. The scene
+  is dimmed outside what the caster's token can see within range, and the area can't be placed
+  there. For a point the caster perceives by magic, the GM places it in sight and then drags the
+  Region where it belongs.
+- **Rituals** can be placed anywhere, as a ritual is held where its area is. A ward is placed by
+  clicking its four wands.
+
+The GM and the caster's players see the area; a spell like Mist Cloud is seen by everyone. The area
+ends when the spell does, and the GM can move or delete it like any Region. With the wiki module,
+Shake Earth hinders everyone inside, wards strike hostile intruders and stop spells cast from
+outside, and Sanctify tells the caster when an outsider walks in.
 
 ## Resisted Spells and Resistance Rolls
 
