@@ -167,7 +167,12 @@ clicking its four wands.</li>
 <p>The GM and the caster's players see the area; a spell like Mist Cloud is seen by everyone. The area
 ends when the spell does, and the GM can move or delete it like any Region. With the wiki module,
 Shake Earth hinders everyone inside, wards strike hostile intruders and stop spells cast from
-outside, and Sanctify tells the caster when an outsider walks in.</p>
+outside, and Sanctify tells the caster when a non-initiate or a spell crosses into it.</p>
+<div class="theme-admonition theme-admonition-info admonition_uOdM alert alert--info"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent__X6G"><p>Spell areas measure true distance in meters, as the rules do. On square grids, Foundry's default
+counts a diagonal step as one space, so the movement ruler lets tokens go about 40% farther
+diagonally than the rules allow. Set <strong>Configure Settings → Core → Grid Diagonals</strong> to <strong>Exact</strong> to
+make the ruler and the spell areas agree. Hex and gridless scenes aren't affected. See
+<a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/getting-started/scenes">Setting Up Scenes</a>.</p></div></div>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="resisted-spells-and-resistance-rolls">Resisted Spells and Resistance Rolls<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#resisted-spells-and-resistance-rolls" class="hash-link" aria-label="Direct link to Resisted Spells and Resistance Rolls" title="Direct link to Resisted Spells and Resistance Rolls" translate="no">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/757" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->757</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/758" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->758</label></a>
