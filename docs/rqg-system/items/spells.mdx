@@ -60,9 +60,13 @@ the Red Book of Magic, see [Giving your own spells effects](/rqg-system/items/cu
 ## Recasting and incompatible spells
 
 By the rules a spell cast on a target that already has it only works if the new casting is stronger,
-and some spells can't be on the same target together. The system checks this when Apply is clicked,
-by the spells' rqids. The world setting **Recast Spells Take Effect** chooses between the rules as
-written and always replacing. See the [6.2.0 release notes](/release-notes/rqg-v6.2.0) for details.
+and some spells can't be on the same target together: Bladesharp and Fireblade can't share a weapon,
+and neither can Protection and Shimmer on a person. The system checks this when Apply is clicked, by
+the spells' rqids. When a spell has no effect for one of these reasons, Apply says why and the card
+records it; only the target's owners see the reason.
+
+The world setting **Recast Spells Take Effect** chooses the rule: **Only if stronger** (the rules as
+written) or **Always**, where every new casting replaces the old one.
 
 ## Related
 
