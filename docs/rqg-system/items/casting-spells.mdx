@@ -95,10 +95,28 @@ On Apply, the spells already on the target have their say:
 
 ## 7. While it lasts
 
-A spell's effect shows on the token. Temporal spells last their duration, and an effect is removed
-when it expires. Spells that make an area on the scene, like Shake Earth or a ward, put their
-effects on the tokens inside it and take them off those who leave; see the
-[6.2.0 release notes](/release-notes/rqg-v6.2.0) for placing them.
+A spell's effect shows on the token. Temporal spells last their duration. Spells that make an area
+on the scene, like Shake Earth or a ward, put their effects on the tokens inside it and take them
+off those who leave; see the [6.2.0 release notes](/release-notes/rqg-v6.2.0) for placing them.
+
+## 8. When it ends
+
+A spell ends when its duration runs out, or when its effect is deleted: by Dispel or Dismiss Magic,
+by the GM, or used up, like Countermagic that stopped a spell within 1 point of it. Deleting a spell
+area's Region on the scene ends that spell too.
+
+When it ends:
+
+- **The spell's own end** runs, if it has one. A Berserker collapses helpless, and the chat says so.
+- **A summoned creature** leaves: its token is removed from the scene.
+- **A spell area** is removed from the scene, and everyone inside loses its effect.
+- **An expired effect** is deleted from the token.
+
+Nothing comes back when a spell ends: a weaker casting of the same spell that didn't take hold isn't
+waiting underneath.
+
+A spell runs out when the game time or the combat moves past its duration. Foundry checks that, and
+the system ends the spell, on the GM's client, so it needs a GM connected.
 
 ## Who sees what
 
