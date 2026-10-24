@@ -1,0 +1,41 @@
+---
+sidebar_position: 10
+slug: scenes
+title: Setting Up Scenes
+tags: []
+---
+
+RuneQuest measures everything in meters: a movement unit (MOV) is 3 meters, and spell ranges and
+areas are given in meters. The system sets new scenes to 1.5 meters per grid space. Keep the scene's
+grid units in meters, as the movement ruler and spell areas count in them.
+
+## Hexes, squares or gridless
+
+All three work:
+
+- **Hexes** are the common choice for RuneQuest maps. Distance is counted hex by hex.
+- **Squares** need one Foundry setting to match the rules, see below.
+- **Gridless** scenes measure straight lines in meters. Spell areas then show as plain circles
+  instead of lit-up spaces, and nothing snaps to a grid.
+
+## Diagonals on square grids
+
+Foundry's default, **Equidistant**, counts a diagonal step as one space, the same as a straight one.
+A human with MOV 8 (24 meters) could then move 16 squares diagonally, about 34 meters. Spell areas
+always measure true distance, so a 3 meter Harmony wouldn't reach the squares the ruler calls 3
+meters away diagonally.
+
+Set **Configure Settings → Core → Grid Diagonals** to **Exact**. A diagonal step then counts as
+about 2.1 meters, which matches the rules, and the movement ruler and spell areas agree. It's a
+world setting, so it covers every scene. The system doesn't change it for you, since that would
+change movement in worlds already in play.
+
+## The movement ruler
+
+When a token in combat is dragged, its ruler is colored by how far it moves, from its MOV:
+
+- **Green** up to half its movement, when it can still attack.
+- **Yellow** up to its full movement.
+- **Orange** beyond its full movement.
+- **Red** beyond its sprint, when the optional sprint rule is on: set **Sprint Range Multiplier** in
+  the system's token ruler settings.

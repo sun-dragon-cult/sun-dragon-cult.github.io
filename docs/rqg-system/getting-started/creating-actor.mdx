@@ -13,8 +13,17 @@ can look like you can have a peek in the [Wiki](/wiki/wiki-module) Bestiary fold
 
 :::tip
 
-The easiest way to create a new character is to duplicate the "Bestiary/Adventurers/Human (Base)"
-actor.
+The easiest way to create a new actor is to start from a template. In Foundry's **Create Actor**
+dialog, set **Start from** to **Choose template...** and pick one from the list. The wiki module
+provides templates for adventurers, like "Human (Base)", "Human (Sartarite)" and "Mostali (Dwarf)",
+and for creatures, like animals, chaos monsters, elementals, mounts and spirits.
+
+You can search the list by name and filter it by **class** (human, elder race, animal, chaos, ...),
+**role** (such as adventurer) and **species**. Each entry shows where the template comes from, and
+its language and priority. The new actor is a copy of the template with all its items.
+
+Actors in your world or your own compendiums are listed too when they are tagged as templates, with
+the `role:template` tag in their `flags.rqg.tags`. There is no field for it on the actor sheet yet.
 
 :::
 
@@ -57,7 +66,7 @@ Spells" that you can drag to the actor. More detailed info about this kind of it
 
 ## 6) Learn a Spirit Magic Spell
 
-You might already guess how to do this... Look for the "Cults & Magic/Rune Magic Spells" compendium
+You might already guess how to do this... Look for the "Cults & Magic/Spirit Magic Spells" compendium
 and drag the ones you want to the actor. More info about this item type can be found at
 [Spirit Magic Spell Item](/rqg-system/items/spirit-magic)
 

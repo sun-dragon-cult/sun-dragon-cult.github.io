@@ -1,0 +1,140 @@
+---
+sidebar_position: 21
+slug: casting-spells
+title: How a Spell Is Resolved
+tags: []
+---
+
+This page follows a spell from the cast dialog to the effect on its target, in the order the system
+handles it. Spirit magic and Rune magic go the same way. What the spell then does is covered on
+[Spells](/rqg-system/items/spells).
+
+## 1. The cast dialog
+
+The dialog shows the caster, the targets, the level and any magic points to boost the spell with.
+The level is at least 1 and a boost at least 0.
+
+- **Targets** are the tokens you have targeted when you press Cast.
+- **Spells centered on the caster**, like Harmony and Inviolable, take everyone within their radius
+  instead, the caster included, whatever is targeted. The dialog says how far that is, and the
+  squares or hexes it covers are lit up on the scene, growing and shrinking with the level. Tokens
+  hidden from the caster's player aren't included; the GM handles those.
+- **Spells resisted by a single target** refuse more than one target, and with none they ask whether
+  to cast on yourself.
+
+## 2. The cast roll
+
+The cast card shows the roll and the points spent. If the cast fails, no target is affected and
+nothing else happens.
+
+A spell's **strength** against defenses is its points: magic points as they are, Rune points double,
+plus any boost. A 2-point Rune spell boosted with 1 magic point has strength 5.
+
+## 3. Spell areas on the way
+
+A spell cast from outside a spell area at a target inside it crosses the area's boundary, and the
+area can react, once per cast:
+
+- A **ward** (Warding or Create Market) sounds its alarm, heard by the GM and the players with
+  tokens within 160 m.
+- **Sanctify** alerts its caster that a spell crossed in. The caster's players aren't told whose;
+  the GM is.
+
+This happens whether the spell then gets through or not.
+
+## 4. Protective spells
+
+Before anyone resists, each target's protective spells meet the spell, in layers from the outside
+in. The first one that stops it settles that target: its row on the card reads "No effect", stopped
+by a protective spell, and it gets no resistance roll. The card doesn't say which spell stopped it.
+
+| Layer            | Stops the spell when its strength is…       | Used up?                                                                    |
+| ---------------- | ------------------------------------------- | --------------------------------------------------------------------------- |
+| **Ward**         | at most the ward's Countermagic + 1         | Never. A spell it stops never reaches the target's own defenses.            |
+| **Countermagic** | 2 or more below it, or within 1 point of it | Within 1 point, both are gone. A spell 2 or more points stronger breaks it. |
+| **Shield**       | at most twice its points                    | Never.                                                                      |
+
+A ward only protects non-hostile tokens inside it, against spells from outside it. Berserker counts
+as Countermagic 2, or 4 against a chaotic caster. A target's own defenses don't stop a spell it
+casts on itself, and spells marked **Gets through Countermagic and Shield**, like Dismiss Magic,
+pass them all.
+
+This works for every spell, including ones with no automation at all.
+
+## 5. Resistance
+
+What happens next depends on the spell's **Resisted By** field:
+
+| Resisted By                         | What happens                                                                                                                                  |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **None**                            | The spell takes effect on every target it reached.                                                                                            |
+| **Resistance roll (single target)** | The target's owner gets a resistance request: the caster's POW against the target's POW (or current magic points, as the spell says).         |
+| **Resistance roll, per target**     | The same, one request per target, like Turn Undead.                                                                                           |
+| **Resistance roll, whole area**     | The caster makes one roll, and the card says which POW it affects, like "affects POW 15 or lower". Every target is settled from that at once. |
+| **Spirit combat**                   | The GM rules each target won or lost on the cast card, until spirit combat itself is automated.                                               |
+
+A target may also accept the spell instead of resisting. Casting on yourself counts as accepting.
+
+**Reflection** acts when the target's resistance holds: if its Reflection is strong enough (each
+point turns back 2 points of spirit magic or 1 Rune point), the spell goes back at its caster as a
+new resistance request, and the card says so. A stronger spell isn't reflected.
+
+## 6. Apply
+
+Each target the spell takes effect on gets an **Apply** button on the card, for that target's owner.
+What it does depends on the spell: it puts the spell's effect on the target, or runs the spell's
+behavior, see [Spells](/rqg-system/items/spells). A spell with neither has no Apply button; the GM
+and players handle the effect by hand.
+
+On Apply, the spells already on the target have their say:
+
+- A spell the target already has only works if the new casting is stronger, as the world setting
+  **Recast Spells Take Effect** decides.
+- Some spells can't share a target, and calming spells like Harmony remove weaker rage spells like
+  Fanaticism, or keep them from taking hold.
+
+## 7. While it lasts
+
+A spell's effect shows on the token. Temporal spells last their duration.
+
+Spells that affect a place, like Shake Earth, Warding or Sanctify, make a scene Region instead. The
+caster places it, snapped to the grid, and the squares or hexes it will cover light up as it moves:
+
+- **Ranged spells** must lie wholly within range, centered on a point the caster can see. The scene
+  is dimmed outside what the caster's token can see within range. For a point the caster perceives
+  by magic, the GM places it in sight and then drags the Region where it belongs.
+- **Rituals** can be placed anywhere, as a ritual is held where its area is. A ward is placed by
+  clicking its four wands.
+
+The GM and the caster's players see the area; a spell like Mist Cloud is seen by everyone. The area
+puts its effect on the tokens inside it and takes it off those who leave, and the GM can move or
+delete it like any Region. Areas measure in meters; see
+[Setting Up Scenes](/rqg-system/getting-started/scenes) for the grid settings that match them.
+
+## 8. When it ends
+
+A spell ends when its duration runs out, or when its effect is deleted: by Dispel or Dismiss Magic,
+by the GM, or used up, like Countermagic that stopped a spell within 1 point of it. Deleting a spell
+area's Region on the scene ends that spell too.
+
+When it ends:
+
+- **The spell's own end** runs, if it has one. A Berserker collapses helpless, and the chat says so.
+- **A summoned creature** leaves: its token is removed from the scene.
+- **A spell area** is removed from the scene, and everyone inside loses its effect.
+- **An expired effect** is deleted from the token.
+
+Nothing comes back when a spell ends: a weaker casting of the same spell that didn't take hold isn't
+waiting underneath.
+
+A spell runs out when the game time or the combat moves past its duration. Foundry checks that, and
+the system ends the spell, on the GM's client, so it needs a GM connected.
+
+## Who sees what
+
+- A hidden cast (blind or private) keeps the spell's name from the target's player, even when it is
+  reflected.
+- Ward alarms and Sanctify alerts don't name who crossed or who cast at whom to players. The GM gets
+  the names.
+- Why a spell was stopped on Apply, by a spell already on the target, is only shown to that target's
+  owners.
