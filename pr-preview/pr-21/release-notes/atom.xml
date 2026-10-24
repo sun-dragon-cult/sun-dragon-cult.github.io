@@ -144,8 +144,7 @@ spell was cast at. For example, Bladesharp adds <code>@level * 5</code> to attac
 for, or a change type a bonus can't use, shows the GM a warning saying what's wrong. When the
 world loads, these are collected into one summary.</li>
 </ul>
-<p>See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/rqid#7-active-effects">rqid: Active Effects</a> for the bonus values you can
-change and more examples.</p>
+<p>See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/rqid">Rqid</a> for the bonus values you can change and more examples.</p>
 <div class="theme-admonition theme-admonition-warning admonition_uOdM alert alert--warning"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Changed keys</div><div class="admonitionContent__X6G"><p>Before this release, a key like <code>i.skill.dodge:system.baseChance</code> on the <strong>Custom</strong> change type
 changed an item. The world migration rewrites these to the new form,
 <code>@i.skill.dodge:system.baseChance</code> on <strong>Add</strong>, so they keep doing the same thing. A key in the old
@@ -271,9 +270,8 @@ berserker's parry. The roll dialog shows both before Roll is clicked, so the cha
 the chance that's rolled. A "pre" hook runs once, when the roll is made, and can cancel it. See
 <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/hooks">Roll hooks</a>.</p>
 <p>Modules can also make a skill do something after it's rolled, the way the wiki module's First Aid
-heals a wound, and a spell's effect can change rolls through
-<a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors#roll-entries">roll entries</a>, like Berserker and Fanaticism. See
-<a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors">Behaviors</a>.</p>
+heals a wound, and a spell's effect can change rolls through roll entries, like Berserker and
+Fanaticism. See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors">Behaviors</a>.</p>
 <p>The old methods still work until RQG 6.4.0, but log a warning in the browser console that names the
 replacement:</p>
 <table><thead><tr><th>Old method</th><th>Replacement</th></tr></thead><tbody><tr><td><code>item.abilityRoll</code> / <code>item.abilityRollImmediate</code></td><td><code>item.roll</code></td></tr><tr><td><code>actor.characteristicRoll</code> / <code>actor.characteristicRollImmediate</code></td><td><code>actor.rollCharacteristic</code></td></tr><tr><td><code>actor.reputationRoll</code> / <code>actor.reputationRollImmediate</code></td><td><code>actor.rollReputation</code></td></tr><tr><td><code>item.spiritMagicRoll</code> / <code>item.spiritMagicRollImmediate</code></td><td><code>item.cast</code></td></tr><tr><td><code>item.runeMagicRoll</code> / <code>item.runeMagicRollImmediate</code></td><td><code>item.cast</code></td></tr></tbody></table>

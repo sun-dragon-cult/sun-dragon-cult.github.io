@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">How a Spell Is Resolved | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="How a Spell Is Resolved | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="description" content="This page follows a spell from the cast dialog to the effect on its target, in the order the system"><meta data-rh="true" property="og:description" content="This page follows a spell from the cast dialog to the effect on its target, in the order the system"><link data-rh="true" rel="icon" href="/pr-preview/pr-21/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Foundry Items","item":"https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/"},{"@type":"ListItem","position":2,"name":"How a Spell Is Resolved","item":"https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells"}]}</script><link rel="alternate" type="application/rss+xml" href="/pr-preview/pr-21/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/pr-preview/pr-21/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/pr-preview/pr-21/assets/css/styles.1168208c.css">
-<script src="/pr-preview/pr-21/assets/js/runtime~main.fa71285a.js" defer="defer"></script>
+<script src="/pr-preview/pr-21/assets/js/runtime~main.99b3ff87.js" defer="defer"></script>
 <script src="/pr-preview/pr-21/assets/js/main.fe0b9c01.js" defer="defer"></script>
 </head>
 <body>
@@ -72,9 +72,20 @@ and players handle the effect by hand.</p>
 Fanaticism, or keep them from taking hold.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="7-while-it-lasts">7. While it lasts<a href="#7-while-it-lasts" class="hash-link" aria-label="Direct link to 7. While it lasts" title="Direct link to 7. While it lasts" translate="no">​</a></h2>
-<p>A spell&#x27;s effect shows on the token. Temporal spells last their duration. Spells that make an area
-on the scene, like Shake Earth or a ward, put their effects on the tokens inside it and take them
-off those who leave; see the <a class="" href="/pr-preview/pr-21/release-notes/rqg-v6.2.0">6.2.0 release notes</a> for placing them.</p>
+<p>A spell&#x27;s effect shows on the token. Temporal spells last their duration.</p>
+<p>Spells that affect a place, like Shake Earth, Warding or Sanctify, make a scene Region instead. The
+caster places it, snapped to the grid, and the squares or hexes it will cover light up as it moves:</p>
+<ul>
+<li class=""><strong>Ranged spells</strong> must lie wholly within range, centered on a point the caster can see. The scene
+is dimmed outside what the caster&#x27;s token can see within range. For a point the caster perceives
+by magic, the GM places it in sight and then drags the Region where it belongs.</li>
+<li class=""><strong>Rituals</strong> can be placed anywhere, as a ritual is held where its area is. A ward is placed by
+clicking its four wands.</li>
+</ul>
+<p>The GM and the caster&#x27;s players see the area; a spell like Mist Cloud is seen by everyone. The area
+puts its effect on the tokens inside it and takes it off those who leave, and the GM can move or
+delete it like any Region. Areas measure in meters; see
+<a class="" href="/pr-preview/pr-21/rqg-system/getting-started/scenes">Setting Up Scenes</a> for the grid settings that match them.</p>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="8-when-it-ends">8. When it ends<a href="#8-when-it-ends" class="hash-link" aria-label="Direct link to 8. When it ends" title="Direct link to 8. When it ends" translate="no">​</a></h2>
 <p>A spell ends when its duration runs out, or when its effect is deleted: by Dispel or Dismiss Magic,
 by the GM, or used up, like Countermagic that stopped a spell within 1 point of it. Deleting a spell
