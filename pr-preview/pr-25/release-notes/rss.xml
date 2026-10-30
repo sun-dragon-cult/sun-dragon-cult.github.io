@@ -78,14 +78,18 @@ tells you the rqid it is looking for.</li>
 1 hit point per point on one location, and 6 points restore a severed limb. Heal Wound heals as
 many hit points as the magic points spent with it. Heal Body heals all damage and reattaches
 severed limbs.</li>
+<li class=""><strong>Disruption</strong> does 1D3 damage to a random hit location, which armor doesn't stop. Apply rolls the
+damage and the hit location in chat, like an attack, and then wounds the target. A GM must be
+logged in, since players can't damage someone else's actor.</li>
 <li class=""><strong>Countermagic</strong> and <strong>Shield</strong> stop spells cast at their target. A spell 2 or more points weaker
 than the Countermagic is stopped, one within a point of it is stopped but uses the Countermagic
 up, and a stronger one breaks it and goes on. Then the spell must be stronger than the Shield's
 defense.</li>
 <li class=""><strong>Harmony</strong> and <strong>Inviolable</strong> calm everyone their single resistance roll overcomes, for 15
 minutes. They remove weaker Fanaticism, Demoralize, Berserker, Madness and Arouse Passion, and
-stop them while they last; Inviolable stops weaker Fear too. The cast dialog can target everyone
-within range: 3 meters per point for Harmony, 3 meters for Inviolable.</li>
+stop them while they last; Inviolable stops weaker Fear too. The cast dialog lights up the area
+and targets everyone in it: 3 meters per point for Harmony, 3 meters for Inviolable.</li>
+<li class=""><strong>Turn Undead</strong> reaches one undead per point, and the cast dialog refuses more targets than that.</li>
 <li class=""><strong>Shake Earth</strong>, <strong>Warding</strong>, <strong>Create Market</strong>, <strong>Sanctify</strong>, <strong>Axis Mundi</strong> and <strong>Mist Cloud</strong>
 make an area on the scene.<!-- -->
 <ul>
@@ -95,15 +99,16 @@ skills and DEX rolls.</li>
 <li class=""><strong>Warding</strong> and <strong>Create Market</strong> are placed by clicking their four wands. A ward protects those
 inside with its Countermagic against spells cast from outside. A hostile intruder takes 1D3
 damage per point of the ward, ignoring armor, rolled in chat for its owner. The alarm is heard
-by everyone with a token within 160 meters, unless a wall that blocks sound is in the way, and
+by everyone with a token within 500 meters, unless a wall that blocks sound is in the way, and
 doesn't say who crossed; the GM is told who. A caster who has left their ward only hears it when
 in range.</li>
 <li class=""><strong>Sanctify</strong> alerts the caster when a non-initiate enters.</li>
 </ul>
 </li>
-<li class=""><strong>Reflection</strong> sends a spell that failed to overcome its target back at the caster, who must then
-resist it with their own POW. Each point reflects 2 points of spirit magic or 1 Rune point; a
-stronger spell isn't reflected.</li>
+<li class=""><strong>Reflection</strong> sends a spell that failed to overcome its target back at the caster. The caster's
+own Countermagic or Shield meets it first, then the caster must resist it with their own POW. Each
+point reflects 2 points of spirit magic or 1 Rune point; a stronger spell isn't reflected, and a
+spell is only reflected once.</li>
 <li class=""><strong>Berserker</strong>: attacks get half again, or double against a target with the Chaos rune. The
 berserker can't parry, dodge or cast spells, CON rolls succeed at 95%, and Countermagic 2 (4
 against a chaotic caster) protects them. When the spell ends, they are Helpless.</li>
