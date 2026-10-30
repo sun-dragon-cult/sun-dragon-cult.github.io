@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">How a Spell Is Resolved | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="How a Spell Is Resolved | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="description" content="This page follows a spell from the cast dialog to the effect on its target, in the order the system"><meta data-rh="true" property="og:description" content="This page follows a spell from the cast dialog to the effect on its target, in the order the system"><link data-rh="true" rel="icon" href="/pr-preview/pr-21/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Foundry Items","item":"https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/"},{"@type":"ListItem","position":2,"name":"How a Spell Is Resolved","item":"https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells"}]}</script><link rel="alternate" type="application/rss+xml" href="/pr-preview/pr-21/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/pr-preview/pr-21/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/pr-preview/pr-21/assets/css/styles.1168208c.css">
-<script src="/pr-preview/pr-21/assets/js/runtime~main.99b3ff87.js" defer="defer"></script>
+<script src="/pr-preview/pr-21/assets/js/runtime~main.6658a05f.js" defer="defer"></script>
 <script src="/pr-preview/pr-21/assets/js/main.fe0b9c01.js" defer="defer"></script>
 </head>
 <body>
@@ -24,8 +24,11 @@ The level is at least 1 and a boost at least 0.</p>
 instead, the caster included, whatever is targeted. The dialog says how far that is, and the
 squares or hexes it covers are lit up on the scene, growing and shrinking with the level. Tokens
 hidden from the caster&#x27;s player aren&#x27;t included; the GM handles those.</li>
-<li class=""><strong>Spells resisted by a single target</strong> refuse more than one target, and with none they ask whether
-to cast on yourself.</li>
+<li class=""><strong>Spells resisted by a single target</strong> take one target, picked in the dialog&#x27;s dropdown: the
+tokens you can see, nearest first, or &quot;(yourself)&quot;. Cast with no target, the card gets a pending
+&quot;No target&quot; row for the GM to rule on.</li>
+<li class=""><strong>Some spells reach a limited number of targets</strong>, like Turn Undead, one undead per point. The
+dialog says how many, and casting at more is refused.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="2-the-cast-roll">2. The cast roll<a href="#2-the-cast-roll" class="hash-link" aria-label="Direct link to 2. The cast roll" title="Direct link to 2. The cast roll" translate="no">​</a></h2>
 <p>The cast card shows the roll and the points spent. If the cast fails, no target is affected and
@@ -37,7 +40,7 @@ plus any boost. A 2-point Rune spell boosted with 1 magic point has strength 5.<
 area can react, once per cast:</p>
 <ul>
 <li class="">A <strong>ward</strong> (Warding or Create Market) sounds its alarm, heard by the GM and the players with
-tokens within 160 m.</li>
+tokens within 500 m.</li>
 <li class=""><strong>Sanctify</strong> alerts its caster that a spell crossed in. The caster&#x27;s players aren&#x27;t told whose;
 the GM is.</li>
 </ul>
@@ -56,9 +59,13 @@ pass them all.</p>
 <p>What happens next depends on the spell&#x27;s <strong>Resisted By</strong> field:</p>
 <table><thead><tr><th>Resisted By</th><th>What happens</th></tr></thead><tbody><tr><td><strong>None</strong></td><td>The spell takes effect on every target it reached.</td></tr><tr><td><strong>Resistance roll (single target)</strong></td><td>The target&#x27;s owner gets a resistance request: the caster&#x27;s POW against the target&#x27;s POW (or current magic points, as the spell says).</td></tr><tr><td><strong>Resistance roll, per target</strong></td><td>The same, one request per target, like Turn Undead.</td></tr><tr><td><strong>Resistance roll, whole area</strong></td><td>The caster makes one roll, and the card says which POW it affects, like &quot;affects POW 15 or lower&quot;. Every target is settled from that at once.</td></tr><tr><td><strong>Spirit combat</strong></td><td>The GM rules each target won or lost on the cast card, until spirit combat itself is automated.</td></tr></tbody></table>
 <p>A target may also accept the spell instead of resisting. Casting on yourself counts as accepting.</p>
-<p><strong>Reflection</strong> acts when the target&#x27;s resistance holds: if its Reflection is strong enough (each
-point turns back 2 points of spirit magic or 1 Rune point), the spell goes back at its caster as a
-new resistance request, and the card says so. A stronger spell isn&#x27;t reflected.</p>
+<p><strong>Reflection</strong> acts when the target&#x27;s resistance holds, by roll or by the GM&#x27;s ruling: if its
+Reflection is strong enough (each point turns back 2 points of spirit magic or 1 Rune point), the
+spell goes back at its caster, and the card says so. A stronger spell isn&#x27;t reflected, and the
+Reflection stays. On its way back the spell meets the caster&#x27;s own protective spells, as in step 4;
+if they stop it, the card reads &quot;No effect&quot; and nobody rolls. Otherwise the caster gets a resistance
+request: their POW when they cast it against their POW now. A spell is only reflected once, even if
+the caster has Reflection too.</p>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="6-apply">6. Apply<a href="#6-apply" class="hash-link" aria-label="Direct link to 6. Apply" title="Direct link to 6. Apply" translate="no">​</a></h2>
 <p>Each target the spell takes effect on gets an <strong>Apply</strong> button on the card, for that target&#x27;s owner.
 What it does depends on the spell: it puts the spell&#x27;s effect on the target, or runs the spell&#x27;s

@@ -180,23 +180,29 @@ make the ruler and the spell areas agree. Hex and gridless scenes aren't affecte
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1076" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1076</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1077" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1077</label></a>
 <p>A spell that the target can resist, like Sleep, Befuddle or Slow, now checks its target before any
-magic points are spent. It asks for confirmation if you have no target (a cast on yourself), and
-stops if you have more than one. The cast then posts a single card to the target's owner, who
-chooses <strong>Resist</strong> or <strong>Accept</strong>. The resistance roll pits the caster's POW against the target's POW
-on the resistance table. The target doesn't see which spell it is until it takes effect.</p>
+magic points are spent. The cast dialog picks the target from the tokens you can see, nearest first,
+or yourself. Cast with no target, the card waits for the GM to rule on it. The cast then posts a
+single card to the target's owner, who chooses <strong>Resist</strong> or <strong>Accept</strong>. The resistance roll pits
+the caster's POW against the target's POW on the resistance table. The target doesn't see which
+spell it is until it takes effect.</p>
+<p>Before anyone resists, each target's Countermagic, Shield or ward meets the spell, and a spell they
+stop has no effect on that target and asks for no roll. This works for every spell, automated or
+not.</p>
 <p>Some spells resist differently:</p>
 <ul>
 <li class=""><strong>One roll per target.</strong> Turn Undead and Teleportation can be cast at several targets, and each
 target resists or accepts on its own card. Undead have no POW, so Turn Undead is resisted with the
-target's current magic points.</li>
+target's current magic points, and it reaches one undead per point.</li>
 <li class=""><strong>Spirit combat.</strong> Bind Ghost and Resurrect only work if the caster wins spirit combat. Until
 spirit combat is automated, the cast card waits for the GM to rule whether the caster won.</li>
-<li class=""><strong>Area spells.</strong> Harmony and Inviolable make one resistance roll for everyone the caster targets,
+<li class=""><strong>Area spells.</strong> Harmony and Inviolable make one resistance roll for everyone within their radius,
 the caster included, and the card says what it overcomes, for example "affects POW 15 or lower".
 Inviolable's own text reads the resistance table the other way round; it uses the same reading as
-Harmony and every other resistance roll. The cast dialog can target everyone in range for you.</li>
+Harmony and every other resistance roll. The cast dialog lights up the area and targets everyone
+in it for you.</li>
 <li class=""><strong>Reflection.</strong> A spell that fails against a target protected by Reflection is sent back at its
-caster, who then resists it with their own POW.<!-- -->
+caster. The caster's own Countermagic or Shield meets it first, then the caster resists it with
+their own POW. A spell is only reflected once.<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1178" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1178</label></a>
 </li>
 </ul>
@@ -272,7 +278,9 @@ the chance that's rolled. A "pre" hook runs once, when the roll is made, and can
 <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/hooks">Roll hooks</a>.</p>
 <p>Modules can also make a skill do something after it's rolled, the way the wiki module's First Aid
 heals a wound, and a spell's effect can change rolls through roll entries, like Berserker and
-Fanaticism. See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors">Behaviors</a>.</p>
+Fanaticism. A spell's behavior can also make a spell area on the scene, limit how many targets the
+spell reaches, and roll its damage and hit location like an attack. See
+<a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors">Behaviors</a>.</p>
 <p>The old methods still work until RQG 6.4.0, but log a warning in the browser console that names the
 replacement:</p>
 <table><thead><tr><th>Old method</th><th>Replacement</th></tr></thead><tbody><tr><td><code>item.abilityRoll</code> / <code>item.abilityRollImmediate</code></td><td><code>item.roll</code></td></tr><tr><td><code>actor.characteristicRoll</code> / <code>actor.characteristicRollImmediate</code></td><td><code>actor.rollCharacteristic</code></td></tr><tr><td><code>actor.reputationRoll</code> / <code>actor.reputationRollImmediate</code></td><td><code>actor.rollReputation</code></td></tr><tr><td><code>item.spiritMagicRoll</code> / <code>item.spiritMagicRollImmediate</code></td><td><code>item.cast</code></td></tr><tr><td><code>item.runeMagicRoll</code> / <code>item.runeMagicRollImmediate</code></td><td><code>item.cast</code></td></tr></tbody></table>
