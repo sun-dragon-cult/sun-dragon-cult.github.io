@@ -19,8 +19,11 @@ The level is at least 1 and a boost at least 0.
   instead, the caster included, whatever is targeted. The dialog says how far that is, and the
   squares or hexes it covers are lit up on the scene, growing and shrinking with the level. Tokens
   hidden from the caster's player aren't included; the GM handles those.
-- **Spells resisted by a single target** refuse more than one target, and with none they ask whether
-  to cast on yourself.
+- **Spells resisted by a single target** take one target, picked in the dialog's dropdown: the
+  tokens you can see, nearest first, or "(yourself)". Cast with no target, the card gets a pending
+  "No target" row for the GM to rule on.
+- **Some spells reach a limited number of targets**, like Turn Undead, one undead per point. The
+  dialog says how many, and casting at more is refused.
 
 ## 2. The cast roll
 
@@ -36,7 +39,7 @@ A spell cast from outside a spell area at a target inside it crosses the area's 
 area can react, once per cast:
 
 - A **ward** (Warding or Create Market) sounds its alarm, heard by the GM and the players with
-  tokens within 160 m.
+  tokens within 500 m.
 - **Sanctify** alerts its caster that a spell crossed in. The caster's players aren't told whose;
   the GM is.
 
@@ -75,9 +78,13 @@ What happens next depends on the spell's **Resisted By** field:
 
 A target may also accept the spell instead of resisting. Casting on yourself counts as accepting.
 
-**Reflection** acts when the target's resistance holds: if its Reflection is strong enough (each
-point turns back 2 points of spirit magic or 1 Rune point), the spell goes back at its caster as a
-new resistance request, and the card says so. A stronger spell isn't reflected.
+**Reflection** acts when the target's resistance holds, by roll or by the GM's ruling: if its
+Reflection is strong enough (each point turns back 2 points of spirit magic or 1 Rune point), the
+spell goes back at its caster, and the card says so. A stronger spell isn't reflected, and the
+Reflection stays. On its way back the spell meets the caster's own protective spells, as in step 4;
+if they stop it, the card reads "No effect" and nobody rolls. Otherwise the caster gets a resistance
+request: their POW when they cast it against their POW now. A spell is only reflected once, even if
+the caster has Reflection too.
 
 ## 6. Apply
 
