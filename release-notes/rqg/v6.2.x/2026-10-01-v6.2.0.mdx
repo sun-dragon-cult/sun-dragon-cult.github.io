@@ -239,24 +239,31 @@ make the ruler and the spell areas agree. Hex and gridless scenes aren't affecte
 <GithubIssue issue="1077" repo="fvtt-system-rqg" />
 
 A spell that the target can resist, like Sleep, Befuddle or Slow, now checks its target before any
-magic points are spent. It asks for confirmation if you have no target (a cast on yourself), and
-stops if you have more than one. The cast then posts a single card to the target's owner, who
-chooses **Resist** or **Accept**. The resistance roll pits the caster's POW against the target's POW
-on the resistance table. The target doesn't see which spell it is until it takes effect.
+magic points are spent. The cast dialog picks the target from the tokens you can see, nearest first,
+or yourself. Cast with no target, the card waits for the GM to rule on it. The cast then posts a
+single card to the target's owner, who chooses **Resist** or **Accept**. The resistance roll pits
+the caster's POW against the target's POW on the resistance table. The target doesn't see which
+spell it is until it takes effect.
+
+Before anyone resists, each target's Countermagic, Shield or ward meets the spell, and a spell they
+stop has no effect on that target and asks for no roll. This works for every spell, automated or
+not.
 
 Some spells resist differently:
 
 - **One roll per target.** Turn Undead and Teleportation can be cast at several targets, and each
   target resists or accepts on its own card. Undead have no POW, so Turn Undead is resisted with the
-  target's current magic points.
+  target's current magic points, and it reaches one undead per point.
 - **Spirit combat.** Bind Ghost and Resurrect only work if the caster wins spirit combat. Until
   spirit combat is automated, the cast card waits for the GM to rule whether the caster won.
-- **Area spells.** Harmony and Inviolable make one resistance roll for everyone the caster targets,
+- **Area spells.** Harmony and Inviolable make one resistance roll for everyone within their radius,
   the caster included, and the card says what it overcomes, for example "affects POW 15 or lower".
   Inviolable's own text reads the resistance table the other way round; it uses the same reading as
-  Harmony and every other resistance roll. The cast dialog can target everyone in range for you.
+  Harmony and every other resistance roll. The cast dialog lights up the area and targets everyone
+  in it for you.
 - **Reflection.** A spell that fails against a target protected by Reflection is sent back at its
-  caster, who then resists it with their own POW.
+  caster. The caster's own Countermagic or Shield meets it first, then the caster resists it with
+  their own POW. A spell is only reflected once.
   <GithubIssue issue="1178" repo="fvtt-system-rqg" />
 
 The GM can also send any resistance roll to a player, for example STR against a trap, from the actor
@@ -356,7 +363,9 @@ the chance that's rolled. A "pre" hook runs once, when the roll is made, and can
 
 Modules can also make a skill do something after it's rolled, the way the wiki module's First Aid
 heals a wound, and a spell's effect can change rolls through roll entries, like Berserker and
-Fanaticism. See [Behaviors](/rqg-system/api/behaviors).
+Fanaticism. A spell's behavior can also make a spell area on the scene, limit how many targets the
+spell reaches, and roll its damage and hit location like an attack. See
+[Behaviors](/rqg-system/api/behaviors).
 
 The old methods still work until RQG 6.4.0, but log a warning in the browser console that names the
 replacement:
