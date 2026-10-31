@@ -86,7 +86,8 @@ Apply is offered for each target the spell affected, so not for a target that re
 - `spell`, the cast spell item
 - `targetActor` and `targetName`, the target Apply was clicked for
 - `cast`, with the `level` cast at, the `magicPointsSpent` and `runePointsSpent`, the
-  `casterSuccessLevel` and the `casterUuid`
+  `casterSuccessLevel`, the caster's `casterActorUuid` and the `casterTokenUuid` they cast from
+  (`""` when they cast without a token)
 - `duration`, what the effect of a Temporal spell lasts, otherwise undefined
 
 `onIncomingSpell` gets the same, plus `effects`: this spell's effects on the target. It runs on the
@@ -98,11 +99,16 @@ Spells that register the same `onIncomingSpell` function are decided together, w
 wiki's Countermagic and Shield handle layered defenses.
 
 `onResisted` gets the same as `onIncomingSpell`. It runs when the actor's resistance roll held
-against a spell, on the client of whoever rolled it. Return `{ outcome: "reflected" }` to send the
+against a spell, by roll or by GM ruling, on the active GM's client. Show the target's owners
+anything they should see with a whispered chat message, since a notification would only reach the
+GM. Return `{ outcome: "reflected" }` to send the
 spell back at its caster. The caster's own `onIncomingSpell` spells meet it first, and if they let it
 through, the system posts a new resistance card aimed at the caster: their POW when they cast it
-against their POW now. A reflected spell is never reflected again. A GM ruling that the target
-resisted counts as a held roll.
+against their POW now. A reflected spell is never reflected again.
+
+Every hook but `apply` runs on the active GM's client, which is where a cast's state changes, so a
+GM must be logged in for a cast to get past its cast roll. `apply` runs on the client of whoever
+clicks Apply, so the target's owner can be asked which weapon or which wounds.
 
 `onEnd` gets `{ effect }`, the effect that ended. An effect that expired is deleted after its
 `onEnd` has run.
@@ -175,7 +181,8 @@ higher priority can replace it.
 `game.system.api.spellEffects` has helpers for common things:
 
 - `summon` places a token next to the caster that goes away when its effect ends.
-- `list` and `removeSpellEffects` find and remove the spell effects on an actor.
+- `list` and `removeSpellEffects` find and remove the spell effects on an actor. The removal filter
+  takes `spellRqid`, `casterActorUuid` and `maxLevel`.
 - `castPoints` is how strong a cast is against defenses: its magic points plus double its rune
   points. The wiki's Countermagic and Shield use it.
 - `effectRemovalCost` is how many points of Dispel Magic it takes to remove a spell effect.
