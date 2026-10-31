@@ -92,7 +92,7 @@ Apply is offered for each target the spell affected, so not for a target that re
 
 `onIncomingSpell` gets the same, plus `effects`: this spell's effects on the target. It runs on the
 active GM's client, once per target, right after a successful cast roll and before anyone resists,
-or on Apply when the GM adds the spell from the token HUD.
+or, when the spell is added from the token HUD, on the client of whoever adds it.
 Return `{ outcome: "stopped" }` to stop the incoming spell, or `{ outcome: "pass" }` to let it
 through. It doesn't run for a spell the target casts on itself.
 Spells that register the same `onIncomingSpell` function are decided together, which is how the
