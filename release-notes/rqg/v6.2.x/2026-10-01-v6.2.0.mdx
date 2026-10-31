@@ -240,14 +240,18 @@ make the ruler and the spell areas agree. Hex and gridless scenes aren't affecte
 
 A spell that the target can resist, like Sleep, Befuddle or Slow, now checks its target before any
 magic points are spent. The cast dialog picks the target from the tokens you can see, nearest first,
-or yourself. Cast with no target, the card waits for the GM to rule on it. The cast then posts a
-single card to the target's owner, who chooses **Resist** or **Accept**. The resistance roll pits
-the caster's POW against the target's POW on the resistance table. The target doesn't see which
-spell it is until it takes effect.
+or yourself. Cast with no target, the card waits for the GM to rule on it; a spell that can only go
+on you or your weapon, like Bladesharp, goes on you. The cast then posts a single card to the
+target's owner, who chooses **Resist** or **Accept**. The resistance roll pits the caster's POW
+against the target's POW on the resistance table. The target doesn't see which spell it is until it
+takes effect.
 
 Before anyone resists, each target's Countermagic, Shield or ward meets the spell, and a spell they
 stop has no effect on that target and asks for no roll. This works for every spell, automated or
 not.
+
+A cast is settled on the GM's client, so a GM must be logged in for a spell to get past its cast
+roll. A spell cast while no GM is connected waits on its card and goes on when one logs in.
 
 Some spells resist differently:
 
