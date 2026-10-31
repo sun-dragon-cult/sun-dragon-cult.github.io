@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Behaviors | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Behaviors | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="description" content="A behavior is a small script in a module that makes a spell or a skill do something when Apply"><meta data-rh="true" property="og:description" content="A behavior is a small script in a module that makes a spell or a skill do something when Apply"><link data-rh="true" rel="icon" href="/pr-preview/pr-21/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"API","item":"https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/"},{"@type":"ListItem","position":2,"name":"Behaviors","item":"https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/behaviors"}]}</script><link rel="alternate" type="application/rss+xml" href="/pr-preview/pr-21/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/pr-preview/pr-21/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/pr-preview/pr-21/assets/css/styles.1168208c.css">
-<script src="/pr-preview/pr-21/assets/js/runtime~main.6658a05f.js" defer="defer"></script>
+<script src="/pr-preview/pr-21/assets/js/runtime~main.01701158.js" defer="defer"></script>
 <script src="/pr-preview/pr-21/assets/js/main.fe0b9c01.js" defer="defer"></script>
 </head>
 <body>
@@ -48,7 +48,8 @@ stop the others.</li>
 <li class=""><code>spell</code>, the cast spell item</li>
 <li class=""><code>targetActor</code> and <code>targetName</code>, the target Apply was clicked for</li>
 <li class=""><code>cast</code>, with the <code>level</code> cast at, the <code>magicPointsSpent</code> and <code>runePointsSpent</code>, the
-<code>casterSuccessLevel</code> and the <code>casterUuid</code></li>
+<code>casterSuccessLevel</code>, the caster&#x27;s <code>casterActorUuid</code> and the <code>casterTokenUuid</code> they cast from
+(<code>&quot;&quot;</code> when they cast without a token)</li>
 <li class=""><code>duration</code>, what the effect of a Temporal spell lasts, otherwise undefined</li>
 </ul>
 <p><code>onIncomingSpell</code> gets the same, plus <code>effects</code>: this spell&#x27;s effects on the target. It runs on the
@@ -59,11 +60,15 @@ through. It doesn&#x27;t run for a spell the target casts on itself.
 Spells that register the same <code>onIncomingSpell</code> function are decided together, which is how the
 wiki&#x27;s Countermagic and Shield handle layered defenses.</p>
 <p><code>onResisted</code> gets the same as <code>onIncomingSpell</code>. It runs when the actor&#x27;s resistance roll held
-against a spell, on the client of whoever rolled it. Return <code>{ outcome: &quot;reflected&quot; }</code> to send the
+against a spell, by roll or by GM ruling, on the active GM&#x27;s client. Show the target&#x27;s owners
+anything they should see with a whispered chat message, since a notification would only reach the
+GM. Return <code>{ outcome: &quot;reflected&quot; }</code> to send the
 spell back at its caster. The caster&#x27;s own <code>onIncomingSpell</code> spells meet it first, and if they let it
 through, the system posts a new resistance card aimed at the caster: their POW when they cast it
-against their POW now. A reflected spell is never reflected again. A GM ruling that the target
-resisted counts as a held roll.</p>
+against their POW now. A reflected spell is never reflected again.</p>
+<p>Every hook but <code>apply</code> runs on the active GM&#x27;s client, which is where a cast&#x27;s state changes, so a
+GM must be logged in for a cast to get past its cast roll. <code>apply</code> runs on the client of whoever
+clicks Apply, so the target&#x27;s owner can be asked which weapon or which wounds.</p>
 <p><code>onEnd</code> gets <code>{ effect }</code>, the effect that ended. An effect that expired is deleted after its
 <code>onEnd</code> has run.</p>
 <p>A spell whose effect is a place uses <code>game.system.api.spellEffects.createArea(scope, options)</code> in
@@ -109,7 +114,8 @@ higher priority can replace it.</p>
 <p><code>game.system.api.spellEffects</code> has helpers for common things:</p>
 <ul>
 <li class=""><code>summon</code> places a token next to the caster that goes away when its effect ends.</li>
-<li class=""><code>list</code> and <code>removeSpellEffects</code> find and remove the spell effects on an actor.</li>
+<li class=""><code>list</code> and <code>removeSpellEffects</code> find and remove the spell effects on an actor. The removal filter
+takes <code>spellRqid</code>, <code>casterActorUuid</code> and <code>maxLevel</code>.</li>
 <li class=""><code>castPoints</code> is how strong a cast is against defenses: its magic points plus double its rune
 points. The wiki&#x27;s Countermagic and Shield use it.</li>
 <li class=""><code>effectRemovalCost</code> is how many points of Dispel Magic it takes to remove a spell effect.</li>

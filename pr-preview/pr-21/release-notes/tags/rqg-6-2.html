@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">One post tagged with &quot;rqg-6-2&quot; | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/tags/rqg-6-2"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" property="og:title" content="One post tagged with &quot;rqg-6-2&quot; | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="docusaurus_tag" content="blog_tags_posts"><meta data-rh="true" name="docsearch:docusaurus_tag" content="blog_tags_posts"><link data-rh="true" rel="icon" href="/pr-preview/pr-21/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/tags/rqg-6-2"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/tags/rqg-6-2" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/tags/rqg-6-2" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/pr-preview/pr-21/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/pr-preview/pr-21/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/pr-preview/pr-21/assets/css/styles.1168208c.css">
-<script src="/pr-preview/pr-21/assets/js/runtime~main.6658a05f.js" defer="defer"></script>
+<script src="/pr-preview/pr-21/assets/js/runtime~main.01701158.js" defer="defer"></script>
 <script src="/pr-preview/pr-21/assets/js/main.fe0b9c01.js" defer="defer"></script>
 </head>
 <body>
@@ -179,13 +179,16 @@ make the ruler and the spell areas agree. Hex and gridless scenes aren&#x27;t af
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1077" target="_blank"><label><img src="/img/github-mark.svg" width="13.5px"> #<!-- -->1077</label></a>
 <p>A spell that the target can resist, like Sleep, Befuddle or Slow, now checks its target before any
 magic points are spent. The cast dialog picks the target from the tokens you can see, nearest first,
-or yourself. Cast with no target, the card waits for the GM to rule on it. The cast then posts a
-single card to the target&#x27;s owner, who chooses <strong>Resist</strong> or <strong>Accept</strong>. The resistance roll pits
-the caster&#x27;s POW against the target&#x27;s POW on the resistance table. The target doesn&#x27;t see which
-spell it is until it takes effect.</p>
+or yourself. Cast with no target, the card waits for the GM to rule on it; a spell that can only go
+on you or your weapon, like Bladesharp, goes on you. The cast then posts a single card to the
+target&#x27;s owner, who chooses <strong>Resist</strong> or <strong>Accept</strong>. The resistance roll pits the caster&#x27;s POW
+against the target&#x27;s POW on the resistance table. The target doesn&#x27;t see which spell it is until it
+takes effect.</p>
 <p>Before anyone resists, each target&#x27;s Countermagic, Shield or ward meets the spell, and a spell they
 stop has no effect on that target and asks for no roll. This works for every spell, automated or
 not.</p>
+<p>A cast is settled on the GM&#x27;s client, so a GM must be logged in for a spell to get past its cast
+roll. A spell cast while no GM is connected waits on its card and goes on when one logs in.</p>
 <p>Some spells resist differently:</p>
 <ul>
 <li class=""><strong>One roll per target.</strong> Turn Undead and Teleportation can be cast at several targets, and each
