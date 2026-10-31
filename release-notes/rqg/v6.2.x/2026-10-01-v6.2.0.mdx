@@ -1,0 +1,427 @@
+---
+slug: rqg-v6.2.0
+title: RQG 6.2.0
+tags:
+  - rqg
+  - rqg-6
+  - rqg-6-2
+---
+
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-system-rqg/releases/download/v6.2.0/system.json)
+![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-system-rqg/v6.2.0/rqg.zip)
+
+This release's headline feature is spell effects. Cast a spell such as Bladesharp, Protection or
+Strength, and when it takes effect, the target's owner clicks Apply on the chat card to put the
+spell's effect on the right actor or weapon, with the right level and duration. Casting the same
+spell again, or a spell that can't share a target with one already there, is handled for you, and
+every spell on a token shows at the top of the token HUD, where the GM can open, remove or add one.
+
+It builds on resisted spells: a spell like Sleep or Befuddle now hands the target's owner a card to
+resist or accept, and rolls POW against POW on the resistance table.
+
+Active Effects get more capable too: an effect on an actor can now change the actor's items, such as
+one skill, every hit location, or the weapon it's on.
+
+Alongside that, a new actor can start from a template actor, and many more things can be dragged to
+the hotbar.
+
+## Spell Effects
+
+<GithubIssue issue="443" repo="fvtt-system-rqg" />
+<GithubIssue issue="1079" repo="fvtt-system-rqg" />
+
+### Casting and applying
+
+<GithubIssue issue="1078" repo="fvtt-system-rqg" />
+
+The spell card now shows one row per target, saying whether the spell took effect. If the outcome
+needs a judgment call, the GM can rule on each row: takes effect, or no effect. When the spell took
+effect, the target's owner gets an **Apply** button. Clicking it puts the spell's effect on the
+target:
+
+- A spell that works on a weapon, like Bladesharp or Fireblade, goes on the target's equipped weapon
+  it fits, and asks which one if there's more than one.
+- Any other spell goes on the target itself.
+- The effect is named after the spell and its level, like "Bladesharp (3)", and lasts the spell's
+  duration: 2 minutes for spirit magic, 15 minutes for rune magic. A few effects have a longer
+  duration of their own, like Catseye's 12 hours.
+
+{/* TODO screenshot: a spell card with an Apply button, and the applied effect */}
+
+### Which spells have effects
+
+The spell effects ship with wiki module 2.1.0, which has an effect for every spirit and rune spell
+that lasts for a while. Some change the sheet, like Strength raising STR or Bladesharp adding to the
+weapon's attack and damage. The others are reminders that show the spell is active until it runs
+out. See the [Wiki 2.1.0 release notes](https://sun-dragon-cult.github.io/release-notes/wiki-v2.1.0)
+for the full list.
+
+:::warning Update the wiki module first
+
+Update the RQG wiki module to 2.1.0 **before** the system. When the world is upgraded, the migration
+links the spells already on your actors to their effects by looking them up in the wiki module's
+compendiums. If the wiki module is still the old version, those spells get no effect link. If that
+happens, update the wiki module and run the migration again: as the GM, click Trigger World
+Migration in the Game Settings sidebar tab. The world reloads and migrates again, and this time the
+spells get their links. Links that are already there are left alone, so running it again is safe.
+
+:::
+
+### Recasting and incompatible spells
+
+By the rules, casting a spell on a target that already has the same spell only works if the new
+casting is stronger, and some spells can't be on the same target at once. For example, Bladesharp
+and Fireblade can't share a weapon, and neither can Protection and Shimmer on a person. When a spell
+has no effect for one of these reasons, Apply tells you why and the card records it. Only the
+target's owner sees the reason.
+
+The world setting **Recast Spells Take Effect** chooses the rule: **Only if stronger** (the rules as
+written) or **Always**, where every new casting replaces the old one.
+
+### Berserker and Fanaticism
+
+<GithubIssue issue="1170" repo="fvtt-system-rqg" />
+
+Berserker and Fanaticism now change the rolls of whoever has them, and the roll dialogs show it:
+
+- **Berserker:** attacks get half again, or double against a creature with the Chaos rune. Parrying,
+  dodging and casting aren't allowed: the dialog says why and can't roll. CON is increased by half,
+  CON rolls succeed at 95%, and the berserker has Countermagic 2, or 4 against spells from chaotic
+  casters. When the spell ends, the berserker becomes Helpless. Berserker replaces a Fanaticism on
+  the target.
+- **Fanaticism:** attacks get half again, parrying isn't allowed and Dodge is halved. Which spells a
+  fanatic may still cast is up to the GM.
+
+Being preserved from shock and unconsciousness while berserk is also up to the GM. The harpy in the
+wiki module now has the Chaos rune.
+
+### Spell effects on the token
+
+A token's spell effects are shown at the top of the token HUD's status palette, above the condition
+markers, with their name, the item they're on and the time left. The GM can click one to open it,
+right-click to remove it, or change its level on the effect's sheet.
+
+Hovering over an effect also says what it does. **Has automated effects** means it changes the sheet
+or its spell's rules act while it is on, like Bladesharp or Warding. **Only marks the spell while it
+lasts** means the GM rules on what it does, like Befuddle. A partly automated effect adds what is
+left to the GM, for example "Not automated: −1 strike rank" on Mobility.
+
+When a spell runs out, its effect is removed from the token and its item.
+
+The GM can also add a spell effect without casting, for example for a spell cast before the scene
+started. Click the **+** in the same section, search for the spell, set its level, and click Add.
+
+{/* TODO screenshot: the token HUD with the spell effect section and the + picker */}
+
+### Token status markers
+
+Because spells now show on tokens as spell effects, the token HUD's status palette no longer holds
+spell markers. Protection, Strength, Bladesharp and the other spell statuses are gone, and so are
+Ironhand, Parry and the 1–6 counters. The counters were a way to note a spell's level, which the
+spell effect's name now shows.
+
+The palette now has general condition markers only. The new ones are Helpless, Concentrating, In
+Spirit Combat, Discorporate, Possessed, Invisible, Flying and Burning, and Restrained is now called
+Immobilized.
+
+:::note Upgrading
+
+A spell status that is already on a token when you upgrade stays on it as an ordinary effect until
+it runs out. You can also delete it from the actor's Effects tab. For a spell that has no spell
+effect yet, add a plain effect on the actor's Effects tab.
+
+:::
+
+## Healing
+
+<GithubIssue issue="1171" repo="fvtt-system-rqg" />
+
+The heal button on a hit location now opens one dialog for the whole actor. It lists every wounded
+location with its hit points and wounds, with the clicked location's largest wound selected. Heal
+one wound by up to the chosen points, the way First Aid treats one injury at a time, or switch to
+**Remove All Damage** to clear every location at once.
+
+A severed limb is no longer reattached just because 6 or more points were healed on it. Tick
+**Reattach** next to its wounds instead, since whether all parts are at hand is the GM's call.
+
+Heal, Heal Wound and Heal Body now heal when you click Apply on their cast card:
+
+- **Heal** puts its points on one location. Click a wound to heal it first; the rest of the points
+  go to the location's other wounds. With 6 points it can reattach a severed limb.
+- **Heal Wound** heals as many hit points as the magic points spent with it. Click the dots under
+  each wound to choose where the healing goes. With 6 magic points it can reattach one severed limb.
+- **Heal Body** heals every location and the total hit points, and reattaches severed limbs.
+
+First Aid works the same way. Target the wounded token, or no one to treat yourself, and roll First
+Aid. On a success the roll card gets an Apply button: it asks which wound to treat, then rolls the
+healing (1D3, 2D3 on a special, 1D3+3 on a critical) for that wound. On a fumble Apply asks which
+location was treated and does 1D3 damage to it instead. Stopping bleeding and treating each injury
+only once are still up to the GM. This needs the wiki module.
+
+{/* TODO screenshot: the Heal Wound dialog with dots */}
+
+## Active Effects That Change an Actor's Items
+
+<GithubIssue issue="920" repo="fvtt-system-rqg" />
+
+Active Effects that change a value on the actor's items have a new, more versatile key format.
+Before, such a change had to use the **Custom** change type and could only add to the value. Now it
+can use all of Foundry's change types. For example, it can raise one skill, add armor to every hit
+location, or improve the weapon it's on. Start the change's key with `@`, followed by which items to
+change, a `:`, and the path of the value:
+
+| Key                       | Changes                                              | Example                                                 |
+| ------------------------- | ---------------------------------------------------- | ------------------------------------------------------- |
+| `@<rqid>:system.<path>`   | The actor's item with that rqid                      | `@i.skill.dodge:system.baseChance`, add 10              |
+| `@~<regex>:system.<path>` | Every item whose rqid matches the regular expression | `@~^i\.hit-location\.:system.naturalAp`, add 2          |
+| `@.:system.<path>`        | The item the effect is on                            | `@.:system.effect.add.melee.attack` on a weapon, add 10 |
+
+- **Change types:** these changes use Foundry's normal types, Add, Multiply, Override, Upgrade and
+  Downgrade, just like any other key. Keys that don't start with `@` work exactly as they do in
+  Foundry.
+- **Weapon bonuses:** the `system.effect.add` values are bonuses added on top of a value. A weapon
+  has them for melee and missile attack, parry and damage. The damage bonus is new in this release,
+  and a weapon's rolled damage never goes below 0.
+- **Spell level:** in an effect that comes from a spell, `@level` in the value is the level the
+  spell was cast at. For example, Bladesharp adds `@level * 5` to attack.
+- **Warnings:** a key that can't be used, such as a mistyped rqid, an rqid the actor has no item
+  for, or a change type a bonus can't use, shows the GM a warning saying what's wrong. When the
+  world loads, these are collected into one summary.
+
+See [Rqid](/rqg-system/api/rqid) for the bonus values you can change and more examples.
+
+:::warning Changed keys
+
+Before this release, a key like `i.skill.dodge:system.baseChance` on the **Custom** change type
+changed an item. The world migration rewrites these to the new form,
+`@i.skill.dodge:system.baseChance` on **Add**, so they keep doing the same thing. A key in the old
+form that the migration can't reach, such as one typed afterwards or in a module's compendium, shows
+the GM a warning and does nothing until it's updated.
+
+:::
+
+## Spell Areas on the Scene
+
+<GithubIssue issue="1168" repo="fvtt-system-rqg" />
+
+Spells that affect a place, like Shake Earth, Warding or Sanctify, now make a scene Region. The
+caster places it, snapped to the scene's grid, and the squares or hexes it will cover light up as it
+moves:
+
+- **Ranged spells** must lie wholly within range, centered on a point the caster can see. The scene
+  is dimmed outside what the caster's token can see within range, and the area can't be placed
+  there. For a point the caster perceives by magic, the GM places it in sight and then drags the
+  Region where it belongs.
+- **Rituals** can be placed anywhere, as a ritual is held where its area is. A ward is placed by
+  clicking its four wands.
+
+The GM and the caster's players see the area; a spell like Mist Cloud is seen by everyone. The area
+ends when the spell does, and the GM can move or delete it like any Region. With the wiki module,
+Shake Earth hinders everyone inside, wards strike hostile intruders and stop spells cast from
+outside, and Sanctify tells the caster when a non-initiate or a spell crosses into it.
+
+:::info
+
+Spell areas measure true distance in meters, as the rules do. On square grids, Foundry's default
+counts a diagonal step as one space, so the movement ruler lets tokens go about 40% farther
+diagonally than the rules allow. Set **Configure Settings → Core → Grid Diagonals** to **Exact** to
+make the ruler and the spell areas agree. Hex and gridless scenes aren't affected. See
+[Setting Up Scenes](/rqg-system/getting-started/scenes).
+
+:::
+
+## Resisted Spells and Resistance Rolls
+
+<GithubIssue issue="757" repo="fvtt-system-rqg" />
+<GithubIssue issue="758" repo="fvtt-system-rqg" />
+<GithubIssue issue="1066" repo="fvtt-system-rqg" />
+<GithubIssue issue="1076" repo="fvtt-system-rqg" />
+<GithubIssue issue="1077" repo="fvtt-system-rqg" />
+
+A spell that the target can resist, like Sleep, Befuddle or Slow, now checks its target before any
+magic points are spent. The cast dialog picks the target from the tokens you can see, nearest first,
+or yourself. Cast with no target, the card waits for the GM to rule on it; a spell that can only go
+on you or your weapon, like Bladesharp, goes on you. The cast then posts a single card to the
+target's owner, who chooses **Resist** or **Accept**. The resistance roll pits the caster's POW
+against the target's POW on the resistance table. The target doesn't see which spell it is until it
+takes effect.
+
+Before anyone resists, each target's Countermagic, Shield or ward meets the spell, and a spell they
+stop has no effect on that target and asks for no roll. This works for every spell, automated or
+not.
+
+A cast is settled on the GM's client, so a GM must be logged in for a spell to get past its cast
+roll. A spell cast while no GM is connected waits on its card and goes on when one logs in.
+
+Some spells resist differently:
+
+- **One roll per target.** Turn Undead and Teleportation can be cast at several targets, and each
+  target resists or accepts on its own card. Undead have no POW, so Turn Undead is resisted with the
+  target's current magic points, and it reaches one undead per point.
+- **Spirit combat.** Bind Ghost and Resurrect only work if the caster wins spirit combat. Until
+  spirit combat is automated, the cast card waits for the GM to rule whether the caster won.
+- **Area spells.** Harmony and Inviolable make one resistance roll for everyone within their radius,
+  the caster included, and the card says what it overcomes, for example "affects POW 15 or lower".
+  Inviolable's own text reads the resistance table the other way round; it uses the same reading as
+  Harmony and every other resistance roll. The cast dialog lights up the area and targets everyone
+  in it for you.
+- **Reflection.** A spell that fails against a target protected by Reflection is sent back at its
+  caster. The caster's own Countermagic or Shield meets it first, then the caster resists it with
+  their own POW. A spell is only reflected once.
+  <GithubIssue issue="1178" repo="fvtt-system-rqg" />
+
+The GM can also send any resistance roll to a player, for example STR against a trap, from the actor
+sheet's Combat tab, the combat tracker, the Actors sidebar, or a Token HUD button. The Token HUD
+button can be turned off in the settings.
+
+{/* TODO screenshot: a resistance card with Resist and Accept */}
+
+## Start a New Actor from a Template
+
+<GithubIssue issue="636" repo="fvtt-system-rqg" />
+<GithubIssue issue="778" repo="fvtt-system-rqg" />
+<GithubIssue issue="1055" repo="fvtt-system-rqg" />
+
+Foundry's **Create Actor** dialog has a new **Start from** choice. **Blank** works as before, and
+**Choose template...** opens a list of template actors from the world and the compendiums. The wiki
+module provides templates for adventurers, like "Human (Base)" and "Mostali (Dwarf)", and for
+creatures, like animals, chaos monsters, elementals, mounts and spirits. Search the list by name, or
+filter it by class, role and species. The new actor is a copy of the template, with all its items.
+
+See [Creating an Adventurer](/rqg-system/getting-started/creating-actor) for how to make your own
+actors show up as templates.
+
+{/* TODO screenshot: the template picker */}
+
+## Hotbar Drag-and-Drop
+
+<GithubIssue issue="402" repo="fvtt-system-rqg" />
+<GithubIssue issue="874" repo="fvtt-system-rqg" />
+<GithubIssue issue="1059" repo="fvtt-system-rqg" />
+<GithubIssue issue="1060" repo="fvtt-system-rqg" />
+
+- A **weapon** on the hotbar now opens its attack dialog, and a **spirit or rune magic spell** opens
+  its cast dialog.
+- Items on the actor sheet's Combat tab, including Dodge, can be dragged to the hotbar.
+- A **compendium** on the hotbar opens it, a **journal page** opens its journal at that page, and a
+  **scene** views it.
+- Ammunition that can't attack on its own, like arrows, and folders show a warning instead of making
+  a macro that doesn't work.
+
+## API for Macros and Modules
+
+<GithubIssue issue="1129" repo="fvtt-system-rqg" />
+<GithubIssue issue="1131" repo="fvtt-system-rqg" />
+
+The system now has a documented API, `game.system.api`, for macros and modules. A macro can roll
+skills, runes, passions and characteristics, attack with a weapon, and cast spirit and rune magic,
+with the roll dialog or without it. It can also read a character's skills, weapon attacks and the
+spells they can cast, including spells from an Allied Spirit, a bound spirit or a spell matrix.
+Values stored on a character, like hit points and magic points, are read straight from the character
+data, which is now also part of the API.
+
+See the [API overview](/rqg-system/api) to get started, and the
+[macro examples](/rqg-system/api/macro-examples) for ready-to-use macros. From now on, changes that
+can break macros or modules are listed in the release notes.
+
+### Changes that can break macros
+
+- `actor.applyDamage(...)` is gone. Use `actor.damage({ amount, location, armorPoints })` to damage
+  a hit location, where `location` is a hit location item or `"random"` and `armorPoints` (default
+  the location's own armor) is subtracted first, and
+  `actor.heal({ location, points, wound, restoreSevered })` to heal one. Both return what they did.
+- `item.applyWound(...)` and `item.healWound(...)` on hit location items are gone too; use
+  `actor.damage` and `actor.heal`.
+
+<GithubIssue issue="1171" repo="fvtt-system-rqg" />
+
+### Roll methods on actors and items
+
+Rolls now have one method each, taking an options object:
+
+- `item.roll(options)` rolls a skill, rune or passion.
+- `actor.rollCharacteristic(name, options)` rolls a characteristic.
+- `actor.rollReputation(options)` rolls Reputation.
+- `item.cast(options)` casts a spirit or rune magic spell as its owner, and
+  `actor.castSpell(spell, options)` casts one with that actor as the caster, including spells from
+  an Allied Spirit, a bound spirit or a matrix.
+- `item.attack({ usage })` opens the attack dialog for a weapon, with `usage` preselected.
+
+Without `skipDialog: true` they open the roll dialog. With it they roll at once and return the roll.
+
+Modules can change and react to rolls with hooks:
+
+| Prepare the roll                | Before the roll             | After the roll           |
+| ------------------------------- | --------------------------- | ------------------------ |
+| `rqg.prepareAbilityRoll`        | `rqg.preAbilityRoll`        | `rqg.abilityRoll`        |
+| `rqg.prepareCharacteristicRoll` | `rqg.preCharacteristicRoll` | `rqg.characteristicRoll` |
+| `rqg.prepareReputationRoll`     | `rqg.preReputationRoll`     | `rqg.reputationRoll`     |
+| `rqg.prepareSpellCast`          | `rqg.preSpellCast`          | `rqg.spellCast`          |
+| `rqg.prepareAttack`             | `rqg.preAttack`             | `rqg.attack`             |
+| `rqg.prepareDefence`            | `rqg.preDefence`            | `rqg.defence`            |
+
+A "prepare" hook adds modifiers to the roll, or says why the roll isn't allowed, for example a
+berserker's parry. The roll dialog shows both before Roll is clicked, so the chance in the dialog is
+the chance that's rolled. A "pre" hook runs once, when the roll is made, and can cancel it. See
+[Roll hooks](/rqg-system/api/hooks).
+
+Modules can also make a skill do something after it's rolled, the way the wiki module's First Aid
+heals a wound, and a spell's effect can change rolls through roll entries, like Berserker and
+Fanaticism. A spell's behavior can also make a spell area on the scene, limit how many targets the
+spell reaches, and roll its damage and hit location like an attack. See
+[Behaviors](/rqg-system/api/behaviors).
+
+The old methods still work until RQG 6.4.0, but log a warning in the browser console that names the
+replacement:
+
+| Old method                                                       | Replacement                |
+| ---------------------------------------------------------------- | -------------------------- |
+| `item.abilityRoll` / `item.abilityRollImmediate`                 | `item.roll`                |
+| `actor.characteristicRoll` / `actor.characteristicRollImmediate` | `actor.rollCharacteristic` |
+| `actor.reputationRoll` / `actor.reputationRollImmediate`         | `actor.rollReputation`     |
+| `item.spiritMagicRoll` / `item.spiritMagicRollImmediate`         | `item.cast`                |
+| `item.runeMagicRoll` / `item.runeMagicRollImmediate`             | `item.cast`                |
+
+Hotbar macros made by dragging a skill to the hotbar in earlier versions use the old method. To
+update one, drag the skill to the hotbar again.
+
+<GithubIssue issue="1132" repo="fvtt-system-rqg" />
+
+## Old Sheets Will Be Removed in 6.3.0
+
+The newer character and item sheets are the default. Their names end in **V2**, like "Character
+Sheet V2". The old sheets, like "Character Sheet" and "Passion Item Sheet", can still be picked in a
+document's **Sheet** configuration, but they will be removed in RQG 6.3.0. Actors and items set to
+an old sheet then open in the V2 sheet automatically, so there's nothing you need to do. Until then,
+opening an old sheet logs a warning in the browser console.
+
+## For Content Creators
+
+- Spells link to their effect with an **Effect** field on the spell sheet, next to the description
+  link. Spells already on actors get their link from the compendium during the world migration.
+  <GithubIssue issue="1086" repo="fvtt-system-rqg" />
+- Spells have a **Resisted By** field that says how a target can resist them: a resistance roll
+  against one target or each target, spirit combat, or nothing. A **Resisted With** field says what
+  the target resists with: POW, or current magic points.
+  <GithubIssue issue="1068" repo="fvtt-system-rqg" />
+- Spells record what they can be cast on and what kind of effect they have, in two new fields.
+  <GithubIssue issue="1080" repo="fvtt-system-rqg" />
+- Errors and warnings now carry a code like `RQG-W-0012`, which makes them easier to report and look
+  up.
+
+## Other Bug Fixes
+
+- Let any owner of an actor drag-reorder its Spirit and Rune Magic spells, not just the GM
+  <GithubIssue issue="1048" repo="fvtt-system-rqg" />
+- Sort Spell Matrix spells in with the actor's own Spirit Magic spells, marked with the matrix
+  item's image and a tooltip, instead of listing them separately
+  <GithubIssue issue="1047" repo="fvtt-system-rqg" />
+- Stop the Rqid batch editor's progress from filling the screen with notifications
+  <GithubIssue issue="1052" repo="fvtt-system-rqg" />
+- Bring back the GM-only "is creature" checkbox on the new actor sheet
+  <GithubIssue issue="1061" repo="fvtt-system-rqg" />
+- Update the attack dialog when you change target while it's open
+  <GithubIssue issue="1072" repo="fvtt-system-rqg" />
+- Give embedded Spirit Magic spells their rqid during the world migration, so they can be matched to
+  the compendium
+  <GithubIssue issue="1085" repo="fvtt-system-rqg" />
