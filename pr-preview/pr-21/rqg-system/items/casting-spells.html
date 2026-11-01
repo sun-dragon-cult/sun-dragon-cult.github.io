@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">How a Spell Is Resolved | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="How a Spell Is Resolved | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="description" content="This page follows a spell from the cast dialog to the effect on its target, in the order the system"><meta data-rh="true" property="og:description" content="This page follows a spell from the cast dialog to the effect on its target, in the order the system"><link data-rh="true" rel="icon" href="/pr-preview/pr-21/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Foundry Items","item":"https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/"},{"@type":"ListItem","position":2,"name":"How a Spell Is Resolved","item":"https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells"}]}</script><link rel="alternate" type="application/rss+xml" href="/pr-preview/pr-21/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/pr-preview/pr-21/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/pr-preview/pr-21/assets/css/styles.1168208c.css">
-<script src="/pr-preview/pr-21/assets/js/runtime~main.6a3b6da5.js" defer="defer"></script>
+<script src="/pr-preview/pr-21/assets/js/runtime~main.b1296434.js" defer="defer"></script>
 <script src="/pr-preview/pr-21/assets/js/main.fe0b9c01.js" defer="defer"></script>
 </head>
 <body>
@@ -46,7 +46,8 @@ plus any boost. A 2-point Rune spell boosted with 1 magic point has strength 5.<
 area can react, once per cast:</p>
 <ul>
 <li class="">A <strong>ward</strong> (Warding or Create Market) sounds its alarm, heard by the GM and the players with
-tokens within 500 m.</li>
+tokens within 500 m. Any Region a module has made can react to a spell cast across it in the same
+way.</li>
 <li class=""><strong>Sanctify</strong> alerts its caster that a spell crossed in. The caster&#x27;s players aren&#x27;t told whose;
 the GM is.</li>
 </ul>
@@ -56,10 +57,21 @@ the GM is.</li>
 in. The first one that stops it settles that target: its row on the card reads &quot;No effect&quot;, stopped
 by a protective spell, and it gets no resistance roll. The card doesn&#x27;t say which spell stopped it.</p>
 <table><thead><tr><th>Layer</th><th>Stops the spell when its strength is…</th><th>Used up?</th></tr></thead><tbody><tr><td><strong>Ward</strong></td><td>at most the ward&#x27;s Countermagic + 1</td><td>Never. A spell it stops never reaches the target&#x27;s own defenses.</td></tr><tr><td><strong>Countermagic</strong></td><td>2 or more below it, or within 1 point of it</td><td>Within 1 point, both are gone. A spell 2 or more points stronger breaks it.</td></tr><tr><td><strong>Shield</strong></td><td>at most twice its points</td><td>Never.</td></tr></tbody></table>
-<p>A ward only protects non-hostile tokens inside it, against spells from outside it. Berserker counts
-as Countermagic 2, or 4 against a chaotic caster. A target&#x27;s own defenses don&#x27;t stop a spell it
-casts on itself, and spells marked <strong>Gets through Countermagic and Shield</strong>, like Dismiss Magic,
-pass them all.</p>
+<p>The layers are met in a row, each at the spell&#x27;s full strength: a spell that gets through one meets
+the next undiminished. Layers of the same kind don&#x27;t stack, only the strongest counts. That is why
+Berserker, which counts as Countermagic 2, or 4 against a chaotic caster, doesn&#x27;t add to a
+Countermagic spell.</p>
+<p>A ward only protects non-hostile tokens inside it, against spells from outside it. A target&#x27;s own
+defenses don&#x27;t stop a spell it casts on itself, and spells marked <strong>Gets through Countermagic and
+Shield</strong>, like Dismiss Magic, pass them all.</p>
+<p>Protective spells and Regions from other modules take part the same way, each at the position its
+module gave it. A module&#x27;s layer can sit between the ones above, so check the module&#x27;s own
+description when a spell is stopped somewhere unexpected. Nothing keeps a module from putting an
+inner defense outside a ward; the GM can see it, and change it.</p>
+<p><strong>Casting order.</strong> The rules agree that Countermagic is met before Shield, but the RBM Q&amp;A on
+Countermagic layers protective spells in the order they were cast, outward from the body. RQG always
+meets Countermagic first, the reading of the Core Q&amp;A and the RBM Q&amp;A on Shield, and it has no
+setting for the other. If your table plays by casting order, rule it yourself when it matters.</p>
 <p>This works for every spell, including ones with no automation at all.</p>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="5-resistance">5. Resistance<a href="#5-resistance" class="hash-link" aria-label="Direct link to 5. Resistance" title="Direct link to 5. Resistance" translate="no">​</a></h2>
 <p>What happens next depends on the spell&#x27;s <strong>Resisted By</strong> field:</p>
