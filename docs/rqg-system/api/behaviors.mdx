@@ -65,19 +65,21 @@ Hooks.once("rqg.registerSpellBehaviors", (registry) => {
 
 A spell behavior has these parts, all optional:
 
-| Part              | When it runs                                                           | What it returns                      |
-| ----------------- | ---------------------------------------------------------------------- | ------------------------------------ |
-| `apply`           | When Apply is clicked, instead of attaching the effect template        | `{ outcome: "resolved" }` or nothing |
-| `onIncomingSpell` | When another spell is applied to an actor that has this spell's effect | `{ outcome: "stopped" \| "pass" }`   |
-| `onResisted`      | When an actor with this spell's effect held against a spell            | `{ outcome: "reflected" \| "pass" }` |
-| `onEnd`           | When the spell's effect expires or is deleted, on the GM's client      | nothing                              |
-| `runAsGm`         | Makes `apply` run on the active GM's client instead                    | –                                    |
-| `areaRadius`      | Called by the cast dialog with the level being cast                    | the radius around the caster, in m   |
-| `maxTargets`      | Called by the cast dialog and the cast with the level being cast       | how many tokens it can be cast at    |
-| `onAreaEnter`     | When a token enters the spell's area, on the active GM's client        | nothing                              |
-| `onAreaExit`      | When a token leaves the spell's area, on the active GM's client        | nothing                              |
-| `onSpellAcross`   | When a spell is cast from outside the area at tokens inside it         | nothing                              |
-| `onPrepare…`      | When a roll by an actor with this spell's effect is prepared, below    | nothing                              |
+| Part              | When it runs                                                                    | What it returns                              |
+| ----------------- | ------------------------------------------------------------------------------- | -------------------------------------------- |
+| `apply`           | When Apply is clicked, instead of attaching the effect template                 | `{ outcome: "resolved" }` or nothing         |
+| `barrier`         | Not run: the layer this spell's effects give against spells from outside, below | a priority, a strength and how it is used up |
+| `areaBarrier`     | Not run: the layer this spell's area gives the tokens inside it                 | like `barrier`                               |
+| `onIncomingSpell` | When another spell is applied to an actor that has this spell's effect          | `{ outcome: "stopped" \| "pass" }`           |
+| `onResisted`      | When an actor with this spell's effect held against a spell                     | `{ outcome: "reflected" \| "pass" }`         |
+| `onEnd`           | When the spell's effect expires or is deleted, on the GM's client               | nothing                                      |
+| `runAsGm`         | Makes `apply` run on the active GM's client instead                             | –                                            |
+| `areaRadius`      | Called by the cast dialog with the level being cast                             | the radius around the caster, in m           |
+| `maxTargets`      | Called by the cast dialog and the cast with the level being cast                | how many tokens it can be cast at            |
+| `onAreaEnter`     | When a token enters the spell's area, on the active GM's client                 | nothing                                      |
+| `onAreaExit`      | When a token leaves the spell's area, on the active GM's client                 | nothing                                      |
+| `onSpellAcross`   | When a spell is cast from outside the area at tokens inside it                  | nothing                                      |
+| `onPrepare…`      | When a roll by an actor with this spell's effect is prepared, below             | nothing                                      |
 
 Apply is offered for each target the spell affected, so not for a target that resisted it.
 
@@ -86,25 +88,25 @@ Apply is offered for each target the spell affected, so not for a target that re
 - `spell`, the cast spell item
 - `targetActor` and `targetName`, the target Apply was clicked for
 - `cast`, with the `level` cast at, the `magicPointsSpent` and `runePointsSpent`, the
-  `casterSuccessLevel`, and the `caster`: their `actorUuid` and the `tokenUuid` they cast from
-  (`""` when they cast without a token)
+  `casterSuccessLevel`, and the `caster`: their `actorUuid` and the `tokenUuid` they cast from (`""`
+  when they cast without a token)
 - `duration`, what the effect of a Temporal spell lasts, otherwise undefined
 
 `onIncomingSpell` gets the same, plus `effects`: this spell's effects on the target. It runs on the
 active GM's client, once per target, right after a successful cast roll and before anyone resists,
-or, when the spell is added from the token HUD, on the client of whoever adds it.
-Return `{ outcome: "stopped" }` to stop the incoming spell, or `{ outcome: "pass" }` to let it
-through. It doesn't run for a spell the target casts on itself.
-Spells that register the same `onIncomingSpell` function are decided together, which is how the
-wiki's Countermagic and Shield handle layered defenses.
+or, when the spell is added from the token HUD, on the client of whoever adds it. Return
+`{ outcome: "stopped" }` to stop the incoming spell, or `{ outcome: "pass" }` to let it through. It
+doesn't run for a spell the target casts on itself. It runs after the [barriers](#barriers), so use
+it for defenses that aren't a strength, like a custom check. Spells that register the same
+`onIncomingSpell` function are decided together.
 
 `onResisted` gets the same as `onIncomingSpell`. It runs when the actor's resistance roll held
 against a spell, by roll or by GM ruling, on the active GM's client. Show the target's owners
 anything they should see with a whispered chat message, since a notification would only reach the
-GM. Return `{ outcome: "reflected" }` to send the
-spell back at its caster. The caster's own `onIncomingSpell` spells meet it first, and if they let it
-through, the system posts a new resistance card aimed at the caster: their POW when they cast it
-against their POW now. A reflected spell is never reflected again.
+GM. Return `{ outcome: "reflected" }` to send the spell back at its caster. The caster's own
+`onIncomingSpell` spells meet it first, and if they let it through, the system posts a new
+resistance card aimed at the caster: their POW when they cast it against their POW now. A reflected
+spell is never reflected again.
 
 Every hook but `apply` runs on the active GM's client, which is where a cast's state changes, so a
 GM must be logged in for a cast to get past its cast roll. `apply` runs on the client of whoever
@@ -117,12 +119,13 @@ A spell whose effect is a place uses `game.system.api.spellEffects.createArea(sc
 its `apply`. The caster places the area on the canvas, snapped to the scene's grid with the squares
 or hexes it covers highlighted: within the spell's range for a Ranged spell, anywhere for the rest,
 as a ritual is held where its area is. A Ranged spell's area must also be centered on a point the
-caster's token can see: the scene is dimmed outside that, and placement there is refused. `options.shape` is `{ kind: "circle", radius }` or
-`{ kind: "square", side }` in meters, the square rotated with the mouse wheel, or
-`{ kind: "polygon", corners, maxArea }`, clicked corner by corner, like a ward's wands, and no
-larger than `maxArea` square meters. `placement: "caster"` puts a circle or square around the
-caster's token instead. `duration` overrides the spell's own, and `visible: true` shows the area to every
-player; otherwise only the GM and the caster's players see it. An area with a duration puts an effect on the caster, so it ends when the spell does; with
+caster's token can see: the scene is dimmed outside that, and placement there is refused.
+`options.shape` is `{ kind: "circle", radius }` or `{ kind: "square", side }` in meters, the square
+rotated with the mouse wheel, or `{ kind: "polygon", corners, maxArea }`, clicked corner by corner,
+like a ward's wands, and no larger than `maxArea` square meters. `placement: "caster"` puts a circle
+or square around the caster's token instead. `duration` overrides the spell's own, and
+`visible: true` shows the area to every player; otherwise only the GM and the caster's players see
+it. An area with a duration puts an effect on the caster, so it ends when the spell does; with
 `duration: null` the Region is the spell and lasts until it is deleted. The GM can move or delete
 the Region either way. `onAreaEnter` and `onAreaExit` get
 `{ spell, cast, region, token, actor, crossed }`; `crossed` is false for a token that was inside
@@ -132,11 +135,106 @@ effect template on the token; the system takes it off when the token leaves or t
 `onSpellAcross` gets `{ spell, cast, region, incomingSpell, incomingCast, targets }`: this area's
 spell, the spell cast across its boundary, and the tokens inside it that were targeted. It runs once
 per area and cast, before the targets' protective spells meet the incoming spell. The wiki's wards
-sound their alarm this way.
+sound their alarm this way. [Any Region behavior](#region-behaviors) can have one.
+
+### Barriers
+
+A protective spell says what it gives, and the system judges. `barrier` is
+
+```ts
+{
+  priority: number; // lower is met first, further out, like Active Effect change priority
+  strength(effect, cast): number; // a spell of at most this many points is stopped
+  usedUp: "never" | "countermagic";
+  onUsedUp?(effect): Promise<void>; // instead of deleting the effect
+}
+```
+
+`cast` is the incoming cast: its `castPoints`, and its `caster`, so a barrier can depend on who
+casts. A strength of 0 or less gives no layer, and so does one that throws or isn't a number.
+
+The system walks the layers of the target's effects, and of the Regions it is in (below), from the
+lowest priority up:
+
+- **Layers are met in a row, at full strength.** A spell that gets through one meets the next one
+  undiminished.
+- **Equal priority is one layer.** Only the strongest effect there counts, and its `usedUp` applies.
+  This is how Countermagic doesn't stack. A module that wants a barrier of its own picks its own
+  priority.
+- **`usedUp: "countermagic"`** is Countermagic's rule: a spell 2 or more points weaker is stopped
+  and the effect stays, a spell within 1 point of it is stopped and the effect is used up, and a
+  spell 2 or more points stronger breaks it and goes on. The system deletes the effect, or calls
+  `onUsedUp` when there is one.
+- A target's own defenses don't stop a spell it casts itself, and spells with **Gets through
+  Countermagic and Shield** pass every barrier.
+
+The system's own layers are in `game.system.api.spellEffects.barrierPriorities`, with gaps so a
+module can go between them:
+
+```js
+{ area: 100, countermagic: 200, shield: 300 }
+```
+
+Priorities aren't checked: a module could put an inner defense outside a ward. Document it, and the
+GM can see it. Protection, which only counts for armor, isn't a barrier.
+
+```js
+// A made-up defense that counts as Countermagic, but only against spirits
+registry.register(
+  "i.spirit-magic.spirit-screen",
+  {
+    barrier: {
+      priority: game.system.api.spellEffects.barrierPriorities.countermagic,
+      strength: (effect, cast) => (isSpirit(cast.caster) ? effect.system.spell.level : 0),
+      usedUp: "countermagic",
+    },
+  },
+  source,
+);
+```
+
+`areaBarrier` is the same for a spell's area (`createArea`): the tokens inside it get the layer
+against spells cast from outside the area. Its `strength(areaCast, incomingCast, target)` gets the
+area's own cast, the incoming one and the token it protects, so a ward can leave out its caster's
+enemies. The wiki's wards declare it.
+
+### Region behaviors
+
+Any Foundry Region behavior can take part, not only a spell's area, so a module can make a place
+that isn't a cast spell, like a standing temple ward or a Chaos-tainted area. Write an ordinary
+`RegionBehaviorType` and add the methods the system looks for:
+
+```js
+class ChaosTaint extends foundry.data.regionBehaviors.RegionBehaviorType {
+  static defineSchema() {
+    return { strength: new foundry.data.fields.NumberField({ initial: 3 }) };
+  }
+
+  // A spell cast from outside the Region at tokens inside it
+  async onSpellAcross({ region, behavior, incomingSpell, incomingCast, targets }) {}
+
+  // A layer that spells cast from outside the Region must get through
+  get barrier() {
+    return {
+      priority: game.system.api.spellEffects.barrierPriorities.area,
+      strength: (cast, target) => this.strength,
+      usedUp: "never",
+    };
+  }
+}
+```
+
+- `onSpellAcross` is called for every enabled behavior of a Region that holds a target but not the
+  caster, once per cast, on the active GM's client.
+- `barrier` counts for the targets inside the Region, for spells cast from outside it. The "from
+  outside" rule is the system's. Its `strength(cast, target)` gets the incoming cast, so it can
+  depend on who casts: Suppress Lodril's Countermagic only counts against Light, Heat and Sky
+  cultists (RBM p.96). A Region has no effect to use up, so `usedUp` only decides whether the layer
+  stops the spell.
 
 `areaRadius(level)` returns how far around the caster, in meters, an area spell cast at that level
-reaches. The cast dialog lights up the squares or hexes in that radius and makes the tokens there the
-user's targets, the caster included, following the level as it changes.
+reaches. The cast dialog lights up the squares or hexes in that radius and makes the tokens there
+the user's targets, the caster included, following the level as it changes.
 
 `maxTargets(level)` returns how many tokens the spell can be cast at, at that level; any number when
 it's left out. The cast dialog says "at most N targets at this level", and casting at more is
@@ -184,14 +282,14 @@ higher priority can replace it.
 - `list` and `removeSpellEffects` find and remove the spell effects on an actor. The removal filter
   takes `spellRqid`, `casterActorUuid` and `maxLevel`.
 - `castPoints` is how strong a cast is against defenses: its magic points plus double its rune
-  points. The wiki's Countermagic and Shield use it.
+  points. It is what a [barrier](#barriers) is judged against.
 - `effectRemovalCost` is how many points of Dispel Magic it takes to remove a spell effect.
 - `metersToPixels(meters, scene.grid)` converts a distance by the scene's grid scale, feet and yards
   included. The wiki's wards use it for how far their alarm is heard.
-- `dealDamage(scope, { formula, armorPoints })` rolls damage with `formula` and a hit location on the
-  target, shows both rolls in chat like an attack's, and deals the damage once the dice have landed.
-  Pass `armorPoints: 0` for damage armor doesn't stop; left out, the location's own armor counts.
-  Run it as the GM (`runAsGm`) unless the user owns the target.
+- `dealDamage(scope, { formula, armorPoints })` rolls damage with `formula` and a hit location on
+  the target, shows both rolls in chat like an attack's, and deals the damage once the dice have
+  landed. Pass `armorPoints: 0` for damage armor doesn't stop; left out, the location's own armor
+  counts. Run it as the GM (`runAsGm`) unless the user owns the target.
 
 ## Skill behaviors
 
@@ -248,7 +346,8 @@ is the target, so First Aid can be used on yourself.
 The wiki module's scripts are the best examples to copy from:
 
 - `scripts/spells/dispel-magic.mjs` finds and removes spell effects.
-- `scripts/spells/spell-barrier.mjs` is the shared `onIncomingSpell` of Countermagic and Shield.
+- `scripts/spells/spell-barrier.mjs` declares the `barrier` of Countermagic, Shield and Berserker,
+  and the `areaBarrier` of the wards.
 - `scripts/spells/reflection.mjs` is Reflection's `onResisted`.
 - `scripts/spells/elementals.mjs` summons with `spellEffects.summon`.
 - `scripts/spells/heal.mjs` heals with `actor.heal`.
