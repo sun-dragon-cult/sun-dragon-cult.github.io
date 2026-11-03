@@ -6,8 +6,8 @@ tags: []
 ---
 
 Macros to copy and adapt. Create a new macro of type **Script** in Foundry and paste the code. See
-[Rolls](/rqg-system/api/rolls) and [Query](/rqg-system/api/query) for everything the functions can
-do.
+[Rolls](/rqg-system/api/rolls) and [Character data](/rqg-system/api/character-data) for everything
+the functions can do.
 
 ## Roll Scan for the selected token
 
@@ -45,18 +45,17 @@ await game.system.api.rolls.characteristic("power", {
 ## Who in the party knows Heal?
 
 ```js
-const api = game.system.api;
 const party = game.actors.filter((a) => a.hasPlayerOwner);
-const healers = party.filter((a) => api.query.spells(a).some((s) => s.name.startsWith("Heal")));
+const healers = party.filter((a) => a.getCastableSpells().some((s) => s.name.startsWith("Heal")));
 ui.notifications.info(`Healers: ${healers.map((a) => a.name).join(", ") || "none"}`);
 ```
 
 ## Cast the selected token's first matrix spell
 
 ```js
-const api = game.system.api;
-const spell = api.query.spells().find((s) => s.source === "matrix");
-if (spell) await api.rolls.spiritMagic(spell);
+const actor = canvas.tokens.controlled[0]?.actor;
+const spell = actor?.getCastableSpells().find((s) => s.source === "matrix");
+if (spell) await game.system.api.rolls.spiritMagic(spell);
 ```
 
 ## Attack two-handed with a spear

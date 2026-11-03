@@ -14,21 +14,20 @@ has two parts:
 - **The character data**, `actor.system` and `item.system`. Read values that are stored on a
   character, like characteristics, hit points or a cult's Rune Points, straight from there, and
   change them with Foundry's `actor.update` and `item.update`. See
-  [Values stored on the character](/rqg-system/api/query#values-stored-on-the-character).
-- **`game.system.api`**, for everything that needs the rules: rolling dice, casting spells, and
-  values the system works out, like a weapon's attack chance or which spells a character can cast.
+  [Values stored on the character](/rqg-system/api/character-data#values-stored-on-the-character).
+- **`game.system.api`**, for everything that needs the rules, like rolling dice and casting spells.
 
 Modules can also call the [roll methods](/rqg-system/api/rolls#rolling-from-an-actor-or-item) on
-RQG's actors and items, and `actor.damage` and `actor.heal`. Don't call other methods on them or use
-other parts of the system directly. Those can change in any release.
+RQG's actors and items, and `actor.damage`, `actor.heal` and `actor.getCastableSpells`. Don't call
+other methods on them or use other parts of the system directly. Those can change in any release.
 
 ## What's in it
 
 - [Rolls](/rqg-system/api/rolls) – roll skills, runes, passions and characteristics, attack with
   weapons and cast spirit and rune magic.
 - [Roll hooks](/rqg-system/api/hooks) – react to rolls, add modifiers, or forbid a parry or dodge.
-- [Query](/rqg-system/api/query) – read skills, weapons and castable spells, and where to find hit
-  points, magic points, rune points and other values stored on a character.
+- [Character data](/rqg-system/api/character-data) – read skills, castable spells, hit points, magic
+  points, rune points and other values from a character.
 - [Behaviors](/rqg-system/api/behaviors) – make a spell or skill do something when Apply is clicked,
   like Dispel Magic removing spells or First Aid healing a wound.
 - [Macro examples](/rqg-system/api/macro-examples) – ready-to-use macros to start from.
