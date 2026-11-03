@@ -29,6 +29,24 @@ for (const skill of skills) {
 `system.hasExperience` is true when the character has a pending experience check. The rqid of any
 item is in `item.getFlag("rqg", "documentRqidFlags")?.id`, see [Rqid](/rqg-system/api/rqid).
 
+## Weapons
+
+A weapon is an item with up to four ways of using it, `system.usage.oneHand`, `offHand`, `twoHand`
+and `missile`. Each has stored values like `strikeRank`, `minStrength`, `minDexterity` and the
+linked skill. The attack chance and whether the character is strong and quick enough come from the
+skill, the weapon's effects and the rules, so ask the weapon:
+
+```js
+const spear = actor.items.find((i) => i.name === "Spear" && i.type === "weapon");
+const info = spear.system.getUsageInfo("twoHand");
+info.totalChance; // the linked skill's chance plus the weapon's effect modifiers
+info.unusable; // true when the character is below the STR or DEX requirement
+```
+
+The result also has `skillItem`, `skillChance`, `weaponEffectModifier`, `underMinSTR` and
+`underMinDEX`. The weapon has to belong to a character. Use [`rolls.attack`](/rqg-system/api/rolls)
+to attack with it.
+
 ## Castable spells
 
 `actor.getCastableSpells()` lists all spirit and rune magic the character can cast, their own spells
