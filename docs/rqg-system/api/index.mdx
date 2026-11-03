@@ -50,3 +50,15 @@ If something can't be found, the API shows an error notification and stops the m
 The API follows the RQG system version. When a system update changes the API or moves or renames a
 field in the character data in a way that can break macros or modules, the release notes say so.
 Check them when updating the system.
+
+### Deprecations
+
+When the system replaces a method, a field or a syntax, the old one keeps working for a while. Using
+it logs a deprecation warning in the browser console (press F12), once per session. The warning
+names what to use instead, the version that deprecated it and the version that removes it, for
+example _deprecated since Version RQG 6.2.0 / removed in Version RQG 6.4.0_.
+
+- The old way stays for at least one minor version, usually two, before it is removed.
+- The removal version is fixed when the deprecation is announced, and the release notes list it.
+- Update your macros and modules while the warning is showing. After the removal version the old
+  call stops working.
