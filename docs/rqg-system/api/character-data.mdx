@@ -1,40 +1,39 @@
 ---
 sidebar_position: 30
-slug: query
-title: Query
+slug: character-data
+title: Character data
 tags: []
 ---
 
-The functions in `game.system.api.query` read information about a character, already calculated the
-same way the character sheet shows it. They return plain objects, a snapshot of how things are right
-now. Call the function again to get updated values.
+Characters and their items are normal Foundry documents, so macros and modules read them the way
+they read any other Foundry data: from `actor.system`, `actor.items` and `item.system`. The system
+has no separate functions for this. Values change when the character changes, so read them again
+when you need current ones.
 
-Each function takes an optional actor, see
-[Pointing at actors and items](/rqg-system/api#pointing-at-actors-and-items). Leave it out to use
-the selected token.
+```js
+const actor = canvas.tokens.controlled[0]?.actor;
+```
 
-## abilities(actor, options)
+## Skills, runes and passions
 
-The character's skills, runes and passions, sorted by name. Use `{ types: ["skill"] }` to only get
-some kinds.
+Each is an item on the character. Filter `actor.items` by `type`:
 
-Each entry has `name`, `type` (`"skill"`, `"rune"` or `"passion"`), `chance`, `hasExperience`,
-`category` (skill category like `"perception"`, skills only), and `id`, `uuid`, `rqid` and `img`.
+```js
+const skills = actor.items.filter((i) => i.type === "skill");
+for (const skill of skills) {
+  console.log(skill.name, skill.system.chance, skill.system.category);
+}
+```
 
-## weaponUsages(actor, options)
+`type` is `"skill"`, `"rune"` or `"passion"`. All three have `system.chance`, and
+`system.hasExperience` is true when the character has a pending experience check. The rqid of any
+item is in `item.getFlag("rqg", "documentRqidFlags")?.id`, see [Rqid](/rqg-system/api/rqid).
 
-One entry for each way the character can attack with their equipped weapons, the same choices the
-attack dialog offers. A spear that can be used both one-handed and two-handed gives two entries. Use
-`{ includeUnequipped: true }` to also get weapons that are carried but not equipped.
+## Castable spells
 
-Each entry has `name`, `usage` (`"oneHand"`, `"offHand"`, `"twoHand"` or `"missile"`), `chance`
-(including weapon modifiers), `strikeRank`, `skillName`, `equippedStatus`, and `unusable`, which is
-true when the character is below the STR or DEX requirement. It also has `weaponId`, `weaponUuid`,
-`skillId` and `img`.
-
-## spells(actor)
-
-All spirit and rune magic the character can cast, their own spells first.
+`actor.getCastableSpells()` lists all spirit and rune magic the character can cast, their own spells
+first. It follows the rules for spells from somewhere else than the character, so use it instead of
+looking through `actor.items` when you need to know what the character can cast.
 
 Each entry has `type` (`"spiritMagic"` or `"runeMagic"`), `name`, `points` and `source`, which says
 where the spell comes from:
