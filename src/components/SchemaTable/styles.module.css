@@ -1,0 +1,70 @@
+.schemaTable table {
+  display: table;
+  width: 100%;
+  font-size: 0.8rem;
+}
+.schemaTable th:nth-child(1) {
+  width: 42%;
+}
+.schemaTable th:nth-child(2) {
+  width: 22%;
+}
+.schemaTable td,
+.schemaTable th {
+  padding: 0.1rem 0.5rem;
+  vertical-align: top;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.controls input[type="search"] {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 4px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+.caret {
+  display: inline-block;
+  width: 1.1rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+.path {
+  cursor: copy;
+}
+.title {
+  margin-left: 0.5rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.78rem;
+}
+.muted {
+  color: var(--ifm-color-emphasis-600);
+}
+.badge {
+  margin-left: 0.4rem;
+  padding: 0 0.35rem;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  font-size: 0.7rem;
+}
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  margin-top: 0.15rem;
+}
+.chip {
+  padding: 0 0.3rem;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 8px;
+  font-size: 0.72rem;
+}
