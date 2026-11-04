@@ -68,6 +68,10 @@ rather than leading with them.
   production builds, including PR previews, leave drafts out, and both flags only work on whole
   pages, not on changes to an existing page. For a release, put the release notes and the changed
   pages on the same branch (e.g. `docs/rqg-6.2.0-release-notes`).
+- **Release checklist (RQG system):** before merging the release docs branch, bump the schema links
+  in `docs/rqg-system/api/character-data.mdx` from the old tag (`grep -rn "blob/v\|tree/v"` finds
+  them) to the tag being released. They point at a tag, not `main`, so the docs match the released
+  data model.
 - Reference upstream GitHub issues/PRs with `<GithubIssue issue="NNN" repo="fvtt-system-rqg" />`
   rather than raw links — it renders a consistent badge with the GitHub mark icon.
 - Use Docusaurus admonitions (`:::warning`, `:::caution`, `:::info` ... `:::`) for callouts —
