@@ -16,9 +16,52 @@ generated from the system's data models:
 - [Character](https://github.com/sun-dragon-cult/fvtt-system-rqg/blob/v6.1.1/src/data-model/json-schemas/generated/actor/character.schema.json)
 - [Items](https://github.com/sun-dragon-cult/fvtt-system-rqg/tree/v6.1.1/src/data-model/json-schemas/generated/item)
 
-Some `actor.system.attributes` values, like `max` hit points and magic points, `dexStrikeRank`,
-`sizStrikeRank` and `damageBonus`, are calculated from the characteristics every time the character
-changes. You can read them, but changing them has no lasting effect.
+## Stored and calculated values
+
+The schemas mark what is stored and what is calculated. A field with `"readOnly": true` is
+calculated every time the character changes and is never stored, and the `description` of a field
+says how. You can read calculated values, but writing to them has no lasting effect. Use Foundry's
+`update` for stored values:
+
+```js
+await actor.update({ "system.attributes.magicPoints.value": 5 });
+```
+
+Some calculated values are not in the schema at all, because they are added after the data is
+loaded:
+
+| Value                                                                             | Calculated from                                                          |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `attributes.hitPoints.max`                                                        | CON, SIZ and POW, plus `effect.add.hitPoints.max`                        |
+| `attributes.magicPoints.max`                                                      | POW, plus `effect.add.magicPoints.max`                                   |
+| `attributes.dexStrikeRank`                                                        | DEX, plus `effect.add.strikeRank`                                        |
+| `attributes.sizStrikeRank`                                                        | SIZ                                                                      |
+| `attributes.damageBonus`                                                          | STR and SIZ, for example `"1d4"`                                         |
+| `attributes.healingRate`                                                          | CON, times `effect.multiply.healingRate`                                 |
+| `attributes.spiritCombatDamage`                                                   | POW and CHA                                                              |
+| `attributes.magicPointRecoveryPointsPerDay`, `…HoursPerPoint`, `…MinutesPerPoint` | Maximum magic points and `magicPointRecoveryRateFactor`                  |
+| `attributes.encumbrance.max`, `equipped`, `travel`                                | STR, CON and the carrying factor, and the character's equipment          |
+| `attributes.move.value`, `equipped`, `travel`                                     | The current movement mode, reduced when over the encumbrance limit       |
+| `attributes.health`                                                               | The hit locations and hit points                                         |
+| `skillCategoryModifiers`                                                          | The characteristics, `effect.add.skillCategoryModifiers` and encumbrance |
+| `baseSkillCategoryModifiers`                                                      | The characteristics only                                                 |
+
+### Changing calculated values with effects
+
+Calculated values are rebuilt from the stored ones, so a lasting change goes through an Active
+Effect. `system.effect` holds the values that effects add to, one for each calculated value that can
+be adjusted. They start at 0 (1 for multipliers) every time the character changes. Add the effect in
+`ADD` mode (`MULTIPLY` for `effect.multiply`):
+
+```js
+await actor.createEmbeddedDocuments("ActiveEffect", [
+  {
+    name: "Blessed vigor",
+    changes: [{ key: "system.effect.add.hitPoints.max", mode: 2, value: "2" }],
+  },
+]);
+actor.system.attributes.hitPoints.max; // 2 more than before
+```
 
 The rqid of any item is in `item.getFlag("rqg", "documentRqidFlags")?.id`, see
 [Rqid](/rqg-system/api/rqid).
