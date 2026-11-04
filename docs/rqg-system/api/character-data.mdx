@@ -9,42 +9,27 @@ Characters and their items are normal Foundry documents, so macros and modules r
 `actor.system`, `actor.items` and `item.system`, the same way as for any other system. Read them
 again when you need current values.
 
-The fields of the character and of each item type (`skill`, `rune`, `passion`, `weapon`, `cult` and
-so on) are described by JSON Schemas, one file per type, with field types and defaults. They are
-generated from the system's data models:
+## Character fields
 
-- [Character](https://github.com/sun-dragon-cult/fvtt-system-rqg/blob/v6.1.1/src/data-model/json-schemas/generated/actor/character.schema.json)
-- [Items](https://github.com/sun-dragon-cult/fvtt-system-rqg/tree/v6.1.1/src/data-model/json-schemas/generated/item)
+Every field of `actor.system` is listed below, with its type and default. Click a field name to copy
+its path.
+
+<SchemaTable type="actor/character" />
 
 ## Stored and calculated values
 
-The schemas mark what is stored and what is calculated. A field with `"readOnly": true` is
-calculated every time the character changes and is never stored, and the `description` of a field
-says how. You can read calculated values, but writing to them has no lasting effect. Use Foundry's
-`update` for stored values:
+A field marked **calculated** is rebuilt every time the character changes and is never stored. You
+can read it, but writing to it has no lasting effect. Everything else is stored, and you change it
+with Foundry's `update`:
 
 ```js
 await actor.update({ "system.attributes.magicPoints.value": 5 });
 ```
 
-Some calculated values are not in the schema at all, because they are added after the data is
-loaded:
-
-| Value                                                                             | Calculated from                                                          |
-| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `attributes.hitPoints.max`                                                        | CON, SIZ and POW, plus `effect.add.hitPoints.max`                        |
-| `attributes.magicPoints.max`                                                      | POW, plus `effect.add.magicPoints.max`                                   |
-| `attributes.dexStrikeRank`                                                        | DEX, plus `effect.add.strikeRank`                                        |
-| `attributes.sizStrikeRank`                                                        | SIZ                                                                      |
-| `attributes.damageBonus`                                                          | STR and SIZ, for example `"1d4"`                                         |
-| `attributes.healingRate`                                                          | CON, times `effect.multiply.healingRate`                                 |
-| `attributes.spiritCombatDamage`                                                   | POW and CHA                                                              |
-| `attributes.magicPointRecoveryPointsPerDay`, `…HoursPerPoint`, `…MinutesPerPoint` | Maximum magic points and `magicPointRecoveryRateFactor`                  |
-| `attributes.encumbrance.max`, `equipped`, `travel`                                | STR, CON and the carrying factor, and the character's equipment          |
-| `attributes.move.value`, `equipped`, `travel`                                     | The current movement mode, reduced when over the encumbrance limit       |
-| `attributes.health`                                                               | The hit locations and hit points                                         |
-| `skillCategoryModifiers`                                                          | The characteristics, `effect.add.skillCategoryModifiers` and encumbrance |
-| `baseSkillCategoryModifiers`                                                      | The characteristics only                                                 |
+The items have the same kind of fields, see [Item data](/rqg-system/api/item-data). The JSON Schemas
+the tables are made from are in the system repository, in
+[`src/data-model/json-schemas/generated`](https://github.com/sun-dragon-cult/fvtt-system-rqg/tree/main/src/data-model/json-schemas/generated),
+if you want to use them in your own tools.
 
 ### Changing calculated values with effects
 
