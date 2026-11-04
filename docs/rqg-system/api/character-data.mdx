@@ -5,29 +5,26 @@ title: Character data
 tags: []
 ---
 
-Characters and their items are normal Foundry documents, so macros and modules read them the way
-they read any other Foundry data: from `actor.system`, `actor.items` and `item.system`. The system
-has no separate functions for this. Values change when the character changes, so read them again
-when you need current ones.
+Characters and their items are normal Foundry documents, so macros and modules read them from
+`actor.system`, `actor.items` and `item.system`, the same way as for any other system. Read them
+again when you need current values.
 
-```js
-const actor = canvas.tokens.controlled[0]?.actor;
-```
+The fields of the character and of each item type (`skill`, `rune`, `passion`, `weapon`, `cult` and
+so on) are described by JSON Schemas, one file per type, with field types and defaults. They are
+generated from the system's data models:
 
-## Skills, runes and passions
+- [Character](https://github.com/sun-dragon-cult/fvtt-system-rqg/blob/v6.1.1/src/data-model/json-schemas/generated/actor/character.schema.json)
+- [Items](https://github.com/sun-dragon-cult/fvtt-system-rqg/tree/v6.1.1/src/data-model/json-schemas/generated/item)
 
-Each is an item on the character. Filter `actor.items` by `type`:
+Some `actor.system.attributes` values, like `max` hit points and magic points, `dexStrikeRank`,
+`sizStrikeRank` and `damageBonus`, are calculated from the characteristics every time the character
+changes. You can read them, but changing them has no lasting effect.
 
-```js
-const skills = actor.items.filter((i) => i.type === "skill");
-for (const skill of skills) {
-  console.log(skill.name, skill.system.chance, skill.system.category);
-}
-```
+The rqid of any item is in `item.getFlag("rqg", "documentRqidFlags")?.id`, see
+[Rqid](/rqg-system/api/rqid).
 
-`type` is `"skill"`, `"rune"` or `"passion"`. All three have `system.chance`, and
-`system.hasExperience` is true when the character has a pending experience check. The rqid of any
-item is in `item.getFlag("rqg", "documentRqidFlags")?.id`, see [Rqid](/rqg-system/api/rqid).
+The rest of this page covers what the system works out from the rules, which is not stored on the
+documents.
 
 ## Weapons
 
@@ -68,32 +65,3 @@ matrix item. Spirit magic has `isVariable`, rune magic has `isOneUse` and the `c
 `cultName` of the cult it's cast through.
 
 Pass an entry to [`rolls.spiritMagic` or `rolls.runeMagic`](/rqg-system/api/rolls) to cast it.
-
-## Values stored on the character
-
-Values that are stored on a character, rather than worked out by the rules, have no query function.
-Read them from `actor.system`:
-
-```js
-const actor = canvas.tokens.controlled[0]?.actor;
-actor.system.characteristics.power.value; // 15
-actor.system.attributes.hitPoints; // { value: 12, max: 14 }
-actor.system.attributes.magicPoints; // { value: 9, max: 15 }
-actor.system.attributes.heroPoints; // 1
-actor.system.background.reputation; // 15
-```
-
-Rune Points are stored on each cult:
-
-```js
-for (const cult of actor.items.filter((i) => i.type === "cult")) {
-  console.log(cult.name, cult.system.runePoints); // Orlanth { value: 2, max: 3 }
-}
-```
-
-Some values, like `max` hit points and magic points, `dexStrikeRank`, `sizStrikeRank` and
-`damageBonus` under `actor.system.attributes`, are calculated from the characteristics every time
-the character changes. You can read them, but changing them has no lasting effect.
-
-To change a stored value, use Foundry's `update`, for example
-`actor.update({ "system.attributes.magicPoints.value": 5 })`.
