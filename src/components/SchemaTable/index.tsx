@@ -4,6 +4,18 @@ import { schemaRef, schemas } from "@site/src/data/rqg-schemas";
 import { filterRows, formatPath, schemaToRows, type Row } from "./schema-rows";
 import styles from "./styles.module.css";
 
+/** The marker for a calculated (non-stored) field, also usable in running text. */
+export function CalculatedBadge({ className }: { className?: string }): JSX.Element {
+  return (
+    <span
+      className={className ? `${styles.badge} ${className}` : styles.badge}
+      title="Calculated, never stored"
+    >
+      calculated
+    </span>
+  );
+}
+
 /** Groups with more fields than this start collapsed, so long lists don't bury the page. */
 const COLLAPSE_ABOVE = 6;
 
@@ -81,11 +93,7 @@ function FieldRows({
                   {name}
                 </code>
                 {row.group && <span className={styles.muted}> ×{row.group.length}</span>}
-                {row.calculated && (
-                  <span className={styles.badge} title="Calculated, never stored">
-                    calculated
-                  </span>
-                )}
+                {row.calculated && <CalculatedBadge className={styles.inTable} />}
                 {row.title && <span className={styles.title}>{row.title}</span>}
               </td>
               <td>

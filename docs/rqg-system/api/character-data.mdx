@@ -18,9 +18,9 @@ its path.
 
 ## Stored and calculated values
 
-A field marked **calculated** is rebuilt every time the character changes and is never stored. You
-can read it, but writing to it has no lasting effect. Everything else is stored, and you change it
-with Foundry's `update`:
+A field marked <CalculatedBadge /> is rebuilt every time the character changes and is never stored.
+You can read it, but writing to it has no lasting effect. Everything else is stored, and you change
+it with Foundry's `update`:
 
 ```js
 await actor.update({ "system.attributes.magicPoints.value": 5 });
