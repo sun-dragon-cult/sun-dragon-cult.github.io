@@ -14,7 +14,7 @@ import itemSpiritMagic from "./item/spiritMagic.schema.json";
 import itemWeapon from "./item/weapon.schema.json";
 import actorCharacter from "./actor/character.schema.json";
 
-export const schemaRef = "feat/schema-labels-hints (5c0a7823)";
+export const schemaRef = "feat/item-schema-labels-hints";
 
 export const schemas: Record<string, SchemaNode> = {
   "item/armor": itemArmor as SchemaNode,
