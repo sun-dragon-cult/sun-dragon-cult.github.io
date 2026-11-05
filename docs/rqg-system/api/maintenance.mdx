@@ -1,0 +1,163 @@
+---
+sidebar_position: 50
+slug: maintenance
+title: Maintenance
+tags: []
+---
+
+When the RQG system is updated, the first GM to open the world is guided through a world migration
+that brings old data up to date with the new version. The functions in `game.system.api.maintenance`
+let a GM run the steps of that migration by hand, for example to clean up after importing old
+content into a world that has already been migrated.
+
+All of them only work for a GM; for anyone else they throw an error. Make a backup of the world
+before running them.
+
+## What happens when the system is updated
+
+When a GM opens a world that was last used with an older version of the system, these steps run in
+order:
+
+1. **Repair invalid data** – the Data Model Repair dialog lists actors and items that Foundry can't
+   load because some value is no longer valid, and lets you fix them. Foundry is reloaded afterwards
+   if anything was changed.
+2. **Add missing RQG ids** – the RQID batch editor asks for rqids on skills, rune magic, spirit
+   magic, runes and cults that don't have one. The system needs them, for example to connect weapons
+   to their skills. See [RQG System ID (rqid)](/rqg-system/api/rqid).
+3. **Migrate the world** – after you confirm, actors, items, active effects and unlinked tokens in
+   the world are updated, as well as those in compendiums from modules and the world. The system's
+   own compendiums are skipped since they already ship updated. A report journal entry lists what
+   was changed, and any warnings or errors.
+
+If the migration finishes without errors the world is marked as migrated, so it doesn't run again.
+
+## openDataModelRepairDialog()
+
+```js
+await game.system.api.maintenance.openDataModelRepairDialog();
+```
+
+Looks through the world's actors and items for documents Foundry can't load, and opens a dialog to
+fix them. Invalid values can be reset, and documents with a type that no longer exists can be
+deleted. Afterwards it asks if you want to reload Foundry, which is needed for the changes to take
+effect. If nothing is wrong you just get a notification saying so.
+
+## openRqidBatchEditor(...itemTypes)
+
+```js
+// Check the same item types as the world migration does
+await game.system.api.maintenance.openRqidBatchEditor();
+
+// Only check skills and passions
+await game.system.api.maintenance.openRqidBatchEditor("skill", "passion");
+```
+
+Finds items without an rqid, in the world and in compendiums, and opens an editor where you can give
+them one. Items with the same name are grouped so they get the same rqid. One editor opens per item
+type that has items missing an rqid. An item type that doesn't exist, like `"skil"`, throws an error
+that lists the valid ones.
+
+## applyWorldMigrations(options)
+
+```js
+// What would the system's own migrations change in this world? Nothing is written.
+const report = await game.system.api.maintenance.applyWorldMigrations({
+  system: true,
+  dryRun: true,
+});
+console.log(`${report.documents.length} documents would change, ${report.errorCount} errors`);
+```
+
+Runs migrations over the world's actors, items and scenes with unlinked tokens and, if you ask for
+it, compendiums. It is safe to run more than once, since the migrations only change data that still
+needs it.
+
+**Nothing is migrated unless you ask for it:** pass `system: true` for the system's own migrations,
+your own migrations (see below), or both.
+
+| Option          | What it does                                                                                                                                                               |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `system`        | Also run the system's own migrations, the same as when the system is updated. Default `false`.                                                                             |
+| `items`         | A list of your own item migrations.                                                                                                                                        |
+| `actors`        | A list of your own actor migrations.                                                                                                                                       |
+| `activeEffects` | A list of your own active effect migrations. They run on active effects in compendiums.                                                                                    |
+| `dryRun`        | Work out and report what would change without changing anything. Default `false`.                                                                                          |
+| `scope`         | What to include besides the world: `"world"` (default) no compendium, `"all"` every compendium except the system's, or a list of compendium ids like `["world.my-items"]`. |
+| `report`        | Write the report to the migration journal, like the automatic migration does. Default `true`.                                                                              |
+
+Compendiums that belong to the system are never migrated. When a compendium is migrated it is
+unlocked for the run and locked again afterwards. A compendium that doesn't exist in `scope` throws
+an error before anything runs.
+
+### The report
+
+The function returns a report, which is also what ends up in the journal:
+
+```js
+{
+  dryRun: true,
+  errorCount: 0,
+  warningCount: 0,
+  inspected: { worldActorsInspected: 149, worldItemsInspected: 580, /* ... */ },
+  documents: [
+    {
+      kind: "Item",
+      uuid: "Item.abc123",
+      name: "Lore",
+      migration: "renameLocalLore", // the migrations that changed it
+      changes: [{ path: "name", from: "Lore (Local)", to: "Local Lore" }],
+      hiddenChangeCount: 0, // changes that were too many to list
+    },
+  ],
+  errors: [{ message: "Failed system migration for Item …", uuid: "Item.def456" }],
+}
+```
+
+`from` and `to` are the values as text. When the change is to an item an actor owns, `kind` is
+`"Actor"` and each `path` starts with the item's name and `::`, like
+`Spirit Combat :: system.specialization`.
+
+With `report: true` the report is also added to the migration journal. A dry run is labelled "Dry
+run" there. Pass `report: false` for a dry run that writes nothing at all.
+
+### A dry run can show too much
+
+A dry run changes nothing, so later steps don't see what earlier steps would have done. The changes
+for the unlinked tokens in a scene, for example, are worked out on top of the original world actors,
+not the migrated ones. A dry run can therefore list changes a real run wouldn't make. It never
+leaves out a change a real run would make.
+
+### Custom migrations
+
+:::caution
+
+Custom migrations change every matching document the run reaches. Do a dry run first, and test on a
+copy of the world.
+
+:::
+
+Module developers and technically minded GMs can pass their own migration functions. They run after
+the system's own, if you also pass `system: true`. A migration is an `async` function that gets the
+document and returns the update data for it, or nothing to leave it unchanged. The same shape is
+used for items (`items`), actors (`actors`) and active effects (`activeEffects`).
+
+This example renames the skill "Lore (Local)" to "Local Lore" everywhere in the world, and doesn't
+run any of the system's migrations:
+
+```js
+const renameLocalLore = async (item) =>
+  item.type === "skill" && item.name === "Lore (Local)" ? { name: "Local Lore" } : undefined;
+
+// Look first
+const dry = await game.system.api.maintenance.applyWorldMigrations({
+  items: [renameLocalLore],
+  dryRun: true,
+  report: false,
+});
+console.table(dry.documents.map((d) => ({ name: d.name, changes: d.changes.length })));
+
+// Then do it
+await game.system.api.maintenance.applyWorldMigrations({ items: [renameLocalLore] });
+```
+
+The name of the function is shown as the migration in the report, so give it a descriptive one.
