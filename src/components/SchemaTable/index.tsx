@@ -158,7 +158,7 @@ export function SchemaTable({ type }: { type: string }): JSX.Element {
           Calculated only
         </label>
         <span className={styles.muted}>
-          Schemas from {schemaRef}. Click a name to copy its path.
+          From the RQG system data models, version {schemaRef}. Click a name to copy its path.
         </span>
       </div>
       <table>
