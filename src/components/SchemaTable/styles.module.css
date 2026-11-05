@@ -52,16 +52,12 @@
   display: inline-block;
   padding: 0 0.4rem;
   border-radius: 8px;
-  background: var(--ifm-color-primary-darkest);
-  color: #fff;
+  background: #f3a71e;
+  color: #1b1b1d;
   font-size: 0.7rem;
   font-weight: 600;
   line-height: 1.4;
   white-space: nowrap;
-}
-[data-theme="dark"] .badge {
-  background: var(--ifm-color-primary);
-  color: #1b1b1d;
 }
 .inTable {
   margin-left: 0.4rem;
