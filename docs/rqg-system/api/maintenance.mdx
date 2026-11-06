@@ -83,7 +83,7 @@ your own migrations (see below), or both.
 | `activeEffects` | A list of your own active effect migrations. They run on active effects in compendiums.                                                                                    |
 | `dryRun`        | Work out and report what would change without changing anything. Default `false`.                                                                                          |
 | `scope`         | What to include besides the world: `"world"` (default) no compendium, `"all"` every compendium except the system's, or a list of compendium ids like `["world.my-items"]`. |
-| `report`        | Write the report to the migration journal, like the automatic migration does. Default `true`.                                                                              |
+| `report`        | Write the report to the migration journal, like the automatic migration does. Default `true`, `false` for a dry run.                                                       |
 
 Compendiums that belong to the system are never migrated. When a compendium is migrated it is
 unlocked for the run and locked again afterwards. A compendium that doesn't exist in `scope` throws
@@ -117,8 +117,8 @@ The function returns a report, which is also what ends up in the journal:
 `"Actor"` and each `path` starts with the item's name and `::`, like
 `Spirit Combat :: system.specialization`.
 
-With `report: true` the report is also added to the migration journal. A dry run is labelled "Dry
-run" there. Pass `report: false` for a dry run that writes nothing at all.
+With `report: true` the report is also added to the migration journal. A dry run doesn't write one
+unless you pass `report: true`, and then it is labelled "Dry run".
 
 ### A dry run can show too much
 
@@ -152,7 +152,6 @@ const renameLocalLore = async (item) =>
 const dry = await game.system.api.maintenance.applyWorldMigrations({
   items: [renameLocalLore],
   dryRun: true,
-  report: false,
 });
 console.table(dry.documents.map((d) => ({ name: d.name, changes: d.changes.length })));
 
