@@ -74,9 +74,10 @@ to attack with it.
 
 ## Castable spells
 
-`actor.getCastableSpells()` lists all spirit and rune magic the character can cast, their own spells
-first. It follows the rules for spells from somewhere else than the character, so use it instead of
-looking through `actor.items` when you need to know what the character can cast.
+`await actor.getCastableSpells()` lists all spirit and rune magic the character can cast, their own
+spells first. It's async because matrix spells are looked up from their rqid. It follows the rules
+for spells from somewhere else than the character, so use it instead of looking through
+`actor.items` when you need to know what the character can cast.
 
 Each entry has `type` (`"spiritMagic"` or `"runeMagic"`), `name`, `points` and `source`, which says
 where the spell comes from:

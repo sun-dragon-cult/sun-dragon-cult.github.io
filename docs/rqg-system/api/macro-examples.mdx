@@ -46,9 +46,8 @@ await game.system.api.rolls.characteristic("power", {
 
 ```js
 const party = game.actors.filter((a) => a.hasPlayerOwner);
-const healers = party.filter((a) =>
-  a.getCastableSpells().some((s) => s.rqid === "i.spirit-magic.heal"),
-);
+const lists = await Promise.all(party.map((a) => a.getCastableSpells()));
+const healers = party.filter((a, i) => lists[i].some((s) => s.rqid === "i.spirit-magic.heal"));
 ui.notifications.info(`Healers: ${healers.map((a) => a.name).join(", ") || "none"}`);
 ```
 
@@ -56,7 +55,7 @@ ui.notifications.info(`Healers: ${healers.map((a) => a.name).join(", ") || "none
 
 ```js
 const actor = canvas.tokens.controlled[0]?.actor;
-const spell = actor?.getCastableSpells().find((s) => s.source === "matrix");
+const spell = (await actor?.getCastableSpells())?.find((s) => s.source === "matrix");
 if (spell) await game.system.api.rolls.spiritMagic(spell);
 ```
 
