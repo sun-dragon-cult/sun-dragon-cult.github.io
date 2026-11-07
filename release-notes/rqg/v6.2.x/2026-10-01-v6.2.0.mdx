@@ -322,7 +322,10 @@ Text that isn't in the list is kept as typed. On the sheet you can type or pick 
 language of the world or in English.
 
 Item names, like "Loyalty (Clan)" or "Cuirass (Leather)", don't change. They stay in the language
-they were written in, until the item is saved on its sheet again.
+they were written in, until the item is saved on its sheet again. The sheet then builds the name in
+the language of the world, with that language's word order, and leaves out empty parts: armor
+without a prefix or material, or a skill without a specialization, no longer gets a stray space or
+empty parentheses.
 
 :::note Upgrading
 
@@ -445,6 +448,10 @@ opening an old sheet logs a warning in the browser console.
   like `passion: Loyalty` or `armorType: Cuirass`, so the same content shows in the language of each
   world. Text in English or in the language of the world still works and is turned into the key when
   it's loaded. Translation modules need no change, since they already translate these keys.
+  <GithubIssue issue="1166" repo="fvtt-system-rqg" />
+- Translation modules can also change how the sheets put item names together. Each item type that
+  builds its name has a pattern key, like `RQG.Item.Armor.NamePattern`, `{armorType} ({material})`
+  in English, which a language can reorder, for example `{armorType} de {material}`.
   <GithubIssue issue="1166" repo="fvtt-system-rqg" />
 - Errors and warnings now carry a code like `RQG-W-0012`, which makes them easier to report and look
   up.
