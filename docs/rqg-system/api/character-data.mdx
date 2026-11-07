@@ -96,6 +96,7 @@ To group spells by where they come from, use `sourceId` rather than `sourceName`
 or matrix items can have the same name. It's the same for every spell from one source: the
 character's uuid for their own spells, the Allied Spirit's uuid, `boundSpirit:<itemId>:<spiritUuid>`
 for a bound spirit, or the matrix item's uuid. To find the same spell on another character or in
-another language, compare `rqid`, which matrix spells have too.
+another language, compare `rqid`, which matrix spells have too. `casterUuid` is the uuid of the
+character the list belongs to, who casts the spell when you pass it to the roll functions.
 
 Pass an entry to [`rolls.spiritMagic` or `rolls.runeMagic`](/rqg-system/api/rolls) to cast it.
