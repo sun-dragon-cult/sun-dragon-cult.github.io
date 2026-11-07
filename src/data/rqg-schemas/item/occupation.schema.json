@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/sun-dragon-cult/fvtt-system-rqg/master/src/data-model/json-schemas/generated/item/occupation.schema.json",
+  "title": "RQG Item - occupation",
+  "description": "Generated JSON Schema for the \"occupation\" Item DataModel's `system` data. Source: src/data-model/item-data/occupation-data-model.ts. Do not edit by hand — run `pnpm generate:schemas`.",
+  "type": "object",
+  "properties": {
+    "occupation": {
+      "type": "string",
+      "default": "",
+      "title": "Occupation",
+      "description": "Name of the occupation."
+    },
+    "occupationRqidLink": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "rqid": {
+          "type": "string",
+          "default": ""
+        },
+        "name": {
+          "type": "string",
+          "default": ""
+        },
+        "bonus": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "rqid",
+        "name"
+      ],
+      "title": "Occupation journal",
+      "description": "Link to the journal entry about the occupation."
+    },
+    "specialization": {
+      "type": "string",
+      "default": "",
+      "title": "Specialization",
+      "description": "A narrower field within the occupation."
+    },
+    "homelands": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "default": ""
+      },
+      "title": "Homelands",
+      "description": "Names of the homelands where the occupation is found."
+    },
+    "occupationalSkills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "incomeSkill": {
+            "type": "boolean",
+            "default": false
+          },
+          "bonus": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0
+          },
+          "skillRqidLink": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "rqid": {
+                "type": "string",
+                "default": ""
+              },
+              "name": {
+                "type": "string",
+                "default": ""
+              },
+              "bonus": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "rqid",
+              "name"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "incomeSkill",
+          "bonus"
+        ]
+      },
+      "title": "Occupational skills",
+      "description": "The skills the occupation grants. Each entry holds a skill link, a bonus and whether it is the income skill."
+    },
+    "standardOfLiving": {
+      "type": "string",
+      "enum": [
+        "destitute",
+        "poor",
+        "free",
+        "noble",
+        "petty-king"
+      ],
+      "minLength": 1,
+      "default": "free",
+      "title": "Standard of living",
+      "description": "Social standing of the occupation: destitute, poor, free, noble or petty king."
+    },
+    "baseIncome": {
+      "type": "number",
+      "minimum": 0,
+      "default": 0,
+      "title": "Base income",
+      "description": "Income per year in Lunars."
+    },
+    "baseIncomeNotes": {
+      "type": "string",
+      "default": "",
+      "title": "Base income notes",
+      "description": "Free text explaining how the income is made."
+    },
+    "cultRqidLinks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rqid": {
+            "type": "string",
+            "default": ""
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "bonus": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "rqid",
+          "name"
+        ]
+      },
+      "title": "Cults",
+      "description": "Links to the cults that fit the occupation."
+    },
+    "ransom": {
+      "type": "number",
+      "minimum": 0,
+      "default": 0,
+      "title": "Ransom",
+      "description": "Ransom in Lunars."
+    },
+    "startingEquipmentRqidLinks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rqid": {
+            "type": "string",
+            "default": ""
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "bonus": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "rqid",
+          "name"
+        ]
+      },
+      "title": "Starting equipment",
+      "description": "Links to the items a character starts with."
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "occupation",
+    "specialization",
+    "homelands",
+    "occupationalSkills",
+    "standardOfLiving",
+    "baseIncome",
+    "baseIncomeNotes",
+    "cultRqidLinks",
+    "ransom",
+    "startingEquipmentRqidLinks"
+  ]
+}

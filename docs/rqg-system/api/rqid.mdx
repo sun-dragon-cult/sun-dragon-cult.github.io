@@ -31,7 +31,7 @@ A normal rqid comes in 3 parts separated by dots `.` like this: `i.skill.fast-ta
 all lower case letters without any spaces.
 
 1. The first part is an abbreviated document type, see below. It supports many different document
-   types, but the system only uses links to items and journals so far.
+   types, but the system only uses links to items, journals and Active Effects so far.
 
 <details>
 <summary>Document type abbreviation table</summary>
@@ -39,6 +39,7 @@ all lower case letters without any spaces.
     |        | Foundry Document Type                                         |
     | ------ | ------------------------------------------------------------- |
     | **a**  | Actor                                                         |
+    | **ae** | ActiveEffect _(only found in compendium packs)_               |
     | **c**  | Cards                                                         |
     | **i**  | Item                                                          |
     | **je** | JournalEntry                                                  |
@@ -55,7 +56,7 @@ all lower case letters without any spaces.
 
 3. The third part is usually related to the name of the document in english. If it is a journal
    entry for example is describing the spell bladesharp (rqid `i.spirit-magic.bladesharp`), it can
-   be called `je..bladesharp`
+   be called `je..bladesharp`, and the spell's effect can be called `ae..bladesharp`
 
 :::info rqids for embedded documents
 
@@ -82,18 +83,12 @@ The priorities are:
 1. The id has to match the query
 2. The language - either the one specified in the query, the world language (as in the setting) or
    the fallback language (english)
-3. The found document is in the world - documents in compendium are only searched if no match is
-   found in imported world documents.
+3. The priority value - the highest priority wins, whether the document is in the world or in a
+   compendium
+4. The found document is in the world - if a world document and a compendium document have the same
+   priority, the world document is used
 
-:::danger
-
-Currently, any document in the world will have a higher "effective" priority compared to a document
-in a compendium, even if the priority value is lower.
-
-It's under consideration to change this so the priority is honored no matter where the document is
-located.
-
-:::
+Active Effects have no world collection, so an `ae` rqid is only found in compendium packs.
 
 <details>
 
@@ -107,13 +102,13 @@ player clicks the link a search is done to find the best match.
 Suppose these journal entries describing some spirit magic spells exist:
 
 1. rqid: `je..befuddle`, language: `en`, priority: `0` _(from the wiki module)_
-2. rqid: `je..befuddle`, language: `en`, priority: `1000` _(from a future english Red Book of Magic
+2. rqid: `je..befuddle`, language: `en`, priority: `1000` _(from a higher priority english
    module)_
 3. rqid: `je..befuddle`, language: `es`, priority: `0` _(from a custom "translation to Spanish"
    module)_
 4. rqid: `je..demoralize`, language: `en`, priority: `0` _(from the wiki module)_
-5. rqid: `je..demoralize`, language: `en`, priority: `1000` _(from a future english Red Book of
-   Magic module)_
+5. rqid: `je..demoralize`, language: `en`, priority: `1000` _(from a higher priority english
+   module)_
 
 - A search for `fromRqid("je..befuddle", "en")` would return journal entry 2, since that has the
   highest priority.
@@ -171,8 +166,11 @@ at the rqid of the skills. This allows the name of these skills to be translated
 
 - dodge: `i.skill.dodge`,
 - jump: `i.skill.jump`,
+- worship: `i.skill.worship`,
 - moveQuietly: `i.skill.move-quietly`,
 - spiritCombat: `i.skill.spirit-combat`,
+
+The Magic condition rune (`i.rune.magic-condition`) is identified the same way.
 
 ### 3. Specify what hit locations each armor piece protects
 
@@ -216,22 +214,27 @@ _The list of available runes is indexed at startup, see green box further down._
 
 ### 7. Active Effects
 
-:::danger
+An Active Effect on an actor can change a value on one of the actor's embedded items, not just on
+the actor itself. Such a change has an "Attribute Key" that starts with `@`, followed by which items
+to change, a `:`, and the path of the item's value:
 
-The RQG Active Effects implementation is still alpha level and could change completely, possibly
-without a migration for any active effects in current worlds.
+| Key                       | Changes                                                               |
+| ------------------------- | --------------------------------------------------------------------- |
+| `@<rqid>:system.<path>`   | The actor's best embedded item with that rqid                         |
+| `@~<regex>:system.<path>` | Every embedded item whose rqid matches the regular expression         |
+| `@.:system.<path>`        | The item the effect is on (only for an effect that belongs to an item) |
 
-:::
-
-The RQG system specific way of adding Foundry active effects to embedded items is to add a `Custom`
-active effect where the "Attribute Key" is following the format `<rqid:path>`. For example the
-system supplied "protection" token effects use this to add natural armor to an actor. This is
-currently done by adding a list of Active Effects like `i.hit-location.head:system.naturalAp` for
-each humanoid hit location.
+- The change types are Foundry's normal ones: Add, Multiply, Override, Upgrade and Downgrade.
+  **Custom** can't be used with an `@` key.
+- A regular expression can't contain a `:`, and has no flags.
+- Keys that don't start with `@` are normal Foundry keys and work exactly as in Foundry, including
+  core's `token.` keys, which change the actor's tokens. For example, `token.light.dim` makes the
+  token give off light.
+- A key that can't be used, such as an rqid the actor has no item for, shows the GM a warning.
 
 The `path` is the path to the item system property that should be changed. It is not obvious how to
 find this, but looking at the code for the item type in question can help. For example looking at
-the defaultSkillData in the various item types at
+the data models at
 https://github.com/sun-dragon-cult/fvtt-system-rqg/tree/main/src/data-model/item-data can give a
 hint of what to write.
 
@@ -239,29 +242,42 @@ Another way to find the path, especially for the actor, is to mark a token in a 
 open the developer tools (press F12) and in the console type `_token.actor.system` and see what
 comes out.
 
+**Bonus values:** values under `system.effect.add` are bonuses that are added to a value the system
+calculates. They start at 0 and aren't saved, so use them with **Add** (or Upgrade / Downgrade).
+Multiply and Override show a warning, since they make no sense for a bonus.
+
+- On the actor: `system.effect.add.magicPoints.max`, `system.effect.add.hitPoints.max` and
+  `system.effect.add.skillCategoryModifiers.<category>` (`agility`, `communication`, `knowledge`,
+  `magic`, `manipulation`, `perception`, `stealth`, `meleeWeapons`, `missileWeapons`, `shields`,
+  `naturalWeapons`, `otherSkills`)
+- On a weapon: `system.effect.add.melee.attack`, `.parry` and `.damage`, and the same for `missile`
+
+**Spell level:** in an effect that comes from a spell, `@level` in the value is the level the spell
+was cast at, for example `@level * 5`.
+
 :::tip Active Effect Examples
 
-- Climb skill item bonus: **CUSTOM** `i.skill.climb:system.baseChance`
-- Magic point storage: **ADD** `system.attributes.magicPoints.max` (no Rqid) _most actor attributes
-  are derived from characteristics, which makes it impossible to affect them with active effects.
-  The magicPoints.max is an exception since it has special handling in contrast to for example
-  healing rate and encumbrance._
-- Strength actor bonus: **ADD** `system.characteristics.strength.value` (no Rqid) _note that there
-  already is a token effect for applying the Strength spirit magic effect._
+- Climb skill bonus: **ADD** `@i.skill.climb:system.baseChance`, value `10`
+- Natural armor on every hit location: **ADD** `@~^i\.hit-location\.:system.naturalAp`, value `2`
+- Bladesharp on the weapon it's cast on: **ADD** `@.:system.effect.add.melee.attack`, value
+  `@level * 5`
+- Magic point bonus: **ADD** `system.effect.add.magicPoints.max`, value `2` (no rqid)
+- Agility skills bonus: **ADD** `system.effect.add.skillCategoryModifiers.agility`, value `5`
+  (no rqid)
+- Strength: **ADD** `system.characteristics.strength.value`, value `8` (no rqid). Values derived
+  from STR, like damage bonus, follow.
 
-Skill category bonuses are not currently possible to affect with active effects, since they are
-derived.
+Most other actor attributes are derived from characteristics, so an effect on them is overwritten.
 
 :::
 
-:::note Possible future improvement
+:::note Changed in 6.2.0
 
-- This could be improved if the rqid part could contain partial rqids. In the example above a
-  "natural armor" active effect could then be described by a single effect like
-  `i.hit-location.:system.naturalAp` and it would affect all hit locations embedded in an actor.
-- It's also currently only possible to add values, since the "CUSTOM" change mode is used to
-  describe that an item should be affected. Making use of the normal Change Modes like "ADD",
-  "SUBTRACT", "MULTIPLY", etc. could improve the usability further.
+Before RQG 6.2.0 a change to an item used a **Custom** key without the `@`, like
+`i.hit-location.head:system.naturalAp`. The world migration rewrites these to the `@` form on
+**Add**, and one that is left, for example in a module's compendium, shows the GM a warning and does
+nothing. The old keys `system.attributes.magicPoints.max` and `system.attributes.hitPoints.max` are
+migrated to their `system.effect.add` versions.
 
 :::
 
@@ -285,6 +301,20 @@ spells is done using the world language. On the actor sheet these spells have a 
 which spells gets marks is compares the rqid to that list.
 
 When casting rune magic spells the runes to cast with is searched in the actor by using rqid.
+
+### 10. Spell effects
+
+A spell that has an effect links to it with an Active Effect rqid in its **Effect** field
+(`effectRqidLink`), for example `ae..bladesharp`. When the spell takes effect, the best version of
+that effect is copied onto the target, so a higher priority module can replace an effect the same
+way it replaces a description.
+
+- The effect's **incompatible spells** are a list of spell rqids, like `i.spirit-magic.fireblade`,
+  that can't be on the same target at the same time.
+- Recasting a spell is recognised by the spell's rqid, so a spell without an rqid is never treated
+  as the same spell as another.
+- The token HUD's **+** lists the best version of each compendium spell that has an effect, in the
+  world language where possible.
 
 :::tip Runes and hit location items in compendiums are indexed at startup (usage 3-5)
 

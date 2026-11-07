@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/sun-dragon-cult/fvtt-system-rqg/master/src/data-model/json-schemas/generated/item/rune.schema.json",
+  "title": "RQG Item - rune",
+  "description": "Generated JSON Schema for the \"rune\" Item DataModel's `system` data. Source: src/data-model/item-data/rune-data-model.ts. Do not edit by hand — run `pnpm generate:schemas`.",
+  "type": "object",
+  "properties": {
+    "canGetExperience": {
+      "type": "boolean",
+      "default": true,
+      "title": "Can get experience",
+      "description": "Whether the ability can be checked for an experience gain."
+    },
+    "hasExperience": {
+      "type": "boolean",
+      "default": false,
+      "title": "Has experience",
+      "description": "Set when the ability has earned an experience check. Cleared when the improvement is rolled."
+    },
+    "chance": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "title": "Chance",
+      "description": "The rune's percentage."
+    },
+    "descriptionRqidLink": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "rqid": {
+          "type": "string",
+          "default": ""
+        },
+        "name": {
+          "type": "string",
+          "default": ""
+        },
+        "bonus": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "rqid",
+        "name"
+      ],
+      "title": "Description",
+      "description": "Link to the journal entry that describes the rune."
+    },
+    "rune": {
+      "type": "string",
+      "default": "",
+      "title": "Rune",
+      "description": "Name of the rune."
+    },
+    "runeType": {
+      "type": "string",
+      "enum": [
+        "element",
+        "power",
+        "form",
+        "condition",
+        "technique"
+      ],
+      "minLength": 1,
+      "default": "form",
+      "title": "Rune type",
+      "description": "The kind of rune."
+    },
+    "opposingRuneRqidLink": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "rqid": {
+          "type": "string",
+          "default": ""
+        },
+        "name": {
+          "type": "string",
+          "default": ""
+        },
+        "bonus": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "rqid",
+        "name"
+      ],
+      "title": "Opposing rune",
+      "description": "Link to the rune opposite this one."
+    },
+    "minorRuneRqidLinks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rqid": {
+            "type": "string",
+            "default": ""
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "bonus": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "rqid",
+          "name"
+        ]
+      },
+      "title": "Minor runes",
+      "description": "Links to the minor runes that belong to this rune."
+    },
+    "isMastered": {
+      "type": "boolean",
+      "default": false,
+      "title": "Is mastered",
+      "description": "Whether the character has mastered the rune for Sorcery. Techniques count as mastered."
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "canGetExperience",
+    "hasExperience",
+    "chance",
+    "rune",
+    "runeType",
+    "minorRuneRqidLinks",
+    "isMastered"
+  ]
+}

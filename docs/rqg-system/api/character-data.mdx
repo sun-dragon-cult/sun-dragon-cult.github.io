@@ -1,0 +1,102 @@
+---
+sidebar_position: 30
+slug: character-data
+title: Character data
+tags: []
+---
+
+Characters and their items are normal Foundry documents, so macros and modules read them from
+`actor.system`, `actor.items` and `item.system`, the same way as for any other system. Read them
+again when you need current values.
+
+## Character fields
+
+Every field of `actor.system` is listed below, with its type and default. Click a field name to copy
+its path.
+
+<SchemaTable type="actor/character" />
+
+## Stored and calculated values
+
+A field marked <CalculatedBadge /> is rebuilt every time the character changes and is never stored.
+You can read it, but writing to it has no lasting effect. Everything else is stored, and you change
+it with Foundry's `update`:
+
+```js
+await actor.update({ "system.attributes.magicPoints.value": 5 });
+```
+
+The items have the same kind of fields, see [Item data](/rqg-system/api/item-data). The JSON Schemas
+the tables are made from are in the system repository, in
+[`src/data-model/json-schemas/generated`](https://github.com/sun-dragon-cult/fvtt-system-rqg/tree/main/src/data-model/json-schemas/generated),
+if you want to use them in your own tools.
+
+### Changing calculated values with effects
+
+Calculated values are rebuilt from the stored ones, so a lasting change goes through an Active
+Effect. `system.effect` holds the values that effects add to, one for each calculated value that can
+be adjusted. They start at 0 (1 for multipliers) every time the character changes. Add the effect in
+`ADD` mode (`MULTIPLY` for `effect.multiply`):
+
+```js
+await actor.createEmbeddedDocuments("ActiveEffect", [
+  {
+    name: "Blessed vigor",
+    changes: [{ key: "system.effect.add.hitPoints.max", mode: 2, value: "2" }],
+  },
+]);
+actor.system.attributes.hitPoints.max; // 2 more than before
+```
+
+The rqid of any item is in `item.getFlag("rqg", "documentRqidFlags")?.id`, see
+[Rqid](/rqg-system/api/rqid).
+
+The rest of this page covers what the system works out from the rules, which is not stored on the
+documents.
+
+## Weapons
+
+A weapon is an item with up to four ways of using it, `system.usage.oneHand`, `offHand`, `twoHand`
+and `missile`. Each has stored values like `strikeRank`, `minStrength`, `minDexterity` and the
+linked skill. The attack chance and whether the character is strong and quick enough come from the
+skill, the weapon's effects and the rules, so ask the weapon:
+
+```js
+const spear = actor.items.find((i) => i.name === "Spear" && i.type === "weapon");
+const info = spear.system.getUsageInfo("twoHand");
+info.totalChance; // the linked skill's chance plus the weapon's effect modifiers
+info.unusable; // true when the character is below the STR or DEX requirement
+```
+
+The result also has `skillItem`, `skillChance`, `weaponEffectModifier`, `underMinSTR` and
+`underMinDEX`. The weapon has to belong to a character. Use [`rolls.attack`](/rqg-system/api/rolls)
+to attack with it.
+
+## Castable spells
+
+`actor.getCastableSpells()` lists all spirit and rune magic the character can cast, their own spells
+first. It follows the rules for spells from somewhere else than the character, so use it instead of
+looking through `actor.items` when you need to know what the character can cast.
+
+Each entry has `type` (`"spiritMagic"` or `"runeMagic"`), `name`, `points` and `source`, which says
+where the spell comes from:
+
+| `source`        | The spell is known by                                       |
+| --------------- | ----------------------------------------------------------- |
+| `"own"`         | The character                                               |
+| `"allied"`      | The character's Allied Spirit, or the priest it's bonded to |
+| `"boundSpirit"` | A spirit bound into one of the character's items            |
+| `"matrix"`      | A spell matrix the character has equipped                   |
+
+Spells from somewhere else than the character also have `sourceName`, the name of the spirit or the
+matrix item. Spirit magic has `isVariable`, rune magic has `isOneUse` and the `cultId` and
+`cultName` of the cult it's cast through.
+
+To group spells by where they come from, use `sourceId` rather than `sourceName`, since two spirits
+or matrix items can have the same name. It's the same for every spell from one source: the
+character's uuid for their own spells, the Allied Spirit's uuid, `boundSpirit:<itemId>:<spiritUuid>`
+for a bound spirit, or the matrix item's uuid. To find the same spell on another character or in
+another language, compare `rqid`, which matrix spells have too. `casterUuid` is the uuid of the
+character the list belongs to, who casts the spell when you pass it to the roll functions.
+
+Pass an entry to [`rolls.spiritMagic` or `rolls.runeMagic`](/rqg-system/api/rolls) to cast it.
