@@ -95,7 +95,9 @@ An attack is rolled when the defender defends, not when the attacker clicks Atta
 The `attack` argument has the `attacker`, the `target` (the actor of the token the user targeted
 when attacking, if any), the `usage` (`"oneHand"`, `"offHand"`, `"twoHand"` or `"missile"`), the
 `combatManeuver`, the `projectile` (the missile fired, or the weapon itself when thrown) and the
-`rollOptions` of the attack roll.
+`rollOptions` of the attack roll. The maneuver's `name` is its key for a maneuver from the list,
+like `"HeadButt"`, or the name typed on the weapon sheet for any other. Localize a key with
+`RQG.Item.Weapon.combatManeuver.<key>` to show it.
 
 The `defence` argument has the `attacker`, the `attackChatMessage`, the `defence` (`"parry"`,
 `"dodge"` or `"ignore"`, read only), the `parryingWeapon` and `parryingWeaponUsage`, and the
