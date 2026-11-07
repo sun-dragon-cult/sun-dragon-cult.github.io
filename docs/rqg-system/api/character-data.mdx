@@ -92,4 +92,10 @@ Spells from somewhere else than the character also have `sourceName`, the name o
 matrix item. Spirit magic has `isVariable`, rune magic has `isOneUse` and the `cultId` and
 `cultName` of the cult it's cast through.
 
+To group spells by where they come from, use `sourceId` rather than `sourceName`, since two spirits
+or matrix items can have the same name. It's the same for every spell from one source: the
+character's uuid for their own spells, the Allied Spirit's uuid, `boundSpirit:<itemId>:<spiritUuid>`
+for a bound spirit, or the matrix item's uuid. To find the same spell on another character or in
+another language, compare `rqid`, which matrix spells have too.
+
 Pass an entry to [`rolls.spiritMagic` or `rolls.runeMagic`](/rqg-system/api/rolls) to cast it.
