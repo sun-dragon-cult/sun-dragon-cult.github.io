@@ -46,7 +46,9 @@ await game.system.api.rolls.characteristic("power", {
 
 ```js
 const party = game.actors.filter((a) => a.hasPlayerOwner);
-const healers = party.filter((a) => a.getCastableSpells().some((s) => s.name.startsWith("Heal")));
+const healers = party.filter((a) =>
+  a.getCastableSpells().some((s) => s.rqid === "i.spirit-magic.heal"),
+);
 ui.notifications.info(`Healers: ${healers.map((a) => a.name).join(", ") || "none"}`);
 ```
 
