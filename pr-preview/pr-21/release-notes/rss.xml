@@ -239,6 +239,20 @@ its cast dialog.</li>
 <li class="">Ammunition that can't attack on its own, like arrows, and folders show a warning instead of making
 a macro that doesn't work.</li>
 </ul>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="items-in-another-language">Items in Another Language<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#items-in-another-language" class="hash-link" aria-label="Direct link to Items in Another Language" title="Direct link to Items in Another Language" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1166" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1166</label></a>
+<p>A few item fields used to store the text shown in the language the item was edited in: a passion, a
+rune's type, an armor's type and material, and a weapon's combat maneuvers. An item from a module in
+another language then showed in that language, a passion lost its image, and a combat maneuver only
+got its default damage type when its name matched the language of the world.</p>
+<p>These fields now store a value from the list as a key, and show it in the language of the world.
+Text that isn't in the list is kept as typed. On the sheet you can type or pick a value in the
+language of the world or in English.</p>
+<p>Item names, like "Loyalty (Clan)" or "Cuirass (Leather)", don't change. They stay in the language
+they were written in, until the item is saved on its sheet again.</p>
+<div class="theme-admonition theme-admonition-note admonition_uOdM alert alert--secondary"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>Upgrading</div><div class="admonitionContent__X6G"><p>The world migration saves the keys for the items in the world and on its actors. Items in
+compendiums, including other modules' compendiums, are converted each time they're loaded, so they
+need nothing.</p></div></div>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="api-for-macros-and-modules">API for Macros and Modules<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#api-for-macros-and-modules" class="hash-link" aria-label="Direct link to API for Macros and Modules" title="Direct link to API for Macros and Modules" translate="no">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1129" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1129</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1131" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1131</label></a>
@@ -261,6 +275,17 @@ the location's own armor) is subtracted first, and
 <code>actor.damage</code> and <code>actor.heal</code>.</li>
 </ul>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1171" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1171</label></a>
+<ul>
+<li class="">A rune's <code>system.runeType</code> is now the type itself, like <code>"power"</code>, instead of <code>{ type, name }</code>.
+Read <code>item.system.runeType</code> where you read <code>item.system.runeType.type</code>.</li>
+<li class=""><code>system.passion</code> on a passion, <code>system.armorType</code> and <code>system.material</code> on armor, and the <code>name</code>
+of a weapon's combat maneuvers hold a key for a value from the list, like <code>"Loyalty"</code>,
+<code>"HeavyLeather"</code> or <code>"HeadButt"</code>, and the typed text for any other value. The attack hooks'
+<code>combatManeuver.name</code> is that same value. To show a key, localize it with its prefix:
+<code>RQG.Item.Passion.PassionEnum.</code>, <code>RQG.Item.Armor.ArmorType.</code>, <code>RQG.Item.Armor.ArmorMaterial.</code> or
+<code>RQG.Item.Weapon.combatManeuver.</code>.</li>
+</ul>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1166" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1166</label></a>
 <h3 class="anchor anchorTargetStickyNavbar_xPLm" id="roll-methods-on-actors-and-items">Roll methods on actors and items<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#roll-methods-on-actors-and-items" class="hash-link" aria-label="Direct link to Roll methods on actors and items" title="Direct link to Roll methods on actors and items" translate="no">​</a></h3>
 <p>Rolls now have one method each, taking an options object:</p>
 <ul>
@@ -309,6 +334,12 @@ the target resists with: POW, or current magic points.<!-- -->
 </li>
 <li class="">Spells record what they can be cast on and what kind of effect they have, in two new fields.<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1080" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1080</label></a>
+</li>
+<li class="">Passions, rune types, armor types and materials, and combat maneuver names can be stored as keys,
+like <code>passion: Loyalty</code> or <code>armorType: Cuirass</code>, so the same content shows in the language of each
+world. Text in English or in the language of the world still works and is turned into the key when
+it's loaded. Translation modules need no change, since they already translate these keys.<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1166" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1166</label></a>
 </li>
 <li class="">Errors and warnings now carry a code like <code>RQG-W-0012</code>, which makes them easier to report and look
 up.</li>
