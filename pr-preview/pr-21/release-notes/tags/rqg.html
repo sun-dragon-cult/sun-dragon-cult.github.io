@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">36 posts tagged with &quot;rqg&quot; | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/tags/rqg"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" property="og:title" content="36 posts tagged with &quot;rqg&quot; | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="docusaurus_tag" content="blog_tags_posts"><meta data-rh="true" name="docsearch:docusaurus_tag" content="blog_tags_posts"><link data-rh="true" rel="icon" href="/pr-preview/pr-21/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/tags/rqg"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/tags/rqg" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/tags/rqg" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/pr-preview/pr-21/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/pr-preview/pr-21/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/pr-preview/pr-21/assets/css/styles.bdab6297.css">
-<script src="/pr-preview/pr-21/assets/js/runtime~main.e227adcf.js" defer="defer"></script>
+<script src="/pr-preview/pr-21/assets/js/runtime~main.e99e412c.js" defer="defer"></script>
 <script src="/pr-preview/pr-21/assets/js/main.e751f2d7.js" defer="defer"></script>
 </head>
 <body>
@@ -247,7 +247,10 @@ got its default damage type when its name matched the language of the world.</p>
 Text that isn&#x27;t in the list is kept as typed. On the sheet you can type or pick a value in the
 language of the world or in English.</p>
 <p>Item names, like &quot;Loyalty (Clan)&quot; or &quot;Cuirass (Leather)&quot;, don&#x27;t change. They stay in the language
-they were written in, until the item is saved on its sheet again.</p>
+they were written in, until the item is saved on its sheet again. The sheet then builds the name in
+the language of the world, with that language&#x27;s word order, and leaves out empty parts: armor
+without a prefix or material, or a skill without a specialization, no longer gets a stray space or
+empty parentheses.</p>
 <div class="theme-admonition theme-admonition-note admonition_uOdM alert alert--secondary"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>Upgrading</div><div class="admonitionContent__X6G"><p>The world migration saves the keys for the items in the world and on its actors. Items in
 compendiums, including other modules&#x27; compendiums, are converted each time they&#x27;re loaded, so they
 need nothing.</p></div></div>
@@ -337,6 +340,11 @@ the target resists with: POW, or current magic points.<!-- -->
 like <code>passion: Loyalty</code> or <code>armorType: Cuirass</code>, so the same content shows in the language of each
 world. Text in English or in the language of the world still works and is turned into the key when
 it&#x27;s loaded. Translation modules need no change, since they already translate these keys.<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1166" target="_blank"><label><img src="/img/github-mark.svg" width="13.5px"> #<!-- -->1166</label></a>
+</li>
+<li class="">Translation modules can also change how the sheets put item names together. Each item type that
+builds its name has a pattern key, like <code>RQG.Item.Armor.NamePattern</code>, <code>{armorType} ({material})</code>
+in English, which a language can reorder, for example <code>{armorType} de {material}</code>.<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1166" target="_blank"><label><img src="/img/github-mark.svg" width="13.5px"> #<!-- -->1166</label></a>
 </li>
 <li class="">Errors and warnings now carry a code like <code>RQG-W-0012</code>, which makes them easier to report and look
