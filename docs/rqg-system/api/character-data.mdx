@@ -119,3 +119,19 @@ cast draws from them: the order set in the character's Magic Point Sources windo
 option of [`rolls.spiritMagic` or `rolls.runeMagic`](/rqg-system/api/rolls) to draw only from that
 source. A spell from a bound spirit has the spirit's `id` as its `sourceId`, so
 `{ magicPointSource: spell.sourceId }` casts it with the spirit's own magic points.
+
+## Hit locations and wounds
+
+A character's hit locations are items of type `hitLocation`, with their hit points in
+`item.system.hitPoints` (see [Item data](/rqg-system/api/item-data)). To let the user add or heal a
+wound the same way as from the character sheet, open the sheet's dialogs:
+
+```js
+const { dialogs } = game.system.api;
+await dialogs.addWound("Head", { actor: token }); // asks for the damage and the armor
+await dialogs.healWounds("Head", { actor: token }); // with the head's wounds picked
+await dialogs.healWounds(undefined, { actor: token }); // all the character's wounds
+```
+
+The hit location is the item, or its name, id, uuid or rqid. Given the item itself, its own actor is
+used. To damage or heal without a dialog, use `actor.damage` and `actor.heal`.
