@@ -52,7 +52,7 @@ All options are optional.
 | `modifiers`        | all but `attack` | A list of modifiers like `[{ description: "Darkness", value: -20 }]`                                                                                                                                     |
 | `rollMode`         | all but `attack` | Foundry roll mode, for example `"gm"`                                                                                                                                                                    |
 | `difficulty`       | `characteristic` | What to multiply the characteristic with, 5 by default                                                                                                                                                   |
-| `levelUsed`        | spells           | Points to cast with, defaults to the spell's points                                                                                                                                                      |
+| `levelUsed`        | spells           | Points to cast with, defaults to the spell's points. Only variable spirit magic can use fewer, down to 1, and only stackable rune magic more                                                             |
 | `magicPointBoost`  | spells           | Extra magic points to boost the spell with                                                                                                                                                               |
 | `magicPointSource` | spells           | Where magic points are drawn from: `"auto"` (the default) follows the character's draw order, or the `id` of one of [`actor.getMagicPointSources()`](/rqg-system/api/character-data#magic-point-sources) |
 
