@@ -318,6 +318,20 @@ replacement:</p>
 <p>Hotbar macros made by dragging a skill to the hotbar in earlier versions use the old method. To
 update one, drag the skill to the hotbar again.</p>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1132" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1132</label></a>
+<h3 class="anchor anchorTargetStickyNavbar_xPLm" id="magic-point-sources-and-wounds">Magic point sources and wounds<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#magic-point-sources-and-wounds" class="hash-link" aria-label="Direct link to Magic point sources and wounds" title="Direct link to Magic point sources and wounds" translate="no">​</a></h3>
+<ul>
+<li class=""><code>rolls.spiritMagic</code> and <code>rolls.runeMagic</code> take a <code>magicPointSource</code>, to draw the magic points from
+the character, an Allied Spirit, a bound spirit or a magic point storage item instead of following
+the character's draw order. <code>actor.getMagicPointSources()</code> lists the sources, with their magic
+points. See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/character-data">Character data</a>.</li>
+<li class="">The spirit and rune magic dialogs start with the options given, like <code>levelUsed</code>,
+<code>magicPointBoost</code>, <code>magicPointSource</code> and <code>rollMode</code>, and the player can still change them. See
+<a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/rolls">Rolls</a>.</li>
+<li class=""><code>dialogs.addWound</code> and <code>dialogs.healWounds</code> open the character sheet's Add Wound and Heal Wounds
+dialogs for a hit location. <code>addWound</code> can start with a damage and with the armor and total hit
+points boxes set. See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/character-data">Character data</a>.</li>
+</ul>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1136" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1136</label></a>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="old-sheets-will-be-removed-in-630">Old Sheets Will Be Removed in 6.3.0<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#old-sheets-will-be-removed-in-630" class="hash-link" aria-label="Direct link to Old Sheets Will Be Removed in 6.3.0" title="Direct link to Old Sheets Will Be Removed in 6.3.0" translate="no">​</a></h2>
 <p>The newer character and item sheets are the default. Their names end in <strong>V2</strong>, like "Character
 Sheet V2". The old sheets, like "Character Sheet" and "Passion Item Sheet", can still be picked in a
