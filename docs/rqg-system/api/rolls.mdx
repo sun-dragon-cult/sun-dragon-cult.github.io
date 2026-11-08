@@ -56,10 +56,11 @@ All options are optional.
 | `magicPointBoost`  | spells           | Extra magic points to boost the spell with                                                                                                                                                               |
 | `magicPointSource` | spells           | Where magic points are drawn from: `"auto"` (the default) follows the character's draw order, or the `id` of one of [`actor.getMagicPointSources()`](/rqg-system/api/character-data#magic-point-sources) |
 
-`rollMode` and `difficulty` are only used together with `skipDialog`, in the dialog the player picks
-them. The same goes for `modifiers`, except for `ability`: there they are added as fixed modifiers
-that the player can't change. They aren't shown as fields in the dialog, but they are included in
-the target chance, listed when hovering it, and shown on the chat card.
+`rollMode`, `difficulty`, `levelUsed`, `magicPointBoost` and `magicPointSource` are only used
+together with `skipDialog`, in the dialog the player picks them. The same goes for `modifiers`,
+except for `ability`: there they are added as fixed modifiers that the player can't change. They
+aren't shown as fields in the dialog, but they are included in the target chance, listed when
+hovering it, and shown on the chat card.
 
 ## Examples
 
