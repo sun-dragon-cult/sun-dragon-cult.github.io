@@ -18,8 +18,9 @@ has two parts:
 - **`game.system.api`**, for everything that needs the rules, like rolling dice and casting spells.
 
 Modules can also call the [roll methods](/rqg-system/api/rolls#rolling-from-an-actor-or-item) on
-RQG's actors and items, and `actor.damage`, `actor.heal` and `actor.getCastableSpells`. Don't call
-other methods on them or use other parts of the system directly. Those can change in any release.
+RQG's actors and items, and `actor.damage`, `actor.heal`, `actor.getCastableSpells` and
+`actor.getMagicPointSources`. Don't call other methods on them or use other parts of the system
+directly. Those can change in any release.
 
 ## What's in it
 

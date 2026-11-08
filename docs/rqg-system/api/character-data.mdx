@@ -101,3 +101,21 @@ another language, compare `rqid`, which matrix spells have too. `casterUuid` is 
 character the list belongs to, who casts the spell when you pass it to the roll functions.
 
 Pass an entry to [`rolls.spiritMagic` or `rolls.runeMagic`](/rqg-system/api/rolls) to cast it.
+
+## Magic point sources
+
+`actor.getMagicPointSources()` lists where the character can draw magic points from, in the order a
+cast draws from them: the order set in the character's Magic Point Sources window. Each entry has
+`id`, `type`, `name`, `magicPoints` (`value` and `max`) and `uuid`:
+
+| `type`          | The source                                                  | `id`                                |
+| --------------- | ----------------------------------------------------------- | ----------------------------------- |
+| `"self"`        | The character's own magic points                            | `"self"`                            |
+| `"item"`        | An equipped, identified item that stores magic points       | The item's id                       |
+| `"boundSpirit"` | A spirit bound into one of the character's equipped items   | `boundSpirit:<itemId>:<spiritUuid>` |
+| `"ally"`        | The character's Allied Spirit, or the priest it's bonded to | `"ally"`                            |
+
+`uuid` is the item's uuid for an item, otherwise the actor's. Pass `id` as the `magicPointSource`
+option of [`rolls.spiritMagic` or `rolls.runeMagic`](/rqg-system/api/rolls) to draw only from that
+source. A spell from a bound spirit has the spirit's `id` as its `sourceId`, so
+`{ magicPointSource: spell.sourceId }` casts it with the spirit's own magic points.
