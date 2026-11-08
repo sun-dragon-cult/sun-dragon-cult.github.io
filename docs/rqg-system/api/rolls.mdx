@@ -50,14 +50,16 @@ All options are optional.
 | `actor`            | all              | Who rolls, see [Pointing at actors and items](/rqg-system/api#pointing-at-actors-and-items)                                                                                                              |
 | `skipDialog`       | all but `attack` | Roll at once and return the roll                                                                                                                                                                         |
 | `modifiers`        | all but `attack` | A list of modifiers like `[{ description: "Darkness", value: -20 }]`                                                                                                                                     |
-| `rollMode`         | all but `attack` | Foundry roll mode, for example `"gmroll"`                                                                                                                                                                |
+| `rollMode`         | all but `attack` | Foundry roll mode, for example `"gm"`                                                                                                                                                                    |
 | `difficulty`       | `characteristic` | What to multiply the characteristic with, 5 by default                                                                                                                                                   |
 | `levelUsed`        | spells           | Points to cast with, defaults to the spell's points                                                                                                                                                      |
 | `magicPointBoost`  | spells           | Extra magic points to boost the spell with                                                                                                                                                               |
 | `magicPointSource` | spells           | Where magic points are drawn from: `"auto"` (the default) follows the character's draw order, or the `id` of one of [`actor.getMagicPointSources()`](/rqg-system/api/character-data#magic-point-sources) |
 
-`rollMode`, `difficulty`, `levelUsed`, `magicPointBoost` and `magicPointSource` are only used
-together with `skipDialog`, in the dialog the player picks them. The same goes for `modifiers`,
+The spell dialogs start with the given `levelUsed`, `magicPointBoost`, `magicPointSource` and
+`rollMode`, and the player can change them. A source the character can't draw from is replaced by
+`"auto"`. For the other rolls, `rollMode` and `difficulty` are only used together with `skipDialog`,
+in the dialog the player picks them. `modifiers` are only used together with `skipDialog` too,
 except for `ability`: there they are added as fixed modifiers that the player can't change. They
 aren't shown as fields in the dialog, but they are included in the target chance, listed when
 hovering it, and shown on the chat card.
