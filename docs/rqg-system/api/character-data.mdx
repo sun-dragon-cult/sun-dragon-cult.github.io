@@ -129,9 +129,13 @@ wound the same way as from the character sheet, open the sheet's dialogs:
 ```js
 const { dialogs } = game.system.api;
 await dialogs.addWound("Head", { actor: token }); // asks for the damage and the armor
+await dialogs.addWound("Head", { actor: token, damage: 7, subtractArmorPoints: false });
 await dialogs.healWounds("Head", { actor: token }); // with the head's wounds picked
 await dialogs.healWounds(undefined, { actor: token }); // all the character's wounds
 ```
 
-The hit location is the item, or its name, id, uuid or rqid. Given the item itself, its own actor is
-used. To damage or heal without a dialog, use `actor.damage` and `actor.heal`.
+`addWound` starts with the given `damage`, and with the Subtract armor points
+(`subtractArmorPoints`) and Apply to total hit points (`applyToTotalHp`) boxes ticked unless they
+are `false`. The user can change them before adding the wound. The hit location is the item, or its
+name, id, uuid or rqid. Given the item itself, its own actor is used. To damage or heal without a
+dialog, use `actor.damage` and `actor.heal`.
