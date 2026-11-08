@@ -45,15 +45,16 @@ and an `actor` option naming anyone else is an error.
 
 All options are optional.
 
-| Option            | Used by          | Meaning                                                                                     |
-| ----------------- | ---------------- | ------------------------------------------------------------------------------------------- |
-| `actor`           | all              | Who rolls, see [Pointing at actors and items](/rqg-system/api#pointing-at-actors-and-items) |
-| `skipDialog`      | all but `attack` | Roll at once and return the roll                                                            |
-| `modifiers`       | all but `attack` | A list of modifiers like `[{ description: "Darkness", value: -20 }]`                        |
-| `rollMode`        | all but `attack` | Foundry roll mode, for example `"gmroll"`                                                   |
-| `difficulty`      | `characteristic` | What to multiply the characteristic with, 5 by default                                      |
-| `levelUsed`       | spells           | Points to cast with, defaults to the spell's points                                         |
-| `magicPointBoost` | spells           | Extra magic points to boost the spell with                                                  |
+| Option             | Used by          | Meaning                                                                                                                                                                             |
+| ------------------ | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `actor`            | all              | Who rolls, see [Pointing at actors and items](/rqg-system/api#pointing-at-actors-and-items)                                                                                         |
+| `skipDialog`       | all but `attack` | Roll at once and return the roll                                                                                                                                                    |
+| `modifiers`        | all but `attack` | A list of modifiers like `[{ description: "Darkness", value: -20 }]`                                                                                                                |
+| `rollMode`         | all but `attack` | Foundry roll mode, for example `"gmroll"`                                                                                                                                           |
+| `difficulty`       | `characteristic` | What to multiply the characteristic with, 5 by default                                                                                                                              |
+| `levelUsed`        | spells           | Points to cast with, defaults to the spell's points                                                                                                                                 |
+| `magicPointBoost`  | spells           | Extra magic points to boost the spell with                                                                                                                                          |
+| `magicPointSource` | spells           | Where magic points are drawn from: `"auto"` (the default) follows the character's draw order, or `"self"`, `"ally"`, a magic point storage item's id or a bound spirit's `sourceId` |
 
 `rollMode` and `difficulty` are only used together with `skipDialog`, in the dialog the player picks
 them. The same goes for `modifiers`, except for `ability`: there they are added as fixed modifiers
