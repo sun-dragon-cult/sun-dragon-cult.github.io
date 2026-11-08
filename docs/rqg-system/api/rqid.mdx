@@ -316,6 +316,16 @@ way it replaces a description.
 - The token HUD's **+** lists the best version of each compendium spell that has an effect, in the
   world language where possible.
 
+### 11. Link names
+
+Rqid links only store the rqid. The name shown on a link is the name of the document it finds,
+searched the same way as when the link is opened, in the language of the world. When a module adds a
+better version or a translation, every link shows its name, and lists of links are sorted by the
+names shown.
+
+A link that finds no document shows its rqid instead, with a red dashed border, like a broken
+Foundry link. Usually the module that has the document isn't active, or the rqid is misspelled.
+
 :::tip Runes and hit location items in compendiums are indexed at startup (usage 3-5)
 
 When (re)loading the browser all compendiums containing all rune and hit location items are indexed
@@ -338,6 +348,9 @@ where the first parameter is the invariant rqid, and the second parameter is the
 code. If you do not include a language code, it will use the language from the setting "world
 language" when searching for the document. If the document is not available in the requested
 language it will try to find it in English as a fallback before giving up.
+
+To show a link's name, `game.system.api.rqid.nameFromRqid("i.skill.dance")` returns the name of the
+best match without loading the document, or `undefined` when nothing matches.
 
 :::danger Not Yet Implemented - TODO ⚠️
 

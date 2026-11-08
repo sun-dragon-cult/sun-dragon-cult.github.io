@@ -327,6 +327,13 @@ the language of the world, with that language's word order, and leaves out empty
 without a prefix or material, or a skill without a specialization, no longer gets a stray space or
 empty parentheses.
 
+Links to other items and journal entries, like a homeland's cults or an armor's hit locations, now
+show the name of what they link to, in the language of the world. They used to show the name it had
+when the link was made, in the language of whoever made it. Lists of links are sorted by name, and a
+link to something that can't be found shows its rqid with a red dashed border.
+
+<GithubIssue issue="1167" repo="fvtt-system-rqg" />
+
 :::note Upgrading
 
 The world migration saves the keys for the items in the world and on its actors. Items in
@@ -372,6 +379,11 @@ can break macros or modules are listed in the release notes.
   `RQG.Item.Weapon.combatManeuver.`.
 
 <GithubIssue issue="1166" repo="fvtt-system-rqg" />
+
+- Rqid links no longer have a `name`. To show one, use
+  `game.system.api.rqid.nameFromRqid(link.rqid)`.
+
+<GithubIssue issue="1167" repo="fvtt-system-rqg" />
 
 ### Roll methods on actors and items
 
@@ -468,6 +480,8 @@ opening an old sheet logs a warning in the browser console.
   builds its name has a pattern key, like `RQG.Item.Armor.NamePattern`, `{armorType} ({material})`
   in English, which a language can reorder, for example `{armorType} de {material}`.
   <GithubIssue issue="1166" repo="fvtt-system-rqg" />
+- Rqid links only need the `rqid`. A `name` on a link is ignored and isn't saved, since the link
+  shows the name of what it finds. <GithubIssue issue="1167" repo="fvtt-system-rqg" />
 - Errors and warnings now carry a code like `RQG-W-0012`, which makes them easier to report and look
   up.
 
