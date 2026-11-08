@@ -425,6 +425,21 @@ update one, drag the skill to the hotbar again.
 
 <GithubIssue issue="1132" repo="fvtt-system-rqg" />
 
+### Magic point sources and wounds
+
+- `rolls.spiritMagic` and `rolls.runeMagic` take a `magicPointSource`, to draw the magic points from
+  the character, an Allied Spirit, a bound spirit or a magic point storage item instead of following
+  the character's draw order. `actor.getMagicPointSources()` lists the sources, with their magic
+  points. See [Character data](/rqg-system/api/character-data).
+- The spirit and rune magic dialogs start with the options given, like `levelUsed`,
+  `magicPointBoost`, `magicPointSource` and `rollMode`, and the player can still change them. See
+  [Rolls](/rqg-system/api/rolls).
+- `dialogs.addWound` and `dialogs.healWounds` open the character sheet's Add Wound and Heal Wounds
+  dialogs for a hit location. `addWound` can start with a damage and with the armor and total hit
+  points boxes set. See [Character data](/rqg-system/api/character-data).
+
+<GithubIssue issue="1136" repo="fvtt-system-rqg" />
+
 ## Old Sheets Will Be Removed in 6.3.0
 
 The newer character and item sheets are the default. Their names end in **V2**, like "Character
