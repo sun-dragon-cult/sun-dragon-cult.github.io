@@ -59,11 +59,11 @@ All options are optional.
 The spell dialogs start with the given `levelUsed`, `magicPointBoost`, `magicPointSource` and
 `rollMode`, and the player can change them. `levelUsed` is only used for spells cast at a chosen
 level, variable spirit magic and stackable rune magic. A `magicPointSource` that isn't one of the
-character's sources is an error. For the other rolls, `rollMode` and `difficulty` are only used
-together with `skipDialog`, in the dialog the player picks them. `modifiers` are only used together
-with `skipDialog` too, except for `ability`: there they are added as fixed modifiers that the player
-can't change. They aren't shown as fields in the dialog, but they are included in the target chance,
-listed when hovering it, and shown on the chat card.
+character's sources is an error from these functions. For the other rolls, `rollMode` and
+`difficulty` are only used together with `skipDialog`, in the dialog the player picks them.
+`modifiers` are only used together with `skipDialog` too, except for `ability`: there they are added
+as fixed modifiers that the player can't change. They aren't shown as fields in the dialog, but they
+are included in the target chance, listed when hovering it, and shown on the chat card.
 
 ## Examples
 
@@ -107,7 +107,8 @@ has one.
 Use `actor.castSpell` for a spell the actor knows through an Allied Spirit, a bound spirit or a
 matrix: the spell item belongs to the spirit or the matrix, but `actor` is the caster who spends the
 magic points. Rune magic also takes `runePointSource` (which cult's rune points to spend) and
-`usedRuneId` (which rune to roll), and both kinds take `magicPointSource`.
+`usedRuneId` (which rune to roll), and the rune magic dialog starts with them. Both kinds take
+`magicPointSource`.
 
 ```js
 // In a module: roll the Constitution ×3 of a combatant's token without a dialog
