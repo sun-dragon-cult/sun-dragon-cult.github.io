@@ -1,0 +1,168 @@
+---
+slug: wiki-v2.1.0
+title: Wiki 2.1.0
+tags:
+  - wiki
+  - foundry-release
+  - wiki-2
+  - wiki-2-1
+---
+
+![Required RQG System Version](https://img.shields.io/badge/Required%20RQG%20System%20Version-v6.0.0%2B-blue)
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/sun-dragon-cult/fvtt-module-wiki-rqg/releases/download/v2.1.0/en-module.json)
+![Download Count](https://img.shields.io/github/downloads/sun-dragon-cult/fvtt-module-wiki-rqg/v2.1.0/wiki-en-rqg.zip)
+
+This release adds the content for features of RQG system 6.2.0: spell effects, spells and skills
+that do their work when Apply is clicked on their chat card, and starting a new actor from a
+template. It also gives every spell its own icon.
+
+The module still works with system 6.0 and 6.1. There the new content is simply not used yet.
+
+:::warning Update the wiki module before the system
+
+Install this release **before** you upgrade the system to 6.2.0. When the world is upgraded, the
+system links the spells already on your actors to their effects by looking them up in this module's
+compendiums. With an older wiki module, those spells get no effect link.
+
+:::
+
+## Spell Effects
+
+Two new compendiums, **Spirit Magic Effects** and **Rune Magic Effects**, hold an effect for every
+spirit and rune spell that lasts for a while. Each spell in the wiki links to its effect. With
+system 6.2.0, a cast spell can put its effect on the target, and the effect shows on the token until
+it runs out.
+
+Some effects change the character sheet:
+
+- Strength, Vigor, Coordination and Glamour raise STR, CON, DEX and CHA. Damage bonus, hit points
+  and skill modifiers follow.
+- Bear's Strength doubles STR and Bear's Charisma doubles CHA. Bear's Skin adds 6 SIZ and 4 points
+  of armor on every hit location.
+- Protection and Shield add armor on every hit location.
+- Bladesharp, Bludgeon and Dullblade change the weapon's attack and damage. Fireblade makes its
+  damage 3D6 plus damage bonus.
+- Axe Trance raises axe skills, Slash adds magic damage dice, and True Sword doubles the weapon's
+  damage dice.
+- Speedart goes on one arrow or other missile and gives +15% to hit and +3 damage. It's used up when
+  that missile is fired. Multimissile and Firearrow also go on one missile and are used up with it.
+- Berserker adds half again to CON.
+- Mobility doubles and Slow halves MOV. Their strike rank change is left to the GM.
+- Light and Lantern make the token give off light.
+
+Countermagic, Fanaticism and Reflection change nothing on the sheet, but have rules of their own,
+see below. The others are reminders: they change nothing on the sheet, but show that the spell is
+active. Sleep and Discorporation also show their token status marker. The reminders are Ban, Become
+Other Sex, Befuddle, Bless Crops, Catseye, Clairvoyance, Cloud Call, Dark Walk, Decrease Wind,
+Demoralize, Discorporation, Earth Shield, Face Chaos, Farsee, Fearless, Flight, Forget, Glue,
+Illusionary Sound, Impede Chaos, Increase Wind, Leap, Lock, Mind Read, Passage, Path Watch, Second
+Sight, Shimmer, Silence, Sleep, Soul Sight, Spirit Block, Spirit Screen, Truespeak, Visibility and
+Wind Words.
+
+Spells that can't be on the same target at once are marked as incompatible, for example Bladesharp,
+Bludgeon and Fireblade on a weapon, or Strength and Vigor on a person. Demoralize cancels an active
+Fanaticism, and Berserker replaces it. Spells with a long fixed duration carry it: Catseye 12 hours,
+Lock and Passage 56 days, and Ban 3 years.
+
+## Spells With Rules
+
+With system 6.2.0, some spells do more than put an effect on the target. Their rules run when Apply
+is clicked on the spell's chat card, or while their effect is active:
+
+- **Dispel Magic** and **Dismiss Magic**: the target's owner picks which spells on the target and
+  its items to remove, within the points cast. The most powerful spells it can remove are picked to
+  start with. Each point of Dismiss Magic removes 1 Rune point or 2 points of spirit magic.
+- **Summon Air Elemental** and **Summon Earth Elemental** place the elemental next to the caster:
+  small, medium or large for 1, 2 or 3 Rune points. It goes away when the spell ends. **Dismiss Air
+  Elemental** and **Dismiss Earth Elemental** remove an elemental of their type when the Rune points
+  cover its size. A GM must be logged in, since players can't create or remove tokens.
+- **Summon** and **Dismiss** work the same way for **Darkness**, **Fire**, **Moon** and **Water
+  Elementals**. This module only includes air and earth elementals, so for the others create the
+  actor yourself, for example from the _Glorantha Bestiary_, and give it the rqid
+  `a.character.fire-elemental-medium` (with the element and size you want). The summoning spell
+  tells you the rqid it is looking for.
+- **Heal**, **Heal Wound** and **Heal Body** open a dialog to choose the wounds to heal. Heal heals
+  1 hit point per point on one location, and 6 points restore a severed limb. Heal Wound heals as
+  many hit points as the magic points spent with it. Heal Body heals all damage and reattaches
+  severed limbs.
+- **Disruption** does 1D3 damage to a random hit location, which armor doesn't stop. Apply rolls the
+  damage and the hit location in chat, like an attack, and then wounds the target. A GM must be
+  logged in, since players can't damage someone else's actor.
+- **Countermagic** and **Shield** stop spells cast at their target. A spell 2 or more points weaker
+  than the Countermagic is stopped, one within a point of it is stopped but uses the Countermagic
+  up, and a stronger one breaks it and goes on. Then the spell must be stronger than the Shield's
+  defense.
+- **Harmony** and **Inviolable** calm everyone their single resistance roll overcomes, for 15
+  minutes. They remove weaker Fanaticism, Demoralize, Berserker, Madness and Arouse Passion, and
+  stop them while they last; Inviolable stops weaker Fear too. The cast dialog lights up the area
+  and targets everyone in it: 3 meters per point for Harmony, 3 meters for Inviolable.
+- **Turn Undead** reaches one undead per point, and the cast dialog refuses more targets than that.
+- **Shake Earth**, **Warding**, **Create Market**, **Sanctify**, **Axis Mundi** and **Mist Cloud**
+  make an area on the scene.
+  - **Shake Earth** is a circle as large as the magic points spent squared, in square meters: 1 m²
+    for 1 point, 4 m² for 2. Everyone inside gets –5% per Rune point to Agility and Manipulation
+    skills and DEX rolls.
+  - **Warding** and **Create Market** are placed by clicking their four wands. A ward protects those
+    inside with its Countermagic against spells cast from outside. A hostile intruder takes 1D3
+    damage per point of the ward, ignoring armor, rolled in chat for its owner. The alarm is heard
+    by everyone with a token within 500 meters, unless a wall that blocks sound is in the way, and
+    doesn't say who crossed; the GM is told who. A caster who has left their ward only hears it when
+    in range.
+  - **Sanctify** alerts the caster when a non-initiate enters.
+- **Reflection** sends a spell that failed to overcome its target back at the caster. The caster's
+  own Countermagic or Shield meets it first, then the caster must resist it with their own POW. Each
+  point reflects 2 points of spirit magic or 1 Rune point; a stronger spell isn't reflected, and a
+  spell is only reflected once.
+- **Berserker**: attacks get half again, or double against a target with the Chaos rune. The
+  berserker can't parry, dodge or cast spells, CON rolls succeed at 95%, and Countermagic 2 (4
+  against a chaotic caster) protects them. When the spell ends, they are Helpless.
+- **Fanaticism**: attacks get half again, the fanatic can't parry, and Dodge is halved. Casting only
+  attack spells is left to the GM.
+
+Rules that aren't automated, like a berserker being spared shock and unconsciousness, are left to
+the GM.
+
+## First Aid
+
+With system 6.2.0, a First Aid roll that succeeds or fumbles has an Apply button on its chat card.
+It asks which wound to treat, then rolls the healing: 1D3 on a success, 2D3 on a special and 1D3+3
+on a critical, up to the size of the wound. A fumble asks which location was treated and does 1D3
+damage to it.
+
+## Bestiary
+
+Harpies have the Chaos rune at 60%, so Berserker's bonus against Chaos works on them.
+
+## Spell Icons
+
+Every spell now has its own icon, and related spells share a look. Detect and Find spells sit in a
+scope, Summon spells rise from a summoning circle and each Dismiss is its Summon slashed through,
+and healing spells carry a heart.
+
+The spell effects have icons too. An orange background means the effect has automated effects: it
+changes the sheet, or its rules act while it is on, like Warding or Countermagic. A brown one means
+it only marks the spell while it lasts. With system 6.2.0, the token HUD says the same when you
+hover over an effect, and partly automated effects name what is left to the GM, for example "Not
+automated: −1 strike rank" on Mobility. Those are Axe Trance, Berserker, Coordination, Create
+Market, Fanaticism, Mobility, Shake Earth, Slow, Speedart and Warding. The icons come from
+[game-icons.net](https://game-icons.net) (CC BY 3.0), Font Awesome Free and the RQG system's own
+rune icons.
+
+## Actor Templates
+
+The adventurer and bestiary actors are marked as templates, so system 6.2.0's **Create Actor**
+dialog lists them under **Choose template...**. Filter them by class, role and species, for example
+the human adventurer templates by class Human.
+
+## For Content Creators
+
+- Every rune and spirit spell has its target kind (what it can be cast on), effect tier (how much of
+  the spell effect machinery it uses) and what resists it set, for the system's `targetKind`,
+  `effectTier` and `resistedBy` fields. Fanaticism is resisted with a resistance roll.
+- A spell finds its effect through `effectRqidLink`, and incompatible spells through
+  `incompatibleSpellRqidLinks`. Berserker's effect removes Fanaticism through
+  `supersedesSpellRqidLinks`.
+- The rules of the spells above and of First Aid are behaviors: scripts in this module, registered
+  with the system by the rqid of the spell or skill. A module of your own can replace them by
+  registering behaviors for the same rqids with a higher priority. The system's API docs have a
+  Behaviors page.
