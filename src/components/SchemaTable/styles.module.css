@@ -52,12 +52,42 @@
   display: inline-block;
   padding: 0 0.4rem;
   border-radius: 8px;
-  background: #f3a71e;
   color: #1b1b1d;
   font-size: 0.7rem;
   font-weight: 600;
   line-height: 1.4;
   white-space: nowrap;
+}
+.calculated {
+  background: #f3a71e;
+}
+.effectTarget {
+  background: #7cc4f4;
+}
+.segments {
+  display: inline-flex;
+}
+.segments button {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.segments button + button {
+  border-left: 0;
+}
+.segments button:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.segments button:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.segments button[aria-pressed="true"] {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary-contrast-foreground, #fff);
 }
 .inTable {
   margin-left: 0.4rem;

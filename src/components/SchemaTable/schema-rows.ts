@@ -9,8 +9,14 @@ export interface SchemaNode {
   maximum?: number;
   title?: string;
   description?: string;
-  readOnly?: boolean;
+  /** false for values calculated on every prepare, which are never stored. */
+  "x-rqg-stored"?: boolean;
+  /** true for the not stored values that Active Effects write to. */
+  "x-rqg-effectTarget"?: boolean;
 }
+
+export type FieldKind = "stored" | "calculated" | "effectTarget";
+export type KindFilter = FieldKind | "all";
 
 export interface Row {
   id: string;
@@ -24,7 +30,7 @@ export interface Row {
   nullable: boolean;
   defaultValue?: string;
   choices?: string[];
-  calculated: boolean;
+  kind: FieldKind;
   children: Row[];
 }
 
@@ -44,7 +50,7 @@ function typesOf(node: SchemaNode): { type: string; nullable: boolean } {
 }
 
 function shapeKey(row: Row): string {
-  return JSON.stringify([row.type, row.nullable, row.defaultValue, row.choices, row.calculated]);
+  return JSON.stringify([row.type, row.nullable, row.defaultValue, row.choices, row.kind]);
 }
 
 function groupSimilar(rows: Row[]): Row[] {
@@ -67,6 +73,13 @@ function groupSimilar(rows: Row[]): Row[] {
   return result;
 }
 
+function kindOf(node: SchemaNode): FieldKind {
+  if (node["x-rqg-stored"] !== false) {
+    return "stored";
+  }
+  return node["x-rqg-effectTarget"] ? "effectTarget" : "calculated";
+}
+
 export function schemaToRows(node: SchemaNode, path: string[] = []): Row[] {
   const rows = Object.entries(node.properties ?? {}).map(([key, child]): Row => {
     const childPath = [...path, key];
@@ -81,7 +94,7 @@ export function schemaToRows(node: SchemaNode, path: string[] = []): Row[] {
       nullable,
       defaultValue: child.default === undefined ? undefined : JSON.stringify(child.default),
       choices: child.enum,
-      calculated: child.readOnly === true,
+      kind: kindOf(child),
       children: schemaToRows(element ?? child, element ? [...childPath, "[]"] : childPath),
     };
   });
@@ -95,15 +108,24 @@ export function matches(row: Row, query: string): boolean {
   return text.includes(query);
 }
 
-/** Keeps rows that match the search text, or have a matching child. */
-export function filterRows(rows: Row[], query: string, calculatedOnly: boolean): Row[] {
+/**
+ * Keeps rows that match the search text, or have a matching child. The kind filter applies to
+ * fields without children, and a group is kept when any of its fields is.
+ */
+export function filterRows(rows: Row[], query: string, kind: KindFilter): Row[] {
   const q = query.trim().toLowerCase();
   return rows.flatMap((row) => {
-    const children = filterRows(row.children, q, calculatedOnly);
+    const children = filterRows(row.children, q, kind);
     if (children.length > 0) {
       return [{ ...row, children }];
     }
-    const selfMatches = (!q || matches(row, q)) && (!calculatedOnly || row.calculated);
-    return selfMatches ? [{ ...row, children: filterRows(row.children, "", calculatedOnly) }] : [];
+    if (q && !matches(row, q)) {
+      return [];
+    }
+    if (row.children.length === 0) {
+      return kind === "all" || row.kind === kind ? [row] : [];
+    }
+    const all = filterRows(row.children, "", kind);
+    return all.length > 0 || kind === "all" ? [{ ...row, children: all }] : [];
   });
 }

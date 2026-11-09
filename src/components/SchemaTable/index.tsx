@@ -1,20 +1,60 @@
 import { Fragment, useMemo, useState } from "react";
 import type { JSX } from "react";
 import { schemaRef, schemas } from "@site/src/data/rqg-schemas";
-import { filterRows, formatPath, schemaToRows, type Row } from "./schema-rows";
+import {
+  filterRows,
+  formatPath,
+  schemaToRows,
+  type FieldKind,
+  type KindFilter,
+  type Row,
+} from "./schema-rows";
 import styles from "./styles.module.css";
 
-/** The marker for a calculated (non-stored) field, also usable in running text. */
-export function CalculatedBadge({ className }: { className?: string }): JSX.Element {
+const BADGES: Record<Exclude<FieldKind, "stored">, { text: string; tooltip: string }> = {
+  calculated: {
+    text: "calculated",
+    tooltip: "Calculated, never stored. Change what it's calculated from.",
+  },
+  effectTarget: {
+    text: "effect target",
+    tooltip: "Never stored. Used by Active Effects to change a calculated value.",
+  },
+};
+
+function KindBadge({
+  kind,
+  className,
+}: {
+  kind: Exclude<FieldKind, "stored">;
+  className?: string;
+}): JSX.Element {
   return (
     <span
-      className={className ? `${styles.badge} ${className}` : styles.badge}
-      title="Calculated, never stored"
+      className={[styles.badge, styles[kind], className].filter(Boolean).join(" ")}
+      title={BADGES[kind].tooltip}
     >
-      calculated
+      {BADGES[kind].text}
     </span>
   );
 }
+
+/** The marker for a calculated field, also usable in running text. */
+export function CalculatedBadge({ className }: { className?: string }): JSX.Element {
+  return <KindBadge kind="calculated" className={className} />;
+}
+
+/** The marker for a field that Active Effects write to, also usable in running text. */
+export function EffectTargetBadge({ className }: { className?: string }): JSX.Element {
+  return <KindBadge kind="effectTarget" className={className} />;
+}
+
+const FILTERS: { value: KindFilter; label: string }[] = [
+  { value: "all", label: "All" },
+  { value: "stored", label: "Stored" },
+  { value: "calculated", label: "Calculated" },
+  { value: "effectTarget", label: "Effect targets" },
+];
 
 /** Groups with more fields than this start collapsed, so long lists don't bury the page. */
 const COLLAPSE_ABOVE = 6;
@@ -93,7 +133,7 @@ function FieldRows({
                   {name}
                 </code>
                 {row.group && <span className={styles.muted}> ×{row.group.length}</span>}
-                {row.calculated && <CalculatedBadge className={styles.inTable} />}
+                {row.kind !== "stored" && <KindBadge kind={row.kind} className={styles.inTable} />}
                 {row.title && <span className={styles.title}>{row.title}</span>}
               </td>
               <td>
@@ -123,14 +163,14 @@ export function SchemaTable({ type }: { type: string }): JSX.Element {
   const rows = useMemo(() => (schema ? schemaToRows(schema) : []), [schema]);
   const [collapsed, setCollapsed] = useState(() => initiallyCollapsed(rows));
   const [query, setQuery] = useState("");
-  const [calculatedOnly, setCalculatedOnly] = useState(false);
+  const [kind, setKind] = useState<KindFilter>("all");
 
   if (!schema) {
     return <p>No schema named “{type}”.</p>;
   }
 
-  const filtering = query.trim() !== "" || calculatedOnly;
-  const shown = filtering ? filterRows(rows, query, calculatedOnly) : rows;
+  const filtering = query.trim() !== "" || kind !== "all";
+  const shown = filtering ? filterRows(rows, query, kind) : rows;
   const toggle = (id: string): void =>
     setCollapsed((previous) => {
       const next = new Set(previous);
@@ -149,14 +189,18 @@ export function SchemaTable({ type }: { type: string }): JSX.Element {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <label>
-          <input
-            type="checkbox"
-            checked={calculatedOnly}
-            onChange={(e) => setCalculatedOnly(e.target.checked)}
-          />{" "}
-          Calculated only
-        </label>
+        <div className={styles.segments} role="group" aria-label="Show fields">
+          {FILTERS.map((f) => (
+            <button
+              key={f.value}
+              type="button"
+              aria-pressed={kind === f.value}
+              onClick={() => setKind(f.value)}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
         <span className={styles.muted}>
           From the RQG system data models, version {schemaRef}. Click a name to copy its path.
         </span>

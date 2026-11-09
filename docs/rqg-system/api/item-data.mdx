@@ -6,8 +6,10 @@ tags: []
 ---
 
 Items are normal Foundry documents, so their fields are under `item.system`. This is every field of
-each item type. A field marked <CalculatedBadge /> is rebuilt whenever the item or its character
-changes and is never stored. Click a field name to copy its path.
+each item type. A field marked <CalculatedBadge /> is calculated whenever the item or its character
+is prepared and is never stored, so change what it's calculated from instead. Active Effects are
+meant to write to the fields marked <EffectTargetBadge />, which aren't stored either. Weapons have
+these under `system.effect`. Click a field name to copy its path.
 
 ## Armor
 
