@@ -13,6 +13,8 @@
   --ifm-color-primary-light: #875b0b;
   --ifm-color-primary-lighter: #8d5f0c;
   --ifm-color-primary-lightest: #a06c0d;
+  /* Lighter than primary so links stand out from body text (3:1) and still pass 4.5:1 on white. */
+  --ifm-link-color: #a86200;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
@@ -26,6 +28,7 @@
   --ifm-color-primary-light: #f4b138;
   --ifm-color-primary-lighter: #f5b645;
   --ifm-color-primary-lightest: #f7c56c;
+  --ifm-link-color: var(--ifm-color-primary);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 /*!* You can override the default Infima variables here. *!*/
