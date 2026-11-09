@@ -87,7 +87,10 @@
 .segments button[aria-pressed="true"] {
   background: var(--ifm-color-primary);
   border-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary-contrast-foreground, #fff);
+  color: #fff;
+}
+:global([data-theme="dark"]) .segments button[aria-pressed="true"] {
+  color: #1b1b1d;
 }
 .inTable {
   margin-left: 0.4rem;
