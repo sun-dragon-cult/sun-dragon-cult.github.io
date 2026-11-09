@@ -43,9 +43,9 @@ directly. Those can change in any release.
 Wherever the API needs an **actor** you can give it an actor, a token, or the name, id or uuid of
 one. If you leave the actor out, the first selected token is used, or else your assigned character.
 
-Wherever it needs an **item** you can give it the item itself, or its name, id, uuid or rqid. Names
-are the easiest to read in a macro (`"Scan"`), while rqids (`"i.skill.scan"`) also work in worlds
-using another language.
+Wherever it needs an **item** you can give it the item itself, or its rqid, name, id or uuid. Prefer
+the rqid (`"i.skill.scan"`): it works in worlds using any language and after the item is renamed. A
+name (`"Scan"`) works too, for example for homebrew items without an rqid.
 
 If something can't be found, the API shows an error notification and stops the macro.
 

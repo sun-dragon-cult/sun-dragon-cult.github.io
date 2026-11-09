@@ -7,12 +7,13 @@ tags: []
 
 Macros to copy and adapt. Create a new macro of type **Script** in Foundry and paste the code. See
 [Rolls](/rqg-system/api/rolls) and [Character data](/rqg-system/api/character-data) for everything
-the functions can do.
+the functions can do. The examples find items by their rqid, so they work in worlds using any
+language. See [Pointing at actors and items](/rqg-system/api#pointing-at-actors-and-items).
 
 ## Roll Scan for the selected token
 
 ```js
-await game.system.api.rolls.ability("Scan");
+await game.system.api.rolls.ability("i.skill.scan");
 ```
 
 ## Roll Scan for every selected token, without dialogs
@@ -59,8 +60,8 @@ const spell = (await actor?.getCastableSpells())?.find((s) => s.source === "matr
 if (spell) await game.system.api.rolls.spiritMagic(spell);
 ```
 
-## Attack two-handed with a spear
+## Attack two-handed with a short spear
 
 ```js
-await game.system.api.rolls.attack("Spear", { usage: "twoHand" });
+await game.system.api.rolls.attack("i.weapon.short-spear", { usage: "twoHand" });
 ```
