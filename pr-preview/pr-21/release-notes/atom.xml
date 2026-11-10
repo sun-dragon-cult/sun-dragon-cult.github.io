@@ -252,14 +252,27 @@ they were written in, until the item is saved on its sheet again. The sheet then
 the language of the world, with that language's word order, and leaves out empty parts: armor
 without a prefix or material, or a skill without a specialization, no longer gets a stray space or
 empty parentheses.</p>
-<p>Links to other items and journal entries, like a homeland's cults or an armor's hit locations, now
-show the name of what they link to, in the language of the world. They used to show the name it had
-when the link was made, in the language of whoever made it. Lists of links are sorted by name, and a
-link to something that can't be found shows its rqid with a red dashed border.</p>
+<p>Links to other items and journal entries, like a spell's description or a weapon's skill, now show
+the name of what they link to, in the language of the world. They used to show the name it had when
+the link was made, in the language of whoever made it. Lists of links are sorted by name.</p>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1167" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1167</label></a>
 <div class="theme-admonition theme-admonition-note admonition_uOdM alert alert--secondary"><div class="admonitionHeading_VorU"><span class="admonitionIcon_AmkE"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>Upgrading</div><div class="admonitionContent__X6G"><p>The world migration saves the keys for the items in the world and on its actors. Items in
 compendiums, including other modules' compendiums, are converted each time they're loaded, so they
 need nothing.</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="broken-links-stand-out">Broken Links Stand Out<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#broken-links-stand-out" class="hash-link" aria-label="Direct link to Broken Links Stand Out" title="Direct link to Broken Links Stand Out" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/769" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->769</label></a>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1306" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1306</label></a>
+<p>Links on sheets, like a spell's description, a spell's effect, a weapon's skill or a cult's runes,
+now show when they're broken. A link to something the world can't find, for example because its
+module isn't active or it was deleted, gets a warning sign and a red dashed border, with the last
+part of its rqid as its name. Hover it to see the full rqid. Before, a broken link looked like any
+other link, so you only found out when you clicked it.</p>
+<p>When something with that rqid is added to the world, open sheets show the link's name again right
+away.</p>
+<p>Every link also shows the current name of what it links to, so two links to the same skill look the
+same. Before, they could keep different names and look like links to two different skills.</p>
+<!-- -->
+<p>See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/api/rqid">Rqid</a> for how links find what they point to.</p>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="api-for-macros-and-modules">API for Macros and Modules<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#api-for-macros-and-modules" class="hash-link" aria-label="Direct link to API for Macros and Modules" title="Direct link to API for Macros and Modules" translate="no">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1129" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1129</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1131" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1131</label></a>
