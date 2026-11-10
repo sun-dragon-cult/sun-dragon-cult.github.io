@@ -327,10 +327,9 @@ the language of the world, with that language's word order, and leaves out empty
 without a prefix or material, or a skill without a specialization, no longer gets a stray space or
 empty parentheses.
 
-Links to other items and journal entries, like a homeland's cults or an armor's hit locations, now
-show the name of what they link to, in the language of the world. They used to show the name it had
-when the link was made, in the language of whoever made it. Lists of links are sorted by name, and a
-link to something that can't be found shows its rqid with a red dashed border.
+Links to other items and journal entries, like a spell's description or a weapon's skill, now show
+the name of what they link to, in the language of the world. They used to show the name it had when
+the link was made, in the language of whoever made it. Lists of links are sorted by name.
 
 <GithubIssue issue="1167" repo="fvtt-system-rqg" />
 
@@ -341,6 +340,27 @@ compendiums, including other modules' compendiums, are converted each time they'
 need nothing.
 
 :::
+
+## Broken Links Stand Out
+
+<GithubIssue issue="769" repo="fvtt-system-rqg" />
+<GithubIssue issue="1306" repo="fvtt-system-rqg" />
+
+Links on sheets, like a spell's description, a spell's effect, a weapon's skill or a cult's runes,
+now show when they're broken. A link to something the world can't find, for example because its
+module isn't active or it was deleted, gets a warning sign and a red dashed border, with the last
+part of its rqid as its name. Hover it to see the full rqid. Before, a broken link looked like any
+other link, so you only found out when you clicked it.
+
+When something with that rqid is added to the world, open sheets show the link's name again right
+away.
+
+Every link also shows the current name of what it links to, so two links to the same skill look the
+same. Before, they could keep different names and look like links to two different skills.
+
+{/* TODO screenshot: a sheet with a broken link next to working ones */}
+
+See [Rqid](/rqg-system/api/rqid) for how links find what they point to.
 
 ## API for Macros and Modules
 
