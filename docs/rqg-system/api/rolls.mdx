@@ -132,8 +132,8 @@ It resolves `true` when the actor's effects changed and `false` when they didn't
 the dialog was closed. A spell that was stopped can still change the effects, by using up a
 protective spell or cancelling one already on the actor, and then resolves `true` too.
 
-`token` is the target token. The dialog's title names it, and protective spell areas on the scene see
-where it stands. Leaving it out uses the actor's own token, if it has one.
+`token` is the target token. The dialog's title names it, and protective spell areas on the scene
+see where it stands. Leaving it out uses the actor's own token, if it has one.
 
 Anyone who owns the actor can use it, like the **+** in the token HUD. For an actor the user doesn't
 own it shows a warning and resolves `false` without opening the dialog.
