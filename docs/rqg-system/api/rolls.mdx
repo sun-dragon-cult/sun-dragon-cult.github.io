@@ -120,3 +120,26 @@ const roll = await combatant.actor.rollCharacteristic("constitution", {
 ```
 
 The [roll hooks](/rqg-system/api/hooks) run for every roll, wherever it was started from.
+
+## Adding a spell effect without casting
+
+`await actor.addSpellEffect({ token })` opens the same Add a Spell Effect dialog as the **+** in the
+token HUD's status palette. The user searches for a spell, sets its level and clicks Add, and the
+spell's effect goes on the actor as if someone else had cast it, or the actor itself when "Cast by"
+is ticked. The actor's protective spells, like Countermagic, can stop it as they would a cast.
+
+It resolves `true` when the actor's effects changed and `false` when they didn't, for example when
+the dialog was closed. A spell that was stopped can still change the effects, by using up a
+protective spell or cancelling one already on the actor, and then resolves `true` too.
+
+`token` is the target token, named in the dialog's title and used by spells that need a token.
+Leaving it out uses the actor's own token, if it has one. Anyone who owns the actor can use it, like
+the **+** in the token HUD.
+
+```js
+// In a module: add a spell effect to the selected token, then refresh the module's own HUD
+const token = canvas.tokens.controlled[0]?.document;
+if (token && (await token.actor.addSpellEffect({ token }))) {
+  refreshMyHud();
+}
+```

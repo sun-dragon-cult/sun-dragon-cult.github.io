@@ -419,6 +419,9 @@ Rolls now have one method each, taking an options object:
 
 Without `skipDialog: true` they open the roll dialog. With it they roll at once and return the roll.
 
+`actor.addSpellEffect({ token })` opens the token HUD's Add a Spell Effect dialog for the actor, so
+modules can offer it too.
+
 Modules can change and react to rolls with hooks:
 
 | Prepare the roll                | Before the roll             | After the roll           |
