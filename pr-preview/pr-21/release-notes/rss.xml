@@ -324,6 +324,8 @@ an Allied Spirit, a bound spirit or a matrix.</li>
 <li class=""><code>item.attack({ usage })</code> opens the attack dialog for a weapon, with <code>usage</code> preselected.</li>
 </ul>
 <p>Without <code>skipDialog: true</code> they open the roll dialog. With it they roll at once and return the roll.</p>
+<p><code>actor.addSpellEffect({ token })</code> opens the token HUD's Add a Spell Effect dialog for the actor, so
+modules can offer it too.</p>
 <p>Modules can change and react to rolls with hooks:</p>
 <table><thead><tr><th>Prepare the roll</th><th>Before the roll</th><th>After the roll</th></tr></thead><tbody><tr><td><code>rqg.prepareAbilityRoll</code></td><td><code>rqg.preAbilityRoll</code></td><td><code>rqg.abilityRoll</code></td></tr><tr><td><code>rqg.prepareCharacteristicRoll</code></td><td><code>rqg.preCharacteristicRoll</code></td><td><code>rqg.characteristicRoll</code></td></tr><tr><td><code>rqg.prepareReputationRoll</code></td><td><code>rqg.preReputationRoll</code></td><td><code>rqg.reputationRoll</code></td></tr><tr><td><code>rqg.prepareSpellCast</code></td><td><code>rqg.preSpellCast</code></td><td><code>rqg.spellCast</code></td></tr><tr><td><code>rqg.prepareAttack</code></td><td><code>rqg.preAttack</code></td><td><code>rqg.attack</code></td></tr><tr><td><code>rqg.prepareDefence</code></td><td><code>rqg.preDefence</code></td><td><code>rqg.defence</code></td></tr></tbody></table>
 <p>A "prepare" hook adds modifiers to the roll, or says why the roll isn't allowed, for example a
