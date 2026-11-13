@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunksun_dragon_cult||=[]).push([[2700],{39677(e){e.exports=JSON.parse('{"metadata":{"permalink":"/pr-preview/pr-36/release-notes","page":1,"postsPerPage":10,"totalPages":5,"totalCount":44,"nextPage":"/pr-preview/pr-36/release-notes/page/2","blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
