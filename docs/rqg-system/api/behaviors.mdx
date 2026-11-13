@@ -34,8 +34,8 @@ Hooks.once("rqg.registerSkillBehaviors", (registry) => {
 What is the same for spells and skills:
 
 - **Registration.** Both hooks are called once, at Foundry's `setup`, after every module's `init`,
-  so `game.system.api` is available when you register. A behavior registered later, from `ready` or
-  a macro, is never used.
+  so `game.system.api` is available when you register. Register from there: a later `register` call
+  on a registry you kept also counts, but only from then on.
 - **Matching.** Behaviors are found by rqid, not by name. They work in a world in another language,
   and for your own copy of a spell or skill with the same rqid.
 - **Which module wins.** If more than one module registers a behavior for the same rqid, the one in
@@ -150,13 +150,15 @@ A protective spell says what it gives, and the system judges. `barrier` is
 {
   priority: number; // lower is met first, further out, like Active Effect change priority
   strength(effect, cast): number; // a spell of at most this many points is stopped
-  usedUp: "never" | "unlessTwoStronger";
+  usedUp: "never" | "unlessLayerTwoStronger";
   onUsedUp?(effect): Promise<void>; // instead of deleting the effect
 }
 ```
 
 `cast` is the incoming cast: its `castPoints`, and its `caster`, so a barrier can depend on who
-casts. A strength of 0 or less gives no layer, and so does one that throws or isn't a number.
+casts. A strength of 0 or less gives no layer, and so does one that throws or isn't a number. A
+barrier whose priority isn't a number is skipped, and one with an unknown `usedUp` is never used up;
+both log a warning in the browser console.
 
 The system walks the layers of the target's effects, and of the Regions it is in (below), from the
 lowest priority up:
@@ -166,7 +168,7 @@ lowest priority up:
 - **Equal priority is one layer.** Only the strongest effect there counts, and its `usedUp` applies.
   This is how Countermagic doesn't stack. A module that wants a barrier of its own picks its own
   priority.
-- **`usedUp: "unlessTwoStronger"`** is Countermagic's rule: a spell 2 or more points weaker is
+- **`usedUp: "unlessLayerTwoStronger"`** is Countermagic's rule: a spell 2 or more points weaker is
   stopped and the effect stays, a spell within 1 point of it is stopped and the effect is used up,
   and a spell 2 or more points stronger breaks it and goes on. The system deletes the effect, or
   calls `onUsedUp` when there is one.
@@ -194,7 +196,7 @@ registry.register(
     barrier: {
       priority: game.system.api.spellEffects.barrierPriorities.consumable,
       strength: (effect, cast) => (isSpirit(cast.caster) ? effect.system.spell.level : 0),
-      usedUp: "unlessTwoStronger",
+      usedUp: "unlessLayerTwoStronger",
     },
   },
   source,
