@@ -501,7 +501,8 @@ opening an old sheet logs a warning in the browser console.
   <GithubIssue issue="1166" repo="fvtt-system-rqg" />
 - Translation modules can also change how the sheets put item names together. Each item type that
   builds its name has a pattern key, like `RQG.Item.Armor.NamePattern`, `{armorType} ({material})`
-  in English, which a language can reorder, for example `{armorType} de {material}`.
+  in English, which a language can reorder, for example `{armorType} de {material}`. Armor adds
+  its prefix with a second key, `RQG.Item.Armor.NamePrefixPattern`, `{prefix} {name}` in English.
   <GithubIssue issue="1166" repo="fvtt-system-rqg" />
 - Rqid links only need the `rqid`. A `name` on a link is ignored and isn't saved, since the link
   shows the name of what it finds. <GithubIssue issue="1167" repo="fvtt-system-rqg" />
