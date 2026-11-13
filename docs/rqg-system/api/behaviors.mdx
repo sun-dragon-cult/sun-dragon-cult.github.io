@@ -33,13 +33,17 @@ Hooks.once("rqg.registerSkillBehaviors", (registry) => {
 
 What is the same for spells and skills:
 
-- **Registration.** Both hooks are called at Foundry's `setup`, after every module's `init`, so
-  `game.system.api` is available when you register.
+- **Registration.** Both hooks are called once, at Foundry's `setup`, after every module's `init`,
+  so `game.system.api` is available when you register. A behavior registered later, from `ready` or
+  a macro, is never used.
 - **Matching.** Behaviors are found by rqid, not by name. They work in a world in another language,
   and for your own copy of a spell or skill with the same rqid.
 - **Which module wins.** If more than one module registers a behavior for the same rqid, the one in
   the world's language wins, then the highest `priority`. A module of your own with a higher
   priority than the wiki module replaces the wiki's behavior.
+- **A behavior is replaced whole.** The winning registration is used as it is, never merged with the
+  others for that rqid. To change one part of the wiki's behavior, register a complete behavior with
+  every part you want to keep.
 - **Who gets Apply.** The card shows Apply for each target, but only to the target's owners and the
   GM. `apply` runs on the client of the user who clicks it.
 - **What `apply` returns.** `{ outcome: "resolved" }` when it has done its work, which uses up the
@@ -88,9 +92,9 @@ Apply is offered for each target the spell affected, so not for a target that re
 - `spell`, the cast spell item
 - `targetActor` and `targetName`, the target Apply was clicked for
 - `targetToken`, the token it is cast at, when that is known, else undefined
-- `cast`, with the `level` cast at, the `magicPointsSpent` and `runePointsSpent`, the
-  `casterSuccessLevel`, and the `caster`: their `actorUuid` and the `tokenUuid` they cast from (`""`
-  when they cast without a token)
+- `cast`, with the `spellRqid` of the spell cast (`""` when it has none), the `level` cast at, the
+  `magicPointsSpent` and `runePointsSpent`, the `casterSuccessLevel`, and the `caster`: their
+  `actorUuid` and the `tokenUuid` they cast from (`""` when they cast without a token)
 - `duration`, what the effect of a Temporal spell lasts, otherwise undefined
 
 `onIncomingSpell` gets the same, plus `effects`: this spell's effects on the target. It runs on the
@@ -146,7 +150,7 @@ A protective spell says what it gives, and the system judges. `barrier` is
 {
   priority: number; // lower is met first, further out, like Active Effect change priority
   strength(effect, cast): number; // a spell of at most this many points is stopped
-  usedUp: "never" | "countermagic";
+  usedUp: "never" | "unlessTwoStronger";
   onUsedUp?(effect): Promise<void>; // instead of deleting the effect
 }
 ```
@@ -162,10 +166,10 @@ lowest priority up:
 - **Equal priority is one layer.** Only the strongest effect there counts, and its `usedUp` applies.
   This is how Countermagic doesn't stack. A module that wants a barrier of its own picks its own
   priority.
-- **`usedUp: "countermagic"`** is Countermagic's rule: a spell 2 or more points weaker is stopped
-  and the effect stays, a spell within 1 point of it is stopped and the effect is used up, and a
-  spell 2 or more points stronger breaks it and goes on. The system deletes the effect, or calls
-  `onUsedUp` when there is one.
+- **`usedUp: "unlessTwoStronger"`** is Countermagic's rule: a spell 2 or more points weaker is
+  stopped and the effect stays, a spell within 1 point of it is stopped and the effect is used up,
+  and a spell 2 or more points stronger breaks it and goes on. The system deletes the effect, or
+  calls `onUsedUp` when there is one.
 - A target's own defenses don't stop a spell it casts itself, and spells with **Gets through
   Countermagic and Shield** pass every barrier.
 
@@ -173,8 +177,11 @@ The system's own layers are in `game.system.api.spellEffects.barrierPriorities`,
 module can go between them:
 
 ```js
-{ area: 100, countermagic: 200, shield: 300 }
+{ area: 100, consumable: 200, lasting: 300 }
 ```
+
+`area` is for spell areas and other Regions, `consumable` for layers a spell uses up, like
+Countermagic, and `lasting` for layers that stay, like Shield.
 
 Priorities aren't checked: a module could put an inner defense outside a ward. Document it, and the
 GM can see it. Protection, which only counts for armor, isn't a barrier.
@@ -185,9 +192,9 @@ registry.register(
   "i.spirit-magic.spirit-screen",
   {
     barrier: {
-      priority: game.system.api.spellEffects.barrierPriorities.countermagic,
+      priority: game.system.api.spellEffects.barrierPriorities.consumable,
       strength: (effect, cast) => (isSpirit(cast.caster) ? effect.system.spell.level : 0),
-      usedUp: "countermagic",
+      usedUp: "unlessTwoStronger",
     },
   },
   source,
@@ -279,7 +286,14 @@ higher priority can replace it.
 
 `game.system.api.spellEffects` has helpers for common things:
 
-- `summon` places a token next to the caster that goes away when its effect ends.
+- `summon(scope, actorRqid, options)` lets the user place a token of the actor with that rqid,
+  within range and sight of the caster, that goes away when its effect ends. `options.img` is the
+  summoning's icon on the token, `options.duration` overrides the spell's own, and
+  `options.footprintMeters` (`{ w, h }`) sets the body's size, like 1×3 m for a medium elemental.
+- `pickLocation(scope, { rangeMeters, requireSight })` lets the user click a grid space for a spell
+  that takes a place, within `rangeMeters` of the caster and in their sight when asked. It resolves
+  to the point, or undefined when cancelled. `moveTokenNear(token, point)` then moves a token to the
+  free grid space nearest it.
 - `list` and `removeSpellEffects` find and remove the spell effects on an actor. The removal filter
   takes `spellRqid`, `casterActorUuid` and `maxLevel`.
 - `castPoints` is how strong a cast is against defenses: its magic points plus double its rune
@@ -291,6 +305,17 @@ higher priority can replace it.
   the target, shows both rolls in chat like an attack's, and deals the damage once the dice have
   landed. Pass `armorPoints: 0` for damage armor doesn't stop; left out, the location's own armor
   counts. Run it as the GM (`runAsGm`) unless the user owns the target.
+- `postMagicMissiles(scope, count)` posts `count` more attacks like the one just fired, for
+  Multimissile's magical missiles. Call it from a spell behavior's `onMissileFired`, which gets
+  `{ weapon, projectile, attack, effects }` when a missile carrying the spell's effect is fired.
+
+### What a spell effect records
+
+Every effect a cast makes carries the cast in `effect.system.spell`: `spellRqid`, `spellName` and
+`spellUuid` of the spell, and the cast's `caster`, `castMessageId`, `level`, `magicPointsSpent`,
+`runePointsSpent` and `casterSuccessLevel` (null when unknown). A spell's area carries the same in
+its Region behavior's `system.spell`. `list` and `removeSpellEffects` only touch effects that have
+it.
 
 ## Skill behaviors
 
