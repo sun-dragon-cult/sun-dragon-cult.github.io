@@ -384,7 +384,8 @@ it's loaded. Translation modules need no change, since they already translate th
 </li>
 <li class="">Translation modules can also change how the sheets put item names together. Each item type that
 builds its name has a pattern key, like <code>RQG.Item.Armor.NamePattern</code>, <code>{armorType} ({material})</code>
-in English, which a language can reorder, for example <code>{armorType} de {material}</code>.<!-- -->
+in English, which a language can reorder, for example <code>{armorType} de {material}</code>. Armor adds
+its prefix with a second key, <code>RQG.Item.Armor.NamePrefixPattern</code>, <code>{prefix} {name}</code> in English.<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1166" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1166</label></a>
 </li>
 <li class="">Rqid links only need the <code>rqid</code>. A <code>name</code> on a link is ignored and isn't saved, since the link
