@@ -59,14 +59,27 @@ the Red Book of Magic, see [Giving your own spells effects](/rqg-system/items/cu
 
 ## Recasting and incompatible spells
 
-By the rules a spell cast on a target that already has it only works if the new casting is stronger,
-and some spells can't be on the same target together: Bladesharp and Fireblade can't share a weapon,
-and neither can Protection and Shimmer on a person. The system checks this when Apply is clicked, by
-the spells' rqids. When a spell has no effect for one of these reasons, Apply says why and the card
-records it; only the target's owners see the reason.
+A spell cast on a target that already has the same spell active has no effect: the Core Spirit Magic
+Q&A "Replacing an Existing Spell" (Core p.255) says a recast of a spell still in effect does
+nothing, so it can't refresh the duration. Variable spells don't add up either (RBM p.5): Protection
+1 cast after Protection 2 doesn't make Protection 3. Some spells can't be on the same target
+together: Bladesharp and Fireblade can't share a weapon, and neither can Protection and Shimmer on a
+person. The system checks this when Apply is clicked, by the spells' rqids. When a spell has no
+effect for one of these reasons, Apply says why and the card records it; only the target's owners
+see the reason.
 
-The world setting **Recast Spells Take Effect** chooses the rule: **Only if stronger** (the rules as
-written) or **Always**, where every new casting replaces the old one.
+The world setting **Recast Spells Take Effect** chooses how a recast of the same spell is handled:
+
+- **Never**: while the spell is active, a new casting has no effect at any level. This is the Q&A
+  read literally.
+- **Only if stronger** (default): a casting at a higher level replaces the weaker one, so Protection
+  1 can be raised to Protection 3 without dispelling it first; an equal or weaker one has no effect.
+  This reads the Q&A as being about refreshing a spell.
+- **Always** (house rule): every new casting replaces the old one and any incompatible spell, which
+  also refreshes its duration.
+
+With **Never** and **Only if stronger**, an incompatible spell that is active keeps the new one from
+taking effect.
 
 ## Related
 

@@ -92,12 +92,19 @@ What happens next depends on the spell's **Resisted By** field:
 | Resisted By                         | What happens                                                                                                                                  |
 | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | **None**                            | The spell takes effect on every target it reached.                                                                                            |
-| **Resistance roll (single target)** | The target's owner gets a resistance request: the caster's POW against the target's POW (or current magic points, as the spell says).         |
+| **Resistance roll (single target)** | The target's owner gets a resistance request: the caster's POW against the target's POW.                                                      |
 | **Resistance roll, per target**     | The same, one request per target, like Turn Undead.                                                                                           |
 | **Resistance roll, whole area**     | The caster makes one roll, and the card says which POW it affects, like "affects POW 15 or lower". Every target is settled from that at once. |
 | **Spirit combat**                   | The GM rules each target won or lost on the cast card, until spirit combat itself is automated.                                               |
 
 A target may also accept the spell instead of resisting. Casting on yourself counts as accepting.
+
+**No POW.** A side without POW uses its current magic points instead, the caster as well as the
+target (RBM p.6). Undead are the usual case, which is why Turn Undead is resisted with magic points.
+An empty POW and a POW of 0 both count as no POW: a living creature dies when its POW reaches 0, so
+leave POW empty on a creature that has none. A target with neither POW nor magic points can't
+resist: its card says so and the spell takes effect. A Manual side in a resistance roll keeps the
+value and label you type.
 
 **Reflection** acts when the target's resistance holds, by roll or by the GM's ruling: if its
 Reflection is strong enough (each point turns back 2 points of spirit magic or 1 Rune point), the
@@ -116,8 +123,9 @@ and players handle the effect by hand.
 
 On Apply, the spells already on the target have their say:
 
-- A spell the target already has only works if the new casting is stronger, as the world setting
-  **Recast Spells Take Effect** decides.
+- A spell the target already has active has no effect, or replaces it if the new casting is
+  stronger, as the world setting **Recast Spells Take Effect** decides, see
+  [Recasting and incompatible spells](/rqg-system/items/spells#recasting-and-incompatible-spells).
 - Some spells can't share a target, and calming spells like Harmony remove weaker rage spells like
   Fanaticism, or keep them from taking hold.
 
