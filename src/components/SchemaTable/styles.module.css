@@ -1,0 +1,109 @@
+.schemaTable table {
+  display: table;
+  width: 100%;
+  font-size: 0.8rem;
+}
+.schemaTable th:nth-child(1) {
+  width: 42%;
+}
+.schemaTable th:nth-child(2) {
+  width: 22%;
+}
+.schemaTable td,
+.schemaTable th {
+  padding: 0.1rem 0.5rem;
+  vertical-align: top;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.controls input[type="search"] {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 4px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+.caret {
+  display: inline-block;
+  width: 1.1rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+.path {
+  cursor: copy;
+}
+.title {
+  margin-left: 0.5rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.78rem;
+}
+.muted {
+  color: var(--ifm-color-emphasis-600);
+}
+.badge {
+  display: inline-block;
+  padding: 0 0.4rem;
+  border-radius: 8px;
+  color: #1b1b1d;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.calculated {
+  background: #f3a71e;
+}
+.effectTarget {
+  background: #7cc4f4;
+}
+.segments {
+  display: inline-flex;
+}
+.segments button {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.segments button + button {
+  border-left: 0;
+}
+.segments button:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.segments button:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.segments button[aria-pressed="true"] {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff;
+}
+:global([data-theme="dark"]) .segments button[aria-pressed="true"] {
+  color: #1b1b1d;
+}
+.inTable {
+  margin-left: 0.4rem;
+}
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  margin-top: 0.15rem;
+}
+.chip {
+  padding: 0 0.3rem;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 8px;
+  font-size: 0.72rem;
+}

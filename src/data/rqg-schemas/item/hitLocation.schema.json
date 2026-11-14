@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/sun-dragon-cult/fvtt-system-rqg/master/src/data-model/json-schemas/generated/item/hitLocation.schema.json",
+  "title": "RQG Item - hitLocation",
+  "description": "Generated JSON Schema for the \"hitLocation\" Item DataModel's `system` data. Source: src/data-model/item-data/hit-location-data-model.ts. Do not edit by hand — run `pnpm generate:schemas`.",
+  "type": "object",
+  "properties": {
+    "dieFrom": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "title": "Roll from",
+      "description": "Lowest D20 roll that hits this location."
+    },
+    "dieTo": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "title": "Roll to",
+      "description": "Highest D20 roll that hits this location."
+    },
+    "hitPoints": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "default": 0
+        },
+        "max": {
+          "type": "integer",
+          "default": 0
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "max"
+      ],
+      "title": "Hit points",
+      "description": "The location's hit points. On a character they are calculated from the character's total hit points and the wounds, never stored."
+    },
+    "baseHpDelta": {
+      "type": "integer",
+      "default": 0,
+      "title": "Hit point adjustment",
+      "description": "Added to the location's hit points, for example +1 for a leg."
+    },
+    "naturalAp": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "title": "Natural armor points",
+      "description": "Armor points the location has by itself, before worn armor."
+    },
+    "wounds": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "default": 0
+      },
+      "title": "Wounds",
+      "description": "The damage of each open wound on the location."
+    },
+    "hitLocationHealthState": {
+      "type": "string",
+      "enum": [
+        "healthy",
+        "wounded",
+        "useless",
+        "severed"
+      ],
+      "minLength": 1,
+      "default": "healthy",
+      "title": "Location health",
+      "description": "Condition of the location: healthy, wounded, useless or severed."
+    },
+    "actorHealthImpact": {
+      "type": "string",
+      "enum": [
+        "healthy",
+        "wounded",
+        "shock",
+        "unconscious",
+        "dead"
+      ],
+      "minLength": 1,
+      "default": "healthy",
+      "title": "Impact on health",
+      "description": "The health state this location puts the character in: for example wounded, shock, unconscious or dead."
+    },
+    "hitLocationType": {
+      "type": "string",
+      "enum": [
+        "limb",
+        "head",
+        "chest",
+        "abdomen"
+      ],
+      "minLength": 1,
+      "default": "limb",
+      "title": "Location type",
+      "description": "Kind of location: limb, head, chest or abdomen."
+    },
+    "connectedTo": {
+      "type": "string",
+      "default": "",
+      "title": "Connected to",
+      "description": "Name of the location this one is attached to."
+    },
+    "armorPoints": {
+      "type": "integer",
+      "default": 0,
+      "title": "Armor points",
+      "description": "Natural armor points plus what equipped armor adds. Calculated, never stored.",
+      "x-rqg-stored": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "dieFrom",
+    "dieTo",
+    "hitPoints",
+    "baseHpDelta",
+    "naturalAp",
+    "wounds",
+    "hitLocationHealthState",
+    "actorHealthImpact",
+    "hitLocationType",
+    "connectedTo",
+    "armorPoints"
+  ]
+}
