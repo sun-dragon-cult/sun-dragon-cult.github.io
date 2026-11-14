@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">How a Spell Is Resolved | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="How a Spell Is Resolved | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="description" content="This page follows a spell from the cast dialog to the effect on its target, in the order the system"><meta data-rh="true" property="og:description" content="This page follows a spell from the cast dialog to the effect on its target, in the order the system"><link data-rh="true" rel="icon" href="/pr-preview/pr-21/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Foundry Items","item":"https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/"},{"@type":"ListItem","position":2,"name":"How a Spell Is Resolved","item":"https://sun-dragon-cult.github.io/pr-preview/pr-21/rqg-system/items/casting-spells"}]}</script><link rel="alternate" type="application/rss+xml" href="/pr-preview/pr-21/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/pr-preview/pr-21/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/pr-preview/pr-21/assets/css/styles.0079b47b.css">
-<script src="/pr-preview/pr-21/assets/js/runtime~main.134b9fee.js" defer="defer"></script>
+<script src="/pr-preview/pr-21/assets/js/runtime~main.66a297fb.js" defer="defer"></script>
 <script src="/pr-preview/pr-21/assets/js/main.e751f2d7.js" defer="defer"></script>
 </head>
 <body>
@@ -75,8 +75,14 @@ setting for the other. If your table plays by casting order, rule it yourself wh
 <p>This works for every spell, including ones with no automation at all.</p>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="5-resistance">5. Resistance<a href="#5-resistance" class="hash-link" aria-label="Direct link to 5. Resistance" title="Direct link to 5. Resistance" translate="no">​</a></h2>
 <p>What happens next depends on the spell&#x27;s <strong>Resisted By</strong> field:</p>
-<table><thead><tr><th>Resisted By</th><th>What happens</th></tr></thead><tbody><tr><td><strong>None</strong></td><td>The spell takes effect on every target it reached.</td></tr><tr><td><strong>Resistance roll (single target)</strong></td><td>The target&#x27;s owner gets a resistance request: the caster&#x27;s POW against the target&#x27;s POW (or current magic points, as the spell says).</td></tr><tr><td><strong>Resistance roll, per target</strong></td><td>The same, one request per target, like Turn Undead.</td></tr><tr><td><strong>Resistance roll, whole area</strong></td><td>The caster makes one roll, and the card says which POW it affects, like &quot;affects POW 15 or lower&quot;. Every target is settled from that at once.</td></tr><tr><td><strong>Spirit combat</strong></td><td>The GM rules each target won or lost on the cast card, until spirit combat itself is automated.</td></tr></tbody></table>
+<table><thead><tr><th>Resisted By</th><th>What happens</th></tr></thead><tbody><tr><td><strong>None</strong></td><td>The spell takes effect on every target it reached.</td></tr><tr><td><strong>Resistance roll (single target)</strong></td><td>The target&#x27;s owner gets a resistance request: the caster&#x27;s POW against the target&#x27;s POW.</td></tr><tr><td><strong>Resistance roll, per target</strong></td><td>The same, one request per target, like Turn Undead.</td></tr><tr><td><strong>Resistance roll, whole area</strong></td><td>The caster makes one roll, and the card says which POW it affects, like &quot;affects POW 15 or lower&quot;. Every target is settled from that at once.</td></tr><tr><td><strong>Spirit combat</strong></td><td>The GM rules each target won or lost on the cast card, until spirit combat itself is automated.</td></tr></tbody></table>
 <p>A target may also accept the spell instead of resisting. Casting on yourself counts as accepting.</p>
+<p><strong>No POW.</strong> A side without POW uses its current magic points instead, the caster as well as the
+target (RBM p.6). Undead are the usual case, which is why Turn Undead is resisted with magic points.
+An empty POW and a POW of 0 both count as no POW: a living creature dies when its POW reaches 0, so
+leave POW empty on a creature that has none. A target with neither POW nor magic points can&#x27;t
+resist: its card says so and the spell takes effect. A Manual side in a resistance roll keeps the
+value and label you type.</p>
 <p><strong>Reflection</strong> acts when the target&#x27;s resistance holds, by roll or by the GM&#x27;s ruling: if its
 Reflection is strong enough (each point turns back 2 points of spirit magic or 1 Rune point), the
 spell goes back at its caster, and the card says so. A stronger spell isn&#x27;t reflected, and the
@@ -91,8 +97,9 @@ behavior, see <a class="" href="/pr-preview/pr-21/rqg-system/items/spells">Spell
 and players handle the effect by hand.</p>
 <p>On Apply, the spells already on the target have their say:</p>
 <ul>
-<li class="">A spell the target already has only works if the new casting is stronger, as the world setting
-<strong>Recast Spells Take Effect</strong> decides.</li>
+<li class="">A spell the target already has active has no effect, or replaces it if the new casting is
+stronger, as the world setting <strong>Recast Spells Take Effect</strong> decides, see
+<a class="" href="/pr-preview/pr-21/rqg-system/items/spells#recasting-and-incompatible-spells">Recasting and incompatible spells</a>.</li>
 <li class="">Some spells can&#x27;t share a target, and calming spells like Harmony remove weaker rage spells like
 Fanaticism, or keep them from taking hold.</li>
 </ul>

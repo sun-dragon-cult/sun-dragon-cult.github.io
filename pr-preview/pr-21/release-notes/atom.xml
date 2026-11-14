@@ -57,13 +57,15 @@ happens, update the wiki module and run the migration again: as the GM, click Tr
 Migration in the Game Settings sidebar tab. The world reloads and migrates again, and this time the
 spells get their links. Links that are already there are left alone, so running it again is safe.</p></div></div>
 <h3 class="anchor anchorTargetStickyNavbar_xPLm" id="recasting-and-incompatible-spells">Recasting and incompatible spells<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#recasting-and-incompatible-spells" class="hash-link" aria-label="Direct link to Recasting and incompatible spells" title="Direct link to Recasting and incompatible spells" translate="no">​</a></h3>
-<p>By the rules, casting a spell on a target that already has the same spell only works if the new
-casting is stronger, and some spells can't be on the same target at once. For example, Bladesharp
-and Fireblade can't share a weapon, and neither can Protection and Shimmer on a person. When a spell
-has no effect for one of these reasons, Apply tells you why and the card records it. Only the
-target's owner sees the reason.</p>
-<p>The world setting <strong>Recast Spells Take Effect</strong> chooses the rule: <strong>Only if stronger</strong> (the rules as
-written) or <strong>Always</strong>, where every new casting replaces the old one.</p>
+<p>Casting a spell on a target that already has the same spell active has no effect (Core p.255 Q&amp;A),
+and some spells can't be on the same target at once. For example, Bladesharp and Fireblade can't
+share a weapon, and neither can Protection and Shimmer on a person. When a spell has no effect for
+one of these reasons, Apply tells you why and the card records it. Only the target's owner sees the
+reason.</p>
+<p>The world setting <strong>Recast Spells Take Effect</strong> chooses how a recast of the same spell is handled:
+<strong>Never</strong>, the Q&amp;A read literally; <strong>Only if stronger</strong> (the default), where a higher level replaces
+a weaker casting; or <strong>Always</strong>, a house rule where every new casting replaces the old one and
+refreshes its duration. <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1332" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1332</label></a></p>
 <h3 class="anchor anchorTargetStickyNavbar_xPLm" id="berserker-and-fanaticism">Berserker and Fanaticism<a href="https://sun-dragon-cult.github.io/pr-preview/pr-21/release-notes/rqg-v6.2.0#berserker-and-fanaticism" class="hash-link" aria-label="Direct link to Berserker and Fanaticism" title="Direct link to Berserker and Fanaticism" translate="no">​</a></h3>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1170" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1170</label></a>
 <p>Berserker and Fanaticism now change the rolls of whoever has them, and the roll dialogs show it:</p>
@@ -193,8 +195,11 @@ roll. A spell cast while no GM is connected waits on its card and goes on when o
 <p>Some spells resist differently:</p>
 <ul>
 <li class=""><strong>One roll per target.</strong> Turn Undead and Teleportation can be cast at several targets, and each
-target resists or accepts on its own card. Undead have no POW, so Turn Undead is resisted with the
-target's current magic points, and it reaches one undead per point.</li>
+target resists or accepts on its own card. Turn Undead reaches one undead per point.</li>
+<li class=""><strong>No POW.</strong> A side without POW resists with its current magic points instead, caster and target
+alike (RBM p.6), so undead resist Turn Undead with their magic points. An empty POW and a POW of 0
+both count as none. A target with neither can't resist: its card says so and the spell takes
+effect. <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1332" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1332</label></a></li>
 <li class=""><strong>Spirit combat.</strong> Bind Ghost and Resurrect only work if the caster wins spirit combat. Until
 spirit combat is automated, the cast card waits for the GM to rule whether the caster won.</li>
 <li class=""><strong>Area spells.</strong> Harmony and Inviolable make one resistance roll for everyone within their radius,
@@ -369,8 +374,8 @@ link. Spells already on actors get their link from the compendium during the wor
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1086" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1086</label></a>
 </li>
 <li class="">Spells have a <strong>Resisted By</strong> field that says how a target can resist them: a resistance roll
-against one target or each target, spirit combat, or nothing. A <strong>Resisted With</strong> field says what
-the target resists with: POW, or current magic points.<!-- -->
+against one target or each target, spirit combat, or nothing. A creature without POW resists with
+its magic points, so leave its POW empty rather than 0.<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1068" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1068</label></a>
 </li>
 <li class="">Spells record what they can be cast on and what kind of effect they have, in two new fields.<!-- -->
@@ -384,8 +389,8 @@ it's loaded. Translation modules need no change, since they already translate th
 </li>
 <li class="">Translation modules can also change how the sheets put item names together. Each item type that
 builds its name has a pattern key, like <code>RQG.Item.Armor.NamePattern</code>, <code>{armorType} ({material})</code>
-in English, which a language can reorder, for example <code>{armorType} de {material}</code>. Armor adds
-its prefix with a second key, <code>RQG.Item.Armor.NamePrefixPattern</code>, <code>{prefix} {name}</code> in English.<!-- -->
+in English, which a language can reorder, for example <code>{armorType} de {material}</code>. Armor adds its
+prefix with a second key, <code>RQG.Item.Armor.NamePrefixPattern</code>, <code>{prefix} {name}</code> in English.<!-- -->
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1166" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1166</label></a>
 </li>
 <li class="">Rqid links only need the <code>rqid</code>. A <code>name</code> on a link is ignored and isn't saved, since the link
