@@ -80,6 +80,7 @@ A spell behavior has these parts, all optional:
 | `runAsGm`         | Makes `apply` run on the active GM's client instead                             | –                                            |
 | `areaRadius`      | Called by the cast dialog with the level being cast                             | the radius around the caster, in m           |
 | `maxTargets`      | Called by the cast dialog and the cast with the level being cast                | how many tokens it can be cast at            |
+| `light`           | Not run: the light Apply places on the scene for a cast with no target, below   | `{ radiusMeters, angle, color }`             |
 | `onAreaEnter`     | When a token enters the spell's area, on the active GM's client                 | nothing                                      |
 | `onAreaExit`      | When a token leaves the spell's area, on the active GM's client                 | nothing                                      |
 | `onSpellAcross`   | When a spell is cast from outside the area at tokens inside it                  | nothing                                      |
@@ -94,7 +95,9 @@ Apply is offered for each target the spell affected, so not for a target that re
 - `targetToken`, the token it is cast at, when that is known, else undefined
 - `cast`, with the `spellRqid` of the spell cast (`""` when it has none), the `level` cast at, the
   `magicPointsSpent` and `runePointsSpent`, the `casterSuccessLevel`, and the `caster`: their
-  `actorUuid` and the `tokenUuid` they cast from (`""` when they cast without a token)
+  `actorUuid` and the `tokenUuid` they cast from (`""` when they cast without a token), and
+  `untargeted`, true when nothing was targeted and the spell fell back to its caster. A cast at the
+  caster themselves is not untargeted, and nor is a spell put on from the token HUD
 - `duration`, what the effect of a Temporal spell lasts, otherwise undefined
 
 `onIncomingSpell` gets the same, plus `effects`: this spell's effects on the target. It runs on the
@@ -250,6 +253,37 @@ the user's targets, the caster included, following the level as it changes.
 it's left out. The cast dialog says "at most N targets at this level", and casting at more is
 refused. The wiki's Turn Undead returns `level`, one undead per point.
 
+### A light on the scene
+
+A spell that lights a place, like Light (RBM p.117) or Lantern (RBM p.116), declares its `light`:
+
+```js
+registry.register("i.spirit-magic.light", { light: { radiusMeters: 10 } }, source);
+registry.register("i.spirit-magic.lantern", { light: { radiusMeters: 12, angle: 180 } }, source);
+```
+
+`radiusMeters` is how far the light reaches. `angle` is the cone in degrees, 360 for a full circle
+when it is left out, and `color` is a CSS color, white by default. A spell with a `light` and no
+`apply` of its own is handled by Apply: cast at a token, the caster included, its effect template
+goes on as usual, so the effect can light that token; cast with no target (the cast dialog's "No
+target"), it places the light on the scene. `cast.untargeted` is what tells the two apart. A
+behavior with its own `apply` can call `game.system.api.spellEffects.placeLight(scope)` itself.
+
+The caster clicks the place, which for a Ranged spell must be within its range and in sight of their
+token, with the reach of the light drawn around the pointer in its own color. A cone under 360° is
+turned with the mouse wheel in steps of 10°, 0° facing down. Right click or Escape cancels, leaving
+Apply clickable. The active GM creates the ambient light, since players may not, and takes the
+radius, angle and color from the behavior, not from the request, which only carries the place and
+the facing. The light is named after the spell and the caster, like "Lantern (Harmast)", and its
+radius is converted from meters to the scene's units.
+
+A spell with a duration puts an effect on the caster that holds the light: when the effect ends, the
+light goes, and deleting the light ends the effect. A light left behind by a deleted caster, or an
+effect removed while no GM was logged in, is removed when a GM next loads the world. Without a
+duration the light stays until it is deleted. The GM can move it, for a light that was cast on
+something that is later carried away. Without a token for the caster on the scene, nothing is
+placed.
+
 ### Roll entries
 
 A spell effect that changes rolls, like Berserker or Fanaticism, does it with roll entries. The
@@ -299,10 +333,15 @@ higher priority can replace it.
   control back. Changing ownership takes the active GM's client, so register the behavior's `apply`
   with `runAsGm`. If the ownership can't be given, the effect is removed and `apply` resolves to
   `undefined`, leaving Apply clickable.
-- `pickLocation(scope, { rangeMeters, requireSight })` lets the user click a grid space for a spell
-  that takes a place, within `rangeMeters` of the caster and in their sight when asked. It resolves
-  to the point, or undefined when cancelled. `moveTokenNear(token, point)` then moves a token to the
-  free grid space nearest it.
+- `pickLocation(scope, { rangeMeters, requireSight, rotatable, previewLight })` lets the user click
+  a grid space for a spell that takes a place, within `rangeMeters` of the caster and in their sight
+  when asked. It resolves to the point, or undefined when cancelled. With `rotatable` the mouse
+  wheel turns what is placed, and the point has its `rotation` in degrees, 0 facing down.
+  `previewLight`, a `{ radiusMeters, angle, color }` like a [spell's light](#a-light-on-the-scene),
+  draws how far it reaches around the pointer. `moveTokenNear(token, point)` then moves a token to
+  the free grid space nearest it.
+- `placeLight(scope)` lets the caster place the light the spell's behavior declares, as
+  [described above](#a-light-on-the-scene).
 - `list` and `removeSpellEffects` find and remove the spell effects on an actor. The removal filter
   takes `spellRqid`, `casterActorUuid` and `maxLevel`.
 - `castPoints` is how strong a cast is against defenses: its magic points plus double its rune
@@ -391,6 +430,8 @@ The wiki module's scripts are the best examples to copy from:
   `spellEffects.createArea`, `onAreaEnter` and `onSpellAcross`.
 - `scripts/spells/battle-rage.mjs` is Berserker and Fanaticism: roll entries for attack, defence,
   casting and CON rolls, and an `onEnd` that leaves the berserker Helpless.
+- `scripts/spell-behaviors.mjs` declares the `light` of Light and Lantern, which is all those two
+  spells need.
 - `scripts/skills/first-aid.mjs` asks which wound to treat, then rolls the healing to chat and heals
   it, or damages the location on a fumble. It uses `game.system.api.dialogs.chooseWounds` without
   `points`, which only picks the wound.
