@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Behaviors | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-36/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-36/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/pr-preview/pr-36/rqg-system/api/behaviors"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Behaviors | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="description" content="A behavior is a small script in a module that makes a spell or a skill do something when Apply"><meta data-rh="true" property="og:description" content="A behavior is a small script in a module that makes a spell or a skill do something when Apply"><link data-rh="true" rel="icon" href="/pr-preview/pr-36/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/pr-preview/pr-36/rqg-system/api/behaviors"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-36/rqg-system/api/behaviors" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-36/rqg-system/api/behaviors" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"API","item":"https://sun-dragon-cult.github.io/pr-preview/pr-36/rqg-system/api/"},{"@type":"ListItem","position":2,"name":"Behaviors","item":"https://sun-dragon-cult.github.io/pr-preview/pr-36/rqg-system/api/behaviors"}]}</script><link rel="alternate" type="application/rss+xml" href="/pr-preview/pr-36/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/pr-preview/pr-36/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/pr-preview/pr-36/assets/css/styles.0079b47b.css">
-<script src="/pr-preview/pr-36/assets/js/runtime~main.8d1c2b1b.js" defer="defer"></script>
+<script src="/pr-preview/pr-36/assets/js/runtime~main.1317c38e.js" defer="defer"></script>
 <script src="/pr-preview/pr-36/assets/js/main.39fef941.js" defer="defer"></script>
 </head>
 <body>
@@ -168,9 +168,16 @@ higher priority can replace it.</p>
 <p><code>game.system.api.spellEffects</code> has helpers for common things:</p>
 <ul>
 <li class=""><code>summon(scope, actorRqid, options)</code> lets the user place a token of the actor with that rqid,
-within range and sight of the caster, that goes away when its effect ends. <code>options.img</code> is the
-summoning&#x27;s icon on the token, <code>options.duration</code> overrides the spell&#x27;s own, and
-<code>options.footprintMeters</code> (<code>{ w, h }</code>) sets the body&#x27;s size, like 1×3 m for a medium elemental.</li>
+within range and sight of the caster, that goes away when its effect ends. The caster&#x27;s players
+observe the token. <code>options.img</code> is the summoning&#x27;s icon on the token, <code>options.duration</code>
+overrides the spell&#x27;s own, and <code>options.footprintMeters</code> (<code>{ w, h }</code>) sets the body&#x27;s size, like
+1×3 m for a medium elemental.</li>
+<li class=""><code>giveControl(scope)</code> attaches the spell&#x27;s effect to the target and, while it lasts, makes the
+caster&#x27;s players its owners, as Command (cult spirit) does. Each player gets their previous
+ownership back when the effect ends, expires or is dispelled; deleting the effect takes the
+control back. Changing ownership takes the active GM&#x27;s client, so register the behavior&#x27;s <code>apply</code>
+with <code>runAsGm</code>. If the ownership can&#x27;t be given, the effect is removed and <code>apply</code> resolves to
+<code>undefined</code>, leaving Apply clickable.</li>
 <li class=""><code>pickLocation(scope, { rangeMeters, requireSight })</code> lets the user click a grid space for a spell
 that takes a place, within <code>rangeMeters</code> of the caster and in their sight when asked. It resolves
 to the point, or undefined when cancelled. <code>moveTokenNear(token, point)</code> then moves a token to the
