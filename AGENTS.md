@@ -68,6 +68,14 @@ rather than leading with them.
   production builds, including PR previews, leave drafts out, and both flags only work on whole
   pages, not on changes to an existing page. For a release, put the release notes and the changed
   pages on the same branch (e.g. `docs/rqg-6.2.0-release-notes`).
+- **Schema tables (RQG system):** `<SchemaTable type="actor/character" />` renders the JSON Schemas
+  in `src/data/rqg-schemas`, a committed copy made by
+  `pnpm sync:schemas <tag-or-branch|path to the system repo>`. Docs edits never change it. Release
+  checklist: before merging the release docs branch, run `pnpm sync:schemas v<version>` with the tag
+  being released and commit the result; the tables say which version they came from. Sync only
+  release tags on a release branch (a branch name is fine for a preview, but replace it before
+  merging), so every snapshot in git history is one clean version. That keeps a future version
+  selector and diff view easy to add: they would compare the committed snapshots.
 - Reference upstream GitHub issues/PRs with `<GithubIssue issue="NNN" repo="fvtt-system-rqg" />`
   rather than raw links — it renders a consistent badge with the GitHub mark icon.
 - Use Docusaurus admonitions (`:::warning`, `:::caution`, `:::info` ... `:::`) for callouts —

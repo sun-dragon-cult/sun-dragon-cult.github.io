@@ -1,0 +1,149 @@
+---
+sidebar_position: 30
+slug: character-data
+title: Character data
+tags: []
+---
+
+Characters and their items are normal Foundry documents, so macros and modules read them from
+`actor.system`, `actor.items` and `item.system`, the same way as for any other system. Read them
+again when you need current values.
+
+## Character fields
+
+Every field of `actor.system` is listed below, with its type and default. Click a field name to copy
+its path.
+
+<SchemaTable type="actor/character" />
+
+## Stored and calculated values
+
+Most fields are stored on the character, and you change them with Foundry's `update`:
+
+```js
+await actor.update({ "system.attributes.magicPoints.value": 5 });
+```
+
+A field marked <CalculatedBadge /> is calculated every time the character is prepared (Foundry
+recalculates the character's data after any change to it or its items) and is never stored. Writing
+to it has no lasting effect, because the next calculation overwrites it. To change it, change what
+it's calculated from: a characteristic, an item, a wound or an effect. The field's description says
+what goes into it.
+
+A field marked <EffectTargetBadge /> isn't stored either, but Active Effects are meant to write to
+it. These fields are under `system.effect`. They start at 0 (1 for multipliers) every time the
+character is prepared, and the calculated values read them. See
+[Changing calculated values with effects](#changing-calculated-values-with-effects).
+
+The items have the same kind of fields, see [Item data](/rqg-system/api/item-data). The JSON Schemas
+the tables are made from are in the system repository, in
+[`src/data-model/json-schemas/generated`](https://github.com/sun-dragon-cult/fvtt-system-rqg/tree/main/src/data-model/json-schemas/generated),
+if you want to use them in your own tools.
+
+### Changing calculated values with effects
+
+An Active Effect that writes straight to a calculated value is overwritten when the value is
+calculated. Point the effect at the matching <EffectTargetBadge /> field instead, in `ADD` mode
+(`MULTIPLY` for the fields under `effect.multiply`):
+
+```js
+await actor.createEmbeddedDocuments("ActiveEffect", [
+  {
+    name: "Blessed vigor",
+    changes: [{ key: "system.effect.add.hitPoints.max", mode: 2, value: "2" }],
+  },
+]);
+actor.system.attributes.hitPoints.max; // 2 more than before
+```
+
+The rqid of any item is in `item.getFlag("rqg", "documentRqidFlags")?.id`, see
+[Rqid](/rqg-system/api/rqid).
+
+The rest of this page covers what the system works out from the rules, which is not stored on the
+documents.
+
+## Weapons
+
+A weapon is an item with up to four ways of using it, `system.usage.oneHand`, `offHand`, `twoHand`
+and `missile`. Each has stored values like `strikeRank`, `minStrength`, `minDexterity` and the
+linked skill. The attack chance and whether the character is strong and quick enough come from the
+skill, the weapon's effects and the rules, so ask the weapon:
+
+```js
+const spear = actor.items.find((i) => i.name === "Spear" && i.type === "weapon");
+const info = spear.system.getUsageInfo("twoHand");
+info.totalChance; // the linked skill's chance plus the weapon's effect modifiers
+info.unusable; // true when the character is below the STR or DEX requirement
+```
+
+The result also has `skillItem`, `skillChance`, `weaponEffectModifier`, `underMinSTR` and
+`underMinDEX`. The weapon has to belong to a character. Use [`rolls.attack`](/rqg-system/api/rolls)
+to attack with it.
+
+## Castable spells
+
+`await actor.getCastableSpells()` lists all spirit and rune magic the character can cast, their own
+spells first. It's async because matrix spells are looked up from their rqid. It follows the rules
+for spells from somewhere else than the character, so use it instead of looking through
+`actor.items` when you need to know what the character can cast.
+
+Each entry has `type` (`"spiritMagic"` or `"runeMagic"`), `name`, `points` and `source`, which says
+where the spell comes from:
+
+| `source`        | The spell is known by                                       |
+| --------------- | ----------------------------------------------------------- |
+| `"own"`         | The character                                               |
+| `"allied"`      | The character's Allied Spirit, or the priest it's bonded to |
+| `"boundSpirit"` | A spirit bound into one of the character's items            |
+| `"matrix"`      | A spell matrix the character has equipped                   |
+
+Spells from somewhere else than the character also have `sourceName`, the name of the spirit or the
+matrix item. Spirit magic has `isVariable`, rune magic has `isOneUse` and the `cultId` and
+`cultName` of the cult it's cast through.
+
+To group spells by where they come from, use `sourceId` rather than `sourceName`, since two spirits
+or matrix items can have the same name. It's the same for every spell from one source: the
+character's uuid for their own spells, the Allied Spirit's uuid, `boundSpirit:<itemId>:<spiritUuid>`
+for a bound spirit, or the matrix item's uuid. To find the same spell on another character or in
+another language, compare `rqid`, which matrix spells have too. `casterUuid` is the uuid of the
+character the list belongs to, who casts the spell when you pass it to the roll functions.
+
+Pass an entry to [`rolls.spiritMagic` or `rolls.runeMagic`](/rqg-system/api/rolls) to cast it.
+
+## Magic point sources
+
+`actor.getMagicPointSources()` lists where the character can draw magic points from, in the order a
+cast draws from them: the order set in the character's Magic Point Sources window. Each entry has
+`id`, `type`, `name`, `magicPoints` (`value` and `max`) and `uuid`:
+
+| `type`          | The source                                                  | `id`                                |
+| --------------- | ----------------------------------------------------------- | ----------------------------------- |
+| `"self"`        | The character's own magic points                            | `"self"`                            |
+| `"item"`        | An equipped, identified item that stores magic points       | The item's id                       |
+| `"boundSpirit"` | A spirit bound into one of the character's equipped items   | `boundSpirit:<itemId>:<spiritUuid>` |
+| `"ally"`        | The character's Allied Spirit, or the priest it's bonded to | `"ally"`                            |
+
+`uuid` is the item's uuid for an item, otherwise the actor's. Pass `id` as the `magicPointSource`
+option of [`rolls.spiritMagic` or `rolls.runeMagic`](/rqg-system/api/rolls) to draw only from that
+source. A spell from a bound spirit has the spirit's `id` as its `sourceId`, so
+`{ magicPointSource: spell.sourceId }` casts it with the spirit's own magic points.
+
+## Hit locations and wounds
+
+A character's hit locations are items of type `hitLocation`, with their hit points in
+`item.system.hitPoints` (see [Item data](/rqg-system/api/item-data)). To let the user add or heal a
+wound the same way as from the character sheet, open the sheet's dialogs:
+
+```js
+const { dialogs } = game.system.api;
+await dialogs.addWound("Head", { actor: token }); // asks for the damage and the armor
+await dialogs.addWound("Head", { actor: token, damage: 7, subtractArmorPoints: false });
+await dialogs.healWounds("Head", { actor: token }); // with the head's wounds picked
+await dialogs.healWounds(undefined, { actor: token }); // all the character's wounds
+```
+
+`addWound` starts with the given `damage`, and with the Subtract armor points
+(`subtractArmorPoints`) and Apply to total hit points (`applyToTotalHp`) boxes ticked unless they
+are `false`. The user can change them before adding the wound. The hit location is the item, or its
+name, id, uuid or rqid. Given the item itself, its own actor is used. To damage or heal without a
+dialog, use `actor.damage` and `actor.heal`.

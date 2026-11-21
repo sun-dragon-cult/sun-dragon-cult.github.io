@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/sun-dragon-cult/fvtt-system-rqg/master/src/data-model/json-schemas/generated/item/skill.schema.json",
+  "title": "RQG Item - skill",
+  "description": "Generated JSON Schema for the \"skill\" Item DataModel's `system` data. Source: src/data-model/item-data/skill-data-model.ts. Do not edit by hand — run `pnpm generate:schemas`.",
+  "type": "object",
+  "properties": {
+    "canGetExperience": {
+      "type": "boolean",
+      "default": true,
+      "title": "Can get experience",
+      "description": "Whether the ability can be checked for an experience gain."
+    },
+    "hasExperience": {
+      "type": "boolean",
+      "default": false,
+      "title": "Has experience",
+      "description": "Set when the ability has earned an experience check. Cleared when the improvement is rolled."
+    },
+    "descriptionRqidLink": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "rqid": {
+          "type": "string",
+          "default": ""
+        },
+        "bonus": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "rqid"
+      ],
+      "title": "Description",
+      "description": "Link to the journal entry that describes the skill."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "agility",
+        "communication",
+        "knowledge",
+        "magic",
+        "manipulation",
+        "perception",
+        "stealth",
+        "meleeWeapons",
+        "missileWeapons",
+        "shields",
+        "naturalWeapons",
+        "otherSkills"
+      ],
+      "minLength": 1,
+      "default": "magic",
+      "title": "Category",
+      "description": "The skill category. The character's modifier for the category applies to the skill."
+    },
+    "skillName": {
+      "type": "string",
+      "default": "",
+      "title": "Skill name",
+      "description": "Name of the skill, without the specialization."
+    },
+    "specialization": {
+      "type": "string",
+      "default": "",
+      "title": "Specialization",
+      "description": "The specialization, for example the weapon or language."
+    },
+    "baseChance": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "title": "Base chance",
+      "description": "The skill's starting percentage."
+    },
+    "gainedChance": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "title": "Gained chance",
+      "description": "Percentage points gained from experience, training and research."
+    },
+    "runeRqidLinks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rqid": {
+            "type": "string",
+            "default": ""
+          },
+          "bonus": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "rqid"
+        ]
+      },
+      "title": "Runes",
+      "description": "Links to the runes that can affect the skill."
+    },
+    "categoryMod": {
+      "type": "integer",
+      "default": 0,
+      "title": "Category modifier",
+      "description": "The character's modifier for this skill's category. Calculated, never stored.",
+      "x-rqg-stored": false
+    },
+    "chance": {
+      "type": "integer",
+      "default": 0,
+      "title": "Chance",
+      "description": "The chance used when rolling: base and gained chance plus the category modifier and other modifiers. Calculated, never stored.",
+      "x-rqg-stored": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "canGetExperience",
+    "hasExperience",
+    "category",
+    "skillName",
+    "specialization",
+    "baseChance",
+    "gainedChance",
+    "runeRqidLinks",
+    "categoryMod",
+    "chance"
+  ]
+}

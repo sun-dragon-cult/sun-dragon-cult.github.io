@@ -1,0 +1,54 @@
+---
+sidebar_position: 32
+slug: item-data
+title: Item data
+tags: []
+---
+
+Items are normal Foundry documents, so their fields are under `item.system`. This is every field of
+each item type. A field marked <CalculatedBadge /> is calculated whenever the item or its character
+is prepared and is never stored, so change what it's calculated from instead. Active Effects are
+meant to write to the fields marked <EffectTargetBadge />, which aren't stored either. Weapons have
+these under `system.effect`. Click a field name to copy its path.
+
+## Armor
+
+<SchemaTable type="item/armor" />
+
+## Cult
+
+<SchemaTable type="item/cult" />
+
+## Gear
+
+<SchemaTable type="item/gear" />
+
+## Hit location
+
+<SchemaTable type="item/hitLocation" />
+
+## Passion
+
+<SchemaTable type="item/passion" />
+
+## Rune
+
+<SchemaTable type="item/rune" />
+
+## Rune magic
+
+<SchemaTable type="item/runeMagic" />
+
+## Skill
+
+<SchemaTable type="item/skill" />
+
+## Spirit magic
+
+<SchemaTable type="item/spiritMagic" />
+
+## Weapon
+
+<SchemaTable type="item/weapon" />
+
+{/* Homeland and occupation items are not used by the system yet, so they are left out for now. */}
