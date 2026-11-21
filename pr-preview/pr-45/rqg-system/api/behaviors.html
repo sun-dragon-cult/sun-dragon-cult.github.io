@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Behaviors | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-45/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-45/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/behaviors"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Behaviors | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="description" content="A behavior is a small script in a module that makes a spell or a skill do something when Apply"><meta data-rh="true" property="og:description" content="A behavior is a small script in a module that makes a spell or a skill do something when Apply"><link data-rh="true" rel="icon" href="/pr-preview/pr-45/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/behaviors"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/behaviors" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/behaviors" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"API","item":"https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/"},{"@type":"ListItem","position":2,"name":"Behaviors","item":"https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/behaviors"}]}</script><link rel="alternate" type="application/rss+xml" href="/pr-preview/pr-45/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/pr-preview/pr-45/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/pr-preview/pr-45/assets/css/styles.0079b47b.css">
-<script src="/pr-preview/pr-45/assets/js/runtime~main.b8fb51d8.js" defer="defer"></script>
+<script src="/pr-preview/pr-45/assets/js/runtime~main.ee9c6551.js" defer="defer"></script>
 <script src="/pr-preview/pr-45/assets/js/main.29c5857a.js" defer="defer"></script>
 </head>
 <body>
@@ -164,13 +164,13 @@ when it is left out, and <code>color</code> is a CSS color, white by default. A 
 goes on as usual, so the effect can light that token; cast with no target (the cast dialog&#x27;s &quot;No
 target&quot;), it places the light on the scene. <code>cast.untargeted</code> is what tells the two apart. A
 behavior with its own <code>apply</code> can call <code>game.system.api.spellEffects.placeLight(scope)</code> itself.</p>
-<p>The caster clicks the place, which for a Ranged spell must be within its range and in sight of their
-token, with the reach of the light drawn around the pointer in its own color. A cone under 360° is
-turned with the mouse wheel in steps of 10°, 0° facing down. Right click or Escape cancels, leaving
-Apply clickable. The active GM creates the ambient light, since players may not, and takes the
-radius, angle and color from the behavior, not from the request, which only carries the place and
-the facing. The light is named after the spell and the caster, like &quot;Lantern (Harmast)&quot;, and its
-radius is converted from meters to the scene&#x27;s units.</p>
+<p>The caster clicks the place, which must be in sight of their token (RBM p.6) and, for a Ranged
+spell, within its range, with the reach of the light drawn around the pointer in its own color. A
+cone under 360° is turned with the mouse wheel in steps of 10°, 0° facing down. Right click or
+Escape cancels, leaving Apply clickable. The active GM creates the ambient light, since players may
+not, and takes the radius, angle and color from the behavior, not from the request, which only
+carries the place and the facing. The light is named after the spell and the caster, like &quot;Lantern
+(Harmast)&quot;, and its radius is converted from meters to the scene&#x27;s units.</p>
 <p>A spell with a duration puts an effect on the caster that holds the light: when the effect ends, the
 light goes, and deleting the light ends the effect. A light left behind by a deleted caster, or an
 effect removed while no GM was logged in, is removed when a GM next loads the world. Without a
@@ -206,12 +206,12 @@ control back. Changing ownership takes the active GM&#x27;s client, so register 
 with <code>runAsGm</code>. If the ownership can&#x27;t be given, the effect is removed and <code>apply</code> resolves to
 <code>undefined</code>, leaving Apply clickable.</li>
 <li class=""><code>pickLocation(scope, { rangeMeters, requireSight, rotatable, previewLight })</code> lets the user click
-a grid space for a spell that takes a place, within <code>rangeMeters</code> of the caster and in their sight
-when asked. It resolves to the point, or undefined when cancelled. With <code>rotatable</code> the mouse
-wheel turns what is placed, and the point has its <code>rotation</code> in degrees, 0 facing down.
-<code>previewLight</code>, a <code>{ radiusMeters, angle, color }</code> like a <a href="#a-light-on-the-scene" class="">spell&#x27;s light</a>,
-draws how far it reaches around the pointer. <code>moveTokenNear(token, point)</code> then moves a token to
-the free grid space nearest it.</li>
+a grid space for a spell that takes a place, within <code>rangeMeters</code> of the caster and, when asked,
+in their sight, as far as the scene goes when there is no range. It resolves to the point, or
+undefined when cancelled. With <code>rotatable</code> the mouse wheel turns what is placed, and the point has
+its <code>rotation</code> in degrees, 0 facing down. <code>previewLight</code>, a <code>{ radiusMeters, angle, color }</code> like
+a <a href="#a-light-on-the-scene" class="">spell&#x27;s light</a>, draws how far it reaches around the pointer.
+<code>moveTokenNear(token, point)</code> then moves a token to the free grid space nearest it.</li>
 <li class=""><code>placeLight(scope)</code> lets the caster place the light the spell&#x27;s behavior declares, as
 <a href="#a-light-on-the-scene" class="">described above</a>.</li>
 <li class=""><code>list</code> and <code>removeSpellEffects</code> find and remove the spell effects on an actor. The removal filter
