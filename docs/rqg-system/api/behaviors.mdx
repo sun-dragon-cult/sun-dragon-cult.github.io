@@ -279,7 +279,14 @@ higher priority can replace it.
 
 `game.system.api.spellEffects` has helpers for common things:
 
-- `summon` places a token next to the caster that goes away when its effect ends.
+- `summon` places a token next to the caster that goes away when its effect ends. The caster's
+  players observe the token.
+- `giveControl(scope)` attaches the spell's effect to the target and, while it lasts, makes the
+  caster's players its owners, as Command (cult spirit) does. Each player gets their previous
+  ownership back when the effect ends, expires or is dispelled; deleting the effect takes the
+  control back. Changing ownership takes the active GM's client, so register the behavior's `apply`
+  with `runAsGm`. If the ownership can't be given, the effect is removed and `apply` resolves to
+  `undefined`, leaving Apply clickable.
 - `list` and `removeSpellEffects` find and remove the spell effects on an actor. The removal filter
   takes `spellRqid`, `casterActorUuid` and `maxLevel`.
 - `castPoints` is how strong a cast is against defenses: its magic points plus double its rune
