@@ -272,13 +272,13 @@ goes on as usual, so the effect can light that token; cast with no target (the c
 target"), it places the light on the scene. `cast.untargeted` is what tells the two apart. A
 behavior with its own `apply` can call `game.system.api.spellEffects.placeLight(scope)` itself.
 
-The caster clicks the place, which for a Ranged spell must be within its range and in sight of their
-token, with the reach of the light drawn around the pointer in its own color. A cone under 360° is
-turned with the mouse wheel in steps of 10°, 0° facing down. Right click or Escape cancels, leaving
-Apply clickable. The active GM creates the ambient light, since players may not, and takes the
-radius, angle and color from the behavior, not from the request, which only carries the place and
-the facing. The light is named after the spell and the caster, like "Lantern (Harmast)", and its
-radius is converted from meters to the scene's units.
+The caster clicks the place, which must be in sight of their token (RBM p.6) and, for a Ranged
+spell, within its range, with the reach of the light drawn around the pointer in its own color. A
+cone under 360° is turned with the mouse wheel in steps of 10°, 0° facing down. Right click or
+Escape cancels, leaving Apply clickable. The active GM creates the ambient light, since players may
+not, and takes the radius, angle and color from the behavior, not from the request, which only
+carries the place and the facing. The light is named after the spell and the caster, like "Lantern
+(Harmast)", and its radius is converted from meters to the scene's units.
 
 A spell with a duration puts an effect on the caster that holds the light: when the effect ends, the
 light goes, and deleting the light ends the effect. A light left behind by a deleted caster, or an
@@ -337,12 +337,12 @@ higher priority can replace it.
   with `runAsGm`. If the ownership can't be given, the effect is removed and `apply` resolves to
   `undefined`, leaving Apply clickable.
 - `pickLocation(scope, { rangeMeters, requireSight, rotatable, previewLight })` lets the user click
-  a grid space for a spell that takes a place, within `rangeMeters` of the caster and in their sight
-  when asked. It resolves to the point, or undefined when cancelled. With `rotatable` the mouse
-  wheel turns what is placed, and the point has its `rotation` in degrees, 0 facing down.
-  `previewLight`, a `{ radiusMeters, angle, color }` like a [spell's light](#a-light-on-the-scene),
-  draws how far it reaches around the pointer. `moveTokenNear(token, point)` then moves a token to
-  the free grid space nearest it.
+  a grid space for a spell that takes a place, within `rangeMeters` of the caster and, when asked,
+  in their sight, as far as the scene goes when there is no range. It resolves to the point, or
+  undefined when cancelled. With `rotatable` the mouse wheel turns what is placed, and the point has
+  its `rotation` in degrees, 0 facing down. `previewLight`, a `{ radiusMeters, angle, color }` like
+  a [spell's light](#a-light-on-the-scene), draws how far it reaches around the pointer.
+  `moveTokenNear(token, point)` then moves a token to the free grid space nearest it.
 - `placeLight(scope)` lets the caster place the light the spell's behavior declares, as
   [described above](#a-light-on-the-scene).
 - `list` and `removeSpellEffects` find and remove the spell effects on an actor. The removal filter
