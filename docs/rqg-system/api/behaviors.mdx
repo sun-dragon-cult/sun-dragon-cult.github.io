@@ -289,9 +289,16 @@ higher priority can replace it.
 `game.system.api.spellEffects` has helpers for common things:
 
 - `summon(scope, actorRqid, options)` lets the user place a token of the actor with that rqid,
-  within range and sight of the caster, that goes away when its effect ends. `options.img` is the
-  summoning's icon on the token, `options.duration` overrides the spell's own, and
-  `options.footprintMeters` (`{ w, h }`) sets the body's size, like 1×3 m for a medium elemental.
+  within range and sight of the caster, that goes away when its effect ends. The caster's players
+  observe the token. `options.img` is the summoning's icon on the token, `options.duration`
+  overrides the spell's own, and `options.footprintMeters` (`{ w, h }`) sets the body's size, like
+  1×3 m for a medium elemental.
+- `giveControl(scope)` attaches the spell's effect to the target and, while it lasts, makes the
+  caster's players its owners, as Command (cult spirit) does. Each player gets their previous
+  ownership back when the effect ends, expires or is dispelled; deleting the effect takes the
+  control back. Changing ownership takes the active GM's client, so register the behavior's `apply`
+  with `runAsGm`. If the ownership can't be given, the effect is removed and `apply` resolves to
+  `undefined`, leaving Apply clickable.
 - `pickLocation(scope, { rangeMeters, requireSight })` lets the user click a grid space for a spell
   that takes a place, within `rangeMeters` of the caster and in their sight when asked. It resolves
   to the point, or undefined when cancelled. `moveTokenNear(token, point)` then moves a token to the
