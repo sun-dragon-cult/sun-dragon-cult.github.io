@@ -367,6 +367,22 @@ same. Before, they could keep different names and look like links to two differe
 
 See [Rqid](/rqg-system/api/rqid) for how links find what they point to.
 
+## Allied and Bound Spirits Need Linked Tokens
+
+<GithubIssue issue="1065" repo="fvtt-system-rqg" />
+
+An Allied Spirit link and a bound spirit link point to an actor in the Actors directory, not to a
+token on the scene. A token without **Link Actor Data** is its own copy of the actor, so in 6.1
+every such copy of a priest shared the same spirit, and they all drew Magic Points from that one
+spirit actor.
+
+An unlinked token no longer uses a spirit like that. Its spells and Magic Points aren't offered
+when casting, and the token's Combat tab shows the Allied Spirit or bound spirit greyed out, with a
+tooltip saying that **Link Actor Data** has to be on. Turn it on in the prototype token of the
+priest or the holder of the bound spirit item, and of the spirit.
+
+{/* TODO screenshot: greyed-out bound spirit on an unlinked token's Combat tab */}
+
 ## API for Macros and Modules
 
 <GithubIssue issue="1129" repo="fvtt-system-rqg" />
