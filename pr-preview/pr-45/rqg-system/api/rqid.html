@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">RQG System ID (rqid) | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-45/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-45/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/rqid"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="RQG System ID (rqid) | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="description" content="What is it for"><meta data-rh="true" property="og:description" content="What is it for"><link data-rh="true" rel="icon" href="/pr-preview/pr-45/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/rqid"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/rqid" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/rqid" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"API","item":"https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/"},{"@type":"ListItem","position":2,"name":"RQG System ID (rqid)","item":"https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/rqid"}]}</script><link rel="alternate" type="application/rss+xml" href="/pr-preview/pr-45/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/pr-preview/pr-45/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/pr-preview/pr-45/assets/css/styles.0079b47b.css">
-<script src="/pr-preview/pr-45/assets/js/runtime~main.9efa553f.js" defer="defer"></script>
+<script src="/pr-preview/pr-45/assets/js/runtime~main.0443c432.js" defer="defer"></script>
 <script src="/pr-preview/pr-45/assets/js/main.29c5857a.js" defer="defer"></script>
 </head>
 <body>
@@ -73,8 +73,7 @@ priority, the world document is used</li>
 <details class="details_sAVB alert alert--info details_c41H" data-collapsed="true"><summary>Examples of priorities and search results</summary><div><div class="collapsibleContent_xjdv"> <p>A spell item has a rqid link <code>je..befuddle</code> to a journal entry that describes that spell. When a
 player clicks the link a search is done to find the best match.</p><p>Suppose these journal entries describing some spirit magic spells exist:</p><ol>
 <li class="">rqid: <code>je..befuddle</code>, language: <code>en</code>, priority: <code>0</code> <em>(from the wiki module)</em></li>
-<li class="">rqid: <code>je..befuddle</code>, language: <code>en</code>, priority: <code>1000</code> <em>(from a higher priority english
-module)</em></li>
+<li class="">rqid: <code>je..befuddle</code>, language: <code>en</code>, priority: <code>1000</code> <em>(from a higher priority english module)</em></li>
 <li class="">rqid: <code>je..befuddle</code>, language: <code>es</code>, priority: <code>0</code> <em>(from a custom &quot;translation to Spanish&quot;
 module)</em></li>
 <li class="">rqid: <code>je..demoralize</code>, language: <code>en</code>, priority: <code>0</code> <em>(from the wiki module)</em></li>
@@ -157,7 +156,9 @@ to change, a <code>:</code>, and the path of the item&#x27;s value:</p>
 <li class="">A regular expression can&#x27;t contain a <code>:</code>, and has no flags.</li>
 <li class="">Keys that don&#x27;t start with <code>@</code> are normal Foundry keys and work exactly as in Foundry, including
 core&#x27;s <code>token.</code> keys, which change the actor&#x27;s tokens. For example, <code>token.light.dim</code> makes the
-token give off light.</li>
+token give off light. On a cast spell&#x27;s effect, light, sight and detection-mode distances are in
+meters and converted to each scene&#x27;s units; on other effects they are in the scene&#x27;s units, as in
+Foundry.</li>
 <li class="">A key that can&#x27;t be used, such as an rqid the actor has no item for, shows the GM a warning.</li>
 </ul>
 <p>The <code>path</code> is the path to the item system property that should be changed. It is not obvious how to
@@ -186,8 +187,8 @@ was cast at, for example <code>@level * 5</code>.</p>
 <li class="">Bladesharp on the weapon it&#x27;s cast on: <strong>ADD</strong> <code>@.:system.effect.add.melee.attack</code>, value
 <code>@level * 5</code></li>
 <li class="">Magic point bonus: <strong>ADD</strong> <code>system.effect.add.magicPoints.max</code>, value <code>2</code> (no rqid)</li>
-<li class="">Agility skills bonus: <strong>ADD</strong> <code>system.effect.add.skillCategoryModifiers.agility</code>, value <code>5</code>
-(no rqid)</li>
+<li class="">Agility skills bonus: <strong>ADD</strong> <code>system.effect.add.skillCategoryModifiers.agility</code>, value <code>5</code> (no
+rqid)</li>
 <li class="">Strength: <strong>ADD</strong> <code>system.characteristics.strength.value</code>, value <code>8</code> (no rqid). Values derived
 from STR, like damage bonus, follow.</li>
 </ul><p>Most other actor attributes are derived from characteristics, so an effect on them is overwritten.</p></div></div>

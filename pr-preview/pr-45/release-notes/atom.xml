@@ -155,8 +155,8 @@ the GM a warning and does nothing until it's updated.</p></div></div>
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="spell-areas-on-the-scene">Spell Areas on the Scene<a href="https://sun-dragon-cult.github.io/pr-preview/pr-45/release-notes/rqg-v6.2.0#spell-areas-on-the-scene" class="hash-link" aria-label="Direct link to Spell Areas on the Scene" title="Direct link to Spell Areas on the Scene" translate="no">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1168" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1168</label></a>
 <p>Spells that affect a place, like Shake Earth, Warding or Sanctify, now make a scene Region. The
-caster places it, snapped to the scene's grid, and the squares or hexes it will cover light up as it
-moves:</p>
+caster places it, snapped to the scene's grid unless Shift is held, as in Foundry's own tools, and
+the squares or hexes it will cover light up as it moves:</p>
 <ul>
 <li class=""><strong>Ranged spells</strong> must lie wholly within range, centered on a point the caster can see. The scene
 is dimmed outside what the caster's token can see within range, and the area can't be placed
@@ -284,8 +284,8 @@ same. Before, they could keep different names and look like links to two differe
 token on the scene. A token without <strong>Link Actor Data</strong> is its own copy of the actor, so in 6.1
 every such copy of a priest shared the same spirit, and they all drew Magic Points from that one
 spirit actor.</p>
-<p>An unlinked token no longer uses a spirit like that. Its spells and Magic Points aren't offered
-when casting, and the token's Combat tab shows the Allied Spirit or bound spirit greyed out, with a
+<p>An unlinked token no longer uses a spirit like that. Its spells and Magic Points aren't offered when
+casting, and the token's Combat tab shows the Allied Spirit or bound spirit greyed out, with a
 tooltip saying that <strong>Link Actor Data</strong> has to be on. Turn it on in the prototype token of the
 priest or the holder of the bound spirit item, and of the spirit.</p>
 <!-- -->
