@@ -279,6 +279,17 @@ away.</p>
 same. Before, they could keep different names and look like links to two different skills.</p>
 <!-- -->
 <p>See <a class="" href="https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/rqid">Rqid</a> for how links find what they point to.</p>
+<h2 class="anchor anchorTargetStickyNavbar_xPLm" id="allied-and-bound-spirits-need-linked-tokens">Allied and Bound Spirits Need Linked Tokens<a href="https://sun-dragon-cult.github.io/pr-preview/pr-45/release-notes/rqg-v6.2.0#allied-and-bound-spirits-need-linked-tokens" class="hash-link" aria-label="Direct link to Allied and Bound Spirits Need Linked Tokens" title="Direct link to Allied and Bound Spirits Need Linked Tokens" translate="no">​</a></h2>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1065" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1065</label></a>
+<p>An Allied Spirit link and a bound spirit link point to an actor in the Actors directory, not to a
+token on the scene. A token without <strong>Link Actor Data</strong> is its own copy of the actor, so in 6.1
+every such copy of a priest shared the same spirit, and they all drew Magic Points from that one
+spirit actor.</p>
+<p>An unlinked token no longer uses a spirit like that. Its spells and Magic Points aren't offered
+when casting, and the token's Combat tab shows the Allied Spirit or bound spirit greyed out, with a
+tooltip saying that <strong>Link Actor Data</strong> has to be on. Turn it on in the prototype token of the
+priest or the holder of the bound spirit item, and of the spirit.</p>
+<!-- -->
 <h2 class="anchor anchorTargetStickyNavbar_xPLm" id="api-for-macros-and-modules">API for Macros and Modules<a href="https://sun-dragon-cult.github.io/pr-preview/pr-45/release-notes/rqg-v6.2.0#api-for-macros-and-modules" class="hash-link" aria-label="Direct link to API for Macros and Modules" title="Direct link to API for Macros and Modules" translate="no">​</a></h2>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1129" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1129</label></a>
 <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1131" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1131</label></a>
