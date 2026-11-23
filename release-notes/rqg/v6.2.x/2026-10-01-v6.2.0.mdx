@@ -207,8 +207,8 @@ the GM a warning and does nothing until it's updated.
 <GithubIssue issue="1168" repo="fvtt-system-rqg" />
 
 Spells that affect a place, like Shake Earth, Warding or Sanctify, now make a scene Region. The
-caster places it, snapped to the scene's grid, and the squares or hexes it will cover light up as it
-moves:
+caster places it, snapped to the scene's grid unless Shift is held, as in Foundry's own tools, and
+the squares or hexes it will cover light up as it moves:
 
 - **Ranged spells** must lie wholly within range, centered on a point the caster can see. The scene
   is dimmed outside what the caster's token can see within range, and the area can't be placed
@@ -376,8 +376,8 @@ token on the scene. A token without **Link Actor Data** is its own copy of the a
 every such copy of a priest shared the same spirit, and they all drew Magic Points from that one
 spirit actor.
 
-An unlinked token no longer uses a spirit like that. Its spells and Magic Points aren't offered
-when casting, and the token's Combat tab shows the Allied Spirit or bound spirit greyed out, with a
+An unlinked token no longer uses a spirit like that. Its spells and Magic Points aren't offered when
+casting, and the token's Combat tab shows the Allied Spirit or bound spirit greyed out, with a
 tooltip saying that **Link Actor Data** has to be on. Turn it on in the prototype token of the
 priest or the holder of the bound spirit item, and of the spirit.
 

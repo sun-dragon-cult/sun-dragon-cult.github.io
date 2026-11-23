@@ -102,8 +102,7 @@ player clicks the link a search is done to find the best match.
 Suppose these journal entries describing some spirit magic spells exist:
 
 1. rqid: `je..befuddle`, language: `en`, priority: `0` _(from the wiki module)_
-2. rqid: `je..befuddle`, language: `en`, priority: `1000` _(from a higher priority english
-   module)_
+2. rqid: `je..befuddle`, language: `en`, priority: `1000` _(from a higher priority english module)_
 3. rqid: `je..befuddle`, language: `es`, priority: `0` _(from a custom "translation to Spanish"
    module)_
 4. rqid: `je..demoralize`, language: `en`, priority: `0` _(from the wiki module)_
@@ -218,10 +217,10 @@ An Active Effect on an actor can change a value on one of the actor's embedded i
 the actor itself. Such a change has an "Attribute Key" that starts with `@`, followed by which items
 to change, a `:`, and the path of the item's value:
 
-| Key                       | Changes                                                               |
-| ------------------------- | --------------------------------------------------------------------- |
-| `@<rqid>:system.<path>`   | The actor's best embedded item with that rqid                         |
-| `@~<regex>:system.<path>` | Every embedded item whose rqid matches the regular expression         |
+| Key                       | Changes                                                                |
+| ------------------------- | ---------------------------------------------------------------------- |
+| `@<rqid>:system.<path>`   | The actor's best embedded item with that rqid                          |
+| `@~<regex>:system.<path>` | Every embedded item whose rqid matches the regular expression          |
 | `@.:system.<path>`        | The item the effect is on (only for an effect that belongs to an item) |
 
 - The change types are Foundry's normal ones: Add, Multiply, Override, Upgrade and Downgrade.
@@ -229,7 +228,9 @@ to change, a `:`, and the path of the item's value:
 - A regular expression can't contain a `:`, and has no flags.
 - Keys that don't start with `@` are normal Foundry keys and work exactly as in Foundry, including
   core's `token.` keys, which change the actor's tokens. For example, `token.light.dim` makes the
-  token give off light.
+  token give off light. On a cast spell's effect, light, sight and detection-mode distances are in
+  meters and converted to each scene's units; on other effects they are in the scene's units, as in
+  Foundry.
 - A key that can't be used, such as an rqid the actor has no item for, shows the GM a warning.
 
 The `path` is the path to the item system property that should be changed. It is not obvious how to
@@ -262,8 +263,8 @@ was cast at, for example `@level * 5`.
 - Bladesharp on the weapon it's cast on: **ADD** `@.:system.effect.add.melee.attack`, value
   `@level * 5`
 - Magic point bonus: **ADD** `system.effect.add.magicPoints.max`, value `2` (no rqid)
-- Agility skills bonus: **ADD** `system.effect.add.skillCategoryModifiers.agility`, value `5`
-  (no rqid)
+- Agility skills bonus: **ADD** `system.effect.add.skillCategoryModifiers.agility`, value `5` (no
+  rqid)
 - Strength: **ADD** `system.characteristics.strength.value`, value `8` (no rqid). Values derived
   from STR, like damage bonus, follow.
 

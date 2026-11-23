@@ -58,6 +58,11 @@ The changes are the same as on any Active Effect. `@level` is the level the spel
 [Rqid: Active Effects](/rqg-system/api/rqid#7-active-effects) for the keys that change an actor or
 an item. An effect without any changes works as a reminder that the spell is active.
 
+Core's `token.` keys work too, like `token.light.dim` for a spell that makes its target glow. In a
+spell's effect, the distances `token.light.dim`, `token.light.bright`, `token.sight.range` and
+`token.detectionModes.<mode>.range` are in meters, like the rules. Each token converts them to its
+scene's units, so the same spell reaches as far on a scene in feet or kilometers.
+
 The token HUD says which kind an effect is when you hover over it: "Has automated effects" for one
 with changes, "Only marks the spell while it lasts" for a reminder. If an effect only does part of
 what the spell does, put the rest in the effect's description, for example "Not automated: −1 strike

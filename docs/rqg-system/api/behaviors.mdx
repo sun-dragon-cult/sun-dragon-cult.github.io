@@ -127,18 +127,18 @@ clicks Apply, so the target's owner can be asked which weapon or which wounds.
 `onEnd` has run.
 
 A spell whose effect is a place uses `game.system.api.spellEffects.createArea(scope, options)` in
-its `apply`. The caster places the area on the canvas, snapped to the scene's grid with the squares
-or hexes it covers highlighted: within the spell's range for a Ranged spell, anywhere for the rest,
-as a ritual is held where its area is. A Ranged spell's area must also be centered on a point the
-caster's token can see: the scene is dimmed outside that, and placement there is refused.
-`options.shape` is `{ kind: "circle", radius }` or `{ kind: "square", side }` in meters, the square
-rotated with the mouse wheel, or `{ kind: "polygon", corners, maxArea }`, clicked corner by corner,
-like a ward's wands, and no larger than `maxArea` square meters. `placement: "caster"` puts a circle
-or square around the caster's token instead. `duration` overrides the spell's own, and
-`visible: true` shows the area to every player; otherwise only the GM and the caster's players see
-it. An area with a duration puts an effect on the caster, so it ends when the spell does; with
-`duration: null` the Region is the spell and lasts until it is deleted. The GM can move or delete
-the Region either way. `onAreaEnter` and `onAreaExit` get
+its `apply`. The caster places the area on the canvas, snapped to the scene's grid unless Shift is
+held, with the squares or hexes it covers highlighted: within the spell's range for a Ranged spell,
+anywhere for the rest, as a ritual is held where its area is. A Ranged spell's area must also be
+centered on a point the caster's token can see: the scene is dimmed outside that, and placement
+there is refused. `options.shape` is `{ kind: "circle", radius }` or `{ kind: "square", side }` in
+meters, the square rotated with the mouse wheel, or `{ kind: "polygon", corners, maxArea }`, clicked
+corner by corner, like a ward's wands, and no larger than `maxArea` square meters.
+`placement: "caster"` puts a circle or square around the caster's token instead. `duration`
+overrides the spell's own, and `visible: true` shows the area to every player; otherwise only the GM
+and the caster's players see it. An area with a duration puts an effect on the caster, so it ends
+when the spell does; with `duration: null` the Region is the spell and lasts until it is deleted.
+The GM can move or delete the Region either way. `onAreaEnter` and `onAreaExit` get
 `{ spell, cast, region, token, actor, crossed }`; `crossed` is false for a token that was inside
 when the area appeared. In `onAreaEnter`, `spellEffects.applyAreaEffect(scope)` puts the spell's
 effect template on the token; the system takes it off when the token leaves or the area goes.
@@ -337,12 +337,13 @@ higher priority can replace it.
   with `runAsGm`. If the ownership can't be given, the effect is removed and `apply` resolves to
   `undefined`, leaving Apply clickable.
 - `pickLocation(scope, { rangeMeters, requireSight, rotatable, previewLight })` lets the user click
-  a grid space for a spell that takes a place, within `rangeMeters` of the caster and, when asked,
-  in their sight, as far as the scene goes when there is no range. It resolves to the point, or
-  undefined when cancelled. With `rotatable` the mouse wheel turns what is placed, and the point has
-  its `rotation` in degrees, 0 facing down. `previewLight`, a `{ radiusMeters, angle, color }` like
-  a [spell's light](#a-light-on-the-scene), draws how far it reaches around the pointer.
-  `moveTokenNear(token, point)` then moves a token to the free grid space nearest it.
+  a grid space, or any point while Shift is held, for a spell that takes a place, within
+  `rangeMeters` of the caster and, when asked, in their sight, as far as the scene goes when there
+  is no range. It resolves to the point, or undefined when cancelled. With `rotatable` the mouse
+  wheel turns what is placed, and the point has its `rotation` in degrees, 0 facing down.
+  `previewLight`, a `{ radiusMeters, angle, color }` like a [spell's light](#a-light-on-the-scene),
+  draws how far it reaches around the pointer. `moveTokenNear(token, point)` then moves a token to
+  the free grid space nearest it.
 - `placeLight(scope)` lets the caster place the light the spell's behavior declares, as
   [described above](#a-light-on-the-scene).
 - `list` and `removeSpellEffects` find and remove the spell effects on an actor. The removal filter
@@ -350,8 +351,9 @@ higher priority can replace it.
 - `castPoints` is how strong a cast is against defenses: its magic points plus double its rune
   points. It is what a [barrier](#barriers) is judged against.
 - `effectRemovalCost` is how many points of Dispel Magic it takes to remove a spell effect.
-- `metersToPixels(meters, scene.grid)` converts a distance by the scene's grid scale, feet and yards
-  included. The wiki's wards use it for how far their alarm is heard.
+- `metersToPixels(meters, scene.grid)` converts a distance by the scene's grid scale, in meters,
+  kilometers, centimeters, millimeters, feet, yards, inches or miles; a unit it doesn't know counts
+  as meters. The wiki's wards use it for how far their alarm is heard.
 - `dealDamage(scope, { formula, armorPoints })` rolls damage with `formula` and a hit location on
   the target, shows both rolls in chat like an attack's, and deals the damage once the dice have
   landed. Pass `armorPoints: 0` for damage armor doesn't stop; left out, the location's own armor
