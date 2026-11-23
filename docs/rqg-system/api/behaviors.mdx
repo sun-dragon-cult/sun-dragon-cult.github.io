@@ -98,9 +98,9 @@ Apply is offered for each target the spell affected, so not for a target that re
   `actorUuid` and the `tokenUuid` they cast from (`""` when they cast without a token), and
   `untargeted`, true when nothing was targeted where that is not just the way to say the caster: for
   a spell at an object or a place, or a resisted spell, whose actors the GM assigns. For a spell
-  that goes on its caster, an unresisted one at a creature, spirit, hit location or spell, or a
-  weapon spell, nothing targeted means the caster and is not untargeted, and nor is a cast at the
-  caster themselves or a spell put on from the token HUD
+  that goes on its caster, an unresisted one at a creature, hit location or spell, or a weapon
+  spell, nothing targeted means the caster and is not untargeted, and nor is a cast at the caster
+  themselves or a spell put on from the token HUD
 - `duration`, what the effect of a Temporal spell lasts, otherwise undefined
 
 `onIncomingSpell` gets the same, plus `effects`: this spell's effects on the target. It runs on the
