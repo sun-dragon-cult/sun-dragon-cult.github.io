@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Behaviors | RuneQuest Glorantha for Foundry VTT</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-45/img/sdc.jpg"><meta data-rh="true" name="twitter:image" content="https://sun-dragon-cult.github.io/pr-preview/pr-45/img/sdc.jpg"><meta data-rh="true" property="og:url" content="https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/behaviors"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Behaviors | RuneQuest Glorantha for Foundry VTT"><meta data-rh="true" name="description" content="A behavior is a small script in a module that makes a spell or a skill do something when Apply"><meta data-rh="true" property="og:description" content="A behavior is a small script in a module that makes a spell or a skill do something when Apply"><link data-rh="true" rel="icon" href="/pr-preview/pr-45/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/behaviors"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/behaviors" hreflang="en"><link data-rh="true" rel="alternate" href="https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/behaviors" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"API","item":"https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/"},{"@type":"ListItem","position":2,"name":"Behaviors","item":"https://sun-dragon-cult.github.io/pr-preview/pr-45/rqg-system/api/behaviors"}]}</script><link rel="alternate" type="application/rss+xml" href="/pr-preview/pr-45/release-notes/rss.xml" title="RuneQuest Glorantha for Foundry VTT RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/pr-preview/pr-45/release-notes/atom.xml" title="RuneQuest Glorantha for Foundry VTT Atom Feed"><link rel="stylesheet" href="/pr-preview/pr-45/assets/css/styles.0079b47b.css">
-<script src="/pr-preview/pr-45/assets/js/runtime~main.ee9c6551.js" defer="defer"></script>
+<script src="/pr-preview/pr-45/assets/js/runtime~main.0c383a3b.js" defer="defer"></script>
 <script src="/pr-preview/pr-45/assets/js/main.29c5857a.js" defer="defer"></script>
 </head>
 <body>
@@ -57,9 +57,9 @@ stop the others.</li>
 <code>actorUuid</code> and the <code>tokenUuid</code> they cast from (<code>&quot;&quot;</code> when they cast without a token), and
 <code>untargeted</code>, true when nothing was targeted where that is not just the way to say the caster: for
 a spell at an object or a place, or a resisted spell, whose actors the GM assigns. For a spell
-that goes on its caster, an unresisted one at a creature, spirit, hit location or spell, or a
-weapon spell, nothing targeted means the caster and is not untargeted, and nor is a cast at the
-caster themselves or a spell put on from the token HUD</li>
+that goes on its caster, an unresisted one at a creature, hit location or spell, or a weapon
+spell, nothing targeted means the caster and is not untargeted, and nor is a cast at the caster
+themselves or a spell put on from the token HUD</li>
 <li class=""><code>duration</code>, what the effect of a Temporal spell lasts, otherwise undefined</li>
 </ul>
 <p><code>onIncomingSpell</code> gets the same, plus <code>effects</code>: this spell&#x27;s effects on the target. It runs on the
