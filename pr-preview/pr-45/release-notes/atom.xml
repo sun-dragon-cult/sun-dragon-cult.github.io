@@ -80,6 +80,18 @@ fanatic may still cast is up to the GM.</li>
 </ul>
 <p>Being preserved from shock and unconsciousness while berserk is also up to the GM. The harpy in the
 wiki module now has the Chaos rune.</p>
+<h3 class="anchor anchorTargetStickyNavbar_xPLm" id="second-sight-and-soul-sight">Second Sight and Soul Sight<a href="https://sun-dragon-cult.github.io/pr-preview/pr-45/release-notes/rqg-v6.2.0#second-sight-and-soul-sight" class="hash-link" aria-label="Direct link to Second Sight and Soul Sight" title="Direct link to Second Sight and Soul Sight" translate="no">​</a></h3>
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1397" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1397</label></a>
+<p>With Second Sight or Soul Sight, the caster sees the POW aura of every being with POW within the
+spell's range, 50 meters for Second Sight and 160 for Soul Sight, in the dark too (RBM p.118). Walls
+still block it, and so does the token's vision arc, as for normal sight. Each being is shown as a
+swirling, ghostly aura instead of its token, so what it looks like stays hidden. Undead have no POW
+and don't show, and neither do discorporate beings, who are in the Spirit World. Invisible beings
+do, since their POW still shows.</p>
+<p>How strong each aura is compared with the caster's POW, and for Soul Sight the magic points and
+whether a being is an initiate, are still for the GM to tell. The aura stands still when
+<strong>Photosensitive Mode</strong> is on.</p>
+<!-- -->
 <h3 class="anchor anchorTargetStickyNavbar_xPLm" id="spell-effects-on-the-token">Spell effects on the token<a href="https://sun-dragon-cult.github.io/pr-preview/pr-45/release-notes/rqg-v6.2.0#spell-effects-on-the-token" class="hash-link" aria-label="Direct link to Spell effects on the token" title="Direct link to Spell effects on the token" translate="no">​</a></h3>
 <p>A token's spell effects are shown at the top of the token HUD's status palette, above the condition
 markers, with their name, the item they're on and the time left. The GM can click one to open it,
@@ -407,6 +419,11 @@ prefix with a second key, <code>RQG.Item.Armor.NamePrefixPattern</code>, <code>{
 </li>
 <li class="">Rqid links only need the <code>rqid</code>. A <code>name</code> on a link is ignored and isn't saved, since the link
 shows the name of what it finds. <a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1167" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1167</label></a></li>
+<li class="">A new detection mode, <strong>See POW Auras</strong> (<code>powAura</code>), shows beings with POW as an aura. An effect
+turns it on with <code>token.detectionModes.powAura.enabled</code> and sets its range in meters with
+<code>token.detectionModes.powAura.range</code>, as Second Sight and Soul Sight do.<!-- -->
+<a title="Related Github Issue" class="theme-doc-version-badge badge badge--secondary" href="https://github.com/sun-dragon-cult/fvtt-system-rqg/issues/1397" target="_blank"><label><img src="https://sun-dragon-cult.github.io/img/github-mark.svg" width="13.5px">&nbsp;#<!-- -->1397</label></a>
+</li>
 <li class="">Errors and warnings now carry a code like <code>RQG-W-0012</code>, which makes them easier to report and look
 up.</li>
 </ul>
