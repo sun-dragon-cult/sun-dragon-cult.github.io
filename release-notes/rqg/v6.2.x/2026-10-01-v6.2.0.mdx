@@ -97,6 +97,23 @@ Berserker and Fanaticism now change the rolls of whoever has them, and the roll 
 Being preserved from shock and unconsciousness while berserk is also up to the GM. The harpy in the
 wiki module now has the Chaos rune.
 
+### Second Sight and Soul Sight
+
+<GithubIssue issue="1397" repo="fvtt-system-rqg" />
+
+With Second Sight or Soul Sight, the caster sees the POW aura of every being with POW within the
+spell's range, 50 meters for Second Sight and 160 for Soul Sight, in the dark too (RBM p.118). Walls
+still block it, and so does the token's vision arc, as for normal sight. Each being is shown as a
+swirling, ghostly aura instead of its token, so what it looks like stays hidden. Undead have no POW
+and don't show, and neither do discorporate beings, who are in the Spirit World. Invisible beings
+do, since their POW still shows.
+
+How strong each aura is compared with the caster's POW, and for Soul Sight the magic points and
+whether a being is an initiate, are still for the GM to tell. The aura stands still when
+**Photosensitive Mode** is on.
+
+{/* TODO screenshot: a POW aura seen with Second Sight in the dark */}
+
 ### Spell effects on the token
 
 A token's spell effects are shown at the top of the token HUD's status palette, above the condition
@@ -528,6 +545,10 @@ opening an old sheet logs a warning in the browser console.
   <GithubIssue issue="1166" repo="fvtt-system-rqg" />
 - Rqid links only need the `rqid`. A `name` on a link is ignored and isn't saved, since the link
   shows the name of what it finds. <GithubIssue issue="1167" repo="fvtt-system-rqg" />
+- A new detection mode, **See POW Auras** (`powAura`), shows beings with POW as an aura. An effect
+  turns it on with `token.detectionModes.powAura.enabled` and sets its range in meters with
+  `token.detectionModes.powAura.range`, as Second Sight and Soul Sight do.
+  <GithubIssue issue="1397" repo="fvtt-system-rqg" />
 - Errors and warnings now carry a code like `RQG-W-0012`, which makes them easier to report and look
   up.
 
