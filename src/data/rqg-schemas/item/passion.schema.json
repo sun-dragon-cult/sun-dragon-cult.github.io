@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/sun-dragon-cult/fvtt-system-rqg/master/src/data-model/json-schemas/generated/item/passion.schema.json",
+  "title": "RQG Item - passion",
+  "description": "Generated JSON Schema for the \"passion\" Item DataModel's `system` data. Source: src/data-model/item-data/passion-data-model.ts. Do not edit by hand — run `pnpm generate:schemas`.",
+  "type": "object",
+  "properties": {
+    "canGetExperience": {
+      "type": "boolean",
+      "default": true,
+      "title": "Can get experience",
+      "description": "Whether the ability can be checked for an experience gain."
+    },
+    "hasExperience": {
+      "type": "boolean",
+      "default": false,
+      "title": "Has experience",
+      "description": "Set when the ability has earned an experience check. Cleared when the improvement is rolled."
+    },
+    "chance": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "title": "Chance",
+      "description": "The passion's percentage."
+    },
+    "passion": {
+      "type": "string",
+      "default": "",
+      "title": "Passion",
+      "description": "The passion, for example Loyalty or Hate. A passion from the list is stored as its key, a custom one as typed."
+    },
+    "subject": {
+      "type": "string",
+      "default": "",
+      "title": "Subject",
+      "description": "What the passion is directed at."
+    },
+    "description": {
+      "type": "string",
+      "default": "",
+      "title": "Description",
+      "description": "Description shown to the players."
+    },
+    "gmNotes": {
+      "type": "string",
+      "default": "",
+      "title": "GM notes",
+      "description": "Notes only the GM sees."
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "canGetExperience",
+    "hasExperience",
+    "chance",
+    "passion",
+    "subject",
+    "description",
+    "gmNotes"
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/sun-dragon-cult/fvtt-system-rqg/master/src/data-model/json-schemas/generated/item/cult.schema.json",
+  "title": "RQG Item - cult",
+  "description": "Generated JSON Schema for the \"cult\" Item DataModel's `system` data. Source: src/data-model/item-data/cult-data-model.ts. Do not edit by hand — run `pnpm generate:schemas`.",
+  "type": "object",
+  "properties": {
+    "deity": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Deity",
+      "description": "Name of the deity."
+    },
+    "descriptionRqidLink": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "rqid": {
+          "type": "string",
+          "default": ""
+        },
+        "bonus": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "rqid"
+      ],
+      "title": "Description",
+      "description": "Link to the journal entry that describes the cult."
+    },
+    "runePoints": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "default": 0
+        },
+        "max": {
+          "type": "integer",
+          "default": 0
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "max"
+      ],
+      "title": "Rune points",
+      "description": "The cult's rune points. Value is the points the initiate currently holds."
+    },
+    "holyDays": {
+      "type": "string",
+      "default": "",
+      "title": "Holy days",
+      "description": "Free text listing the cult's holy days."
+    },
+    "gifts": {
+      "type": "string",
+      "default": "",
+      "title": "Gifts",
+      "description": "The gifts the character has received from the cult. Free text."
+    },
+    "geases": {
+      "type": "string",
+      "default": "",
+      "title": "Geases",
+      "description": "The geases the character has taken on for the cult. Free text."
+    },
+    "runeRqidLinks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rqid": {
+            "type": "string",
+            "default": ""
+          },
+          "bonus": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "rqid"
+        ]
+      },
+      "title": "Runes",
+      "description": "Links to the runes the cult is associated with."
+    },
+    "commonRuneMagicRqidLinks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rqid": {
+            "type": "string",
+            "default": ""
+          },
+          "bonus": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "rqid"
+        ]
+      },
+      "title": "Common rune magic",
+      "description": "Links to the rune magic spells available to every initiate."
+    },
+    "joinedCults": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "cultName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tagline": {
+            "type": "string",
+            "default": ""
+          },
+          "rank": {
+            "type": "string",
+            "enum": [
+              "layMember",
+              "initiate",
+              "godTalker",
+              "runePriest",
+              "runeLord",
+              "chiefPriest",
+              "highPriest"
+            ],
+            "minLength": 1,
+            "default": "layMember"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "tagline",
+          "rank"
+        ]
+      },
+      "title": "Joined cults",
+      "description": "The cults the character has joined through this cult item. Each entry holds a cult name, a tagline and a rank."
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "runePoints",
+    "holyDays",
+    "gifts",
+    "geases",
+    "runeRqidLinks",
+    "commonRuneMagicRqidLinks",
+    "joinedCults"
+  ]
+}

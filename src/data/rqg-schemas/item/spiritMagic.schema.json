@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/sun-dragon-cult/fvtt-system-rqg/master/src/data-model/json-schemas/generated/item/spiritMagic.schema.json",
+  "title": "RQG Item - spiritMagic",
+  "description": "Generated JSON Schema for the \"spiritMagic\" Item DataModel's `system` data. Source: src/data-model/item-data/spirit-magic-data-model.ts. Do not edit by hand — run `pnpm generate:schemas`.",
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "title": "Points",
+      "description": "Magic points the spell costs, or its level."
+    },
+    "castingRange": {
+      "type": "string",
+      "enum": [
+        "",
+        "self",
+        "touch",
+        "ranged",
+        "special"
+      ],
+      "default": "ranged",
+      "title": "Casting range",
+      "description": "How far from the caster the spell can reach."
+    },
+    "duration": {
+      "type": "string",
+      "enum": [
+        "",
+        "instant",
+        "temporal",
+        "focused",
+        "permanent",
+        "special"
+      ],
+      "default": "temporal",
+      "title": "Duration",
+      "description": "How long the spell lasts."
+    },
+    "concentration": {
+      "type": "string",
+      "enum": [
+        "passive",
+        "active"
+      ],
+      "minLength": 1,
+      "default": "passive",
+      "title": "Concentration",
+      "description": "Whether the caster has to concentrate on the spell while it lasts."
+    },
+    "isRitual": {
+      "type": "boolean",
+      "default": false,
+      "title": "Is ritual",
+      "description": "Whether the spell is cast as a ritual."
+    },
+    "isEnchantment": {
+      "type": "boolean",
+      "default": false,
+      "title": "Is enchantment",
+      "description": "Whether the spell is an enchantment."
+    },
+    "resistedBy": {
+      "type": "string",
+      "enum": [
+        "none",
+        "resistanceRoll",
+        "resistanceRollArea",
+        "resistanceRollPerTarget",
+        "spiritCombatRound",
+        "spiritCombatDefeat"
+      ],
+      "minLength": 1,
+      "default": "none",
+      "title": "Resisted by",
+      "description": "What the target can resist the spell with."
+    },
+    "resistedWith": {
+      "type": "string",
+      "enum": [
+        "power",
+        "magicPoints"
+      ],
+      "minLength": 1,
+      "default": "power",
+      "title": "Resisted with",
+      "description": "The characteristic the target resists with."
+    },
+    "targetKind": {
+      "type": "string",
+      "enum": [
+        "none",
+        "self",
+        "creature",
+        "spirit",
+        "weapon",
+        "object",
+        "hitLocation",
+        "area",
+        "radius",
+        "spellOrEffect",
+        "creates",
+        "ritual"
+      ],
+      "minLength": 1,
+      "default": "none",
+      "title": "Target kind",
+      "description": "What the spell targets: for example a character, a weapon or an area."
+    },
+    "effectTier": {
+      "type": "string",
+      "enum": [
+        "none",
+        "reminder",
+        "effect",
+        "behavior"
+      ],
+      "minLength": 1,
+      "default": "none",
+      "title": "Effect tier",
+      "description": "How the system applies the spell effect: not at all, with an Active Effect, or with a macro."
+    },
+    "passesSpellBarriers": {
+      "type": "boolean",
+      "default": false,
+      "title": "Passes spell barriers",
+      "description": "Set for spells that attack other spells' defences, like Dispel Magic and Dismiss Magic."
+    },
+    "descriptionRqidLink": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "rqid": {
+          "type": "string",
+          "default": ""
+        },
+        "bonus": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "rqid"
+      ],
+      "title": "Description",
+      "description": "Link to the journal entry that describes the spell."
+    },
+    "effectRqidLink": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "rqid": {
+          "type": "string",
+          "default": ""
+        },
+        "bonus": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "rqid"
+      ],
+      "title": "Effect",
+      "description": "Link to the Active Effect template applied when the spell is cast."
+    },
+    "isVariable": {
+      "type": "boolean",
+      "default": false,
+      "title": "Is variable",
+      "description": "Whether the spell can be cast at any number of points up to its maximum."
+    },
+    "spellFocus": {
+      "type": "string",
+      "default": "",
+      "title": "Spell focus",
+      "description": "The object used to focus the spell, if any."
+    },
+    "isMatrix": {
+      "type": "boolean",
+      "default": false,
+      "title": "Held in matrix",
+      "description": "Whether the spell is stored in a matrix."
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "points",
+    "castingRange",
+    "duration",
+    "concentration",
+    "isRitual",
+    "isEnchantment",
+    "resistedBy",
+    "resistedWith",
+    "targetKind",
+    "effectTier",
+    "passesSpellBarriers",
+    "isVariable",
+    "spellFocus",
+    "isMatrix"
+  ]
+}
