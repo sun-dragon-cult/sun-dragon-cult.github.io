@@ -87,8 +87,9 @@ wiki module now has the Chaos rune.</p>
 spell's range, 50 meters for Second Sight and 160 for Soul Sight, in the dark too (RBM p.118). Walls
 still block it, and so does the token's vision arc, as for normal sight. Each being is shown as a
 swirling, ghostly aura instead of its token, so what it looks like stays hidden. Undead have no POW
-and don't show, and neither do discorporate beings, who are in the Spirit World. Invisible beings
-do, since their POW still shows.</p>
+and don't show. Neither do beings in the Spirit World: mark a token <strong>Discorporate</strong> in the token
+HUD's status palette, and Second Sight passes it by. Invisible beings do show, since their POW is
+still there.</p>
 <p>How strong each aura is compared with the caster's POW, and for Soul Sight the magic points and
 whether a being is an initiate, are still for the GM to tell. The aura stands still when
 <strong>Photosensitive Mode</strong> is on.</p>
